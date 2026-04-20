@@ -17,19 +17,22 @@ export const NAV_TABS = [
 
 export const FILTER_BAR_SECTIONS = ['people', 'services', 'health']
 
-import { DATASET_END_DATE, AUTH_COOKIE_NAME } from './config'
+export { AUTH_COOKIE_NAME, AUTH_COOKIE_NAME as AUTH_COOKIE_ALIAS } from './config'
+import { AUTH_COOKIE_NAME } from './config'
+
+const TODAY = new Date().toISOString().split('T')[0]
 
 function daysAgo(n: number) {
-  const d = new Date(DATASET_END_DATE)
+  const d = new Date(TODAY)
   d.setDate(d.getDate() - n)
   return d.toISOString().split('T')[0]
 }
 
 export const DATE_PRESETS = [
-  { value: 'today',  label: 'Today',  from: DATASET_END_DATE,  to: DATASET_END_DATE  },
-  { value: '7d',     label: '7d',     from: daysAgo(7),        to: DATASET_END_DATE  },
-  { value: '30d',    label: '30d',    from: daysAgo(30),       to: DATASET_END_DATE  },
-  { value: 'custom', label: 'Custom', from: '',           to: ''          },
+  { value: 'today',  label: 'Today',  from: TODAY,       to: TODAY       },
+  { value: '7d',     label: '7d',     from: daysAgo(7),  to: TODAY       },
+  { value: '30d',    label: '30d',    from: daysAgo(30), to: TODAY       },
+  { value: 'custom', label: 'Custom', from: '',          to: ''          },
 ] as const
 
 export const STATUS_OPTIONS = [

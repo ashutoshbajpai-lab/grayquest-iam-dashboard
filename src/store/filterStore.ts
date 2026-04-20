@@ -4,10 +4,12 @@ import type { FilterState, DateRange } from '@/types'
 import { DATASET_END_DATE, THEME_STORAGE_KEY, THEME_TRANSITION_MS } from '@/lib/config'
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000
+// Use real today as the upper bound so newly added data is never filtered out
+const TODAY_STR = new Date().toISOString().split('T')[0]
 const defaultDateRange: DateRange = {
   preset: '30d',
-  from: new Date(new Date(DATASET_END_DATE).getTime() - 30 * MS_PER_DAY).toISOString().split('T')[0],
-  to: DATASET_END_DATE,
+  from: new Date(new Date(TODAY_STR).getTime() - 30 * MS_PER_DAY).toISOString().split('T')[0],
+  to: TODAY_STR,
 }
 
 interface FilterStore extends FilterState {
