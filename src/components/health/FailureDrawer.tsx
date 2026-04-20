@@ -37,7 +37,7 @@ export default function FailureDrawer({ service, allEventFailures, onClose }: Pr
   if (!service) return null
 
   // Use the real event failures passed from HealthClient
-  const events = allEventFailures.length > 0 ? allEventFailures.slice(0, 8) : []
+  const events = (allEventFailures.length > 0 ? allEventFailures.slice(0, 8) : []) as unknown as Record<string, unknown>[]
   const failureSeries = getDynamicFailureSeries(service.failed, service.rate)
 
   return (
@@ -80,21 +80,27 @@ export default function FailureDrawer({ service, allEventFailures, onClose }: Pr
           <div>
             <p className="text-xs font-medium text-txt-secondary mb-3">Failure Rate by Event</p>
             <div className="space-y-2">
-              {events.map(e => (
-                <div key={e.event} className="flex items-center gap-3">
-                  <span className="font-mono text-xs text-txt-primary w-36 flex-shrink-0">{e.event}</span>
-                  <div className="flex-1 h-1.5 rounded-full bg-bg-border overflow-hidden">
-                    <div
-                      className="h-full rounded-full"
-                      style={{ width: `${Math.min(e.rate, 100)}%`, backgroundColor: e.rate >= 20 ? '#EF4444' : e.rate >= 10 ? '#F59E0B' : '#22C55E' }}
-                    />
+              {events.map((e, i) => {
+                const rate = Number(e.rate ?? 0)
+                const failed = Number(e.failed ?? 0)
+                const total = Number(e.total ?? 0)
+                const event = String(e.event ?? '')
+                return (
+                  <div key={`${event}-${i}`} className="flex items-center gap-3">
+                    <span className="font-mono text-xs text-txt-primary w-36 flex-shrink-0">{event}</span>
+                    <div className="flex-1 h-1.5 rounded-full bg-bg-border overflow-hidden">
+                      <div
+                        className="h-full rounded-full"
+                        style={{ width: `${Math.min(rate, 100)}%`, backgroundColor: rate >= 20 ? 'var(--color-status-failure)' : rate >= 10 ? 'var(--color-status-pending)' : 'var(--color-status-success)' }}
+                      />
+                    </div>
+                    <span className="text-xs text-txt-muted w-10 text-right">{failed}/{total}</span>
+                    <span className={`text-xs font-medium w-12 text-right ${rate >= 20 ? 'text-status-failure' : rate >= 10 ? 'text-status-pending' : 'text-status-success'}`}>
+                      {rate.toFixed(1)}%
+                    </span>
                   </div>
-                  <span className="text-xs text-txt-muted w-10 text-right">{e.failed}/{e.total}</span>
-                  <span className={`text-xs font-medium w-12 text-right ${e.rate >= 20 ? 'text-status-failure' : e.rate >= 10 ? 'text-status-pending' : 'text-status-success'}`}>
-                    {e.rate}%
-                  </span>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         )}
@@ -104,11 +110,11 @@ export default function FailureDrawer({ service, allEventFailures, onClose }: Pr
           <div>
             <p className="text-xs font-medium text-txt-secondary mb-3">Failed Event Volume</p>
             <BarChart
-              data={events.filter(e => e.failed > 0)}
+              data={events.filter(e => Number(e.failed ?? 0) > 0)}
               xKey="event"
               bars={[{ key: 'failed', color: 'var(--color-status-failure)', label: 'Failed' }]}
               horizontal
-              height={Math.max(120, events.filter(e => e.failed > 0).length * 44)}
+              height={Math.max(120, events.filter(e => Number(e.failed ?? 0) > 0).length * 44)}
               showLabels
             />
           </div>
