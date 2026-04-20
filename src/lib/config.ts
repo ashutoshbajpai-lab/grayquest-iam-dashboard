@@ -100,7 +100,7 @@ export const AI = {
   OLLAMA_URL:         process.env.OLLAMA_URL          ?? 'http://127.0.0.1:11434/api/generate',
   OLLAMA_MODEL:       process.env.OLLAMA_MODEL        ?? 'phi3:mini',
   OLLAMA_TIMEOUT_MS:  Number(process.env.OLLAMA_TIMEOUT_MS ?? 60_000),
-  GEMINI_MODEL:       process.env.GEMINI_MODEL        ?? 'gemini-1.5-flash',
+  GEMINI_MODEL:       process.env.GEMINI_MODEL        ?? 'gemini-2.0-flash',
   GEMINI_TIMEOUT_MS:  Number(process.env.GEMINI_TIMEOUT_MS ?? 25_000),
   COMPUTE_TIMEOUT_MS: Number(process.env.GEMINI_COMPUTE_TIMEOUT_MS ?? 20_000),
   MAX_RESULT_WORDS:   25,
