@@ -12,6 +12,14 @@ export const DATASET_END_DATE = process.env.NEXT_PUBLIC_DATASET_END_DATE ?? '202
 export const PLATFORM_ID = process.env.NEXT_PUBLIC_PLATFORM_ID ?? '7'
 export const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME ?? 'GrayQuest'
 
+// ── Dashboard user identity ───────────────────────────────────────
+function _parseName(email: string): string {
+  return email.split('@')[0].split(/[._-]/).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+}
+export const DASHBOARD_USER_EMAIL = process.env.NEXT_PUBLIC_DASHBOARD_USER_EMAIL ?? ''
+export const DASHBOARD_USER_NAME  = process.env.NEXT_PUBLIC_DASHBOARD_USER_NAME  ?? (_parseName(DASHBOARD_USER_EMAIL) || 'Admin')
+export const DASHBOARD_USER_ROLE  = process.env.NEXT_PUBLIC_DASHBOARD_USER_ROLE  ?? 'IAM Admin'
+
 // ── Auth ──────────────────────────────────────────────────────────
 export const AUTH_COOKIE_NAME   = 'gq-dashboard-token'
 export const AUTH_TOKEN_EXPIRY  = '8h'
@@ -121,7 +129,7 @@ export const COLORS = {
   WARNING_BG:    'rgba(217,119,6,0.10)',
   DANGER:        '#DC2626',
   DANGER_BG:     'rgba(239,68,68,0.10)',
-  ACCENT:        '#1C1C1E',   // active-state background (nav, buttons)
+  ACCENT:        '#4F46E5',   // active-state background (nav, buttons)
   TREND_UP:      '#22C55E',
   TREND_DOWN:    '#EF4444',
   TREND_NEUTRAL: '#F59E0B',
@@ -136,12 +144,12 @@ export const COLORS = {
 // Cycled by index for user initials avatars
 export const AVATAR_PALETTE: { bg: string; fg: string }[] = [
   { bg: '#EEF2FF', fg: '#4338CA' },
-  { bg: '#FEF3C7', fg: '#92400E' },
-  { bg: '#ECFDF5', fg: '#065F46' },
-  { bg: '#FFF1F2', fg: '#9F1239' },
-  { bg: '#EFF6FF', fg: '#1D4ED8' },
   { bg: '#F5F3FF', fg: '#5B21B6' },
-  { bg: '#FFF7ED', fg: '#9A3412' },
+  { bg: '#EFF6FF', fg: '#1D4ED8' },
+  { bg: '#ECFDF5', fg: '#065F46' },
+  { bg: '#FDF4FF', fg: '#7E22CE' },
+  { bg: '#FFF1F2', fg: '#BE123C' },
+  { bg: '#FEF3C7', fg: '#92400E' },
   { bg: '#F0FDF4', fg: '#166534' },
 ]
 

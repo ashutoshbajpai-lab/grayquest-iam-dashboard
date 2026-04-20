@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useFilterStore } from '@/store/filterStore'
 import AlertsPanel from '@/components/ui/AlertsPanel'
 import { NAV_TABS } from '@/lib/constants'
+import { DASHBOARD_USER_NAME, COLORS } from '@/lib/config'
 
 function SunIcon() {
   return (
@@ -81,7 +82,7 @@ export default function TopBar() {
         {/* Page title */}
         <div>
           <h1 className="text-xl font-extrabold text-txt-primary tracking-tight">{pageTitle}</h1>
-          <p className="text-xs text-txt-muted">{greeting}, Ashutosh</p>
+          <p className="text-xs text-txt-muted">{greeting}, {DASHBOARD_USER_NAME.split(' ')[0]}</p>
         </div>
 
         {/* Actions */}
@@ -121,8 +122,8 @@ export default function TopBar() {
 
           {/* Avatar */}
           <div className="w-9 h-9 rounded-xl flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
-            style={{ background: '#1C1C1E' }}>
-            A
+            style={{ background: 'var(--color-accent)' }}>
+            {DASHBOARD_USER_NAME[0]?.toUpperCase() ?? 'A'}
           </div>
         </div>
       </div>

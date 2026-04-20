@@ -2,21 +2,10 @@
 
 import { useState } from 'react'
 import type { IamUser as User } from '@/types/people'
-
-// ── Avatar ────────────────────────────────────────────────────────
-const PALETTE = [
-  { bg: '#EEF2FF', fg: '#4338CA' },
-  { bg: '#F0FDF4', fg: '#15803D' },
-  { bg: '#FFF7ED', fg: '#C2410C' },
-  { bg: '#F0F9FF', fg: '#0369A1' },
-  { bg: '#FDF4FF', fg: '#7E22CE' },
-  { bg: '#FFF1F2', fg: '#BE123C' },
-  { bg: '#ECFDF5', fg: '#047857' },
-  { bg: '#FEFCE8', fg: '#854D0E' },
-]
+import { AVATAR_PALETTE, HEALTH } from '@/lib/config'
 
 function Avatar({ name }: { name: string }) {
-  const { bg, fg } = PALETTE[name.charCodeAt(0) % PALETTE.length]
+  const { bg, fg } = AVATAR_PALETTE[name.charCodeAt(0) % AVATAR_PALETTE.length]
   const initials = name.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase()
   return (
     <div
@@ -31,9 +20,9 @@ function Avatar({ name }: { name: string }) {
 // ── Status badge ──────────────────────────────────────────────────
 function StatusBadge({ score }: { score: number }) {
   const cfg =
-    score >= 75
+    score >= HEALTH.ACTIVE
       ? { label: 'Active',   bgColor: 'rgba(16,185,129,0.10)', textColor: '#059669',  dot: '#10B981' }
-      : score >= 50
+      : score >= HEALTH.AT_RISK
       ? { label: 'At Risk',  bgColor: 'rgba(217,119,6,0.10)',  textColor: '#D97706',  dot: '#F59E0B' }
       : { label: 'Inactive', bgColor: 'rgba(239,68,68,0.10)',  textColor: '#DC2626',  dot: '#EF4444' }
 

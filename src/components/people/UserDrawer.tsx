@@ -20,7 +20,13 @@ const SERVICE_POOL = [
   { name: 'Settings',            events: ['UPDATE_CONFIG', 'VIEW_SETTINGS'] },
 ]
 
-const DATES = ['Apr 12', 'Apr 13', 'Apr 14', 'Apr 15', 'Apr 16', 'Apr 17', 'Apr 18']
+function getLast7Days(): string[] {
+  return Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(); d.setDate(d.getDate() - (6 - i))
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+  })
+}
+const DATES = getLast7Days()
 
 // Deterministic pseudo-random from user_id + offset seed
 function prng(seed: number) {
@@ -66,7 +72,8 @@ function generateRecentEvents(user: User) {
     const dayOff   = Math.floor(i / 2)
     const hour     = 9 + Math.floor(prng(user.user_id * 3 + i) * 9)
     const min      = Math.floor(prng(user.user_id * 5 + i) * 60)
-    const date     = `2026-04-${(18 - dayOff).toString().padStart(2, '0')}`
+    const d        = new Date(); d.setDate(d.getDate() - dayOff)
+    const date     = d.toISOString().slice(0, 10)
     return {
       ts:      `${date} ${hour.toString().padStart(2,'0')}:${min.toString().padStart(2,'0')}`,
       service: svc.name,
@@ -77,7 +84,7 @@ function generateRecentEvents(user: User) {
 }
 
 function HealthScoreGauge({ score }: { score: number }) {
-  const color    = score >= 75 ? '#22C55E' : score >= 50 ? '#F59E0B' : '#EF4444'
+  const color    = score >= 75 ? 'var(--color-status-success)' : score >= 50 ? 'var(--color-status-pending)' : 'var(--color-status-failure)'
   const r        = 40
   const circ     = 2 * Math.PI * r
   const dash     = (score / 100) * circ * 0.75
@@ -165,8 +172,8 @@ export default function UserDrawer({ user, onClose }: Props) {
               data={activitySeries}
               xKey="date"
               lines={[
-                { key: 'sessions', color: '#7C6FF7', label: 'Sessions' },
-                { key: 'events',   color: '#38BDF8', label: 'Events'   },
+                { key: 'sessions', color: 'var(--color-accent)',      label: 'Sessions' },
+                { key: 'events',   color: 'var(--color-status-info)', label: 'Events'   },
               ]}
               height={160}
             />
@@ -183,7 +190,7 @@ export default function UserDrawer({ user, onClose }: Props) {
             <BarChart
               data={serviceBreakdown}
               xKey="service"
-              bars={[{ key: 'events', color: '#7C6FF7', label: 'Events' }]}
+              bars={[{ key: 'events', color: 'var(--color-accent)', label: 'Events' }]}
               horizontal
               height={Math.max(140, serviceBreakdown.length * 32)}
               showLabels

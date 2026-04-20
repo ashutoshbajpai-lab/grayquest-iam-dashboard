@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { NAV_TABS, ROUTES } from '@/lib/constants'
 import { useFilterStore } from '@/store/filterStore'
+import { DASHBOARD_USER_NAME, DASHBOARD_USER_ROLE } from '@/lib/config'
 
 const NAV_ICONS: Record<string, React.ReactNode> = {
   people: (
@@ -71,7 +72,7 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="flex items-center gap-3 px-5 h-16 border-b border-bg-border flex-shrink-0">
         <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
-          style={{ background: 'linear-gradient(135deg, #1C1C1E 0%, #3A3A3C 100%)' }}>
+          style={{ background: 'linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%)' }}>
           <span className="text-white font-bold text-sm" aria-hidden="true">G</span>
         </div>
         <div>
@@ -95,7 +96,7 @@ export default function Sidebar() {
                   ? 'text-white shadow-sm'
                   : 'text-txt-secondary hover:text-txt-primary hover:bg-bg-elevated'
               }`}
-              style={active ? { backgroundColor: '#1C1C1E' } : {}}
+              style={active ? { backgroundColor: 'var(--color-accent)' } : {}}
             >
               <span className={`flex-shrink-0 transition-colors ${active ? 'text-white' : 'text-txt-muted group-hover:text-txt-primary'}`}>
                 {NAV_ICONS[tab.id]}
@@ -110,13 +111,13 @@ export default function Sidebar() {
       <div className="px-3 py-4 border-t border-bg-border space-y-1 flex-shrink-0">
         <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl">
           <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 text-white text-xs font-bold"
-            style={{ background: '#1C1C1E' }}
+            style={{ background: 'var(--color-accent)' }}
             aria-hidden="true">
-            A
+            {DASHBOARD_USER_NAME[0]?.toUpperCase() ?? 'A'}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-semibold text-txt-primary truncate">Ashutosh</p>
-            <p className="text-[10px] text-txt-muted truncate">IAM Admin</p>
+            <p className="text-xs font-semibold text-txt-primary truncate">{DASHBOARD_USER_NAME.split(' ')[0]}</p>
+            <p className="text-[10px] text-txt-muted truncate">{DASHBOARD_USER_ROLE}</p>
           </div>
         </div>
         <button

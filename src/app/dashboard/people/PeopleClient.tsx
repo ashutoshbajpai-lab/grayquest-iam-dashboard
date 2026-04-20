@@ -9,6 +9,7 @@ import UserTable from '@/components/people/UserTable'
 import UserDrawer from '@/components/people/UserDrawer'
 import { useFilterStore } from '@/store/filterStore'
 import { useChartColors } from '@/hooks/useChartColors'
+import { HEALTH, COMPANY_NAME } from '@/lib/config'
 import type { IamUser as User } from '@/types/people'
 import PinnedMetrics from '@/components/ui/PinnedMetrics'
 
@@ -108,10 +109,17 @@ export default function PeopleClient({ data }: { data: Record<string, unknown> }
     dateRange.preset === '7d'    ? -7 : -14
   const dauSeries = d.dau.series.slice(dauSlice).map(s => ({ ...s, date: s.date.slice(5) }))
 
-  // ── Role donut ────────────────────────────────────────────────
-  const roleSlices = d.roles.roles.map(r => ({
-    name: r.role, value: r.count, color: ROLE_COLORS[r.role] ?? '#64748B',
-  }))
+  // ── Filtered KPIs (update with filter changes) ────────────────
+  const filteredAvgHealth = dateUsers.length > 0
+    ? Math.round(dateUsers.reduce((a, u) => a + u.health_score, 0) / dateUsers.length)
+    : 0
+  const filteredTotalSessions = dateUsers.reduce((a, u) => a + u.sessions_30d, 0)
+  const filteredTotalEvents   = dateUsers.reduce((a, u) => a + u.events_30d, 0)
+
+  // ── Role donut from filtered users ────────────────────────────
+  const roleSlices = Object.entries(
+    dateUsers.reduce((acc, u) => { acc[u.role] = (acc[u.role] ?? 0) + 1; return acc }, {} as Record<string, number>)
+  ).map(([name, value]) => ({ name, value, color: ROLE_COLORS[name] ?? '#64748B' }))
 
   // ── Cohort heatmap ────────────────────────────────────────────
   const cohortCells = d.cohort.cohorts.flatMap(row =>
@@ -147,11 +155,11 @@ export default function PeopleClient({ data }: { data: Record<string, unknown> }
         />
         <KPICard
           title="Avg Health Score"
-          value={kpis.avg_health_score}
-          subtitle={`All ${kpis.total_users.toLocaleString()} users`}
+          value={filteredAvgHealth}
+          subtitle={`${dateUsers.length} of ${d.users.users.length} users`}
           trend={trends.health_score_vs_prev}
           trendLabel="vs prev 30d"
-          status={kpis.avg_health_score >= 70 ? 'success' : kpis.avg_health_score >= 50 ? 'warning' : 'danger'}
+          status={filteredAvgHealth >= 70 ? 'success' : filteredAvgHealth >= 50 ? 'warning' : 'danger'}
           icon={<IconHeart color="currentColor" />}
         />
         <KPICard
@@ -170,8 +178,8 @@ export default function PeopleClient({ data }: { data: Record<string, unknown> }
         />
         <KPICard
           title="Total Sessions"
-          value={kpis.total_sessions_30d}
-          subtitle={`${kpis.total_events_30d.toLocaleString()} events`}
+          value={filteredTotalSessions}
+          subtitle={`${filteredTotalEvents.toLocaleString()} events`}
           status="neutral"
           icon={<IconActivity color="currentColor" />}
         />
@@ -199,7 +207,7 @@ export default function PeopleClient({ data }: { data: Record<string, unknown> }
                       ? 'text-white shadow-sm'
                       : 'text-txt-muted hover:text-txt-primary'
                   }`}
-                  style={dauMetric === m ? { backgroundColor: '#1C1C1E' } : {}}
+                  style={dauMetric === m ? { backgroundColor: 'var(--color-accent)' } : {}}
                 >
                   {metricLabel[m]}
                 </button>
@@ -220,7 +228,7 @@ export default function PeopleClient({ data }: { data: Record<string, unknown> }
         <div className="card flex flex-col">
           <div className="px-6 pt-5 pb-4 border-b border-bg-border">
             <p className="text-base font-bold text-txt-primary">Users by Role</p>
-            <p className="text-xs text-txt-muted mt-0.5">Distribution across platform_id=7</p>
+            <p className="text-xs text-txt-muted mt-0.5">{COMPANY_NAME} · filtered view</p>
           </div>
           <div className="px-6 py-5 flex-1">
             <DonutChart
@@ -243,9 +251,9 @@ export default function PeopleClient({ data }: { data: Record<string, unknown> }
           <div className="flex items-center gap-2">
             {/* Active + At Risk + Inactive summary pills */}
             {[
-              { label: 'Active',   count: dateUsers.filter(u => u.health_score >= 75).length,  bg: 'rgba(16,185,129,0.10)',  color: '#059669' },
-              { label: 'At Risk',  count: dateUsers.filter(u => u.health_score >= 50 && u.health_score < 75).length, bg: 'rgba(217,119,6,0.10)', color: '#D97706' },
-              { label: 'Inactive', count: dateUsers.filter(u => u.health_score < 50).length,   bg: 'rgba(239,68,68,0.10)',  color: '#DC2626' },
+              { label: 'Active',   count: dateUsers.filter(u => u.health_score >= HEALTH.ACTIVE).length,  bg: 'rgba(16,185,129,0.10)',  color: '#059669' },
+              { label: 'At Risk',  count: dateUsers.filter(u => u.health_score >= HEALTH.AT_RISK && u.health_score < HEALTH.ACTIVE).length, bg: 'rgba(217,119,6,0.10)', color: '#D97706' },
+              { label: 'Inactive', count: dateUsers.filter(u => u.health_score < HEALTH.AT_RISK).length,   bg: 'rgba(239,68,68,0.10)',  color: '#DC2626' },
             ].map(({ label, count, bg, color }) => (
               <span
                 key={label}

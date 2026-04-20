@@ -5,9 +5,10 @@
  */
 
 import { createClient } from '@supabase/supabase-js'
+import { PLATFORM_ID as CFG_PLATFORM_ID, HEALTH } from './config'
 
 // ── Constants ──────────────────────────────────────────────────────────────
-const PLATFORM_ID      = '7'
+const PLATFORM_ID      = CFG_PLATFORM_ID
 const SESSION_GAP_SECS = 1800
 const DORMANT_DAYS     = 30
 const MULTI_MODULE_MIN = 3
@@ -418,7 +419,7 @@ export async function computeAllMetrics(): Promise<void> {
     const hs      = healthScores.get(uid) ?? 0
     const lastA   = userLastActive.get(uid)
     const firstS  = userFirstSeen.get(uid)
-    const status  = hs >= 50 ? 'active' : hs >= 20 ? 'at_risk' : 'inactive'
+    const status  = hs >= HEALTH.ACTIVE ? 'active' : hs >= HEALTH.AT_RISK ? 'at_risk' : 'inactive'
     const name    = email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
     return {
       user_id:            isNaN(Number(uid)) ? uid : Number(uid),
