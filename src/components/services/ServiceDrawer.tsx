@@ -62,7 +62,7 @@ export default function ServiceDrawer({ service, drill, onClose }: Props) {
           ].map(k => (
             <div key={k.label} className="card-elevated p-3">
               <p className="text-xs text-txt-muted">{k.label}</p>
-              <p className="text-sm font-semibold mt-0.5" style={{ color: k.color ?? COLORS.KPI_FALLBACK }}>{k.value}</p>
+              <p className="text-sm font-semibold mt-0.5" style={{ color: k.color ?? 'var(--color-txt-primary)' }}>{k.value}</p>
             </div>
           ))}
         </div>

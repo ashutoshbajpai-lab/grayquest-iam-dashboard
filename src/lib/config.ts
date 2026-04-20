@@ -133,7 +133,7 @@ export const COLORS = {
   TREND_UP:      '#22C55E',
   TREND_DOWN:    '#EF4444',
   TREND_NEUTRAL: '#F59E0B',
-  KPI_FALLBACK:  '#F1F5F9',   // fallback text color in drawer KPI tiles
+  KPI_FALLBACK:  'var(--color-txt-primary)',   // fallback text color in drawer KPI tiles
 
   // Inline bar / gauge colors (not part of useChartColors since they're fixed)
   EVENTS_BAR:    '#6C63FF',
