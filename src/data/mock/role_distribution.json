@@ -1,0 +1,9 @@
+{
+  "roles": [
+    { "role": "Institute Admin",  "count": 8,  "pct": 53.3, "avg_health": 60.3, "active_today": 1 },
+    { "role": "IAM Admin",        "count": 2,  "pct": 13.3, "avg_health": 86.5, "active_today": 2 },
+    { "role": "Service Manager",  "count": 2,  "pct": 13.3, "avg_health": 84.0, "active_today": 1 },
+    { "role": "Finance Officer",  "count": 2,  "pct": 13.3, "avg_health": 64.5, "active_today": 1 },
+    { "role": "Audit Officer",    "count": 1,  "pct":  6.7, "avg_health": 83.0, "active_today": 1 }
+  ]
+}

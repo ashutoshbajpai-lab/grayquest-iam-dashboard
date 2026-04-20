@@ -1,0 +1,14 @@
+{
+  "events": [
+    { "event_id": 1001, "user_id": 105, "user_name": "Vikram Singh",   "service": "User Administration", "event": "CREATE_USER",     "status": "SUCCESS", "ts": "2026-04-18T09:14:22Z", "session_id": "s_4421" },
+    { "event_id": 1002, "user_id": 101, "user_name": "Rahul Sharma",   "service": "Fee Collection",       "event": "COLLECT_FEE",    "status": "SUCCESS", "ts": "2026-04-18T09:22:11Z", "session_id": "s_4418" },
+    { "event_id": 1003, "user_id": 104, "user_name": "Deepa Krishnan", "service": "Student Management",   "event": "VIEW_STUDENT",   "status": "SUCCESS", "ts": "2026-04-18T09:31:05Z", "session_id": "s_4422" },
+    { "event_id": 1004, "user_id": 114, "user_name": "Divya Patel",    "service": "User Administration",  "event": "UPDATE_ROLE",    "status": "SUCCESS", "ts": "2026-04-18T09:44:38Z", "session_id": "s_4423" },
+    { "event_id": 1005, "user_id": 102, "user_name": "Priya Nair",     "service": "Fee Collection",       "event": "RECEIPT_GENERATE","status":"SUCCESS", "ts": "2026-04-18T10:02:17Z", "session_id": "s_4424" },
+    { "event_id": 1006, "user_id": 109, "user_name": "Kiran Desai",    "service": "Audit Logs",           "event": "VIEW_LOG",       "status": "SUCCESS", "ts": "2026-04-18T10:18:44Z", "session_id": "s_4425" },
+    { "event_id": 1007, "user_id": 103, "user_name": "Arun Mehta",     "service": "Loan Management",      "event": "LOAN_APPROVAL",  "status": "FAILED",  "ts": "2026-04-18T10:29:03Z", "session_id": "s_4419" },
+    { "event_id": 1008, "user_id": 111, "user_name": "Rajesh Kumar",   "service": "Student Management",   "event": "ADD_STUDENT",    "status": "SUCCESS", "ts": "2026-04-18T10:41:55Z", "session_id": "s_4426" },
+    { "event_id": 1009, "user_id": 105, "user_name": "Vikram Singh",   "service": "Fee Collection",       "event": "VIEW_FEE",       "status": "SUCCESS", "ts": "2026-04-18T11:03:29Z", "session_id": "s_4421" },
+    { "event_id": 1010, "user_id": 110, "user_name": "Neha Joshi",     "service": "Fee Collection",       "event": "COLLECT_FEE",    "status": "SUCCESS", "ts": "2026-04-18T11:17:42Z", "session_id": "s_4427" }
+  ]
+}

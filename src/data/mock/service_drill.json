@@ -1,0 +1,134 @@
+{
+  "12": {
+    "success_series": [
+      { "date": "Apr 11", "rate": 89.1 }, { "date": "Apr 12", "rate": 87.3 },
+      { "date": "Apr 13", "rate": 92.4 }, { "date": "Apr 14", "rate": 93.1 },
+      { "date": "Apr 15", "rate": 94.2 }, { "date": "Apr 16", "rate": 90.8 },
+      { "date": "Apr 17", "rate": 91.5 }, { "date": "Apr 18", "rate": 91.2 }
+    ],
+    "events_breakdown": [
+      { "event": "VIEW_FEE",          "count": 312, "success": 98.7 },
+      { "event": "COLLECT_FEE",       "count": 287, "success": 89.9 },
+      { "event": "RECEIPT_GENERATE",  "count": 198, "success": 96.5 },
+      { "event": "FEE_REMINDER",      "count": 50,  "success": 76.0 }
+    ],
+    "top_users": [
+      { "name": "Deepa Krishnan", "role": "Institute Admin", "events": 124 },
+      { "name": "Neha Joshi",     "role": "Institute Admin", "events": 98  },
+      { "name": "Vikram Singh",   "role": "Service Manager", "events": 87  },
+      { "name": "Rahul Sharma",   "role": "IAM Admin",       "events": 76  }
+    ],
+    "report_metrics": {
+      "total_reports": 142, "exported": 97, "export_rate": 68.3,
+      "report_types": [
+        { "type": "Fee Summary",     "count": 68, "exported": 51 },
+        { "type": "Outstanding Dues","count": 41, "exported": 29 },
+        { "type": "Receipt Register","count": 33, "exported": 17 }
+      ],
+      "by_user": [
+        { "name": "Deepa Krishnan", "reports": 38, "exports": 29 },
+        { "name": "Neha Joshi",     "reports": 31, "exports": 21 },
+        { "name": "Priya Nair",     "reports": 28, "exports": 22 },
+        { "name": "Arun Mehta",     "reports": 24, "exports": 14 }
+      ]
+    }
+  },
+  "8": {
+    "success_series": [
+      { "date": "Apr 11", "rate": 93.2 }, { "date": "Apr 12", "rate": 91.8 },
+      { "date": "Apr 13", "rate": 95.1 }, { "date": "Apr 14", "rate": 96.0 },
+      { "date": "Apr 15", "rate": 94.7 }, { "date": "Apr 16", "rate": 93.9 },
+      { "date": "Apr 17", "rate": 95.2 }, { "date": "Apr 18", "rate": 94.6 }
+    ],
+    "events_breakdown": [
+      { "event": "VIEW_STUDENT",   "count": 241, "success": 99.2 },
+      { "event": "UPDATE_STUDENT", "count": 198, "success": 94.4 },
+      { "event": "ADD_STUDENT",    "count": 112, "success": 87.5 },
+      { "event": "DELETE_STUDENT", "count": 61,  "success": 90.2 }
+    ],
+    "top_users": [
+      { "name": "Deepa Krishnan", "role": "Institute Admin", "events": 98  },
+      { "name": "Arun Mehta",     "role": "Institute Admin", "events": 87  },
+      { "name": "Rajesh Kumar",   "role": "Service Manager", "events": 74  },
+      { "name": "Mohan Tiwari",   "role": "Institute Admin", "events": 61  }
+    ],
+    "report_metrics": {
+      "total_reports": 87, "exported": 46, "export_rate": 52.9,
+      "report_types": [
+        { "type": "Student Roster",   "count": 44, "exported": 27 },
+        { "type": "Admission Report", "count": 28, "exported": 13 },
+        { "type": "Attendance",       "count": 15, "exported": 6  }
+      ],
+      "by_user": [
+        { "name": "Deepa Krishnan", "reports": 28, "exports": 17 },
+        { "name": "Arun Mehta",     "reports": 22, "exports": 12 },
+        { "name": "Mohan Tiwari",   "reports": 19, "exports": 9  },
+        { "name": "Suresh Babu",    "reports": 18, "exports": 8  }
+      ]
+    }
+  },
+  "15": {
+    "success_series": [
+      { "date": "Apr 11", "rate": 80.1 }, { "date": "Apr 12", "rate": 78.4 },
+      { "date": "Apr 13", "rate": 83.7 }, { "date": "Apr 14", "rate": 85.2 },
+      { "date": "Apr 15", "rate": 84.9 }, { "date": "Apr 16", "rate": 82.3 },
+      { "date": "Apr 17", "rate": 81.7 }, { "date": "Apr 18", "rate": 82.7 }
+    ],
+    "events_breakdown": [
+      { "event": "VIEW_LOAN",    "count": 146, "success": 99.3 },
+      { "event": "PROCESS_EMI", "count": 124, "success": 85.5 },
+      { "event": "LOAN_APPROVAL","count": 71, "success": 60.6 }
+    ],
+    "top_users": [
+      { "name": "Priya Nair",  "role": "Finance Officer", "events": 98  },
+      { "name": "Meena Iyer",  "role": "Finance Officer", "events": 76  },
+      { "name": "Arun Mehta",  "role": "Institute Admin", "events": 54  },
+      { "name": "Suresh Babu", "role": "Institute Admin", "events": 41  }
+    ],
+    "report_metrics": {
+      "total_reports": 61, "exported": 27, "export_rate": 44.3,
+      "report_types": [
+        { "type": "Loan Portfolio",  "count": 31, "exported": 15 },
+        { "type": "EMI Schedule",    "count": 19, "exported": 9  },
+        { "type": "Overdue Report",  "count": 11, "exported": 3  }
+      ],
+      "by_user": [
+        { "name": "Priya Nair",  "reports": 24, "exports": 12 },
+        { "name": "Meena Iyer",  "reports": 21, "exports": 9  },
+        { "name": "Arun Mehta",  "reports": 9,  "exports": 4  },
+        { "name": "Suresh Babu", "reports": 7,  "exports": 2  }
+      ]
+    }
+  },
+  "21": {
+    "success_series": [
+      { "date": "Apr 11", "rate": 100 }, { "date": "Apr 12", "rate": 99.2 },
+      { "date": "Apr 13", "rate": 100 }, { "date": "Apr 14", "rate": 100 },
+      { "date": "Apr 15", "rate": 98.7 },{ "date": "Apr 16", "rate": 100 },
+      { "date": "Apr 17", "rate": 100 }, { "date": "Apr 18", "rate": 99.5 }
+    ],
+    "events_breakdown": [
+      { "event": "VIEW_LOG",    "count": 112, "success": 100  },
+      { "event": "EXPORT_LOG",  "count": 58,  "success": 98.3 },
+      { "event": "FILTER_LOG",  "count": 28,  "success": 100  }
+    ],
+    "top_users": [
+      { "name": "Kiran Desai",  "role": "Audit Officer", "events": 148 },
+      { "name": "Rahul Sharma", "role": "IAM Admin",      "events": 31  },
+      { "name": "Divya Patel",  "role": "IAM Admin",      "events": 19  }
+    ],
+    "report_metrics": {
+      "total_reports": 44, "exported": 36, "export_rate": 81.8,
+      "report_types": [
+        { "type": "Full Audit Log",    "count": 24, "exported": 21 },
+        { "type": "User Action Report","count": 13, "exported": 11 },
+        { "type": "Failure Report",    "count": 7,  "exported": 4  }
+      ],
+      "by_user": [
+        { "name": "Kiran Desai",  "reports": 34, "exports": 29 },
+        { "name": "Rahul Sharma", "reports": 7,  "exports": 5  },
+        { "name": "Divya Patel",  "reports": 3,  "exports": 2  }
+      ]
+    }
+  }
+}

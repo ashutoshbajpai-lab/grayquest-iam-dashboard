@@ -1,0 +1,74 @@
+{
+  "roles": [
+    {
+      "role": "Group manager",
+      "count": 11,
+      "pct": 24.44,
+      "avg_health": 23.8,
+      "active_today": 1
+    },
+    {
+      "role": "Institute Dashboard master",
+      "count": 7,
+      "pct": 15.56,
+      "avg_health": 7.6,
+      "active_today": 1
+    },
+    {
+      "role": "FMS Access",
+      "count": 6,
+      "pct": 13.33,
+      "avg_health": 0.0,
+      "active_today": 0
+    },
+    {
+      "role": "Institute Finance",
+      "count": 5,
+      "pct": 11.11,
+      "avg_health": 0.0,
+      "active_today": 0
+    },
+    {
+      "role": "Group Admissions Manager",
+      "count": 5,
+      "pct": 11.11,
+      "avg_health": 53.7,
+      "active_today": 1
+    },
+    {
+      "role": "Admin",
+      "count": 4,
+      "pct": 8.89,
+      "avg_health": 0.1,
+      "active_today": 0
+    },
+    {
+      "role": "Admission Institute Finance",
+      "count": 2,
+      "pct": 4.44,
+      "avg_health": 0.0,
+      "active_today": 0
+    },
+    {
+      "role": "Saloni-Admin",
+      "count": 2,
+      "pct": 4.44,
+      "avg_health": 0.0,
+      "active_today": 0
+    },
+    {
+      "role": "Institute Admin",
+      "count": 1,
+      "pct": 2.22,
+      "avg_health": 0.0,
+      "active_today": 0
+    },
+    {
+      "role": "Other",
+      "count": 2,
+      "pct": 4.44,
+      "avg_health": 0.0,
+      "active_today": 0
+    }
+  ]
+}

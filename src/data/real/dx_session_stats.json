@@ -1,0 +1,120 @@
+{
+  "kpis": {
+    "total_sessions_30d": 229,
+    "avg_duration_min": 6.1,
+    "median_duration_min": 0.0,
+    "avg_events_per_session": 4.3,
+    "bounce_rate": 46.88,
+    "cross_module_rate": 11.26,
+    "peak_hour": 12,
+    "peak_day_of_week": "Tue",
+    "sessions_per_user_avg": 48.07,
+    "completion_rate": 44.5
+  },
+  "duration_buckets": [
+    {
+      "label": "< 5 min",
+      "count": 536
+    },
+    {
+      "label": "5\u201315 min",
+      "count": 76
+    },
+    {
+      "label": "15\u201330 min",
+      "count": 71
+    },
+    {
+      "label": "30\u201360 min",
+      "count": 28
+    },
+    {
+      "label": "> 60 min",
+      "count": 10
+    }
+  ],
+  "events_per_session_buckets": [
+    {
+      "label": "1\u20133",
+      "count": 244
+    },
+    {
+      "label": "4\u20138",
+      "count": 92
+    },
+    {
+      "label": "9\u201315",
+      "count": 32
+    },
+    {
+      "label": "16\u201325",
+      "count": 10
+    },
+    {
+      "label": "> 25",
+      "count": 5
+    }
+  ],
+  "by_role": [
+    {
+      "role": "Institute Dashboard main replacement",
+      "avg_duration_min": 9.2,
+      "avg_events": 0,
+      "sessions": 228
+    },
+    {
+      "role": "Saloni-Admin",
+      "avg_duration_min": 8.7,
+      "avg_events": 0,
+      "sessions": 245
+    },
+    {
+      "role": "Admin",
+      "avg_duration_min": 7.2,
+      "avg_events": 0,
+      "sessions": 355
+    },
+    {
+      "role": "Group Admissions Manager",
+      "avg_duration_min": 6.5,
+      "avg_events": 0,
+      "sessions": 571
+    },
+    {
+      "role": "Admission Institute Finance",
+      "avg_duration_min": 6.3,
+      "avg_events": 0,
+      "sessions": 34
+    },
+    {
+      "role": "Institute Admin",
+      "avg_duration_min": 6.1,
+      "avg_events": 0,
+      "sessions": 95
+    },
+    {
+      "role": "Institute manager",
+      "avg_duration_min": 6.1,
+      "avg_events": 0,
+      "sessions": 95
+    },
+    {
+      "role": "Institute Finance",
+      "avg_duration_min": 5.4,
+      "avg_events": 0,
+      "sessions": 223
+    },
+    {
+      "role": "FMS Access",
+      "avg_duration_min": 5.2,
+      "avg_events": 0,
+      "sessions": 240
+    },
+    {
+      "role": "Institute Dashboard master",
+      "avg_duration_min": 4.9,
+      "avg_events": 0,
+      "sessions": 379
+    }
+  ]
+}

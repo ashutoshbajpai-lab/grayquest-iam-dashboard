@@ -1,0 +1,1829 @@
+{
+  "Master Dashboard": [
+    {
+      "event": "Redirect to GILE Dashboard",
+      "hour": 12,
+      "count": 54
+    },
+    {
+      "event": "Redirect to GILE Dashboard",
+      "hour": 13,
+      "count": 31
+    },
+    {
+      "event": "Redirect to GILE Dashboard",
+      "hour": 14,
+      "count": 24
+    },
+    {
+      "event": "Redirect to GILE Dashboard",
+      "hour": 15,
+      "count": 59
+    },
+    {
+      "event": "Redirect to GILE Dashboard",
+      "hour": 16,
+      "count": 52
+    },
+    {
+      "event": "Redirect to GILE Dashboard",
+      "hour": 17,
+      "count": 27
+    },
+    {
+      "event": "Redirect to GILE Dashboard",
+      "hour": 10,
+      "count": 22
+    },
+    {
+      "event": "Redirect to GILE Dashboard",
+      "hour": 11,
+      "count": 29
+    },
+    {
+      "event": "Redirect to GILE Dashboard",
+      "hour": 18,
+      "count": 20
+    },
+    {
+      "event": "Redirect to GILE Dashboard",
+      "hour": 19,
+      "count": 14
+    },
+    {
+      "event": "Redirect to GILE Dashboard",
+      "hour": 9,
+      "count": 4
+    },
+    {
+      "event": "Redirect to GILE Dashboard",
+      "hour": 7,
+      "count": 1
+    }
+  ],
+  "Master Dashboard Reports": [
+    {
+      "event": "Generate new report",
+      "hour": 14,
+      "count": 17
+    },
+    {
+      "event": "Generate new report",
+      "hour": 15,
+      "count": 68
+    },
+    {
+      "event": "Generate new report",
+      "hour": 16,
+      "count": 53
+    },
+    {
+      "event": "Generate new report",
+      "hour": 12,
+      "count": 62
+    },
+    {
+      "event": "Generate new report",
+      "hour": 13,
+      "count": 26
+    },
+    {
+      "event": "Generate new report",
+      "hour": 17,
+      "count": 37
+    },
+    {
+      "event": "Generate new report",
+      "hour": 18,
+      "count": 39
+    },
+    {
+      "event": "Generate new report",
+      "hour": 10,
+      "count": 20
+    },
+    {
+      "event": "Generate new report",
+      "hour": 11,
+      "count": 51
+    },
+    {
+      "event": "Generate new report",
+      "hour": 19,
+      "count": 17
+    },
+    {
+      "event": "Generate new report",
+      "hour": 9,
+      "count": 14
+    },
+    {
+      "event": "Generate new report",
+      "hour": 20,
+      "count": 3
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 15,
+      "count": 17
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 12,
+      "count": 26
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 13,
+      "count": 10
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 16,
+      "count": 9
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 18,
+      "count": 3
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 11,
+      "count": 7
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 9,
+      "count": 2
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 10,
+      "count": 6
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 19,
+      "count": 1
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 14,
+      "count": 5
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 17,
+      "count": 6
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "hour": 12,
+      "count": 5
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "hour": 13,
+      "count": 2
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "hour": 18,
+      "count": 2
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "hour": 19,
+      "count": 1
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "hour": 16,
+      "count": 6
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "hour": 15,
+      "count": 3
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "hour": 17,
+      "count": 3
+    },
+    {
+      "event": "delete",
+      "hour": 11,
+      "count": 3
+    },
+    {
+      "event": "delete",
+      "hour": 12,
+      "count": 4
+    },
+    {
+      "event": "delete",
+      "hour": 13,
+      "count": 1
+    },
+    {
+      "event": "delete",
+      "hour": 16,
+      "count": 3
+    },
+    {
+      "event": "delete",
+      "hour": 10,
+      "count": 5
+    },
+    {
+      "event": "delete",
+      "hour": 14,
+      "count": 1
+    },
+    {
+      "event": "Share Report",
+      "hour": 16,
+      "count": 4
+    },
+    {
+      "event": "Share Report",
+      "hour": 13,
+      "count": 1
+    },
+    {
+      "event": "Share Report",
+      "hour": 18,
+      "count": 1
+    }
+  ],
+  "Student Management": [
+    {
+      "event": "Sample file download",
+      "hour": 15,
+      "count": 5
+    },
+    {
+      "event": "Sample file download",
+      "hour": 17,
+      "count": 9
+    },
+    {
+      "event": "Sample file download",
+      "hour": 14,
+      "count": 7
+    },
+    {
+      "event": "Sample file download",
+      "hour": 9,
+      "count": 2
+    },
+    {
+      "event": "Sample file download",
+      "hour": 12,
+      "count": 5
+    },
+    {
+      "event": "Sample file download",
+      "hour": 13,
+      "count": 1
+    },
+    {
+      "event": "Sample file download",
+      "hour": 16,
+      "count": 7
+    },
+    {
+      "event": "Sample file download",
+      "hour": 10,
+      "count": 3
+    },
+    {
+      "event": "Sample file download",
+      "hour": 11,
+      "count": 2
+    },
+    {
+      "event": "Sample file download",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "Sheet uploaded",
+      "hour": 15,
+      "count": 11
+    },
+    {
+      "event": "Sheet uploaded",
+      "hour": 11,
+      "count": 11
+    },
+    {
+      "event": "Sheet uploaded",
+      "hour": 13,
+      "count": 5
+    },
+    {
+      "event": "Sheet uploaded",
+      "hour": 14,
+      "count": 7
+    },
+    {
+      "event": "Sheet uploaded",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "Sheet uploaded",
+      "hour": 16,
+      "count": 6
+    },
+    {
+      "event": "Sheet uploaded",
+      "hour": 17,
+      "count": 7
+    },
+    {
+      "event": "Sheet uploaded",
+      "hour": 12,
+      "count": 16
+    },
+    {
+      "event": "Sheet uploaded",
+      "hour": 9,
+      "count": 4
+    },
+    {
+      "event": "Student Response file",
+      "hour": 15,
+      "count": 8
+    },
+    {
+      "event": "Student Response file",
+      "hour": 11,
+      "count": 11
+    },
+    {
+      "event": "Student Response file",
+      "hour": 13,
+      "count": 5
+    },
+    {
+      "event": "Student Response file",
+      "hour": 14,
+      "count": 6
+    },
+    {
+      "event": "Student Response file",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "Student Response file",
+      "hour": 16,
+      "count": 9
+    },
+    {
+      "event": "Student Response file",
+      "hour": 17,
+      "count": 8
+    },
+    {
+      "event": "Student Response file",
+      "hour": 12,
+      "count": 9
+    },
+    {
+      "event": "Student Bulk upload",
+      "hour": 15,
+      "count": 1
+    },
+    {
+      "event": "Student Bulk upload",
+      "hour": 11,
+      "count": 3
+    },
+    {
+      "event": "Student Bulk upload",
+      "hour": 13,
+      "count": 13
+    },
+    {
+      "event": "Student Bulk upload",
+      "hour": 14,
+      "count": 2
+    },
+    {
+      "event": "Student Bulk upload",
+      "hour": 16,
+      "count": 2
+    },
+    {
+      "event": "Student Bulk upload",
+      "hour": 12,
+      "count": 5
+    },
+    {
+      "event": "Student Bulk upload",
+      "hour": 17,
+      "count": 7
+    },
+    {
+      "event": "Student FT Response file",
+      "hour": 15,
+      "count": 1
+    },
+    {
+      "event": "Student FT Response file",
+      "hour": 13,
+      "count": 5
+    },
+    {
+      "event": "Student FT Response file",
+      "hour": 14,
+      "count": 2
+    },
+    {
+      "event": "Student FT Response file",
+      "hour": 17,
+      "count": 3
+    },
+    {
+      "event": "Add Student",
+      "hour": 15,
+      "count": 1
+    },
+    {
+      "event": "Add Student",
+      "hour": 9,
+      "count": 1
+    },
+    {
+      "event": "Add Student",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "Student Deactivated",
+      "hour": 14,
+      "count": 1
+    },
+    {
+      "event": "Student Deactivated",
+      "hour": 9,
+      "count": 1
+    },
+    {
+      "event": "delete",
+      "hour": 14,
+      "count": 1
+    },
+    {
+      "event": "Sheet Deleted",
+      "hour": 14,
+      "count": 2
+    },
+    {
+      "event": "Sheet Deleted",
+      "hour": 15,
+      "count": 1
+    },
+    {
+      "event": "Student FT file creation",
+      "hour": 12,
+      "count": 6
+    },
+    {
+      "event": "Student FT file creation",
+      "hour": 14,
+      "count": 1
+    },
+    {
+      "event": "Student FT file creation",
+      "hour": 15,
+      "count": 10
+    },
+    {
+      "event": "Student FT file creation",
+      "hour": 13,
+      "count": 4
+    },
+    {
+      "event": "Student FT file creation",
+      "hour": 16,
+      "count": 4
+    },
+    {
+      "event": "Student FT file creation",
+      "hour": 11,
+      "count": 8
+    },
+    {
+      "event": "Student FT file creation",
+      "hour": 17,
+      "count": 6
+    },
+    {
+      "event": "Student FT file verified",
+      "hour": 12,
+      "count": 5
+    },
+    {
+      "event": "Student FT file verified",
+      "hour": 15,
+      "count": 2
+    },
+    {
+      "event": "Student FT file verified",
+      "hour": 16,
+      "count": 2
+    },
+    {
+      "event": "Student FT file verified",
+      "hour": 11,
+      "count": 1
+    },
+    {
+      "event": "Student FT file verified",
+      "hour": 17,
+      "count": 7
+    },
+    {
+      "event": "Student FT file verified",
+      "hour": 13,
+      "count": 1
+    },
+    {
+      "event": "Student FT file downloaded",
+      "hour": 12,
+      "count": 4
+    },
+    {
+      "event": "Student FT file downloaded",
+      "hour": 11,
+      "count": 6
+    },
+    {
+      "event": "Student FT file downloaded",
+      "hour": 16,
+      "count": 2
+    },
+    {
+      "event": "Student FT file downloaded",
+      "hour": 17,
+      "count": 6
+    },
+    {
+      "event": "Student FT file downloaded",
+      "hour": 15,
+      "count": 2
+    },
+    {
+      "event": "Student FT file uploaded",
+      "hour": 12,
+      "count": 5
+    },
+    {
+      "event": "Student FT file uploaded",
+      "hour": 11,
+      "count": 1
+    },
+    {
+      "event": "Student FT file uploaded",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "event": "Student FT file uploaded",
+      "hour": 17,
+      "count": 7
+    },
+    {
+      "event": "Student FT file uploaded",
+      "hour": 13,
+      "count": 1
+    },
+    {
+      "event": "Student Activated",
+      "hour": 10,
+      "count": 1
+    },
+    {
+      "event": "Edit",
+      "hour": 18,
+      "count": 1
+    }
+  ],
+  "Admission Leads": [
+    {
+      "event": "Summary -  Download report",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "event": "Create Lead",
+      "hour": 16,
+      "count": 3
+    },
+    {
+      "event": "Create Lead",
+      "hour": 13,
+      "count": 1
+    },
+    {
+      "event": "Create Lead",
+      "hour": 12,
+      "count": 2
+    },
+    {
+      "event": "Lead Status Update",
+      "hour": 16,
+      "count": 5
+    },
+    {
+      "event": "Lead Status Update",
+      "hour": 14,
+      "count": 2
+    },
+    {
+      "event": "Lead Status Update",
+      "hour": 18,
+      "count": 2
+    },
+    {
+      "event": "Lead Status Update",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "Assigned",
+      "hour": 13,
+      "count": 2
+    },
+    {
+      "event": "Unassigned",
+      "hour": 13,
+      "count": 1
+    }
+  ],
+  "Fee Headers": [
+    {
+      "event": "Student FT file creation",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "event": "Student FT file creation",
+      "hour": 10,
+      "count": 3
+    },
+    {
+      "event": "Student FT file creation",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "Student FT file creation",
+      "hour": 11,
+      "count": 1
+    },
+    {
+      "event": "Student FT file creation",
+      "hour": 14,
+      "count": 2
+    },
+    {
+      "event": "Student FT file creation",
+      "hour": 18,
+      "count": 5
+    },
+    {
+      "event": "Bulk Assign",
+      "hour": 17,
+      "count": 1
+    },
+    {
+      "event": "Bulk Assign",
+      "hour": 10,
+      "count": 2
+    },
+    {
+      "event": "Bulk Assign",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "Bulk Assign",
+      "hour": 18,
+      "count": 8
+    },
+    {
+      "event": "Student FT file verified",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "Create Fee header",
+      "hour": 18,
+      "count": 1
+    }
+  ],
+  "Student Fee Headers": [
+    {
+      "event": "Assigned",
+      "hour": 15,
+      "count": 3
+    },
+    {
+      "event": "Assigned",
+      "hour": 9,
+      "count": 1
+    },
+    {
+      "event": "Assigned",
+      "hour": 13,
+      "count": 3
+    },
+    {
+      "event": "Assigned",
+      "hour": 17,
+      "count": 1
+    },
+    {
+      "event": "Assigned",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "Edit",
+      "hour": 11,
+      "count": 1
+    },
+    {
+      "event": "Edit",
+      "hour": 13,
+      "count": 2
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 9,
+      "count": 2
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 13,
+      "count": 5
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 15,
+      "count": 1
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 14,
+      "count": 1
+    },
+    {
+      "event": "Unassigned",
+      "hour": 12,
+      "count": 2
+    }
+  ],
+  "Ongoing Admissions": [
+    {
+      "event": "Create Application",
+      "hour": 15,
+      "count": 21
+    },
+    {
+      "event": "Create Application",
+      "hour": 16,
+      "count": 18
+    },
+    {
+      "event": "Create Application",
+      "hour": 10,
+      "count": 12
+    },
+    {
+      "event": "Create Application",
+      "hour": 17,
+      "count": 12
+    },
+    {
+      "event": "Create Application",
+      "hour": 12,
+      "count": 12
+    },
+    {
+      "event": "Create Application",
+      "hour": 11,
+      "count": 6
+    },
+    {
+      "event": "Create Application",
+      "hour": 14,
+      "count": 14
+    },
+    {
+      "event": "Create Application",
+      "hour": 13,
+      "count": 4
+    },
+    {
+      "event": "Create Application",
+      "hour": 9,
+      "count": 3
+    },
+    {
+      "event": "Assigned",
+      "hour": 13,
+      "count": 2
+    },
+    {
+      "event": "Assigned",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "event": "Reject",
+      "hour": 14,
+      "count": 1
+    }
+  ],
+  "Application Profile": [
+    {
+      "event": "Review Approved",
+      "hour": 17,
+      "count": 7
+    },
+    {
+      "event": "Review Approved",
+      "hour": 9,
+      "count": 4
+    },
+    {
+      "event": "Review Approved",
+      "hour": 12,
+      "count": 9
+    },
+    {
+      "event": "Review Approved",
+      "hour": 14,
+      "count": 9
+    },
+    {
+      "event": "Review Approved",
+      "hour": 15,
+      "count": 4
+    },
+    {
+      "event": "Review Approved",
+      "hour": 11,
+      "count": 6
+    },
+    {
+      "event": "Review Approved",
+      "hour": 13,
+      "count": 3
+    },
+    {
+      "event": "Review Approved",
+      "hour": 16,
+      "count": 8
+    },
+    {
+      "event": "Review Approved",
+      "hour": 10,
+      "count": 6
+    },
+    {
+      "event": "Edit",
+      "hour": 17,
+      "count": 2
+    },
+    {
+      "event": "Edit",
+      "hour": 10,
+      "count": 1
+    },
+    {
+      "event": "Edit",
+      "hour": 16,
+      "count": 5
+    },
+    {
+      "event": "Edit",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "Edit",
+      "hour": 15,
+      "count": 1
+    },
+    {
+      "event": "Edit",
+      "hour": 11,
+      "count": 2
+    },
+    {
+      "event": "Approve",
+      "hour": 10,
+      "count": 1
+    },
+    {
+      "event": "In Progress",
+      "hour": 14,
+      "count": 1
+    }
+  ],
+  "Payment link communication": [
+    {
+      "event": "Copy",
+      "hour": 15,
+      "count": 6
+    },
+    {
+      "event": "Copy",
+      "hour": 12,
+      "count": 3
+    },
+    {
+      "event": "Copy",
+      "hour": 10,
+      "count": 1
+    },
+    {
+      "event": "Copy",
+      "hour": 17,
+      "count": 2
+    },
+    {
+      "event": "Copy",
+      "hour": 14,
+      "count": 3
+    },
+    {
+      "event": "Copy",
+      "hour": 13,
+      "count": 1
+    },
+    {
+      "event": "Copy",
+      "hour": 16,
+      "count": 7
+    },
+    {
+      "event": "Copy",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "Create QR code",
+      "hour": 15,
+      "count": 1
+    },
+    {
+      "event": "Create QR code",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "Fetch Students",
+      "hour": 11,
+      "count": 2
+    },
+    {
+      "event": "Create Payment Page",
+      "hour": 12,
+      "count": 3
+    },
+    {
+      "event": "Create Payment Page",
+      "hour": 11,
+      "count": 1
+    },
+    {
+      "event": "Create Payment Page",
+      "hour": 14,
+      "count": 1
+    },
+    {
+      "event": "Edit",
+      "hour": 12,
+      "count": 3
+    },
+    {
+      "event": "Edit",
+      "hour": 11,
+      "count": 2
+    },
+    {
+      "event": "Edit",
+      "hour": 14,
+      "count": 1
+    },
+    {
+      "event": "Create a Payment link",
+      "hour": 12,
+      "count": 2
+    },
+    {
+      "event": "Share",
+      "hour": 12,
+      "count": 2
+    },
+    {
+      "event": "Active scheduled payment link",
+      "hour": 18,
+      "count": 1
+    }
+  ],
+  "Master Dashboard EMI ": [
+    {
+      "event": "Institute Approval",
+      "hour": 17,
+      "count": 4
+    },
+    {
+      "event": "Institute Approval",
+      "hour": 15,
+      "count": 3
+    },
+    {
+      "event": "Institute Approval",
+      "hour": 16,
+      "count": 1
+    }
+  ],
+  "Master Dashboard Banks": [
+    {
+      "event": "Add Bank",
+      "hour": 17,
+      "count": 12
+    },
+    {
+      "event": "Add Bank",
+      "hour": 18,
+      "count": 24
+    },
+    {
+      "event": "Add Bank",
+      "hour": 12,
+      "count": 24
+    },
+    {
+      "event": "Add Bank",
+      "hour": 13,
+      "count": 10
+    },
+    {
+      "event": "Add Bank",
+      "hour": 15,
+      "count": 11
+    },
+    {
+      "event": "Add Bank",
+      "hour": 14,
+      "count": 19
+    },
+    {
+      "event": "Add Bank",
+      "hour": 16,
+      "count": 12
+    },
+    {
+      "event": "Add Bank",
+      "hour": 10,
+      "count": 9
+    },
+    {
+      "event": "Add Bank",
+      "hour": 11,
+      "count": 16
+    },
+    {
+      "event": "Add Bank",
+      "hour": 19,
+      "count": 1
+    },
+    {
+      "event": "Download Bank list",
+      "hour": 17,
+      "count": 3
+    },
+    {
+      "event": "Download Bank list",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "Download Bank list",
+      "hour": 16,
+      "count": 2
+    },
+    {
+      "event": "Download Bank list",
+      "hour": 15,
+      "count": 1
+    },
+    {
+      "event": "Download Bank list",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "Download Bank list",
+      "hour": 19,
+      "count": 1
+    },
+    {
+      "event": "Download Bank list",
+      "hour": 13,
+      "count": 1
+    },
+    {
+      "event": "Add bank institute mapping",
+      "hour": 18,
+      "count": 2
+    },
+    {
+      "event": "Add bank institute mapping",
+      "hour": 17,
+      "count": 5
+    },
+    {
+      "event": "Add bank institute mapping",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "Add bank institute mapping",
+      "hour": 13,
+      "count": 1
+    },
+    {
+      "event": "Add bank institute mapping",
+      "hour": 14,
+      "count": 1
+    },
+    {
+      "event": "Add bank institute mapping",
+      "hour": 11,
+      "count": 1
+    },
+    {
+      "event": "Delete bank institute mapping",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "Delete bank institute mapping",
+      "hour": 17,
+      "count": 1
+    },
+    {
+      "event": "Delete bank institute mapping",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "Delete bank institute mapping",
+      "hour": 11,
+      "count": 5
+    },
+    {
+      "event": "Delete bank institute mapping",
+      "hour": 14,
+      "count": 1
+    },
+    {
+      "event": "Delete bank institute mapping",
+      "hour": 15,
+      "count": 2
+    },
+    {
+      "event": "Edit",
+      "hour": 17,
+      "count": 2
+    },
+    {
+      "event": "delete",
+      "hour": 17,
+      "count": 1
+    },
+    {
+      "event": "delete",
+      "hour": 16,
+      "count": 5
+    },
+    {
+      "event": "delete",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "delete",
+      "hour": 10,
+      "count": 1
+    },
+    {
+      "event": "delete",
+      "hour": 12,
+      "count": 8
+    },
+    {
+      "event": "delete",
+      "hour": 13,
+      "count": 2
+    },
+    {
+      "event": "delete",
+      "hour": 15,
+      "count": 4
+    },
+    {
+      "event": "delete",
+      "hour": 11,
+      "count": 3
+    },
+    {
+      "event": "delete",
+      "hour": 14,
+      "count": 7
+    }
+  ],
+  "Master Dashboard Fee Details": [
+    {
+      "event": "View QR",
+      "hour": 15,
+      "count": 4
+    },
+    {
+      "event": "View QR",
+      "hour": 18,
+      "count": 2
+    },
+    {
+      "event": "View QR",
+      "hour": 14,
+      "count": 4
+    },
+    {
+      "event": "View QR",
+      "hour": 16,
+      "count": 3
+    },
+    {
+      "event": "View QR",
+      "hour": 12,
+      "count": 3
+    },
+    {
+      "event": "View QR",
+      "hour": 11,
+      "count": 8
+    },
+    {
+      "event": "View QR",
+      "hour": 17,
+      "count": 5
+    },
+    {
+      "event": "View QR",
+      "hour": 13,
+      "count": 1
+    },
+    {
+      "event": "delete",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "delete",
+      "hour": 17,
+      "count": 1
+    },
+    {
+      "event": "delete",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "bulk-create-fee-details",
+      "hour": 11,
+      "count": 1
+    },
+    {
+      "event": "bulk-create-fee-details",
+      "hour": 14,
+      "count": 2
+    },
+    {
+      "event": "create-fee-details",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "create-fee-details",
+      "hour": 14,
+      "count": 2
+    }
+  ],
+  "Forms": [
+    {
+      "event": "View",
+      "hour": 15,
+      "count": 3
+    },
+    {
+      "event": "View",
+      "hour": 7,
+      "count": 4
+    },
+    {
+      "event": "Download Response file",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "Download Response file",
+      "hour": 11,
+      "count": 1
+    },
+    {
+      "event": "Download Response file",
+      "hour": 15,
+      "count": 2
+    },
+    {
+      "event": "Download Response file",
+      "hour": 10,
+      "count": 2
+    },
+    {
+      "event": "Download Response file",
+      "hour": 7,
+      "count": 1
+    }
+  ],
+  "EMI Applications": [
+    {
+      "event": "EMI Application approved",
+      "hour": 19,
+      "count": 1
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 17,
+      "count": 1
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 12,
+      "count": 1
+    }
+  ],
+  "Lead Profile": [
+    {
+      "event": "Add Comment",
+      "hour": 13,
+      "count": 3
+    },
+    {
+      "event": "Lead Status Update",
+      "hour": 13,
+      "count": 1
+    },
+    {
+      "event": "Lead Status Update",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "Edit",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "event": "Edit",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "delete",
+      "hour": 12,
+      "count": 3
+    }
+  ],
+  "AD Registrations": [
+    {
+      "event": "Summary -  Download report",
+      "hour": 11,
+      "count": 1
+    }
+  ],
+  "Offline Transactions": [
+    {
+      "event": "Summary -  Download report",
+      "hour": 11,
+      "count": 2
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 14,
+      "count": 1
+    }
+  ],
+  "My Reports": [
+    {
+      "event": "Generate Ariflow Report",
+      "hour": 11,
+      "count": 3
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "hour": 12,
+      "count": 4
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "hour": 13,
+      "count": 1
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "hour": 16,
+      "count": 3
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "hour": 17,
+      "count": 1
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "hour": 10,
+      "count": 5
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "hour": 14,
+      "count": 1
+    }
+  ],
+  "Master Dashboard Fee Headers": [
+    {
+      "event": "delete",
+      "hour": 11,
+      "count": 2
+    },
+    {
+      "event": "delete",
+      "hour": 12,
+      "count": 2
+    },
+    {
+      "event": "delete",
+      "hour": 18,
+      "count": 3
+    },
+    {
+      "event": "Edit",
+      "hour": 11,
+      "count": 1
+    },
+    {
+      "event": "Edit",
+      "hour": 12,
+      "count": 3
+    },
+    {
+      "event": "Edit",
+      "hour": 15,
+      "count": 1
+    },
+    {
+      "event": "Create",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "event": "Create",
+      "hour": 18,
+      "count": 1
+    }
+  ],
+  "Master Dashboard Webhooks": [
+    {
+      "event": "EMI Webhooks Trigger",
+      "hour": 15,
+      "count": 3
+    },
+    {
+      "event": "EMI Webhooks Trigger",
+      "hour": 17,
+      "count": 1
+    },
+    {
+      "event": "EMI Webhooks Trigger",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "EMI Webhooks Trigger",
+      "hour": 12,
+      "count": 3
+    },
+    {
+      "event": "AD Webhooks Trigger",
+      "hour": 15,
+      "count": 1
+    },
+    {
+      "event": "AD Webhooks Trigger",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "event": "PG Webhooks Trigger",
+      "hour": 12,
+      "count": 1
+    }
+  ],
+  "Scheduled Payment link": [
+    {
+      "event": "Edit",
+      "hour": 11,
+      "count": 2
+    },
+    {
+      "event": "Edit",
+      "hour": 13,
+      "count": 1
+    }
+  ],
+  "Fine": [
+    {
+      "event": "Create",
+      "hour": 11,
+      "count": 1
+    },
+    {
+      "event": "Create",
+      "hour": 14,
+      "count": 2
+    },
+    {
+      "event": "Create",
+      "hour": 12,
+      "count": 7
+    },
+    {
+      "event": "Create",
+      "hour": 15,
+      "count": 6
+    },
+    {
+      "event": "Create",
+      "hour": 16,
+      "count": 5
+    },
+    {
+      "event": "Create",
+      "hour": 13,
+      "count": 2
+    },
+    {
+      "event": "Edit",
+      "hour": 15,
+      "count": 2
+    },
+    {
+      "event": "Edit",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "event": "Edit",
+      "hour": 12,
+      "count": 1
+    }
+  ],
+  "Classes": [
+    {
+      "event": "Create class",
+      "hour": 14,
+      "count": 1
+    }
+  ],
+  "Applicant Fee Headers": [
+    {
+      "event": "Edit",
+      "hour": 12,
+      "count": 5
+    },
+    {
+      "event": "Edit",
+      "hour": 17,
+      "count": 7
+    },
+    {
+      "event": "Edit",
+      "hour": 11,
+      "count": 2
+    },
+    {
+      "event": "Edit",
+      "hour": 14,
+      "count": 8
+    },
+    {
+      "event": "Edit",
+      "hour": 16,
+      "count": 7
+    },
+    {
+      "event": "Edit",
+      "hour": 10,
+      "count": 3
+    },
+    {
+      "event": "Edit",
+      "hour": 15,
+      "count": 11
+    },
+    {
+      "event": "Edit",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 14,
+      "count": 5
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 11,
+      "count": 3
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 12,
+      "count": 3
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 9,
+      "count": 3
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 10,
+      "count": 7
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 16,
+      "count": 5
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 17,
+      "count": 1
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 15,
+      "count": 2
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "hour": 13,
+      "count": 1
+    }
+  ],
+  "PG Transactions": [
+    {
+      "event": "Refresh",
+      "hour": 14,
+      "count": 1
+    },
+    {
+      "event": "Refresh",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "event": "Refresh",
+      "hour": 10,
+      "count": 2
+    },
+    {
+      "event": "Refresh",
+      "hour": 15,
+      "count": 1
+    },
+    {
+      "event": "Refresh",
+      "hour": 19,
+      "count": 1
+    },
+    {
+      "event": "Refresh",
+      "hour": 13,
+      "count": 1
+    },
+    {
+      "event": "Refresh",
+      "hour": 17,
+      "count": 2
+    },
+    {
+      "event": "Refresh",
+      "hour": 11,
+      "count": 2
+    },
+    {
+      "event": "Refresh",
+      "hour": 12,
+      "count": 3
+    }
+  ],
+  "EMI Products": [
+    {
+      "event": "Summary -  Download report",
+      "hour": 15,
+      "count": 6
+    },
+    {
+      "event": "Summary -  Download report",
+      "hour": 16,
+      "count": 1
+    }
+  ],
+  "Master Dashboard Support": [
+    {
+      "event": "Raise request",
+      "hour": 10,
+      "count": 1
+    },
+    {
+      "event": "Raise request",
+      "hour": 16,
+      "count": 2
+    },
+    {
+      "event": "Raise request",
+      "hour": 17,
+      "count": 4
+    }
+  ],
+  "Dashboard": [
+    {
+      "event": "Refresh",
+      "hour": 18,
+      "count": 1
+    }
+  ],
+  "Student Transactions": [
+    {
+      "event": "Summary -  Download report",
+      "hour": 9,
+      "count": 3
+    }
+  ],
+  "Payment link history": [
+    {
+      "event": "Download Response file",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "event": "Download Response file",
+      "hour": 14,
+      "count": 1
+    }
+  ],
+  "Report Templates": [
+    {
+      "event": "Generate new report",
+      "hour": 17,
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "kpis": {
+    "overall_success_rate":     87.3,
+    "login_success_rate":       89.6,
+    "api_error_rate":            2.1,
+    "p95_latency_ms":          342,
+    "failed_events_30d":        361,
+    "total_events_30d":        2847,
+    "unique_error_types":        7,
+    "most_failed_service":      "Loan Management",
+    "most_failed_event":        "LOAN_APPROVAL",
+    "consecutive_fail_streaks":  3
+  },
+  "success_rate_series": [
+    { "date": "2026-04-11", "rate": 85.1 },
+    { "date": "2026-04-12", "rate": 83.7 },
+    { "date": "2026-04-13", "rate": 88.4 },
+    { "date": "2026-04-14", "rate": 89.2 },
+    { "date": "2026-04-15", "rate": 90.1 },
+    { "date": "2026-04-16", "rate": 87.8 },
+    { "date": "2026-04-17", "rate": 86.9 },
+    { "date": "2026-04-18", "rate": 87.3 }
+  ],
+  "failure_by_service": [
+    { "service": "Loan Management",     "failed": 59, "total": 341, "rate": 17.3 },
+    { "service": "Notifications",       "failed": 10, "total":  70, "rate": 14.3 },
+    { "service": "User Administration", "failed": 45, "total": 389, "rate": 11.6 },
+    { "service": "Fee Collection",      "failed": 74, "total": 847, "rate":  8.7 },
+    { "service": "Student Management",  "failed": 33, "total": 612, "rate":  5.4 },
+    { "service": "Institute Management","failed": 27, "total": 278, "rate":  9.7 },
+    { "service": "Audit Logs",          "failed":  1, "total": 198, "rate":  0.5 },
+    { "service": "Settings",            "failed":  3, "total": 112, "rate":  2.7 }
+  ],
+  "failure_by_event": [
+    { "event": "LOAN_APPROVAL",   "failed": 28, "total":  71, "rate": 39.4 },
+    { "event": "SEND_SMS",        "failed":  9, "total":  42, "rate": 21.4 },
+    { "event": "DEACTIVATE_USER", "failed": 11, "total":  58, "rate": 19.0 },
+    { "event": "PROCESS_EMI",     "failed": 18, "total": 124, "rate": 14.5 },
+    { "event": "CREATE_USER",     "failed": 14, "total": 112, "rate": 12.5 },
+    { "event": "COLLECT_FEE",     "failed": 29, "total": 287, "rate": 10.1 }
+  ],
+  "login_funnel": [
+    { "step": "Attempt",   "count": 487 },
+    { "step": "Auth Pass", "count": 436 },
+    { "step": "Session",   "count": 412 },
+    { "step": "Action",    "count": 303 }
+  ]
+}

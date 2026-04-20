@@ -1,0 +1,2179 @@
+{
+  "1d": {
+    "services": [
+      {
+        "service_id": "292",
+        "service_name": "Student Management",
+        "events_30d": 85,
+        "active_users_30d": 3,
+        "success_rate": 96.47,
+        "avg_events_per_session": 10.6,
+        "top_events": [
+          "Student Response file",
+          "Sheet uploaded",
+          "Student Bulk upload",
+          "Student FT file creation",
+          "Student FT file verified"
+        ],
+        "has_reports": true,
+        "report_count_30d": 10,
+        "report_export_rate": 0,
+        "trend": 431.2,
+        "peak_hour": 12
+      },
+      {
+        "service_id": "288",
+        "service_name": "Master Dashboard",
+        "events_30d": 13,
+        "active_users_30d": 3,
+        "success_rate": 100.0,
+        "avg_events_per_session": 1.6,
+        "top_events": [
+          "Redirect to GILE Dashboard"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": 8.3,
+        "peak_hour": 12
+      },
+      {
+        "service_id": "377",
+        "service_name": "Master Dashboard Reports",
+        "events_30d": 13,
+        "active_users_30d": 1,
+        "success_rate": 100.0,
+        "avg_events_per_session": 1.6,
+        "top_events": [
+          "Generate new report"
+        ],
+        "has_reports": true,
+        "report_count_30d": 13,
+        "report_export_rate": 0,
+        "trend": 0.0,
+        "peak_hour": 18
+      },
+      {
+        "service_id": "297",
+        "service_name": "PG Transactions",
+        "events_30d": 1,
+        "active_users_30d": 1,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.1,
+        "top_events": [
+          "Refresh"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": 0.0,
+        "peak_hour": 11
+      }
+    ],
+    "heatmap": {
+      "matrix": [
+        {
+          "service": "Master Dashboard",
+          "hour": 11,
+          "count": 5
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 12,
+          "count": 6
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 13,
+          "count": 1
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 17,
+          "count": 1
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 9,
+          "count": 1
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 10,
+          "count": 1
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 17,
+          "count": 1
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 18,
+          "count": 6
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 19,
+          "count": 4
+        },
+        {
+          "service": "PG Transactions",
+          "hour": 11,
+          "count": 1
+        },
+        {
+          "service": "Student Management",
+          "hour": 11,
+          "count": 10
+        },
+        {
+          "service": "Student Management",
+          "hour": 12,
+          "count": 40
+        },
+        {
+          "service": "Student Management",
+          "hour": 13,
+          "count": 19
+        },
+        {
+          "service": "Student Management",
+          "hour": 15,
+          "count": 1
+        },
+        {
+          "service": "Student Management",
+          "hour": 17,
+          "count": 15
+        }
+      ]
+    },
+    "heatmapDrill": {
+      "Master Dashboard": [
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 11,
+          "count": 5
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 12,
+          "count": 6
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 13,
+          "count": 1
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 17,
+          "count": 1
+        }
+      ],
+      "PG Transactions": [
+        {
+          "event": "Refresh",
+          "hour": 11,
+          "count": 1
+        }
+      ],
+      "Student Management": [
+        {
+          "event": "Sample file download",
+          "hour": 11,
+          "count": 1
+        },
+        {
+          "event": "Sample file download",
+          "hour": 12,
+          "count": 3
+        },
+        {
+          "event": "Sample file download",
+          "hour": 17,
+          "count": 1
+        },
+        {
+          "event": "Student Response file",
+          "hour": 11,
+          "count": 5
+        },
+        {
+          "event": "Student Response file",
+          "hour": 12,
+          "count": 8
+        },
+        {
+          "event": "Student Response file",
+          "hour": 13,
+          "count": 3
+        },
+        {
+          "event": "Student Response file",
+          "hour": 15,
+          "count": 1
+        },
+        {
+          "event": "Student Response file",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 11,
+          "count": 4
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 12,
+          "count": 10
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 13,
+          "count": 3
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file creation",
+          "hour": 13,
+          "count": 2
+        },
+        {
+          "event": "Student FT file creation",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file creation",
+          "hour": 12,
+          "count": 4
+        },
+        {
+          "event": "Student Bulk upload",
+          "hour": 13,
+          "count": 8
+        },
+        {
+          "event": "Student Bulk upload",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student Bulk upload",
+          "hour": 12,
+          "count": 4
+        },
+        {
+          "event": "Student FT file downloaded",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file downloaded",
+          "hour": 12,
+          "count": 3
+        },
+        {
+          "event": "Student FT file verified",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file verified",
+          "hour": 12,
+          "count": 4
+        },
+        {
+          "event": "Student FT file verified",
+          "hour": 13,
+          "count": 1
+        },
+        {
+          "event": "Student FT file uploaded",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file uploaded",
+          "hour": 12,
+          "count": 4
+        },
+        {
+          "event": "Student FT file uploaded",
+          "hour": 13,
+          "count": 1
+        },
+        {
+          "event": "Student FT Response file",
+          "hour": 13,
+          "count": 1
+        }
+      ],
+      "Master Dashboard Reports": [
+        {
+          "event": "Generate new report",
+          "hour": 17,
+          "count": 1
+        },
+        {
+          "event": "Generate new report",
+          "hour": 18,
+          "count": 6
+        },
+        {
+          "event": "Generate new report",
+          "hour": 19,
+          "count": 4
+        },
+        {
+          "event": "Generate new report",
+          "hour": 9,
+          "count": 1
+        },
+        {
+          "event": "Generate new report",
+          "hour": 10,
+          "count": 1
+        }
+      ]
+    },
+    "kpis": {
+      "total_events": 112,
+      "per_day": 112.0,
+      "weighted_success_rate": 97.32,
+      "active_services": 4,
+      "active_users": 4,
+      "active_users_prev": 5,
+      "top_service": "Student Management",
+      "top_service_events": 85,
+      "report_exports": 23,
+      "services_with_reports": 2
+    }
+  },
+  "7d": {
+    "services": [
+      {
+        "service_id": "292",
+        "service_name": "Student Management",
+        "events_30d": 101,
+        "active_users_30d": 4,
+        "success_rate": 85.15,
+        "avg_events_per_session": 2.3,
+        "top_events": [
+          "Sample file download",
+          "Sheet uploaded",
+          "Student Response file",
+          "Student Bulk upload",
+          "Student FT file creation"
+        ],
+        "has_reports": true,
+        "report_count_30d": 25,
+        "report_export_rate": 0,
+        "trend": 1022.2,
+        "peak_hour": 12
+      },
+      {
+        "service_id": "288",
+        "service_name": "Master Dashboard",
+        "events_30d": 27,
+        "active_users_30d": 4,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.6,
+        "top_events": [
+          "Redirect to GILE Dashboard"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": 440.0,
+        "peak_hour": 12
+      },
+      {
+        "service_id": "377",
+        "service_name": "Master Dashboard Reports",
+        "events_30d": 18,
+        "active_users_30d": 2,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.4,
+        "top_events": [
+          "Generate new report",
+          "Summary -  Download report"
+        ],
+        "has_reports": true,
+        "report_count_30d": 18,
+        "report_export_rate": 0,
+        "trend": -76.6,
+        "peak_hour": 18
+      },
+      {
+        "service_id": "541",
+        "service_name": "Master Dashboard Fee Details",
+        "events_30d": 5,
+        "active_users_30d": 1,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.1,
+        "top_events": [
+          "create-fee-details",
+          "bulk-create-fee-details",
+          "View QR"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": 0.0,
+        "peak_hour": 14
+      },
+      {
+        "service_id": "301",
+        "service_name": "Payment link communication",
+        "events_30d": 2,
+        "active_users_30d": 1,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.0,
+        "top_events": [
+          "Create Payment Page",
+          "Copy"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": 0.0,
+        "peak_hour": 18
+      },
+      {
+        "service_id": "484",
+        "service_name": "Fine",
+        "events_30d": 1,
+        "active_users_30d": 1,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.0,
+        "top_events": [
+          "Create"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": 0.0,
+        "peak_hour": 12
+      },
+      {
+        "service_id": "297",
+        "service_name": "PG Transactions",
+        "events_30d": 1,
+        "active_users_30d": 1,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.0,
+        "top_events": [
+          "Refresh"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": 0.0,
+        "peak_hour": 11
+      }
+    ],
+    "heatmap": {
+      "matrix": [
+        {
+          "service": "Fine",
+          "hour": 12,
+          "count": 1
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 11,
+          "count": 5
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 12,
+          "count": 8
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 13,
+          "count": 2
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 14,
+          "count": 2
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 16,
+          "count": 3
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 17,
+          "count": 4
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 18,
+          "count": 3
+        },
+        {
+          "service": "Master Dashboard Fee Details",
+          "hour": 14,
+          "count": 5
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 9,
+          "count": 1
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 10,
+          "count": 2
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 11,
+          "count": 4
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 17,
+          "count": 1
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 18,
+          "count": 6
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 19,
+          "count": 4
+        },
+        {
+          "service": "PG Transactions",
+          "hour": 11,
+          "count": 1
+        },
+        {
+          "service": "Payment link communication",
+          "hour": 12,
+          "count": 1
+        },
+        {
+          "service": "Payment link communication",
+          "hour": 18,
+          "count": 1
+        },
+        {
+          "service": "Student Management",
+          "hour": 11,
+          "count": 10
+        },
+        {
+          "service": "Student Management",
+          "hour": 12,
+          "count": 40
+        },
+        {
+          "service": "Student Management",
+          "hour": 13,
+          "count": 19
+        },
+        {
+          "service": "Student Management",
+          "hour": 14,
+          "count": 6
+        },
+        {
+          "service": "Student Management",
+          "hour": 15,
+          "count": 1
+        },
+        {
+          "service": "Student Management",
+          "hour": 16,
+          "count": 6
+        },
+        {
+          "service": "Student Management",
+          "hour": 17,
+          "count": 19
+        }
+      ]
+    },
+    "heatmapDrill": {
+      "Master Dashboard Reports": [
+        {
+          "event": "Summary -  Download report",
+          "hour": 10,
+          "count": 1
+        },
+        {
+          "event": "Summary -  Download report",
+          "hour": 11,
+          "count": 1
+        },
+        {
+          "event": "Generate new report",
+          "hour": 11,
+          "count": 3
+        },
+        {
+          "event": "Generate new report",
+          "hour": 17,
+          "count": 1
+        },
+        {
+          "event": "Generate new report",
+          "hour": 18,
+          "count": 6
+        },
+        {
+          "event": "Generate new report",
+          "hour": 19,
+          "count": 4
+        },
+        {
+          "event": "Generate new report",
+          "hour": 9,
+          "count": 1
+        },
+        {
+          "event": "Generate new report",
+          "hour": 10,
+          "count": 1
+        }
+      ],
+      "Master Dashboard": [
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 12,
+          "count": 8
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 13,
+          "count": 2
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 14,
+          "count": 2
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 16,
+          "count": 3
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 17,
+          "count": 4
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 18,
+          "count": 3
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 11,
+          "count": 5
+        }
+      ],
+      "Fine": [
+        {
+          "event": "Create",
+          "hour": 12,
+          "count": 1
+        }
+      ],
+      "Payment link communication": [
+        {
+          "event": "Create Payment Page",
+          "hour": 12,
+          "count": 1
+        },
+        {
+          "event": "Copy",
+          "hour": 18,
+          "count": 1
+        }
+      ],
+      "Master Dashboard Fee Details": [
+        {
+          "event": "View QR",
+          "hour": 14,
+          "count": 1
+        },
+        {
+          "event": "create-fee-details",
+          "hour": 14,
+          "count": 2
+        },
+        {
+          "event": "bulk-create-fee-details",
+          "hour": 14,
+          "count": 2
+        }
+      ],
+      "Student Management": [
+        {
+          "event": "Sample file download",
+          "hour": 14,
+          "count": 5
+        },
+        {
+          "event": "Sample file download",
+          "hour": 16,
+          "count": 6
+        },
+        {
+          "event": "Sample file download",
+          "hour": 17,
+          "count": 5
+        },
+        {
+          "event": "Sample file download",
+          "hour": 11,
+          "count": 1
+        },
+        {
+          "event": "Sample file download",
+          "hour": 12,
+          "count": 3
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 14,
+          "count": 1
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 11,
+          "count": 4
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 12,
+          "count": 10
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 13,
+          "count": 3
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student Response file",
+          "hour": 11,
+          "count": 5
+        },
+        {
+          "event": "Student Response file",
+          "hour": 12,
+          "count": 8
+        },
+        {
+          "event": "Student Response file",
+          "hour": 13,
+          "count": 3
+        },
+        {
+          "event": "Student Response file",
+          "hour": 15,
+          "count": 1
+        },
+        {
+          "event": "Student Response file",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file creation",
+          "hour": 13,
+          "count": 2
+        },
+        {
+          "event": "Student FT file creation",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file creation",
+          "hour": 12,
+          "count": 4
+        },
+        {
+          "event": "Student Bulk upload",
+          "hour": 13,
+          "count": 8
+        },
+        {
+          "event": "Student Bulk upload",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student Bulk upload",
+          "hour": 12,
+          "count": 4
+        },
+        {
+          "event": "Student FT file downloaded",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file downloaded",
+          "hour": 12,
+          "count": 3
+        },
+        {
+          "event": "Student FT file verified",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file verified",
+          "hour": 12,
+          "count": 4
+        },
+        {
+          "event": "Student FT file verified",
+          "hour": 13,
+          "count": 1
+        },
+        {
+          "event": "Student FT file uploaded",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file uploaded",
+          "hour": 12,
+          "count": 4
+        },
+        {
+          "event": "Student FT file uploaded",
+          "hour": 13,
+          "count": 1
+        },
+        {
+          "event": "Student FT Response file",
+          "hour": 13,
+          "count": 1
+        }
+      ],
+      "PG Transactions": [
+        {
+          "event": "Refresh",
+          "hour": 11,
+          "count": 1
+        }
+      ]
+    },
+    "kpis": {
+      "total_events": 155,
+      "per_day": 22.1,
+      "weighted_success_rate": 90.32,
+      "active_services": 7,
+      "active_users": 6,
+      "active_users_prev": 8,
+      "top_service": "Student Management",
+      "top_service_events": 101,
+      "report_exports": 43,
+      "services_with_reports": 2
+    }
+  },
+  "30d": {
+    "services": [
+      {
+        "service_id": "377",
+        "service_name": "Master Dashboard Reports",
+        "events_30d": 234,
+        "active_users_30d": 6,
+        "success_rate": 95.73,
+        "avg_events_per_session": 1.0,
+        "top_events": [
+          "Generate new report",
+          "Summary -  Download report",
+          "Generate Ariflow Report",
+          "delete"
+        ],
+        "has_reports": true,
+        "report_count_30d": 233,
+        "report_export_rate": 0,
+        "trend": 74.6,
+        "peak_hour": 15
+      },
+      {
+        "service_id": "292",
+        "service_name": "Student Management",
+        "events_30d": 128,
+        "active_users_30d": 4,
+        "success_rate": 85.16,
+        "avg_events_per_session": 0.6,
+        "top_events": [
+          "Sheet uploaded",
+          "Sample file download",
+          "Student Response file",
+          "Student Bulk upload",
+          "Student FT file creation"
+        ],
+        "has_reports": true,
+        "report_count_30d": 33,
+        "report_export_rate": 0,
+        "trend": -11.7,
+        "peak_hour": 12
+      },
+      {
+        "service_id": "288",
+        "service_name": "Master Dashboard",
+        "events_30d": 75,
+        "active_users_30d": 4,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.3,
+        "top_events": [
+          "Redirect to GILE Dashboard"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": -49.7,
+        "peak_hour": 12
+      },
+      {
+        "service_id": "293",
+        "service_name": "Student Fee Headers",
+        "events_30d": 18,
+        "active_users_30d": 2,
+        "success_rate": 83.33,
+        "avg_events_per_session": 0.1,
+        "top_events": [
+          "Summary - Add offline collection",
+          "Assigned",
+          "Unassigned",
+          "Edit"
+        ],
+        "has_reports": true,
+        "report_count_30d": 8,
+        "report_export_rate": 0,
+        "trend": 500.0,
+        "peak_hour": 13
+      },
+      {
+        "service_id": "301",
+        "service_name": "Payment link communication",
+        "events_30d": 16,
+        "active_users_30d": 2,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.1,
+        "top_events": [
+          "Copy",
+          "Create a Payment link",
+          "Share",
+          "Active scheduled payment link",
+          "Create Payment Page"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": -30.4,
+        "peak_hour": 16
+      },
+      {
+        "service_id": "513",
+        "service_name": "Applicant Fee Headers",
+        "events_30d": 12,
+        "active_users_30d": 2,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.1,
+        "top_events": [
+          "Summary - Add offline collection"
+        ],
+        "has_reports": true,
+        "report_count_30d": 12,
+        "report_export_rate": 0,
+        "trend": -73.3,
+        "peak_hour": 10
+      },
+      {
+        "service_id": "512",
+        "service_name": "Application Profile",
+        "events_30d": 10,
+        "active_users_30d": 2,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.0,
+        "top_events": [
+          "Review Approved",
+          "Edit"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": -77.3,
+        "peak_hour": 10
+      },
+      {
+        "service_id": "511",
+        "service_name": "Ongoing Admissions",
+        "events_30d": 9,
+        "active_users_30d": 1,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.0,
+        "top_events": [
+          "Create Application"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": -85.2,
+        "peak_hour": 10
+      },
+      {
+        "service_id": "541",
+        "service_name": "Master Dashboard Fee Details",
+        "events_30d": 7,
+        "active_users_30d": 2,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.0,
+        "top_events": [
+          "View QR",
+          "create-fee-details",
+          "bulk-create-fee-details"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": 250.0,
+        "peak_hour": 14
+      },
+      {
+        "service_id": "542",
+        "service_name": "Master Dashboard Support",
+        "events_30d": 6,
+        "active_users_30d": 2,
+        "success_rate": 33.33,
+        "avg_events_per_session": 0.0,
+        "top_events": [
+          "Raise request"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": 500.0,
+        "peak_hour": 17
+      },
+      {
+        "service_id": "540",
+        "service_name": "Master Dashboard Banks",
+        "events_30d": 5,
+        "active_users_30d": 2,
+        "success_rate": 40.0,
+        "avg_events_per_session": 0.0,
+        "top_events": [
+          "Add Bank"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": -96.4,
+        "peak_hour": 14
+      },
+      {
+        "service_id": "297",
+        "service_name": "PG Transactions",
+        "events_30d": 4,
+        "active_users_30d": 4,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.0,
+        "top_events": [
+          "Refresh"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": -42.9,
+        "peak_hour": 12
+      },
+      {
+        "service_id": "549",
+        "service_name": "Master Dashboard Fee Headers",
+        "events_30d": 4,
+        "active_users_30d": 2,
+        "success_rate": 25.0,
+        "avg_events_per_session": 0.0,
+        "top_events": [
+          "delete",
+          "Create"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": -33.3,
+        "peak_hour": 18
+      },
+      {
+        "service_id": "295",
+        "service_name": "EMI Applications",
+        "events_30d": 1,
+        "active_users_30d": 1,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.0,
+        "top_events": [
+          "Summary -  Download report"
+        ],
+        "has_reports": true,
+        "report_count_30d": 1,
+        "report_export_rate": 0,
+        "trend": 0.0,
+        "peak_hour": 12
+      },
+      {
+        "service_id": "308",
+        "service_name": "My Reports",
+        "events_30d": 1,
+        "active_users_30d": 1,
+        "success_rate": 0.0,
+        "avg_events_per_session": 0.0,
+        "top_events": [
+          "Generate Ariflow Report"
+        ],
+        "has_reports": true,
+        "report_count_30d": 1,
+        "report_export_rate": 0,
+        "trend": -88.9,
+        "peak_hour": 14
+      },
+      {
+        "service_id": "484",
+        "service_name": "Fine",
+        "events_30d": 1,
+        "active_users_30d": 1,
+        "success_rate": 100.0,
+        "avg_events_per_session": 0.0,
+        "top_events": [
+          "Create"
+        ],
+        "has_reports": false,
+        "report_count_30d": 0,
+        "report_export_rate": 0,
+        "trend": -95.7,
+        "peak_hour": 12
+      }
+    ],
+    "heatmap": {
+      "matrix": [
+        {
+          "service": "Applicant Fee Headers",
+          "hour": 9,
+          "count": 1
+        },
+        {
+          "service": "Applicant Fee Headers",
+          "hour": 10,
+          "count": 5
+        },
+        {
+          "service": "Applicant Fee Headers",
+          "hour": 11,
+          "count": 2
+        },
+        {
+          "service": "Applicant Fee Headers",
+          "hour": 12,
+          "count": 2
+        },
+        {
+          "service": "Applicant Fee Headers",
+          "hour": 13,
+          "count": 1
+        },
+        {
+          "service": "Applicant Fee Headers",
+          "hour": 16,
+          "count": 1
+        },
+        {
+          "service": "Application Profile",
+          "hour": 9,
+          "count": 1
+        },
+        {
+          "service": "Application Profile",
+          "hour": 10,
+          "count": 3
+        },
+        {
+          "service": "Application Profile",
+          "hour": 11,
+          "count": 2
+        },
+        {
+          "service": "Application Profile",
+          "hour": 12,
+          "count": 3
+        },
+        {
+          "service": "Application Profile",
+          "hour": 16,
+          "count": 1
+        },
+        {
+          "service": "EMI Applications",
+          "hour": 12,
+          "count": 1
+        },
+        {
+          "service": "Fine",
+          "hour": 12,
+          "count": 1
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 9,
+          "count": 1
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 10,
+          "count": 1
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 11,
+          "count": 8
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 12,
+          "count": 24
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 13,
+          "count": 6
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 14,
+          "count": 4
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 15,
+          "count": 8
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 16,
+          "count": 7
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 17,
+          "count": 7
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 18,
+          "count": 6
+        },
+        {
+          "service": "Master Dashboard",
+          "hour": 19,
+          "count": 3
+        },
+        {
+          "service": "Master Dashboard Banks",
+          "hour": 14,
+          "count": 5
+        },
+        {
+          "service": "Master Dashboard Fee Details",
+          "hour": 12,
+          "count": 2
+        },
+        {
+          "service": "Master Dashboard Fee Details",
+          "hour": 14,
+          "count": 5
+        },
+        {
+          "service": "Master Dashboard Fee Headers",
+          "hour": 18,
+          "count": 4
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 9,
+          "count": 4
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 10,
+          "count": 10
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 11,
+          "count": 17
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 12,
+          "count": 48
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 13,
+          "count": 17
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 14,
+          "count": 12
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 15,
+          "count": 52
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 16,
+          "count": 18
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 17,
+          "count": 28
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 18,
+          "count": 17
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 19,
+          "count": 8
+        },
+        {
+          "service": "Master Dashboard Reports",
+          "hour": 20,
+          "count": 3
+        },
+        {
+          "service": "Master Dashboard Support",
+          "hour": 16,
+          "count": 2
+        },
+        {
+          "service": "Master Dashboard Support",
+          "hour": 17,
+          "count": 4
+        },
+        {
+          "service": "My Reports",
+          "hour": 14,
+          "count": 1
+        },
+        {
+          "service": "Ongoing Admissions",
+          "hour": 9,
+          "count": 1
+        },
+        {
+          "service": "Ongoing Admissions",
+          "hour": 10,
+          "count": 3
+        },
+        {
+          "service": "Ongoing Admissions",
+          "hour": 11,
+          "count": 2
+        },
+        {
+          "service": "Ongoing Admissions",
+          "hour": 12,
+          "count": 3
+        },
+        {
+          "service": "PG Transactions",
+          "hour": 11,
+          "count": 1
+        },
+        {
+          "service": "PG Transactions",
+          "hour": 12,
+          "count": 3
+        },
+        {
+          "service": "Payment link communication",
+          "hour": 12,
+          "count": 6
+        },
+        {
+          "service": "Payment link communication",
+          "hour": 15,
+          "count": 1
+        },
+        {
+          "service": "Payment link communication",
+          "hour": 16,
+          "count": 7
+        },
+        {
+          "service": "Payment link communication",
+          "hour": 18,
+          "count": 2
+        },
+        {
+          "service": "Student Fee Headers",
+          "hour": 12,
+          "count": 3
+        },
+        {
+          "service": "Student Fee Headers",
+          "hour": 13,
+          "count": 10
+        },
+        {
+          "service": "Student Fee Headers",
+          "hour": 14,
+          "count": 1
+        },
+        {
+          "service": "Student Fee Headers",
+          "hour": 15,
+          "count": 2
+        },
+        {
+          "service": "Student Fee Headers",
+          "hour": 17,
+          "count": 1
+        },
+        {
+          "service": "Student Fee Headers",
+          "hour": 18,
+          "count": 1
+        },
+        {
+          "service": "Student Management",
+          "hour": 11,
+          "count": 10
+        },
+        {
+          "service": "Student Management",
+          "hour": 12,
+          "count": 42
+        },
+        {
+          "service": "Student Management",
+          "hour": 13,
+          "count": 19
+        },
+        {
+          "service": "Student Management",
+          "hour": 14,
+          "count": 6
+        },
+        {
+          "service": "Student Management",
+          "hour": 15,
+          "count": 23
+        },
+        {
+          "service": "Student Management",
+          "hour": 16,
+          "count": 6
+        },
+        {
+          "service": "Student Management",
+          "hour": 17,
+          "count": 19
+        },
+        {
+          "service": "Student Management",
+          "hour": 18,
+          "count": 3
+        }
+      ]
+    },
+    "heatmapDrill": {
+      "Master Dashboard": [
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 11,
+          "count": 8
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 12,
+          "count": 24
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 14,
+          "count": 4
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 9,
+          "count": 1
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 13,
+          "count": 6
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 15,
+          "count": 8
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 16,
+          "count": 7
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 10,
+          "count": 1
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 19,
+          "count": 3
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 18,
+          "count": 6
+        },
+        {
+          "event": "Redirect to GILE Dashboard",
+          "hour": 17,
+          "count": 7
+        }
+      ],
+      "Master Dashboard Reports": [
+        {
+          "event": "Generate new report",
+          "hour": 10,
+          "count": 4
+        },
+        {
+          "event": "Generate new report",
+          "hour": 14,
+          "count": 6
+        },
+        {
+          "event": "Generate new report",
+          "hour": 15,
+          "count": 37
+        },
+        {
+          "event": "Generate new report",
+          "hour": 16,
+          "count": 9
+        },
+        {
+          "event": "Generate new report",
+          "hour": 18,
+          "count": 15
+        },
+        {
+          "event": "Generate new report",
+          "hour": 19,
+          "count": 7
+        },
+        {
+          "event": "Generate new report",
+          "hour": 20,
+          "count": 3
+        },
+        {
+          "event": "Generate new report",
+          "hour": 11,
+          "count": 11
+        },
+        {
+          "event": "Generate new report",
+          "hour": 17,
+          "count": 19
+        },
+        {
+          "event": "Generate new report",
+          "hour": 12,
+          "count": 26
+        },
+        {
+          "event": "Generate new report",
+          "hour": 13,
+          "count": 9
+        },
+        {
+          "event": "Generate new report",
+          "hour": 9,
+          "count": 3
+        },
+        {
+          "event": "Summary -  Download report",
+          "hour": 12,
+          "count": 22
+        },
+        {
+          "event": "Summary -  Download report",
+          "hour": 15,
+          "count": 15
+        },
+        {
+          "event": "Summary -  Download report",
+          "hour": 9,
+          "count": 1
+        },
+        {
+          "event": "Summary -  Download report",
+          "hour": 10,
+          "count": 6
+        },
+        {
+          "event": "Summary -  Download report",
+          "hour": 19,
+          "count": 1
+        },
+        {
+          "event": "Summary -  Download report",
+          "hour": 11,
+          "count": 6
+        },
+        {
+          "event": "Summary -  Download report",
+          "hour": 13,
+          "count": 7
+        },
+        {
+          "event": "Summary -  Download report",
+          "hour": 14,
+          "count": 5
+        },
+        {
+          "event": "Summary -  Download report",
+          "hour": 16,
+          "count": 7
+        },
+        {
+          "event": "Summary -  Download report",
+          "hour": 17,
+          "count": 6
+        },
+        {
+          "event": "Summary -  Download report",
+          "hour": 18,
+          "count": 1
+        },
+        {
+          "event": "Generate Ariflow Report",
+          "hour": 16,
+          "count": 2
+        },
+        {
+          "event": "Generate Ariflow Report",
+          "hour": 18,
+          "count": 1
+        },
+        {
+          "event": "Generate Ariflow Report",
+          "hour": 13,
+          "count": 1
+        },
+        {
+          "event": "Generate Ariflow Report",
+          "hour": 17,
+          "count": 3
+        },
+        {
+          "event": "delete",
+          "hour": 14,
+          "count": 1
+        }
+      ],
+      "Payment link communication": [
+        {
+          "event": "Copy",
+          "hour": 12,
+          "count": 1
+        },
+        {
+          "event": "Copy",
+          "hour": 15,
+          "count": 1
+        },
+        {
+          "event": "Copy",
+          "hour": 16,
+          "count": 7
+        },
+        {
+          "event": "Copy",
+          "hour": 18,
+          "count": 1
+        },
+        {
+          "event": "Create a Payment link",
+          "hour": 12,
+          "count": 2
+        },
+        {
+          "event": "Share",
+          "hour": 12,
+          "count": 2
+        },
+        {
+          "event": "Active scheduled payment link",
+          "hour": 18,
+          "count": 1
+        },
+        {
+          "event": "Create Payment Page",
+          "hour": 12,
+          "count": 1
+        }
+      ],
+      "Student Management": [
+        {
+          "event": "Sample file download",
+          "hour": 12,
+          "count": 4
+        },
+        {
+          "event": "Sample file download",
+          "hour": 15,
+          "count": 4
+        },
+        {
+          "event": "Sample file download",
+          "hour": 18,
+          "count": 1
+        },
+        {
+          "event": "Sample file download",
+          "hour": 14,
+          "count": 5
+        },
+        {
+          "event": "Sample file download",
+          "hour": 16,
+          "count": 6
+        },
+        {
+          "event": "Sample file download",
+          "hour": 17,
+          "count": 5
+        },
+        {
+          "event": "Sample file download",
+          "hour": 11,
+          "count": 1
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 12,
+          "count": 11
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 15,
+          "count": 8
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 14,
+          "count": 1
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 11,
+          "count": 4
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 13,
+          "count": 3
+        },
+        {
+          "event": "Sheet uploaded",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student Response file",
+          "hour": 15,
+          "count": 6
+        },
+        {
+          "event": "Student Response file",
+          "hour": 11,
+          "count": 5
+        },
+        {
+          "event": "Student Response file",
+          "hour": 12,
+          "count": 8
+        },
+        {
+          "event": "Student Response file",
+          "hour": 13,
+          "count": 3
+        },
+        {
+          "event": "Student Response file",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file creation",
+          "hour": 15,
+          "count": 3
+        },
+        {
+          "event": "Student FT file creation",
+          "hour": 13,
+          "count": 2
+        },
+        {
+          "event": "Student FT file creation",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file creation",
+          "hour": 12,
+          "count": 4
+        },
+        {
+          "event": "Student FT file downloaded",
+          "hour": 15,
+          "count": 2
+        },
+        {
+          "event": "Student FT file downloaded",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file downloaded",
+          "hour": 12,
+          "count": 3
+        },
+        {
+          "event": "Add Student",
+          "hour": 18,
+          "count": 1
+        },
+        {
+          "event": "Edit",
+          "hour": 18,
+          "count": 1
+        },
+        {
+          "event": "Student Bulk upload",
+          "hour": 13,
+          "count": 8
+        },
+        {
+          "event": "Student Bulk upload",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student Bulk upload",
+          "hour": 12,
+          "count": 4
+        },
+        {
+          "event": "Student FT file verified",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file verified",
+          "hour": 12,
+          "count": 4
+        },
+        {
+          "event": "Student FT file verified",
+          "hour": 13,
+          "count": 1
+        },
+        {
+          "event": "Student FT file uploaded",
+          "hour": 17,
+          "count": 2
+        },
+        {
+          "event": "Student FT file uploaded",
+          "hour": 12,
+          "count": 4
+        },
+        {
+          "event": "Student FT file uploaded",
+          "hour": 13,
+          "count": 1
+        },
+        {
+          "event": "Student FT Response file",
+          "hour": 13,
+          "count": 1
+        }
+      ],
+      "PG Transactions": [
+        {
+          "event": "Refresh",
+          "hour": 12,
+          "count": 3
+        },
+        {
+          "event": "Refresh",
+          "hour": 11,
+          "count": 1
+        }
+      ],
+      "Student Fee Headers": [
+        {
+          "event": "Unassigned",
+          "hour": 12,
+          "count": 2
+        },
+        {
+          "event": "Summary - Add offline collection",
+          "hour": 12,
+          "count": 1
+        },
+        {
+          "event": "Summary - Add offline collection",
+          "hour": 13,
+          "count": 5
+        },
+        {
+          "event": "Summary - Add offline collection",
+          "hour": 15,
+          "count": 1
+        },
+        {
+          "event": "Summary - Add offline collection",
+          "hour": 14,
+          "count": 1
+        },
+        {
+          "event": "Assigned",
+          "hour": 13,
+          "count": 3
+        },
+        {
+          "event": "Assigned",
+          "hour": 15,
+          "count": 1
+        },
+        {
+          "event": "Assigned",
+          "hour": 17,
+          "count": 1
+        },
+        {
+          "event": "Assigned",
+          "hour": 18,
+          "count": 1
+        },
+        {
+          "event": "Edit",
+          "hour": 13,
+          "count": 2
+        }
+      ],
+      "Master Dashboard Banks": [
+        {
+          "event": "Add Bank",
+          "hour": 14,
+          "count": 5
+        }
+      ],
+      "Master Dashboard Fee Details": [
+        {
+          "event": "View QR",
+          "hour": 12,
+          "count": 2
+        },
+        {
+          "event": "View QR",
+          "hour": 14,
+          "count": 1
+        },
+        {
+          "event": "create-fee-details",
+          "hour": 14,
+          "count": 2
+        },
+        {
+          "event": "bulk-create-fee-details",
+          "hour": 14,
+          "count": 2
+        }
+      ],
+      "Ongoing Admissions": [
+        {
+          "event": "Create Application",
+          "hour": 12,
+          "count": 3
+        },
+        {
+          "event": "Create Application",
+          "hour": 9,
+          "count": 1
+        },
+        {
+          "event": "Create Application",
+          "hour": 10,
+          "count": 3
+        },
+        {
+          "event": "Create Application",
+          "hour": 11,
+          "count": 2
+        }
+      ],
+      "Application Profile": [
+        {
+          "event": "Review Approved",
+          "hour": 12,
+          "count": 3
+        },
+        {
+          "event": "Review Approved",
+          "hour": 9,
+          "count": 1
+        },
+        {
+          "event": "Review Approved",
+          "hour": 10,
+          "count": 3
+        },
+        {
+          "event": "Review Approved",
+          "hour": 11,
+          "count": 2
+        },
+        {
+          "event": "Edit",
+          "hour": 16,
+          "count": 1
+        }
+      ],
+      "Applicant Fee Headers": [
+        {
+          "event": "Summary - Add offline collection",
+          "hour": 12,
+          "count": 2
+        },
+        {
+          "event": "Summary - Add offline collection",
+          "hour": 13,
+          "count": 1
+        },
+        {
+          "event": "Summary - Add offline collection",
+          "hour": 16,
+          "count": 1
+        },
+        {
+          "event": "Summary - Add offline collection",
+          "hour": 9,
+          "count": 1
+        },
+        {
+          "event": "Summary - Add offline collection",
+          "hour": 10,
+          "count": 5
+        },
+        {
+          "event": "Summary - Add offline collection",
+          "hour": 11,
+          "count": 2
+        }
+      ],
+      "Master Dashboard Fee Headers": [
+        {
+          "event": "delete",
+          "hour": 18,
+          "count": 3
+        },
+        {
+          "event": "Create",
+          "hour": 18,
+          "count": 1
+        }
+      ],
+      "EMI Applications": [
+        {
+          "event": "Summary -  Download report",
+          "hour": 12,
+          "count": 1
+        }
+      ],
+      "My Reports": [
+        {
+          "event": "Generate Ariflow Report",
+          "hour": 14,
+          "count": 1
+        }
+      ],
+      "Master Dashboard Support": [
+        {
+          "event": "Raise request",
+          "hour": 16,
+          "count": 2
+        },
+        {
+          "event": "Raise request",
+          "hour": 17,
+          "count": 4
+        }
+      ],
+      "Fine": [
+        {
+          "event": "Create",
+          "hour": 12,
+          "count": 1
+        }
+      ]
+    },
+    "kpis": {
+      "total_events": 531,
+      "per_day": 17.7,
+      "weighted_success_rate": 91.9,
+      "active_services": 16,
+      "active_users": 8,
+      "active_users_prev": 8,
+      "top_service": "Master Dashboard Reports",
+      "top_service_events": 234,
+      "report_exports": 288,
+      "services_with_reports": 6
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "services": [
+    {
+      "service_id": 12, "service_name": "Fee Collection",
+      "events_30d": 847, "active_users_30d": 13, "success_rate": 91.2,
+      "avg_events_per_session": 8.4, "top_events": ["VIEW_FEE", "COLLECT_FEE", "RECEIPT_GENERATE"],
+      "has_reports": true, "report_count_30d": 142, "report_export_rate": 68.3,
+      "trend": 12.4, "peak_hour": 11
+    },
+    {
+      "service_id": 8, "service_name": "Student Management",
+      "events_30d": 612, "active_users_30d": 12, "success_rate": 94.6,
+      "avg_events_per_session": 6.1, "top_events": ["VIEW_STUDENT", "UPDATE_STUDENT", "ADD_STUDENT"],
+      "has_reports": true, "report_count_30d": 87, "report_export_rate": 52.9,
+      "trend": 7.8, "peak_hour": 10
+    },
+    {
+      "service_id": 3, "service_name": "User Administration",
+      "events_30d": 389, "active_users_30d": 5, "success_rate": 88.4,
+      "avg_events_per_session": 9.2, "top_events": ["CREATE_USER", "UPDATE_ROLE", "DEACTIVATE_USER"],
+      "has_reports": false, "report_count_30d": 0, "report_export_rate": 0,
+      "trend": -3.1, "peak_hour": 14
+    },
+    {
+      "service_id": 15, "service_name": "Loan Management",
+      "events_30d": 341, "active_users_30d": 8, "success_rate": 82.7,
+      "avg_events_per_session": 5.3, "top_events": ["VIEW_LOAN", "PROCESS_EMI", "LOAN_APPROVAL"],
+      "has_reports": true, "report_count_30d": 61, "report_export_rate": 44.3,
+      "trend": 18.2, "peak_hour": 12
+    },
+    {
+      "service_id": 6, "service_name": "Institute Management",
+      "events_30d": 278, "active_users_30d": 7, "success_rate": 90.3,
+      "avg_events_per_session": 4.8, "top_events": ["VIEW_INSTITUTE", "UPDATE_INSTITUTE", "ADD_CONTACT"],
+      "has_reports": false, "report_count_30d": 0, "report_export_rate": 0,
+      "trend": 2.3, "peak_hour": 9
+    },
+    {
+      "service_id": 21, "service_name": "Audit Logs",
+      "events_30d": 198, "active_users_30d": 3, "success_rate": 99.5,
+      "avg_events_per_session": 11.7, "top_events": ["VIEW_LOG", "EXPORT_LOG", "FILTER_LOG"],
+      "has_reports": true, "report_count_30d": 44, "report_export_rate": 81.8,
+      "trend": 5.6, "peak_hour": 15
+    },
+    {
+      "service_id": 9, "service_name": "Settings",
+      "events_30d": 112, "active_users_30d": 4, "success_rate": 97.3,
+      "avg_events_per_session": 3.2, "top_events": ["UPDATE_CONFIG", "VIEW_SETTINGS", "TOGGLE_FEATURE"],
+      "has_reports": false, "report_count_30d": 0, "report_export_rate": 0,
+      "trend": -8.4, "peak_hour": 16
+    },
+    {
+      "service_id": 2, "service_name": "Notifications",
+      "events_30d": 70,  "active_users_30d": 6, "success_rate": 85.7,
+      "avg_events_per_session": 2.1, "top_events": ["SEND_SMS", "SEND_EMAIL", "VIEW_TEMPLATE"],
+      "has_reports": false, "report_count_30d": 0, "report_export_rate": 0,
+      "trend": -1.2, "peak_hour": 11
+    }
+  ]
+}

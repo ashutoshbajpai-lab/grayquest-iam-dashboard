@@ -1,0 +1,25 @@
+{
+  "kpis": {
+    "active_users_30d":       15,
+    "active_users_7d":        11,
+    "active_users_today":      6,
+    "dormant_users":          1298,
+    "total_users":            1313,
+    "new_activations_30d":     3,
+    "avg_health_score":       62.4,
+    "overall_success_rate":   87.3,
+    "active_services":         8,
+    "cross_module_rate":      41.2,
+    "avg_session_duration_min": 18.7,
+    "completion_rate":        73.5,
+    "shallow_session_pct":    26.5,
+    "total_events_30d":       2847,
+    "total_sessions_30d":      312
+  },
+  "trends": {
+    "active_users_7d_vs_prev":  9.1,
+    "active_users_30d_vs_prev": -6.3,
+    "success_rate_vs_prev":     2.1,
+    "health_score_vs_prev":    -1.8
+  }
+}

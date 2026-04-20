@@ -1,0 +1,135 @@
+SHEET: Metrics Catalog
+Metric Name,Display Label,Section / Widget,Formula / Calculation,Raw Value Example,Formatted Value Example,Data Type,Unit
+active_users_today,Active Users (Today),People › KPI row,"users.filter(u => u.last_active === DATE_PRESETS.today.to).length",6,6,integer,users
+active_users_7d,Active Users (7d),People › KPI row,"users.filter(u => u.last_active >= '2026-04-11' && u.last_active <= '2026-04-18').length",11,11,integer,users
+active_users_30d,Active Users (30d),People › KPI row,"users.filter(u => u.last_active >= '2026-03-19' && u.last_active <= '2026-04-18').length",15,15,integer,users
+avg_health_score,Avg Health Score,People › KPI row,"Σ(user.health_score) / users.length  [from overview.kpis.avg_health_score]",62.4,62.4,float,score (0–100)
+new_activations_30d,New Activations,People › KPI row,overview.kpis.new_activations_30d (pre-aggregated in mock),3,3,integer,users
+completion_rate,Session Completion,People › KPI row,overview.kpis.completion_rate,73.5,73.5%,float,percent
+shallow_session_pct,Login-only Sessions,People › KPI card subtitle,overview.kpis.shallow_session_pct,26.5,26.5% login-only,float,percent
+total_sessions_30d,Total Sessions,People › KPI row,overview.kpis.total_sessions_30d,312,312,integer,sessions
+total_events_30d,Total Events,People › KPI subtitle,overview.kpis.total_events_30d,2847,2847 events,integer,events
+health_score_vs_prev,Health Score Trend,People › KPI trend badge,overview.trends.health_score_vs_prev,-1.8,↓ 1.8% vs prev 30d,float,percent change
+active_users_7d_vs_prev,Active Users 7d Trend,People › KPI trend badge,overview.trends.active_users_7d_vs_prev,-6.3,↓ 6.3% vs prev period,float,percent change
+active_users_30d_vs_prev,Active Users 30d Trend,People › KPI trend badge,overview.trends.active_users_30d_vs_prev,-6.3,↓ 6.3% vs prev period,float,percent change
+role_count,Users by Role,People › Donut chart,"roles.roles.map(r => ({ name: r.role, value: r.count, color: ROLE_COLORS[r.role] }))","Institute Admin=8, IAM Admin=2, …","Donut segments + custom legend",array of {name,value,color},count per role
+dau_series,Daily Active Users Trend,People › Line chart,"dau.series.slice(-14) → [{date, dau, sessions, events}]","[{date:'04-05',dau:3,…},…]",Line chart (last 14 days),time series,users/day
+cohort_retention,Cohort Retention,People › Heatmap,"cohort.cohorts.flatMap(c => [{x:'W1',y:month,value:c.w1},…])","W1=80, W2=60, W4=50, M2=40, M3=33",Heatmap cells (% retained),2D grid,percent
+avg_session_duration,Avg Session Duration (by role),People › Line chart,"sessions.by_role.map(r => ({role,duration:r.avg_duration_min}))","Institute Admin=4.2, IAM Admin=6.8",Line chart,time series,minutes
+avg_events_per_session,Avg Events per Session (by role),People › Line chart,"sessions.by_role.map(r => ({role,events:r.avg_events}))","Institute Admin=3.1, IAM Admin=5.4",Line chart,time series,events/session
+overall_success_rate,Overall Success Rate,Health › KPI row,health.kpis.overall_success_rate,91.3,91.3%,float,percent
+login_success_rate,Login Success Rate,Health › KPI row + Auth Rate,health.kpis.login_success_rate,89.6,89.6%,float,percent
+failed_events_30d,Failed Events (30d),Health › KPI row,health.kpis.failed_events_30d,361,361,integer,events
+unique_error_types,Unique Error Types,Health › KPI subtitle,health.kpis.unique_error_types,6,6 error types,integer,count
+success_rate_vs_prev,Success Rate Trend,Health › KPI trend,overview.trends.success_rate_vs_prev,+2.1,↑ 2.1% vs prev 30d,float,percent change
+success_rate_series,Success Rate Over Time,Health › Line chart,"health.success_rate_series → [{date,rate}]","[{date:'2026-04-11',rate:90.2},…]",Line chart (8 days),time series,percent
+login_funnel,Login Funnel Steps,Health › Funnel chart,"health.login_funnel → [{step,count}]","[{step:'Attempt',count:487},{step:'Auth',count:436},…]",Funnel visualization,ordered steps,count
+failure_by_service,Failure Rate by Service,Health › Inline bar list,"health.failure_by_service → [{service,failed,total,rate}] | rate=failed/total*100","{Loan Management: failed=28, rate=17.3%}",Horizontal bar rows,array,percent
+failure_by_event,Top Failing Events,Health › Bar chart,"health.failure_by_event → [{event,failed,total,rate}]","{LOAN_APPROVAL: failed=28, rate=39.4%}",Horizontal bar chart,array,percent
+api_error_rate,API Error Rate,Health › KPI row,health.kpis.api_error_rate,1.2,1.2%,float,percent
+p95_latency_ms,p95 Latency,Health › KPI subtitle,health.kpis.p95_latency_ms,342,p95 342ms,integer,milliseconds
+avg_duration_min,Avg Session Duration,Health › KPI row,sessions.kpis.avg_duration_min,4.8,4.8m,float,minutes
+median_duration_min,Median Session Duration,Health › KPI subtitle,sessions.kpis.median_duration_min,3.2,Median 3.2m,float,minutes
+cross_module_rate,Cross-Module Rate,Health › KPI row,sessions.kpis.cross_module_rate,42.1,42.1%,float,percent
+bounce_rate,Bounce Rate,Health › Funnel footer,sessions.kpis.bounce_rate,12.4,12.4%,float,percent
+duration_distribution,Session Duration Distribution,Health › Bar chart,"sessions.duration_buckets → [{label,count}]","{<1m: 45, 1-5m: 128, …}",Bar chart,histogram,count
+events_distribution,Events per Session Distribution,Health › Bar chart,"sessions.events_per_session_buckets → [{label,count}]","{1-2: 68, 3-5: 95, …}",Bar chart,histogram,count
+sessions_by_role,Sessions by Role,Health › Bar chart + table,"sessions.by_role → [{role,sessions,avg_duration_min,avg_events}]","Institute Admin=82, IAM Admin=48",Bar chart,array,sessions
+service_count,Active Services,Services › KPI row,services.services.length,7,7,integer,count
+total_events,Total Events (30d),Services › KPI row,"services.reduce((s,x) => s + x.events_30d, 0)",9842,9842,integer,events
+weighted_success_rate,Weighted Success Rate,Services › KPI row,"services.reduce((s,x) => s + x.success_rate * x.events_30d, 0) / totalEvents","≈91.8",91.8%,float,percent
+top_service,Top Service by Volume,Services › KPI row,"[...services].sort((a,b) => b.events_30d - a.events_30d)[0].service_name","Loan Management",Loan Management,string,service name
+total_report_exports,Report Exports,Services › KPI row,"services.reduce((s,x) => s + x.report_count_30d, 0)",334,334,integer,count
+service_success_rate,Success Rate by Service,Services › Bar chart,"services.map(s => ({name:s.service_name, rate:s.success_rate})).sort desc","Loan Mgmt=82.7%, Grievance=98.1%",Horizontal bar chart,array,percent
+activity_heatmap,Activity Heatmap,Services › Heatmap,"heatmap.matrix → [{service,hour,count}] mapped to {x:hour, y:service, value:count}","Loan Mgmt at 14:00 = 38 events",Color-scaled grid,2D grid,event count
+service_trend,Service Trend,Services › Card badge,"service.trend (pre-computed delta vs prev period)",+2.3,↑ 2.3%,float,percent change
+report_export_efficiency,Report Export Rate,Metrics Builder,"Σ(report_count_30d × report_export_rate/100) / Σ(report_count_30d) × 100","206/334",61.7%,float,percent
+
+---
+
+SHEET: Data Sources
+Metric Name,Database Table(s),Join Conditions,WHERE Clause / Filters Applied,GROUP BY,ORDER BY,API Endpoint,Query File Path
+active_users (date-filtered),users.json (mock),—,"u.last_active >= dateRange.from AND u.last_active <= dateRange.to (client-side)",—,—,/api/metrics/people,src/data/mock/users.json
+avg_health_score,health_overview.json (mock),—,— (aggregate field),—,—,/api/metrics/people,src/data/mock/health_overview.json
+new_activations_30d,health_overview.json (mock),—,— (pre-aggregated),—,—,/api/metrics/people,src/data/mock/health_overview.json
+completion_rate,health_overview.json (mock),—,— (pre-aggregated),—,—,/api/metrics/people,src/data/mock/health_overview.json
+total_sessions_30d,health_overview.json (mock),—,— (pre-aggregated),—,—,/api/metrics/people,src/data/mock/health_overview.json
+role_distribution,role_distribution.json (mock),—,— (pre-aggregated),role,count desc,/api/metrics/people,src/data/mock/role_distribution.json
+dau_series,dau_series.json (mock),—,— (last 14/7/3 records sliced client-side),date,date asc,/api/metrics/people,src/data/mock/dau_series.json
+cohort_retention,cohort_retention.json (mock),—,— (all cohorts),month,month asc,/api/metrics/people,src/data/mock/cohort_retention.json
+session_depth,session_depth.json (mock),—,— (by_role aggregates),role,—,/api/metrics/people,src/data/mock/session_depth.json
+overall_success_rate,health_overview.json (mock),—,— (pre-aggregated),—,—,/api/metrics/health,src/data/mock/health_overview.json
+success_rate_series,health_overview.json (mock),—,— (last 8 days of series),date,date asc,/api/metrics/health,src/data/mock/health_overview.json
+failure_by_service,health_overview.json (mock),—,"search filter: service.toLowerCase().includes(search) | status filter via serviceFailureStatus(rate)",service,rate desc,/api/metrics/health,src/data/mock/health_overview.json
+failure_by_event,health_overview.json (mock),—,— (unique events; deduped client-side),event,rate desc,/api/metrics/health,src/data/mock/health_overview.json
+login_funnel,health_overview.json (mock),—,— (all steps),step,step order,/api/metrics/health,src/data/mock/health_overview.json
+session_stats,session_depth.json (mock),—,— (buckets + by_role),—,—,/api/metrics/health,src/data/mock/session_depth.json
+services,service_usage.json (mock),—,"search filter: service_name.toLowerCase().includes(search)",—,sorted by events_30d/success_rate/active_users (client toggle),/api/metrics/services,src/data/mock/service_usage.json
+activity_heatmap,service_heatmap.json (mock),—,— (full matrix),service+hour,—,/api/metrics/services,src/data/mock/service_heatmap.json
+pinned_metrics,metricsStore (localStorage),—,— (all user-defined metrics for section),—,save order,/api/metrics/compute,src/store/metricsStore.ts
+alerts,alerts (computed),—,— (threshold checks against aggregated KPIs),—,severity desc,/api/alerts,src/app/api/alerts/route.ts
+
+---
+
+SHEET: Filter Mapping
+Filter Name,Filter Type,Filter Component Path,Affects These Sections,Does NOT Affect (Bug Log),State Location,URL Param Key
+Search,Text input,src/components/layout/FilterBar.tsx,"People › User table (name/email/role/group) | Services › Service cards (service_name) | Health › Failure-by-service list (service name)",Health › KPIs · Success rate chart · Funnel · Session stats · Services › Heatmap/Events/Reports,filterStore.search,— (not in URL)
+Date Range (Today),Date preset button,src/components/layout/FilterBar.tsx,People › Active Users KPI · User table · DAU chart depth · Donut center,"Services (ignored) | Health (ignored) | Metrics | Chat",filterStore.dateRange,— (not in URL)
+Date Range (7d),Date preset button,src/components/layout/FilterBar.tsx,People › Active Users KPI · User table · DAU chart depth · Donut center,"Services (ignored) | Health (ignored) | Metrics | Chat",filterStore.dateRange,— (not in URL)
+Date Range (30d),Date preset button,src/components/layout/FilterBar.tsx,People › Active Users KPI · User table · DAU chart depth · Donut center,"Services (ignored) | Health (ignored) | Metrics | Chat",filterStore.dateRange,— (not in URL)
+Date Range (Custom),Date preset button,src/components/layout/FilterBar.tsx,People (if from/to set by picker — picker NOT implemented),All sections,filterStore.dateRange,— (not in URL)
+Clear Filters,Action button,src/components/layout/FilterBar.tsx,Resets: search · dateRange → 30d · roles=[] · services=[] · statuses=[] · hourRange=[0,23],—,filterStore (clearAll),—
+Status filter (SUCCESS/FAILED/PENDING),Removed from FilterBar; state still in store,"Removed from src/components/layout/FilterBar.tsx","Health › Failure-by-service rows (via statuses array) | Services › Service cards + recent events feed (via statuses array)",People (not read); statuses always empty since buttons removed — filters now always pass-all,filterStore.statuses,— (not in URL)
+Roles filter,Not implemented — state exists but no UI component writes to it,— (no component),"— (no component reads roles from store, filter always [])",All sections — dead filter field,filterStore.roles,—
+Services filter,Not implemented — state exists but no UI component writes to it,— (no component),"— (no component reads services from store, filter always [])",All sections — dead filter field,filterStore.services,—
+Hour Range filter,Not implemented — state exists but no UI component writes to it,— (no component),— (no component reads hourRange from store),All sections — dead filter field,filterStore.hourRange,—
+
+---
+
+SHEET: Bug Report
+Bug ID,Severity,Component,File Path,Line Number,Description,Root Cause,Fix Applied,Status
+BUG-001,MEDIUM,ServicesClient,src/app/dashboard/services/ServicesClient.tsx,115-119,No empty state shown when search/status filters produce zero visible service cards,Missing conditional empty-state JSX in the service card grid,Added empty state div with icon + message when visible.length === 0,FIXED
+BUG-002,MEDIUM,HealthClient,src/app/dashboard/health/HealthClient.tsx,148,Search input has no effect on Health page failure-by-service list,HealthClient did not read filterStore.search; only statuses was consumed,Added search to useFilterStore destructure; applied toLowerCase includes filter on s.service,FIXED
+BUG-003,MEDIUM,HealthClient,src/app/dashboard/health/HealthClient.tsx,150-175,No empty state when failure-by-service filters out all rows,Missing guard before rendering the rows list,Added early return JSX with empty-state message when filtered.length === 0,FIXED
+BUG-004,LOW,HeatmapChart,src/components/charts/HeatmapChart.tsx,21,Default colorHigh prop was #6C63FF (old purple);  does not match new design,Hardcoded legacy color as default parameter value,Changed default to #7C6FF7 (CSS-var-consistent purple),FIXED
+BUG-005,LOW,FunnelChart,src/components/charts/FunnelChart.tsx,10,Default color prop was #6C63FF; does not match new design token,Hardcoded legacy color as default parameter value,Changed default to #7C6FF7,FIXED
+BUG-006,LOW,LineChart / BarChart,src/components/charts/LineChart.tsx + BarChart.tsx,17-23,Tooltip and grid colors were hardcoded dark-theme hex values (#1E2130 #2D3148 #64748B); invisible/wrong in light mode,Original chart components written for dark-only; not updated when light mode added,Replaced all hardcoded values with useChartColors() hook; colors adapt to theme,FIXED
+BUG-007,LOW,UserTable (HealthBar),src/components/people/UserTable.tsx,13,Health bar color was hardcoded #22C55E / #F59E0B / #EF4444; ignores dark-mode status token values,Hex values hardcoded before CSS-var system was introduced,Changed to var(--color-status-success/pending/failure),FIXED
+BUG-008,LOW,ServiceCard (rateColor),src/components/services/ServiceCard.tsx,19,Success rate bar color was hardcoded #22C55E / #F59E0B / #EF4444,Same as BUG-007,Changed to var(--color-status-*) CSS vars,FIXED
+BUG-009,LOW,HealthClient (failure bars),src/app/dashboard/health/HealthClient.tsx,164,Failure bar backgroundColor was hardcoded hex; ignored dark mode,Same as BUG-007,Changed to var(--color-status-failure/pending/success),FIXED
+BUG-010,INFO,FilterBar,src/components/layout/FilterBar.tsx,—,Custom date range button (preset='custom') does nothing; no date picker component exists,Custom date range picker UI was never implemented,Not fixed in this session — requires adding a DatePicker component (future work),OPEN
+BUG-011,INFO,FilterStore,src/store/filterStore.ts,—,"Filter fields roles[], services[], hourRange never read by any component; dead state",Fields declared in interface and store but no UI surfaces them and no component reads them,Not fixed — future work if these dimensions are needed (leave as-is; no runtime impact),OPEN
+BUG-012,INFO,All API routes,src/app/api/metrics/*/route.ts,—,API routes return full unfiltered datasets; all filtering is client-side,No server-side filter parameters designed for mock data layer; intentional for demo,Not fixed — acceptable for mock-data dashboard; would require backend refactor for production,OPEN
+BUG-013,INFO,DonutChart,src/components/charts/DonutChart.tsx,—,Recharts <Legend> was rendering colored text labels below chart in inconsistent layout,Recharts built-in Legend uses inline color styling that clashes with theme,Replaced with fully custom legend (color dot + name + count + percent stacked rows),FIXED (previous session)
+BUG-014,LOW,Sidebar,src/components/layout/Sidebar.tsx,95,Active nav item used purple accent fill (#7C6FF7) which clashes with new amber design system,Active state CSS class was bg-accent; accent was still purple in light mode,Changed to bg-[#1C1C1E] dark:bg-accent for dark/charcoal pill in light; amber pill in dark,FIXED
+
+---
+
+SHEET: Component Inventory
+Component Name,File Path,Type,Data Dependencies,Filter Dependencies,Notes
+Sidebar,src/components/layout/Sidebar.tsx,layout,NAV_TABS · ROUTES,sidebarOpen (display only),Active nav now uses dark pill in light mode; amber in dark mode
+TopBar,src/components/layout/TopBar.tsx,layout,NAV_TABS · /api/alerts,isDark (theme toggle),Syncs isDark Zustand with pre-hydration DOM class on mount
+FilterBar,src/components/layout/FilterBar.tsx,filter,"DATE_PRESETS · FILTER_BAR_SECTIONS","dateRange · search (reads+writes); clearAll",Status buttons removed; Custom date preset has no picker yet
+FloatingChatBar,src/components/layout/FloatingChatBar.tsx,layout,/api/chat (POST),—,Hidden on /chat and /login pages
+DrillDownDrawer,src/components/layout/DrillDownDrawer.tsx,layout,—,—,Used by drawer components
+LineChart,src/components/charts/LineChart.tsx,chart,Recharts,isDark (via useChartColors),Grid/axis/tooltip colors are theme-aware via hook
+BarChart,src/components/charts/BarChart.tsx,chart,Recharts,isDark (via useChartColors),Supports horizontal and vertical layout; LabelList optional
+DonutChart,src/components/charts/DonutChart.tsx,chart,Recharts,isDark (via useChartColors),Custom legend replaces Recharts Legend; center label optional
+HeatmapChart,src/components/charts/HeatmapChart.tsx,chart,—,—,Pure CSS heatmap; colorHigh prop from calling component
+FunnelChart,src/components/charts/FunnelChart.tsx,chart,—,—,Shows drop % between steps; color prop from caller
+KPICard,src/components/ui/KPICard.tsx,ui,—,—,text-3xl font-bold for metric value; status colors via CSS vars
+PinnedMetrics,src/components/ui/PinnedMetrics.tsx,ui,metricsStore,—,Shows user-saved metrics pinned to a section
+AlertsPanel,src/components/ui/AlertsPanel.tsx,ui,/api/alerts,—,Fetches on open; dismiss dismisses locally
+UserTable,src/components/people/UserTable.tsx,domain / table,IamUser[],"search (applied upstream in PeopleClient, not inside UserTable)",Sortable; HealthBar uses CSS var status colors
+UserDrawer,src/components/people/UserDrawer.tsx,domain / drawer,IamUser,—,Shows activity charts for selected user; drawer pattern
+ServiceCard,src/components/services/ServiceCard.tsx,domain / card,Service,—,rateColor uses var(--color-status-*); success rate mini-bar
+ServiceDrawer,src/components/services/ServiceDrawer.tsx,domain / drawer,Service + drill data,—,4-tab drawer (Overview / Events / Users / Reports)
+FailureDrawer,src/components/health/FailureDrawer.tsx,domain / drawer,failure_by_service row + failure_by_event[],—,Service failure drill-down
+PeopleClient,src/app/dashboard/people/PeopleClient.tsx,page client,getPeopleData(),"dateRange (user table + DAU chart) · search (user table)",Active Users KPI reactive to date preset
+ServicesClient,src/app/dashboard/services/ServicesClient.tsx,page client,getServicesData(),"search (service cards) · statuses (service cards + events feed)",Empty state added when filtered grid is empty
+HealthClient,src/app/dashboard/health/HealthClient.tsx,page client,getHealthData(),"search (failure-by-service) · statuses (failure-by-service)",Search now wired; empty state added for failure list
+MetricsClient,src/app/dashboard/metrics/MetricsClient.tsx,page client,metricsStore · /api/metrics/compute,—,AI-powered metric builder; pin to dashboard sections
+ChatClient,src/app/dashboard/chat/ChatClient.tsx,page client,/api/chat,—,Full AI chat; suggests and saves metrics
+useChartColors,src/hooks/useChartColors.ts,hook,—,isDark (Zustand),Returns {primary secondary success danger warning info tertiary grid axis label tooltipBg tooltipBorder tooltipText}
+filterStore,src/store/filterStore.ts,store,—,—,Zustand; isDark + sidebarOpen + dateRange + roles + services + statuses + hourRange + search; .transitioning added to html on theme toggle
+metricsStore,src/store/metricsStore.ts,store,—,—,Zustand + persist to localStorage; CustomMetric array + pins per section

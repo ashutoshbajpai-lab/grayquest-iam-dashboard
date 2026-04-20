@@ -1,0 +1,249 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { getPeopleData, getServicesData, getHealthData, getSessionStats } from '@/lib/data'
+import { AI, COMPANY_NAME, PLATFORM_ID, HEALTH, geminiUrl } from '@/lib/config'
+
+// ── Types ────────────────────────────────────────────────────────
+interface ServiceRow {
+  service_name: string
+  events_30d: number
+  success_rate: number
+  active_users_30d: number
+  has_reports: boolean
+  report_count_30d: number
+  report_export_rate: number
+}
+
+interface UserRow {
+  name: string
+  role: string
+  health_score: number
+  sessions_30d: number
+}
+
+// ── Data helpers ─────────────────────────────────────────────────
+function safeDiv(num: number, den: number, scale = 1): string {
+  if (!den || !isFinite(den)) return '0'
+  return ((num / den) * scale).toFixed(1)
+}
+
+function loadData() {
+  const p  = getPeopleData()  as Record<string, unknown>
+  const sv = getServicesData() as Record<string, unknown>
+  const h  = getHealthData()  as Record<string, unknown>
+  const ss = getSessionStats() as Record<string, unknown>
+
+  const overview  = (p.overview  as Record<string, unknown>).kpis  as Record<string, number>
+  const healthK   = (h.health    as Record<string, unknown>).kpis  as Record<string, number>
+  const sessionK  = (ss as Record<string, unknown>).kpis            as Record<string, number>
+  const services  = ((sv.services as Record<string, unknown>).services as ServiceRow[])
+  const users     = ((p.users    as Record<string, unknown>).users  as UserRow[])
+
+  return { overview, healthK, sessionK, services, users }
+}
+
+// ── Builtin evaluator — SPECIFIC patterns first, generic last ───
+function evaluateBuiltin(formula: string): string | null {
+  const f = formula.toLowerCase().trim()
+  const { overview, healthK, sessionK, services, users } = loadData()
+
+  // ── 1. DAU / MAU Ratio ──────────────────────────────────────────
+  if ((f.includes('dau') && f.includes('mau')) ||
+      (f.includes('daily') && f.includes('monthly'))) {
+    const dau = overview.active_users_today ?? 0
+    const mau = overview.active_users_30d   ?? 0
+    if (!mau) return 'Insufficient data (MAU = 0)'
+    return `${safeDiv(dau, mau, 100)}% DAU/MAU ratio (${dau} daily active / ${mau} monthly active)`
+  }
+
+  // ── 2. Failure Rate ─────────────────────────────────────────────
+  if (f.includes('fail') && (f.includes('rate') || f.includes('/'))) {
+    const failed = healthK.failed_events_30d ?? 0
+    const total  = healthK.total_events_30d  ?? overview.total_events_30d ?? 0
+    if (!total) return 'Insufficient data (no events recorded)'
+    return `${safeDiv(failed, total, 100)}% failure rate (${failed} failed of ${total.toLocaleString()} total events)`
+  }
+
+  // ── 3. % High-Health Users (must come before generic health_score) ─
+  if ((f.includes('high') || f.includes('>= 75') || f.includes('>= 70') || f.includes('above')) && f.includes('health')) {
+    const threshold = HEALTH.ACTIVE
+    const highCount = users.filter(u => u.health_score >= threshold).length
+    const active    = overview.active_users_30d ?? 0
+    if (!active) return 'Insufficient data'
+    return `${safeDiv(highCount, active, 100)}% (${highCount} of ${active} active users have health score ≥ ${threshold})`
+  }
+
+  // ── 4. Avg Events per Active User (before generic total events) ──
+  if ((f.includes('avg') || f.includes('average') || f.includes('per user')) && f.includes('event')) {
+    const total  = overview.total_events_30d ?? 0
+    const active = overview.active_users_30d ?? 0
+    if (!active) return 'Insufficient data'
+    return `${(total / active).toFixed(1)} avg events per active user (${total.toLocaleString()} events / ${active} users, 30d)`
+  }
+
+  // ── 5. Report Export Efficiency ──────────────────────────────────
+  if (f.includes('report') && (f.includes('export') || f.includes('effici'))) {
+    const withReports    = services.filter(s => s.has_reports && s.report_count_30d > 0)
+    const totalReports   = withReports.reduce((s, x) => s + x.report_count_30d, 0)
+    const totalExported  = withReports.reduce((s, x) => s + Math.round(x.report_count_30d * x.report_export_rate / 100), 0)
+    if (!totalReports) return 'Insufficient data (no reports generated)'
+    const weightedRate   = (totalExported / totalReports * 100).toFixed(1)
+    return `${weightedRate}% report export rate across ${withReports.length} services (${totalExported} exported of ${totalReports} total reports)`
+  }
+
+  // ── 6. Session Engagement Score (before generic session/completion) ─
+  if (f.includes('engagement') ||
+      (f.includes('events_per_session') || f.includes('events per session')) && f.includes('completion')) {
+    const eps  = sessionK.avg_events_per_session ?? 0
+    const comp = sessionK.completion_rate        ?? overview.completion_rate ?? 0
+    const score = (eps * comp / 100)
+    return `${score.toFixed(2)} session engagement score (${eps} avg events/session × ${comp}% completion rate / 100)`
+  }
+
+  // ── 7. Cross-Module Rate ─────────────────────────────────────────
+  if (f.includes('cross') || (f.includes('span') && f.includes('service')) || f.includes('multi.*module')) {
+    const rate = overview.cross_module_rate ?? sessionK.cross_module_rate ?? 0
+    return `${rate}% of sessions span 3+ services (cross-module rate, 30d)`
+  }
+
+  // ── 8. Top Service by Success Rate (before generic success rate) ──
+  if ((f.includes('top') || f.includes('highest') || f.includes('best')) &&
+      (f.includes('success') || f.includes('service'))) {
+    const top = [...services].sort((a, b) => b.success_rate - a.success_rate)[0]
+    if (!top) return 'No service data'
+    return `${top.service_name} — ${top.success_rate}% success rate (highest of ${services.length} services)`
+  }
+
+  // ── Generic / single-value lookups (kept for free-form queries) ──
+
+  if (f.includes('dau') || f.includes('daily active'))
+    return `${overview.active_users_today} users active today (DAU)`
+
+  if (f.includes('mau') || f.includes('monthly active'))
+    return `${overview.active_users_30d} users active in last 30 days (MAU)`
+
+  if (f.includes('success rate') || f.includes('success_rate'))
+    return `${overview.overall_success_rate}% overall success rate (30d)`
+
+  if (f.includes('health score') || f.includes('health_score'))
+    return `Average health score: ${overview.avg_health_score}/100 across ${overview.active_users_30d} active users`
+
+  if (f.includes('session') && f.includes('completion'))
+    return `Session completion rate: ${overview.completion_rate}%`
+
+  if (f.includes('dormant')) {
+    const pct = safeDiv(overview.dormant_users, overview.total_users, 100)
+    return `${overview.dormant_users} dormant users (${pct}% of ${overview.total_users.toLocaleString()} total)`
+  }
+
+  // LAST: broad total-events match — kept after specific patterns
+  if ((f.includes('total') || f.includes('sum')) && f.includes('event'))
+    return `${overview.total_events_30d.toLocaleString()} total events in last 30 days`
+
+  if (f.includes('top service') || f.includes('most used')) {
+    const top = [...services].sort((a, b) => b.events_30d - a.events_30d)[0]
+    return top ? `${top.service_name} — ${top.events_30d} events (most active by volume, 30d)` : 'No service data available'
+  }
+
+  return null
+}
+
+// ── AI data summary (comprehensive) ─────────────────────────────
+function buildDataSummary(): string {
+  const { overview, healthK, sessionK, services, users } = loadData()
+
+  const svcList = services.map(s =>
+    `${s.service_name}(events:${s.events_30d},success:${s.success_rate}%,users:${s.active_users_30d}` +
+    (s.has_reports ? `,reports:${s.report_count_30d},export_rate:${s.report_export_rate}%` : '') + `)`
+  ).join(', ')
+
+  const userList = users.map(u =>
+    `${u.name}(role:${u.role},health:${u.health_score},sessions:${u.sessions_30d})`
+  ).join('; ')
+
+  return `${COMPANY_NAME} IAM Dashboard — platform_id=${PLATFORM_ID}, data period: last 30 days.
+OVERVIEW: active_users_today=${overview.active_users_today}, active_users_30d=${overview.active_users_30d}, total_users=${overview.total_users}, dormant_users=${overview.dormant_users}, avg_health_score=${overview.avg_health_score}, overall_success_rate=${overview.overall_success_rate}%, total_sessions_30d=${overview.total_sessions_30d}, total_events_30d=${overview.total_events_30d}, completion_rate=${overview.completion_rate}%, cross_module_rate=${overview.cross_module_rate}%, avg_session_duration_min=${overview.avg_session_duration_min}, shallow_session_pct=${overview.shallow_session_pct}%.
+HEALTH: failed_events_30d=${healthK.failed_events_30d}, login_success_rate=${healthK.login_success_rate}%, api_error_rate=${healthK.api_error_rate}%.
+SESSIONS: avg_events_per_session=${sessionK.avg_events_per_session}, avg_duration_min=${sessionK.avg_duration_min}, bounce_rate=${sessionK.bounce_rate}%.
+SERVICES: ${svcList}.
+USERS (${users.length} active): ${userList}.`
+}
+
+// ── AI callers ───────────────────────────────────────────────────
+async function callOllama(prompt: string): Promise<string | null> {
+  try {
+    const res = await fetch(AI.OLLAMA_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: AI.OLLAMA_MODEL, prompt, stream: false }),
+      signal: AbortSignal.timeout(AI.OLLAMA_TIMEOUT_MS),
+    })
+    if (!res.ok) return null
+    const data = await res.json() as { response?: string }
+    return data.response?.trim() ?? null
+  } catch {
+    return null
+  }
+}
+
+async function callGemini(prompt: string): Promise<string | null> {
+  const key = process.env.GEMINI_API_KEY
+  if (!key) return null
+  try {
+    const res = await fetch(geminiUrl(key), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
+      signal: AbortSignal.timeout(AI.COMPUTE_TIMEOUT_MS),
+    })
+    if (!res.ok) return null
+    const data = await res.json() as { candidates?: { content?: { parts?: { text?: string }[] } }[] }
+    return data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? null
+  } catch {
+    return null
+  }
+}
+
+// ── Route handler ────────────────────────────────────────────────
+export async function POST(req: NextRequest) {
+  const body = await req.json() as { name: string; description: string; formula: string }
+  const { name, description, formula } = body
+
+  if (!formula?.trim()) {
+    return NextResponse.json({ error: 'Formula is required' }, { status: 400 })
+  }
+
+  // Try builtin first (instant, accurate)
+  const builtin = evaluateBuiltin(formula)
+  if (builtin) {
+    return NextResponse.json({ result: builtin, source: 'builtin' })
+  }
+
+  // AI fallback with full data context
+  const dataSummary = buildDataSummary()
+  const prompt = `You are a data analyst for GrayQuest, an Indian fee-collection platform for educational institutions. Compute the requested metric using ONLY the data provided. Do not hallucinate field values.
+
+DATA (authoritative — use only these numbers):
+${dataSummary}
+
+METRIC REQUEST:
+Name: ${name}
+Description: ${description}
+Formula/Query: ${formula}
+
+Rules:
+- Respond with ONLY the computed result: a single number, percentage, or short phrase (max ${AI.MAX_RESULT_WORDS} words)
+- Show the calculation briefly if helpful (e.g. "40% (6/15 users)")
+- If the data is insufficient, say "Insufficient data: [reason]"
+- No markdown, no explanations beyond the result`
+
+  const result = (await callOllama(prompt)) ?? (await callGemini(prompt))
+
+  if (!result) {
+    return NextResponse.json({
+      result: 'AI service unavailable — start Ollama or add GEMINI_API_KEY to .env.local',
+      source: 'fallback',
+    })
+  }
+
+  return NextResponse.json({ result, source: result ? 'ai' : 'fallback' })
+}

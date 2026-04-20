@@ -1,0 +1,215 @@
+{
+  "kpis": {
+    "overall_success_rate": 70.44,
+    "success_rate": 70.44,
+    "login_success_rate": 99.67,
+    "failed_events_30d": 41,
+    "unique_error_types": 25,
+    "api_error_rate": 0,
+    "p95_latency_ms": 0,
+    "consecutive_fail_streaks": 0
+  },
+  "trends": {
+    "success_rate_vs_prev": -9.1
+  },
+  "success_rate_series": [
+    {
+      "date": "2026-04-01",
+      "rate": 78.38
+    },
+    {
+      "date": "2026-04-02",
+      "rate": 91.87
+    },
+    {
+      "date": "2026-04-03",
+      "rate": 75.0
+    },
+    {
+      "date": "2026-04-06",
+      "rate": 89.66
+    },
+    {
+      "date": "2026-04-07",
+      "rate": 95.83
+    },
+    {
+      "date": "2026-04-08",
+      "rate": 92.31
+    },
+    {
+      "date": "2026-04-09",
+      "rate": 81.25
+    },
+    {
+      "date": "2026-04-10",
+      "rate": 85.19
+    },
+    {
+      "date": "2026-04-13",
+      "rate": 100.0
+    },
+    {
+      "date": "2026-04-14",
+      "rate": 85.71
+    },
+    {
+      "date": "2026-04-15",
+      "rate": 100.0
+    },
+    {
+      "date": "2026-04-16",
+      "rate": 58.62
+    },
+    {
+      "date": "2026-04-17",
+      "rate": 54.31
+    },
+    {
+      "date": "2026-04-18",
+      "rate": 90.99
+    }
+  ],
+  "login_funnel": [
+    {
+      "step": "Attempt",
+      "count": 1206
+    },
+    {
+      "step": "Auth Pass",
+      "count": 1202
+    },
+    {
+      "step": "Session",
+      "count": 229
+    },
+    {
+      "step": "Action",
+      "count": 102
+    }
+  ],
+  "failure_by_service": [
+    {
+      "service": "My Reports",
+      "failed": 1,
+      "total": 1,
+      "rate": 100.0
+    },
+    {
+      "service": "Master Dashboard Fee Headers",
+      "failed": 3,
+      "total": 4,
+      "rate": 75.0
+    },
+    {
+      "service": "Master Dashboard Support",
+      "failed": 4,
+      "total": 6,
+      "rate": 66.67
+    },
+    {
+      "service": "Master Dashboard Banks",
+      "failed": 3,
+      "total": 5,
+      "rate": 60.0
+    },
+    {
+      "service": "Student Fee Headers",
+      "failed": 3,
+      "total": 18,
+      "rate": 16.67
+    },
+    {
+      "service": "Student Management",
+      "failed": 19,
+      "total": 128,
+      "rate": 14.84
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "failed": 5,
+      "total": 234,
+      "rate": 2.14
+    },
+    {
+      "service": "Master Dashboard",
+      "failed": 0,
+      "total": 75,
+      "rate": 0.0
+    },
+    {
+      "service": "Payment link communication",
+      "failed": 0,
+      "total": 16,
+      "rate": 0.0
+    },
+    {
+      "service": "PG Transactions",
+      "failed": 0,
+      "total": 4,
+      "rate": 0.0
+    }
+  ],
+  "failure_by_event": [
+    {
+      "event": "Unassigned",
+      "failed": 2,
+      "total": 2,
+      "failure_rate": 100.0
+    },
+    {
+      "event": "delete",
+      "failed": 4,
+      "total": 4,
+      "failure_rate": 100.0
+    },
+    {
+      "event": "Raise request",
+      "failed": 4,
+      "total": 6,
+      "failure_rate": 66.67
+    },
+    {
+      "event": "Add Bank",
+      "failed": 3,
+      "total": 5,
+      "failure_rate": 60.0
+    },
+    {
+      "event": "Sample file download",
+      "failed": 11,
+      "total": 26,
+      "failure_rate": 42.31
+    },
+    {
+      "event": "Sheet uploaded",
+      "failed": 8,
+      "total": 29,
+      "failure_rate": 27.59
+    },
+    {
+      "event": "Assigned",
+      "failed": 1,
+      "total": 6,
+      "failure_rate": 16.67
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "failed": 1,
+      "total": 8,
+      "failure_rate": 12.5
+    },
+    {
+      "event": "Generate new report",
+      "failed": 4,
+      "total": 149,
+      "failure_rate": 2.68
+    },
+    {
+      "event": "Redirect to GILE Dashboard",
+      "failed": 0,
+      "total": 75,
+      "failure_rate": 0.0
+    }
+  ]
+}

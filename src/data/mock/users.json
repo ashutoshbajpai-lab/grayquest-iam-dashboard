@@ -1,0 +1,124 @@
+{
+  "users": [
+    {
+      "user_id": 101, "name": "Rahul Sharma",    "email": "rahul.sharma@grayquest.com",
+      "role": "IAM Admin",          "group": "GQ Internal",
+      "health_score": 88, "last_active": "2026-04-18",
+      "sessions_30d": 28, "events_30d": 341, "services_used": 6,
+      "login_success_rate": 96.4, "status": "active",
+      "first_seen": "2024-06-12", "avg_session_min": 24.3
+    },
+    {
+      "user_id": 102, "name": "Priya Nair",      "email": "priya.nair@grayquest.com",
+      "role": "Finance Officer",    "group": "GQ Internal",
+      "health_score": 74, "last_active": "2026-04-18",
+      "sessions_30d": 19, "events_30d": 214, "services_used": 4,
+      "login_success_rate": 91.2, "status": "active",
+      "first_seen": "2024-08-03", "avg_session_min": 19.8
+    },
+    {
+      "user_id": 103, "name": "Arun Mehta",      "email": "arun.mehta@springvalley.edu.in",
+      "role": "Institute Admin",    "group": "Spring Valley School",
+      "health_score": 61, "last_active": "2026-04-17",
+      "sessions_30d": 14, "events_30d": 127, "services_used": 3,
+      "login_success_rate": 85.7, "status": "active",
+      "first_seen": "2024-11-20", "avg_session_min": 14.2
+    },
+    {
+      "user_id": 104, "name": "Deepa Krishnan",  "email": "deepa.k@horizonacademy.com",
+      "role": "Institute Admin",    "group": "Horizon Academy",
+      "health_score": 79, "last_active": "2026-04-18",
+      "sessions_30d": 22, "events_30d": 267, "services_used": 5,
+      "login_success_rate": 93.5, "status": "active",
+      "first_seen": "2024-09-14", "avg_session_min": 21.6
+    },
+    {
+      "user_id": 105, "name": "Vikram Singh",    "email": "vikram.singh@grayquest.com",
+      "role": "Service Manager",    "group": "GQ Internal",
+      "health_score": 92, "last_active": "2026-04-18",
+      "sessions_30d": 31, "events_30d": 412, "services_used": 7,
+      "login_success_rate": 98.1, "status": "active",
+      "first_seen": "2024-05-08", "avg_session_min": 27.4
+    },
+    {
+      "user_id": 106, "name": "Meena Iyer",      "email": "meena.iyer@grayquest.com",
+      "role": "Finance Officer",    "group": "GQ Internal",
+      "health_score": 55, "last_active": "2026-04-05",
+      "sessions_30d": 9,  "events_30d": 88,  "services_used": 2,
+      "login_success_rate": 77.8, "status": "active",
+      "first_seen": "2025-01-15", "avg_session_min": 11.3
+    },
+    {
+      "user_id": 107, "name": "Suresh Babu",     "email": "suresh.b@greenwoods.edu",
+      "role": "Institute Admin",    "group": "Greenwoods International",
+      "health_score": 68, "last_active": "2026-04-16",
+      "sessions_30d": 17, "events_30d": 183, "services_used": 4,
+      "login_success_rate": 88.2, "status": "active",
+      "first_seen": "2024-12-02", "avg_session_min": 16.9
+    },
+    {
+      "user_id": 108, "name": "Anjali Rao",      "email": "anjali.rao@brightfuture.edu",
+      "role": "Institute Admin",    "group": "Bright Future School",
+      "health_score": 47, "last_active": "2026-04-01",
+      "sessions_30d": 7,  "events_30d": 59,  "services_used": 2,
+      "login_success_rate": 71.4, "status": "active",
+      "first_seen": "2025-02-20", "avg_session_min": 9.7
+    },
+    {
+      "user_id": 109, "name": "Kiran Desai",     "email": "kiran.desai@grayquest.com",
+      "role": "Audit Officer",      "group": "GQ Internal",
+      "health_score": 83, "last_active": "2026-04-18",
+      "sessions_30d": 24, "events_30d": 298, "services_used": 6,
+      "login_success_rate": 94.7, "status": "active",
+      "first_seen": "2024-07-30", "avg_session_min": 23.1
+    },
+    {
+      "user_id": 110, "name": "Neha Joshi",      "email": "neha.joshi@stmarys.edu.in",
+      "role": "Institute Admin",    "group": "St. Mary's Convent",
+      "health_score": 72, "last_active": "2026-04-17",
+      "sessions_30d": 18, "events_30d": 201, "services_used": 4,
+      "login_success_rate": 90.0, "status": "active",
+      "first_seen": "2025-01-08", "avg_session_min": 18.4
+    },
+    {
+      "user_id": 111, "name": "Rajesh Kumar",    "email": "rajesh.k@grayquest.com",
+      "role": "Service Manager",    "group": "GQ Internal",
+      "health_score": 76, "last_active": "2026-04-17",
+      "sessions_30d": 20, "events_30d": 237, "services_used": 5,
+      "login_success_rate": 92.3, "status": "active",
+      "first_seen": "2024-10-11", "avg_session_min": 20.7
+    },
+    {
+      "user_id": 112, "name": "Sunita Pillai",   "email": "sunita.p@navjeevan.edu",
+      "role": "Institute Admin",    "group": "Navjeevan School",
+      "health_score": 38, "last_active": "2026-03-28",
+      "sessions_30d": 5,  "events_30d": 34,  "services_used": 1,
+      "login_success_rate": 60.0, "status": "at_risk",
+      "first_seen": "2025-03-01", "avg_session_min": 7.2
+    },
+    {
+      "user_id": 113, "name": "Mohan Tiwari",    "email": "mohan.t@cambridge.edu.in",
+      "role": "Institute Admin",    "group": "Cambridge School",
+      "health_score": 64, "last_active": "2026-04-16",
+      "sessions_30d": 13, "events_30d": 142, "services_used": 3,
+      "login_success_rate": 86.2, "status": "active",
+      "first_seen": "2025-01-28", "avg_session_min": 15.3
+    },
+    {
+      "user_id": 114, "name": "Divya Patel",     "email": "divya.p@grayquest.com",
+      "role": "IAM Admin",          "group": "GQ Internal",
+      "health_score": 85, "last_active": "2026-04-18",
+      "sessions_30d": 26, "events_30d": 319, "services_used": 6,
+      "login_success_rate": 95.1, "status": "active",
+      "first_seen": "2024-06-28", "avg_session_min": 25.8
+    },
+    {
+      "user_id": 115, "name": "Amit Verma",      "email": "amit.v@delhipublic.edu",
+      "role": "Institute Admin",    "group": "Delhi Public School",
+      "health_score": 53, "last_active": "2026-04-03",
+      "sessions_30d": 8,  "events_30d": 71,  "services_used": 2,
+      "login_success_rate": 75.0, "status": "active",
+      "first_seen": "2025-02-10", "avg_session_min": 12.1
+    }
+  ]
+}
