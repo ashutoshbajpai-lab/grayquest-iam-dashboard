@@ -1,94 +1,89 @@
+import { createClient } from '@supabase/supabase-js'
 import path from 'path'
 import fs from 'fs'
 
-const MOCK_DIR    = path.join(process.cwd(), 'src/data/mock')
-const REAL_DIR    = path.join(process.cwd(), 'src/data/real')
-const PYTHON_DIR  = path.join(process.cwd(), '..', 'metrics', 'output')
+// ── Supabase client (server-side, using service role for SSR reads) ──
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
+const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY
+                  ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-function loadJson<T>(filepath: string): T {
-  const raw = fs.readFileSync(filepath, 'utf-8')
-  return JSON.parse(raw) as T
-}
+const sbClient = SUPABASE_URL && SUPABASE_KEY
+  ? createClient(SUPABASE_URL, SUPABASE_KEY, { auth: { persistSession: false } })
+  : null
 
-function loadMock<T>(filename: string): T {
-  return loadJson<T>(path.join(MOCK_DIR, filename))
-}
+// ── JSON fallback (bundled real data → mock) ─────────────────────────
+const REAL_DIR = path.join(process.cwd(), 'src/data/real')
+const MOCK_DIR = path.join(process.cwd(), 'src/data/mock')
 
-// 3-tier fallback: local Python output → bundled real data → mock
-function loadReal<T>(pythonFile: string, mockFile: string): T {
-  for (const dir of [PYTHON_DIR, REAL_DIR]) {
-    const p = path.join(dir, pythonFile)
-    if (fs.existsSync(p)) {
-      try { return loadJson<T>(p) } catch { /* fall through */ }
-    }
+function loadJsonFallback<T>(snapshotId: string, mockFile: string): T {
+  const realFile = path.join(REAL_DIR, `dx_${snapshotId}.json`)
+  if (fs.existsSync(realFile)) {
+    try { return JSON.parse(fs.readFileSync(realFile, 'utf-8')) as T } catch { /* fall through */ }
   }
-  return loadMock<T>(mockFile)
+  return JSON.parse(fs.readFileSync(path.join(MOCK_DIR, mockFile), 'utf-8')) as T
 }
 
-// ── Raw loaders (real Python output → mock fallback) ─────────────
-export function getOverview()         { return loadReal<Record<string, unknown>>('dx_overview.json',         'overview.json') }
-export function getDauSeries()        { return loadReal<Record<string, unknown>>('dx_dau_series.json',       'dau_series.json') }
-export function getUsers()            { return loadReal<Record<string, unknown>>('dx_users.json',            'users.json') }
-export function getRoleDistribution() { return loadReal<Record<string, unknown>>('dx_role_distribution.json','role_distribution.json') }
-export function getCohortRetention()  { return loadReal<Record<string, unknown>>('dx_cohort_retention.json', 'cohort_retention.json') }
-export function getServiceUsage()     { return loadReal<Record<string, unknown>>('dx_service_usage.json',    'service_usage.json') }
-export function getEventHeatmap()     { return loadReal<Record<string, unknown>>('dx_event_heatmap.json',    'event_heatmap.json') }
-export function getSessionStats()     { return loadReal<Record<string, unknown>>('dx_session_stats.json',    'session_stats.json') }
-export function getHealthOverview()   { return loadReal<Record<string, unknown>>('dx_health_overview.json',  'health_overview.json') }
-export function getUserEvents()       { return loadReal<Record<string, unknown>>('dx_user_events.json',      'user_events.json') }
-export function getServiceDrill()          { return loadReal<Record<string, unknown>>('dx_service_drill.json',          'service_drill.json') }
-export function getEventHeatmapDrill()    { return loadReal<Record<string, unknown>>('dx_event_heatmap_drill.json',   'event_heatmap.json') }
-export function getServicesWindows()      { return loadReal<Record<string, unknown>>('dx_services_windows.json',      'service_usage.json') }
-
-// ── Real Python outputs (auto-blended where available) ───────────
-export function getRealDau()          { return loadReal<unknown[]>('m01_dau.json', 'dau_series.json') }
-export function getRealHealthScores() { return loadReal<Record<string, unknown>>('m43_user_health_score.json', 'users.json') }
-export function getRealSessionStats() { return loadReal<Record<string, unknown>>('m14_session_stats.json', 'session_stats.json') }
-export function getRealCohort()       { return loadReal<unknown[]>('m12_cohort_retention.json', 'cohort_retention.json') }
-export function getRealReports()      { return loadReal<Record<string, unknown>>('m32_report_metrics.json', 'service_usage.json') }
-export function getRealDormant()      { return loadReal<unknown[]>('m13_dormant_users.json', 'users.json') }
-export function getRealRoleBreakdown(){ return loadReal<unknown[]>('m06_active_by_role.json', 'role_distribution.json') }
-
-// ── Section bundles ──────────────────────────────────────────────
-export function getPeopleData() {
-  return {
-    overview: getOverview(),
-    dau:      getDauSeries(),
-    users:    getUsers(),
-    roles:    getRoleDistribution(),
-    cohort:   getCohortRetention(),
-    sessions: getSessionStats(),
-    // Supplementary real data (available when Python script has run)
-    real: {
-      dau:          getRealDau(),
-      healthScores: getRealHealthScores(),
-      dormant:      getRealDormant(),
-      roles:        getRealRoleBreakdown(),
-    },
+// ── Core loader: Supabase first, bundled JSON fallback ───────────────
+async function loadSnapshot<T>(id: string, mockFile: string): Promise<T> {
+  if (sbClient) {
+    const { data, error } = await sbClient
+      .from('dx_snapshots')
+      .select('data')
+      .eq('id', id)
+      .single()
+    if (!error && data?.data) return data.data as T
   }
+  return loadJsonFallback<T>(id, mockFile)
 }
 
-export function getServicesData() {
-  return {
-    services:        getServiceUsage(),
-    heatmap:         getEventHeatmap(),
-    events:          getUserEvents(),
-    drill:           getServiceDrill(),
-    heatmapDrill:    getEventHeatmapDrill(),
-    servicesWindows: getServicesWindows(),
-    real: {
-      reports: getRealReports(),
-    },
-  }
+// ── Sync wrapper for pages that can't be async (RSC pages ARE async) ─
+// All page.tsx files use React Server Components which support async,
+// so we export async bundle loaders below.
+
+// ── Section bundle loaders (used by RSC pages) ───────────────────────
+export async function getPeopleData() {
+  const [overview, dau, users, roles, cohort, sessions] = await Promise.all([
+    loadSnapshot<Record<string, unknown>>('overview',          'overview.json'),
+    loadSnapshot<Record<string, unknown>>('dau_series',        'dau_series.json'),
+    loadSnapshot<Record<string, unknown>>('users',             'users.json'),
+    loadSnapshot<Record<string, unknown>>('role_distribution', 'role_distribution.json'),
+    loadSnapshot<Record<string, unknown>>('cohort_retention',  'cohort_retention.json'),
+    loadSnapshot<Record<string, unknown>>('session_stats',     'session_stats.json'),
+  ])
+  return { overview, dau, users, roles, cohort, sessions, real: {} }
 }
 
-export function getHealthData() {
-  return {
-    health:   getHealthOverview(),
-    sessions: getSessionStats(),
-    overview: getOverview(),
-    real: {
-      sessions: getRealSessionStats(),
-    },
-  }
+export async function getServicesData() {
+  const [services, heatmap, events, drill, heatmapDrill, servicesWindows] = await Promise.all([
+    loadSnapshot<Record<string, unknown>>('service_usage',        'service_usage.json'),
+    loadSnapshot<Record<string, unknown>>('event_heatmap',        'event_heatmap.json'),
+    loadSnapshot<Record<string, unknown>>('user_events',          'user_events.json'),
+    loadSnapshot<Record<string, unknown>>('service_drill',        'service_drill.json'),
+    loadSnapshot<Record<string, unknown>>('event_heatmap_drill',  'event_heatmap.json'),
+    loadSnapshot<Record<string, unknown>>('services_windows',     'service_usage.json'),
+  ])
+  return { services, heatmap, events, drill, heatmapDrill, servicesWindows, real: {} }
 }
+
+export async function getHealthData() {
+  const [health, sessions, overview] = await Promise.all([
+    loadSnapshot<Record<string, unknown>>('health_overview', 'health_overview.json'),
+    loadSnapshot<Record<string, unknown>>('session_stats',   'session_stats.json'),
+    loadSnapshot<Record<string, unknown>>('overview',        'overview.json'),
+  ])
+  return { health, sessions, overview, real: {} }
+}
+
+// ── Individual loaders (used by API routes) ──────────────────────────
+export const getOverview         = () => loadSnapshot<Record<string, unknown>>('overview',          'overview.json')
+export const getDauSeries        = () => loadSnapshot<Record<string, unknown>>('dau_series',        'dau_series.json')
+export const getUsers            = () => loadSnapshot<Record<string, unknown>>('users',             'users.json')
+export const getRoleDistribution = () => loadSnapshot<Record<string, unknown>>('role_distribution', 'role_distribution.json')
+export const getCohortRetention  = () => loadSnapshot<Record<string, unknown>>('cohort_retention',  'cohort_retention.json')
+export const getServiceUsage     = () => loadSnapshot<Record<string, unknown>>('service_usage',     'service_usage.json')
+export const getEventHeatmap     = () => loadSnapshot<Record<string, unknown>>('event_heatmap',     'event_heatmap.json')
+export const getSessionStats     = () => loadSnapshot<Record<string, unknown>>('session_stats',     'session_stats.json')
+export const getHealthOverview   = () => loadSnapshot<Record<string, unknown>>('health_overview',   'health_overview.json')
+export const getUserEvents       = () => loadSnapshot<Record<string, unknown>>('user_events',       'user_events.json')
+export const getServiceDrill     = () => loadSnapshot<Record<string, unknown>>('service_drill',     'service_drill.json')
+export const getServicesWindows  = () => loadSnapshot<Record<string, unknown>>('services_windows',  'service_usage.json')

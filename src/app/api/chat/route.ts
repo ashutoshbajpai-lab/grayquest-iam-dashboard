@@ -11,10 +11,10 @@ export interface MetricSuggestion {
   description: string
 }
 
-function buildSystemContext(): string {
-  const p  = getPeopleData()  as Record<string, unknown>
-  const sv = getServicesData() as Record<string, unknown>
-  const h  = getHealthData()  as Record<string, unknown>
+async function buildSystemContext(): Promise<string> {
+  const p  = await getPeopleData()  as Record<string, unknown>
+  const sv = await getServicesData() as Record<string, unknown>
+  const h  = await getHealthData()  as Record<string, unknown>
 
   const ok   = ((p.overview  as Record<string, unknown>).kpis as Record<string, number>)
   const sk   = ((h.sessions  as Record<string, unknown>).kpis as Record<string, number|string>)
@@ -151,7 +151,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Messages required' }, { status: 400 })
   }
 
-  const system  = buildSystemContext()
+  const system  = await buildSystemContext()
   const content = (await callOllama(messages, system)) ?? (await callGemini(messages, system))
 
   if (!content) {

@@ -1,7 +1,7 @@
 import { getHealthData } from '@/lib/data'
 import HealthClient from './HealthClient'
 
-export default function HealthPage() {
-  const data = getHealthData()
+export default async function HealthPage() {
+  const data = await getHealthData()
   return <HealthClient data={data} />
 }

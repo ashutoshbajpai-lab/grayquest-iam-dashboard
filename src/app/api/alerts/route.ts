@@ -8,9 +8,9 @@ function makeAlert(id: string, message: string, metric: string, section: Section
 }
 
 export async function GET() {
-  const p  = getPeopleData()  as Record<string, unknown>
-  const h  = getHealthData()  as Record<string, unknown>
-  const sv = getServicesData() as Record<string, unknown>
+  const p  = await getPeopleData()  as Record<string, unknown>
+  const h  = await getHealthData()  as Record<string, unknown>
+  const sv = await getServicesData() as Record<string, unknown>
 
   const ok  = ((p.overview  as Record<string, unknown>).kpis     as Record<string, number>)
   const hk  = ((h.health    as Record<string, unknown>).kpis     as Record<string, number | string>)

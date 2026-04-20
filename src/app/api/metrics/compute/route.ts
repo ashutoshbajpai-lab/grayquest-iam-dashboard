@@ -26,11 +26,11 @@ function safeDiv(num: number, den: number, scale = 1): string {
   return ((num / den) * scale).toFixed(1)
 }
 
-function loadData() {
-  const p  = getPeopleData()  as Record<string, unknown>
-  const sv = getServicesData() as Record<string, unknown>
-  const h  = getHealthData()  as Record<string, unknown>
-  const ss = getSessionStats() as Record<string, unknown>
+async function loadData() {
+  const p  = await getPeopleData()  as Record<string, unknown>
+  const sv = await getServicesData() as Record<string, unknown>
+  const h  = await getHealthData()  as Record<string, unknown>
+  const ss = await getSessionStats() as Record<string, unknown>
 
   const overview  = (p.overview  as Record<string, unknown>).kpis  as Record<string, number>
   const healthK   = (h.health    as Record<string, unknown>).kpis  as Record<string, number>
@@ -42,9 +42,9 @@ function loadData() {
 }
 
 // ── Builtin evaluator — SPECIFIC patterns first, generic last ───
-function evaluateBuiltin(formula: string): string | null {
+async function evaluateBuiltin(formula: string): Promise<string | null> {
   const f = formula.toLowerCase().trim()
-  const { overview, healthK, sessionK, services, users } = loadData()
+  const { overview, healthK, sessionK, services, users } = await loadData()
 
   // ── 1. DAU / MAU Ratio ──────────────────────────────────────────
   if ((f.includes('dau') && f.includes('mau')) ||
@@ -148,8 +148,8 @@ function evaluateBuiltin(formula: string): string | null {
 }
 
 // ── AI data summary (comprehensive) ─────────────────────────────
-function buildDataSummary(): string {
-  const { overview, healthK, sessionK, services, users } = loadData()
+async function buildDataSummary(): Promise<string> {
+  const { overview, healthK, sessionK, services, users } = await loadData()
 
   const svcList = services.map(s =>
     `${s.service_name}(events:${s.events_30d},success:${s.success_rate}%,users:${s.active_users_30d}` +
