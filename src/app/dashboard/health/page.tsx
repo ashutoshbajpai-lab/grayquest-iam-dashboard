@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { getHealthData } from '@/lib/data'
 import HealthClient from './HealthClient'
 

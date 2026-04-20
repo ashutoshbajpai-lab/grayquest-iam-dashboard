@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { getServicesData } from '@/lib/data'
 import ServicesClient from './ServicesClient'
 

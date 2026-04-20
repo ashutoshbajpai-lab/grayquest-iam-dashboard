@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic'
 import { getPeopleData } from '@/lib/data'
 import PeopleClient from './PeopleClient'
 

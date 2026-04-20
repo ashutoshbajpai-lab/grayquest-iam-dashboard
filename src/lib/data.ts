@@ -8,7 +8,10 @@ const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY
                   ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
 const sbClient = SUPABASE_URL && SUPABASE_KEY
-  ? createClient(SUPABASE_URL, SUPABASE_KEY, { auth: { persistSession: false } })
+  ? createClient(SUPABASE_URL, SUPABASE_KEY, {
+      auth: { persistSession: false },
+      global: { fetch: (url, opts) => fetch(url, { ...opts, cache: 'no-store' }) },
+    })
   : null
 
 // ── JSON fallback (bundled real data → mock) ─────────────────────────
