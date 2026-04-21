@@ -151,7 +151,7 @@ export default function ChatClient() {
     {
       id:      'welcome',
       role:    'assistant',
-      content: 'Hello! I\'m your GrayQuest IAM analyst. I have full context of your dashboard data — 15 active users, 8 services, 30 days of activity on platform_id=7.\n\nAsk me anything about users, services, failures, or sessions. When I find a metric, you can save it directly to your Metrics Builder.',
+      content: 'Hello! I\'m your GrayQuest IAM analyst. I have full context of your dashboard data — users, services, and 30 days of activity on platform_id=6.\n\nAsk me anything about users, services, failures, or sessions. When I find a metric, you can save it directly to your Metrics Builder.',
       ts:      '',
     },
   ])
@@ -232,7 +232,7 @@ export default function ChatClient() {
           <p className="text-xs text-txt-muted">
             Tries <span className="text-txt-primary">Ollama phi3:mini</span> → falls back to <span className="text-txt-primary">Gemini 1.5 Flash</span>.
           </p>
-          <p className="text-xs text-txt-muted mt-2">Context: 15 users · 8 services · 30d data</p>
+          <p className="text-xs text-txt-muted mt-2">Context: platform_id=6 · 30d data</p>
           <div className="mt-3 pt-3 border-t border-bg-border">
             <p className="text-xs text-txt-muted">
               💡 Metric answers show a <span className="text-accent">Save to Metrics Builder</span> button
