@@ -8,7 +8,8 @@ import { createClient } from '@supabase/supabase-js'
 import { PLATFORM_ID as CFG_PLATFORM_ID, HEALTH } from './config'
 
 // ── Constants ──────────────────────────────────────────────────────────────
-const PLATFORM_ID      = CFG_PLATFORM_ID
+// Use process.env directly at runtime to avoid Next.js build-time NEXT_PUBLIC_ inlining
+const PLATFORM_ID      = process.env.PLATFORM_ID || process.env.NEXT_PUBLIC_PLATFORM_ID || CFG_PLATFORM_ID || '6'
 const SESSION_GAP_SECS = 3600
 const DORMANT_DAYS     = 30
 const MULTI_MODULE_MIN = 3
@@ -106,7 +107,7 @@ async function loadAllTables(sb: any) {
   ])
 
   const EFFECTIVE_PID = PLATFORM_ID || '6'
-  console.log(`[compute] PLATFORM_ID="${EFFECTIVE_PID}" total_activities=${activities.length} matching=${activities.filter(r => r.platform_id === EFFECTIVE_PID).length}`)
+  console.log(`[compute] PLATFORM_ID="${EFFECTIVE_PID}" (env: PLATFORM_ID="${process.env.PLATFORM_ID}" NEXT_PUBLIC_PLATFORM_ID="${process.env.NEXT_PUBLIC_PLATFORM_ID}") total_activities=${activities.length} matching=${activities.filter(r => r.platform_id === EFFECTIVE_PID).length}`)
   const iam   = activities.filter(r => r.platform_id === EFFECTIVE_PID)
   const audit = auditAll.filter(r => r.platform_id === EFFECTIVE_PID)
   return { users, activities, userGroups, groups, services, events, iam, audit }
