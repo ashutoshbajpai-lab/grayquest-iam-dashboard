@@ -40,8 +40,8 @@ CURRENT METRICS (last 30 days):
 SERVICES:
 ${svs.map(s => `  - ${s.service_name}: ${s.events_30d} events, ${s.success_rate}% success, ${s.active_users_30d} users, trend: ${s.trend}%`).join('\n')}
 
-USERS (15 active):
-${users.map(u => `  - ${u.name} (${u.role}): health ${u.health_score}, ${u.sessions_30d} sessions, login rate ${u.login_success_rate}%, last active ${u.last_active}`).join('\n')}
+USERS (top 20 active):
+${users.slice(0, 20).map(u => `  - ${u.name} (${u.role}): health ${u.health_score}, ${u.sessions_30d} sessions, login rate ${u.login_success_rate}%, last active ${u.last_active}`).join('\n')}
 
 ROLES: ${[...new Set(users.map(u => String(u.role)))].map(r => `${r}(${users.filter(u => u.role === r).length})`).join(', ')}
 

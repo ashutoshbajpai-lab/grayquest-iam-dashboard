@@ -77,12 +77,12 @@ function mapArrPush<K, V>(m: Map<K, V[]>, k: K, v: V) {
 // ── Data loading ──────────────────────────────────────────────────────────
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function loadAllTables(sb: any) {
-  const fetchAll = async <T>(table: string): Promise<T[]> => {
+  const fetchAll = async <T>(table: string, columns = '*'): Promise<T[]> => {
     const PAGE = 1000
     let rows: T[] = []
     let from = 0
     while (true) {
-      const { data, error } = await sb.from(table).select('*').range(from, from + PAGE - 1)
+      const { data, error } = await sb.from(table).select(columns).range(from, from + PAGE - 1)
       if (error) throw new Error(`${table}: ${error.message}`)
       if (!data || data.length === 0) break
       rows = rows.concat(data as T[])
@@ -92,6 +92,9 @@ async function loadAllTables(sb: any) {
     return rows
   }
 
+  // Select only needed audit_log columns (skip 'data' which has large JSON blobs)
+  const AUDIT_COLUMNS = 'id,code,user_id,platform_id,service_id,event_id,type,comment,status,created_on'
+
   const [users, activities, userGroups, groups, services, events, auditAll] = await Promise.all([
     fetchAll<RawUser>('raw_iam_users'),
     fetchAll<RawActivity>('raw_iam_activities'),
@@ -99,7 +102,7 @@ async function loadAllTables(sb: any) {
     fetchAll<RawGroup>('raw_iam_groups'),
     fetchAll<RawService>('raw_iam_services'),
     fetchAll<RawEvent>('raw_iam_events'),
-    fetchAll<RawAuditLog>('raw_audit_logs'),
+    fetchAll<RawAuditLog>('raw_audit_logs', AUDIT_COLUMNS),
   ])
 
   const iam   = activities.filter(r => r.platform_id === PLATFORM_ID)
