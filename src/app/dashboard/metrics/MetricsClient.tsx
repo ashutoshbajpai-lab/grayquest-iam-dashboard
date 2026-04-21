@@ -21,10 +21,15 @@ const FORMULA_TEMPLATES = [
   { label: 'Top Service by Success',     formula: 'service with highest success rate' },
 ]
 
-function MetricResultBadge({ result }: { result: string | number }) {
+function MetricResultBadge({ result }: { result: unknown }) {
+  const display = result === null || result === undefined
+    ? '—'
+    : typeof result === 'object'
+      ? JSON.stringify(result)
+      : String(result)
   return (
     <span className="inline-block bg-accent/15 text-accent font-mono text-sm px-3 py-1 rounded-lg">
-      {result}
+      {display}
     </span>
   )
 }

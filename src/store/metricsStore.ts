@@ -12,6 +12,12 @@ interface MetricsStore {
   updateResult: (id: string, result: string | number) => void
 }
 
+function sanitizeResult(r: unknown): string {
+  if (r === null || r === undefined) return ''
+  if (typeof r === 'object') return JSON.stringify(r)
+  return String(r)
+}
+
 export const useMetricsStore = create<MetricsStore>()(
   persist(
     (set) => ({
@@ -20,6 +26,7 @@ export const useMetricsStore = create<MetricsStore>()(
       addMetric: (m) => set((s) => ({
         metrics: [...s.metrics, {
           ...m,
+          result:    sanitizeResult(m.result),
           id:        crypto.randomUUID(),
           createdAt: new Date().toISOString(),
         }],
@@ -47,6 +54,15 @@ export const useMetricsStore = create<MetricsStore>()(
         metrics: s.metrics.map(m => m.id === id ? { ...m, result } : m),
       })),
     }),
-    { name: 'gq-custom-metrics' }
+    {
+      name: 'gq-custom-metrics',
+      onRehydrateStorage: () => (state) => {
+        if (!state) return
+        state.metrics = state.metrics.map(m => ({
+          ...m,
+          result: sanitizeResult(m.result),
+        }))
+      },
+    }
   )
 )
