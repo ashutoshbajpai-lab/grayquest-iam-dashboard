@@ -105,6 +105,7 @@ async function loadAllTables(sb: any) {
     fetchAll<RawAuditLog>('raw_audit_logs', AUDIT_COLUMNS),
   ])
 
+  console.log(`[compute] PLATFORM_ID=${PLATFORM_ID} total_activities=${activities.length} iam_activities=${activities.filter(r => r.platform_id === PLATFORM_ID).length}`)
   const iam   = activities.filter(r => r.platform_id === PLATFORM_ID)
   const audit = auditAll.filter(r => r.platform_id === PLATFORM_ID)
   return { users, activities, userGroups, groups, services, events, iam, audit }
