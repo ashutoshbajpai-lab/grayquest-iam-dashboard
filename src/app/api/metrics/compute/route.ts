@@ -135,6 +135,48 @@ async function evaluateBuiltin(formula: string): Promise<string | null> {
     return `${overview.dormant_users} dormant users (${pct}% of ${overview.total_users.toLocaleString()} total)`
   }
 
+  // ── 9. Top users by session count ───────────────────────────────
+  if ((f.includes('top') || f.includes('most')) && (f.includes('user') || f.includes('session'))) {
+    const n = f.match(/\d+/)?.[0] ? parseInt(f.match(/\d+/)![0]) : 3
+    const top = [...users].sort((a, b) => b.sessions_30d - a.sessions_30d).slice(0, Math.min(n, 10))
+    return top.map((u, i) => `${i + 1}. ${u.name} (${u.sessions_30d} sessions)`).join(', ')
+  }
+
+  // ── 10. Who is active / user names active today ──────────────────
+  if ((f.includes('who') || f.includes('user name') || f.includes('which user') || f.includes('name')) &&
+      (f.includes('active') || f.includes('today') || f.includes('current'))) {
+    const dau = overview.active_users_today ?? 0
+    const top = [...users].sort((a, b) => b.sessions_30d - a.sessions_30d).slice(0, dau || 5)
+    if (!top.length) return `${dau} users active today (no name data available in snapshot)`
+    return `${dau} user${dau !== 1 ? 's' : ''} active today. Most active (30d): ${top.map(u => u.name).join(', ')}`
+  }
+
+  // ── 11. Lowest health users / at-risk ────────────────────────────
+  if ((f.includes('low') || f.includes('worst') || f.includes('at risk') || f.includes('below')) && f.includes('health')) {
+    const n = f.match(/\d+/)?.[0] ? parseInt(f.match(/\d+/)![0]) : 5
+    const bottom = [...users].sort((a, b) => a.health_score - b.health_score).slice(0, Math.min(n, 10))
+    return bottom.map((u, i) => `${i + 1}. ${u.name} (score: ${u.health_score})`).join(', ')
+  }
+
+  // ── 12. Failure / error rate by service ─────────────────────────
+  if ((f.includes('worst') || f.includes('highest fail') || f.includes('most fail')) && f.includes('service')) {
+    const worst = [...services].sort((a, b) => a.success_rate - b.success_rate)[0]
+    if (!worst) return 'No service data'
+    return `${worst.service_name} — ${(100 - worst.success_rate).toFixed(1)}% failure rate (lowest success rate of ${services.length} services)`
+  }
+
+  // ── 13. Total users / user count ────────────────────────────────
+  if ((f.includes('total') || f.includes('how many') || f.includes('count')) && f.includes('user'))
+    return `${overview.total_users?.toLocaleString() ?? 0} total users (${overview.active_users_30d} active in last 30d, ${overview.dormant_users} dormant)`
+
+  // ── 14. Avg session duration ────────────────────────────────────
+  if (f.includes('session') && (f.includes('duration') || f.includes('length') || f.includes('long')))
+    return `Average session duration: ${overview.avg_session_duration_min ?? 0} minutes (30d)`
+
+  // ── 15. Login success rate ──────────────────────────────────────
+  if (f.includes('login') && (f.includes('rate') || f.includes('success') || f.includes('%')))
+    return `${healthK.login_success_rate ?? 0}% login success rate (30d)`
+
   // LAST: broad total-events match — kept after specific patterns
   if ((f.includes('total') || f.includes('sum')) && f.includes('event'))
     return `${overview.total_events_30d.toLocaleString()} total events in last 30 days`
