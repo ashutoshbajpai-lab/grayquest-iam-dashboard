@@ -9,7 +9,8 @@
 export const DATASET_END_DATE = process.env.NEXT_PUBLIC_DATASET_END_DATE ?? '2026-04-18'
 
 // ── Platform ──────────────────────────────────────────────────────
-export const PLATFORM_ID = process.env.NEXT_PUBLIC_PLATFORM_ID ?? '6'
+// Use PLATFORM_ID env var (falls back to '6' if unset or empty)
+export const PLATFORM_ID = process.env.NEXT_PUBLIC_PLATFORM_ID || process.env.PLATFORM_ID || '6'
 export const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME ?? 'GrayQuest'
 
 // ── Dashboard user identity ───────────────────────────────────────

@@ -105,9 +105,10 @@ async function loadAllTables(sb: any) {
     fetchAll<RawAuditLog>('raw_audit_logs', AUDIT_COLUMNS),
   ])
 
-  console.log(`[compute] PLATFORM_ID=${PLATFORM_ID} total_activities=${activities.length} iam_activities=${activities.filter(r => r.platform_id === PLATFORM_ID).length}`)
-  const iam   = activities.filter(r => r.platform_id === PLATFORM_ID)
-  const audit = auditAll.filter(r => r.platform_id === PLATFORM_ID)
+  const EFFECTIVE_PID = PLATFORM_ID || '6'
+  console.log(`[compute] PLATFORM_ID="${EFFECTIVE_PID}" total_activities=${activities.length} matching=${activities.filter(r => r.platform_id === EFFECTIVE_PID).length}`)
+  const iam   = activities.filter(r => r.platform_id === EFFECTIVE_PID)
+  const audit = auditAll.filter(r => r.platform_id === EFFECTIVE_PID)
   return { users, activities, userGroups, groups, services, events, iam, audit }
 }
 
