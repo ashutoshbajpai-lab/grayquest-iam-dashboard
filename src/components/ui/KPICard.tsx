@@ -20,8 +20,16 @@ export default function KPICard({
         )}
       </div>
 
-      {/* Value */}
-      <p className="text-[2rem] font-extrabold leading-none tracking-tight text-txt-primary">
+      {/* Value — font scales down for long strings to prevent overflow */}
+      <p className={`font-extrabold leading-tight tracking-tight text-txt-primary break-words min-h-[2.5rem] flex items-center ${
+        String(value).length > 30
+          ? 'text-sm'
+          : String(value).length > 18
+            ? 'text-lg'
+            : String(value).length > 10
+              ? 'text-2xl'
+              : 'text-[2rem] leading-none'
+      }`}>
         {value}
       </p>
 
