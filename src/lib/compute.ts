@@ -9,7 +9,7 @@ import { PLATFORM_ID as CFG_PLATFORM_ID, HEALTH } from './config'
 
 // ── Constants ──────────────────────────────────────────────────────────────
 const PLATFORM_ID      = CFG_PLATFORM_ID
-const SESSION_GAP_SECS = 1800
+const SESSION_GAP_SECS = 3600
 const DORMANT_DAYS     = 30
 const MULTI_MODULE_MIN = 3
 const REPORT_KEYWORDS  = ['report', 'export', 'download', 'summary']
@@ -590,11 +590,12 @@ export async function computeAllMetrics(): Promise<void> {
       completion_rate:        Math.round(completionRate * 10) / 10,
     },
     duration_buckets: [
-      { label: '< 5 min',   count: allDurs.filter(d => d < 300).length },
-      { label: '5\u201315 min',  count: allDurs.filter(d => d >= 300  && d < 900).length },
-      { label: '15\u201330 min', count: allDurs.filter(d => d >= 900  && d < 1800).length },
-      { label: '30\u201360 min', count: allDurs.filter(d => d >= 1800 && d < 3600).length },
-      { label: '> 60 min',  count: allDurs.filter(d => d >= 3600).length },
+      { label: '< 5 min',    count: allDurs.filter(d => d < 300).length },
+      { label: '5\u201315 min',   count: allDurs.filter(d => d >= 300  && d < 900).length },
+      { label: '15\u201330 min',  count: allDurs.filter(d => d >= 900  && d < 1800).length },
+      { label: '30\u201360 min',  count: allDurs.filter(d => d >= 1800 && d < 3600).length },
+      { label: '60\u2013120 min', count: allDurs.filter(d => d >= 3600 && d < 7200).length },
+      { label: '> 120 min',  count: allDurs.filter(d => d >= 7200).length },
     ],
     events_per_session_buckets: [
       { label: '1\u20133',   count: epc.filter(e => e >= 1  && e <= 3).length },

@@ -9,7 +9,7 @@
 export const DATASET_END_DATE = process.env.NEXT_PUBLIC_DATASET_END_DATE ?? '2026-04-18'
 
 // ── Platform ──────────────────────────────────────────────────────
-export const PLATFORM_ID = process.env.NEXT_PUBLIC_PLATFORM_ID ?? '7'
+export const PLATFORM_ID = process.env.NEXT_PUBLIC_PLATFORM_ID ?? '6'
 export const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME ?? 'GrayQuest'
 
 // ── Dashboard user identity ───────────────────────────────────────
@@ -157,12 +157,12 @@ export const AVATAR_PALETTE: { bg: string; fg: string }[] = [
 // These are documented here for reference; the actual values live in
 // compute_metrics.py at the top-level CONSTANTS block.
 export const PYTHON_DEFAULTS = {
-  SESSION_GAP_SECS:  1800,   // 30-min inactivity → new session
+  SESSION_GAP_SECS:  3600,   // 60-min inactivity → new session
   POWER_TOP_PCT:     0.10,   // top 10% by activity = power users
   HEAVY_THRESHOLD:   20,     // avg actions/week = heavy user
   DORMANT_DAYS:      30,
   LATE_HOUR_START:   19,     // 7 PM
-  SHORT_SESSION:     1800,
+  SHORT_SESSION:     3600,
   MULTI_MODULE_MIN:  3,
   HEALTH_WEIGHTS: {           // must sum to 1.0
     login_freq:       0.25,
