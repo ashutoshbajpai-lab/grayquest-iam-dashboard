@@ -213,13 +213,13 @@ export async function POST(req: NextRequest) {
   }
 
   // Try builtin first (instant, accurate)
-  const builtin = evaluateBuiltin(formula)
+  const builtin = await evaluateBuiltin(formula)
   if (builtin) {
     return NextResponse.json({ result: builtin, source: 'builtin' })
   }
 
   // AI fallback with full data context
-  const dataSummary = buildDataSummary()
+  const dataSummary = await buildDataSummary()
   const prompt = `You are a data analyst for GrayQuest, an Indian fee-collection platform for educational institutions. Compute the requested metric using ONLY the data provided. Do not hallucinate field values.
 
 DATA (authoritative — use only these numbers):
