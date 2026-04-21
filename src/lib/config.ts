@@ -6,7 +6,7 @@
 // ── Dataset / Date ────────────────────────────────────────────────
 // The most recent date present in the source CSVs.
 // Update this when the data pipeline is refreshed.
-export const DATASET_END_DATE = process.env.NEXT_PUBLIC_DATASET_END_DATE ?? '2026-04-18'
+export const DATASET_END_DATE = process.env.NEXT_PUBLIC_DATASET_END_DATE ?? new Date().toISOString().split('T')[0]
 
 // ── Platform ──────────────────────────────────────────────────────
 // Use PLATFORM_ID env var (falls back to '6' if unset or empty)
