@@ -18,9 +18,9 @@ export const NAV_TABS = [
 export const FILTER_BAR_SECTIONS = ['people', 'services', 'health']
 
 export { AUTH_COOKIE_NAME, AUTH_COOKIE_NAME as AUTH_COOKIE_ALIAS } from './config'
-import { AUTH_COOKIE_NAME } from './config'
+import { AUTH_COOKIE_NAME, DATASET_END_DATE } from './config'
 
-const TODAY = new Date().toISOString().split('T')[0]
+const TODAY = DATASET_END_DATE
 
 function daysAgo(n: number) {
   const d = new Date(TODAY)
