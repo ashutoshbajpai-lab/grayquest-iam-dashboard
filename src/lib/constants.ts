@@ -59,12 +59,20 @@ export const KPI_DESCRIPTIONS: Record<string, string> = {
 }
 
 export const ROLE_OPTIONS = [
-  'Institute Admin', 'IAM Admin', 'Service Manager', 'Finance Officer', 'Audit Officer',
+  'Institute Admin', 'Super Admin', 'Group manager', 'Backend Engineer',
+  'Block Master Dashboard', 'Block master-view only', 'FMS Dashboard Limited',
+  'Group Admissions Manager', 'Institute Dashboard main replacement',
+  'Product', 'System Associates',
 ] as const
 
 export const SERVICE_NAMES = [
-  'Fee Collection', 'Student Management', 'User Administration', 'Loan Management',
-  'Institute Management', 'Audit Logs', 'Settings', 'Notifications',
+  'Payment link communication', 'Student Fee Headers', 'Student Management',
+  'Student Transactions', 'Master Dashboard', 'PG Transactions',
+  'Master Dashboard Reports', 'Fee Headers', 'My Reports', 'Report Templates',
+  'EMI Applications', 'Student Fine', 'Offline Transactions', 'Application Profile',
+  'Classes', 'Fine', 'Forms', 'Applicant Fee Headers', 'Institute Discount',
+  'Ongoing Admissions', 'Admission Leads', 'AD Registrations', 'Dashboard',
+  'AD Transactions', 'Payment link history', 'Lead Profile', 'Student Discount',
 ] as const
 
 export const EMPTY_STATES: Record<string, string> = {
