@@ -108,7 +108,10 @@ async function getRawData(): Promise<RawData> {
   const h  = await getHealthData()   as Record<string, unknown>
   _cache = {
     overview: ((p.overview  as Record<string, unknown>)?.kpis  ?? {}) as Record<string, number>,
-    healthK:  ((h.health    as Record<string, unknown>)?.kpis  ?? {}) as Record<string, number>,
+    // dx_health_overview.json has kpis at top level, not nested under h.health
+    healthK:  ((h as Record<string, unknown>).kpis
+              ?? (h.health as Record<string, unknown>)?.kpis
+              ?? {}) as Record<string, number>,
     sessionK: ((h.sessions  as Record<string, unknown>)?.kpis  ?? {}) as Record<string, number>,
     users:    ((p.users     as Record<string, unknown>)?.users ?? []) as Record<string, unknown>[],
     services: ((sv.services as Record<string, unknown>)?.services ?? []) as Record<string, unknown>[],
@@ -472,14 +475,14 @@ Respond with bullet points and exact numbers from the data. Bold key values.`
   }
 
   // Both AI services unavailable — return a data-only answer from context
-  const { overview } = await getRawData()
+  const { overview, healthK } = await getRawData()
   const quickAnswer = `I'm having trouble reaching the AI service right now. Here's what the data shows directly:
 
 **Platform Overview**
 • Total users: ${overview.total_users ?? 'N/A'}
 • Active users (30 d): ${overview.active_users_30d ?? 'N/A'}
-• Avg health score: ${overview.avg_health_score ?? 'N/A'}
-• Login success rate: ${overview.login_success_rate ?? overview.auth_success_rate ?? 'N/A'}%
+• Avg health score: ${healthK.avg_health_score ?? 'N/A'}
+• Login success rate: ${healthK.login_success_rate ?? overview.overall_success_rate ?? 'N/A'}%
 • Dormant users: ${overview.dormant_users ?? 'N/A'}
 
 Try rephrasing your question or ask about a specific metric.`
