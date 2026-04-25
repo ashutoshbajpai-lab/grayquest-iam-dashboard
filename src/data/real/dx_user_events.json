@@ -2,503 +2,1803 @@
   "events": [
     {
       "event_id": 1,
-      "ts": "2026-04-18 13:10:17",
+      "ts": "March 31, 2026, 15:55",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT Response file",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Payment link communication",
+      "event": "Share",
+      "user_name": "vib15701@grayquest.com",
+      "user_id": "3603"
     },
     {
       "event_id": 2,
-      "ts": "2026-04-18 13:10:11",
+      "ts": "March 31, 2026, 15:55",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student Bulk upload",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 3,
-      "ts": "2026-04-18 13:10:08",
+      "ts": "March 31, 2026, 15:56",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file verified",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 4,
-      "ts": "2026-04-18 13:10:08",
+      "ts": "March 31, 2026, 15:56",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file uploaded",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 5,
-      "ts": "2026-04-18 13:10:04",
+      "ts": "March 31, 2026, 15:57",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file creation",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 6,
-      "ts": "2026-04-18 13:09:52",
+      "ts": "March 31, 2026, 15:57",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Sheet uploaded",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 7,
-      "ts": "2026-04-18 13:09:51",
+      "ts": "March 31, 2026, 15:57",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student Response file",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Payment link communication",
+      "event": "Add Student",
+      "user_name": "vib15701@grayquest.com",
+      "user_id": "3603"
     },
     {
       "event_id": 8,
-      "ts": "2026-04-18 12:49:51",
+      "ts": "March 31, 2026, 15:57",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student Bulk upload",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "vib15701@grayquest.com",
+      "user_id": "3603"
     },
     {
       "event_id": 9,
-      "ts": "2026-04-18 12:49:44",
+      "ts": "March 31, 2026, 15:57",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file uploaded",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Payment link communication",
+      "event": "Create a Payment link",
+      "user_name": "vib47@grayquest.com",
+      "user_id": "3608"
     },
     {
       "event_id": 10,
-      "ts": "2026-04-18 12:49:43",
+      "ts": "March 31, 2026, 15:57",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file verified",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Payment link communication",
+      "event": "Share",
+      "user_name": "vib47@grayquest.com",
+      "user_id": "3608"
     },
     {
       "event_id": 11,
-      "ts": "2026-04-18 12:49:39",
+      "ts": "March 31, 2026, 15:58",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file creation",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib15701@grayquest.com",
+      "user_id": "3603"
     },
     {
       "event_id": 12,
-      "ts": "2026-04-18 12:49:25",
+      "ts": "March 31, 2026, 15:58",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student Response file",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 13,
-      "ts": "2026-04-18 12:49:25",
+      "ts": "March 31, 2026, 15:58",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Sheet uploaded",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 14,
-      "ts": "2026-04-18 12:48:46",
+      "ts": "March 31, 2026, 15:58",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student Bulk upload",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Payment link communication",
+      "event": "Create a Payment link",
+      "user_name": "vib15701@grayquest.com",
+      "user_id": "3603"
     },
     {
       "event_id": 15,
-      "ts": "2026-04-18 12:48:43",
+      "ts": "March 31, 2026, 15:58",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file uploaded",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Payment link communication",
+      "event": "Share",
+      "user_name": "vib15701@grayquest.com",
+      "user_id": "3603"
     },
     {
       "event_id": 16,
-      "ts": "2026-04-18 12:48:42",
+      "ts": "March 31, 2026, 15:59",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file verified",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 17,
-      "ts": "2026-04-18 12:48:27",
+      "ts": "March 31, 2026, 15:59",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file downloaded",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 18,
-      "ts": "2026-04-18 12:48:24",
+      "ts": "March 31, 2026, 16:00",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file creation",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 19,
-      "ts": "2026-04-18 12:48:04",
+      "ts": "March 31, 2026, 16:00",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student Response file",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 20,
-      "ts": "2026-04-18 12:48:04",
+      "ts": "March 31, 2026, 16:01",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Sheet uploaded",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 21,
-      "ts": "2026-04-18 12:46:32",
+      "ts": "March 31, 2026, 16:01",
       "status": "SUCCESS",
       "service": "Student Management",
-      "event": "Sample file download",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "event": "Add Student",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
     },
     {
       "event_id": 22,
-      "ts": "2026-04-18 12:43:35",
+      "ts": "March 31, 2026, 16:01",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student Bulk upload",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
     },
     {
       "event_id": 23,
-      "ts": "2026-04-18 12:43:33",
+      "ts": "March 31, 2026, 16:01",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file verified",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 24,
-      "ts": "2026-04-18 12:43:33",
+      "ts": "March 31, 2026, 16:02",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file uploaded",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 25,
-      "ts": "2026-04-18 12:43:32",
+      "ts": "March 31, 2026, 16:02",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file downloaded",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Master Dashboard Reports",
+      "event": "Generate Ariflow Report",
+      "user_name": "accounts@grd.edu.in",
+      "user_id": "7986"
     },
     {
       "event_id": 26,
-      "ts": "2026-04-18 12:43:29",
+      "ts": "March 31, 2026, 16:02",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file creation",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Master Dashboard Reports",
+      "event": "Generate new report",
+      "user_name": "accounts@grd.edu.in",
+      "user_id": "7986"
     },
     {
       "event_id": 27,
-      "ts": "2026-04-18 12:43:21",
+      "ts": "March 31, 2026, 16:02",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Sheet uploaded",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 28,
-      "ts": "2026-04-18 12:43:20",
+      "ts": "March 31, 2026, 16:03",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student Response file",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 29,
-      "ts": "2026-04-18 12:42:14",
+      "ts": "March 31, 2026, 16:03",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student Bulk upload",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Master Dashboard Reports",
+      "event": "Summary -  Download report",
+      "user_name": "accounts@grd.edu.in",
+      "user_id": "7986"
     },
     {
       "event_id": 30,
-      "ts": "2026-04-18 12:42:12",
+      "ts": "March 31, 2026, 16:03",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file verified",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 31,
-      "ts": "2026-04-18 12:42:12",
+      "ts": "March 31, 2026, 16:04",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file uploaded",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 32,
-      "ts": "2026-04-18 12:42:10",
+      "ts": "March 31, 2026, 16:04",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file downloaded",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 33,
-      "ts": "2026-04-18 12:42:07",
+      "ts": "March 31, 2026, 16:05",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student FT file creation",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 34,
-      "ts": "2026-04-18 12:41:58",
+      "ts": "March 31, 2026, 16:05",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Student Response file",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 35,
-      "ts": "2026-04-18 12:41:58",
+      "ts": "March 31, 2026, 16:05",
       "status": "SUCCESS",
-      "service": "Student Management",
-      "event": "Sheet uploaded",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 36,
-      "ts": "2026-04-18 12:41:35",
+      "ts": "March 31, 2026, 16:06",
       "status": "SUCCESS",
-      "service": "Master Dashboard",
-      "event": "Redirect to GILE Dashboard",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 37,
-      "ts": "2026-04-18 10:07:45",
+      "ts": "March 31, 2026, 16:06",
       "status": "SUCCESS",
-      "service": "Master Dashboard Reports",
-      "event": "Generate new report",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 38,
-      "ts": "2026-04-18 09:37:23",
+      "ts": "March 31, 2026, 16:07",
       "status": "SUCCESS",
-      "service": "Master Dashboard Reports",
-      "event": "Generate new report",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 39,
-      "ts": "2026-04-17 19:12:28",
+      "ts": "March 31, 2026, 16:07",
       "status": "SUCCESS",
-      "service": "Master Dashboard Reports",
-      "event": "Generate new report",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 40,
-      "ts": "2026-04-17 19:12:24",
+      "ts": "March 31, 2026, 16:08",
       "status": "SUCCESS",
-      "service": "Master Dashboard Reports",
-      "event": "Generate new report",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 41,
-      "ts": "2026-04-17 19:05:38",
+      "ts": "March 31, 2026, 16:08",
       "status": "SUCCESS",
-      "service": "Master Dashboard Reports",
-      "event": "Generate new report",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 42,
-      "ts": "2026-04-17 19:02:56",
+      "ts": "March 31, 2026, 16:09",
       "status": "SUCCESS",
-      "service": "Master Dashboard Reports",
-      "event": "Generate new report",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 43,
-      "ts": "2026-04-17 18:51:57",
+      "ts": "March 31, 2026, 16:09",
       "status": "SUCCESS",
-      "service": "Master Dashboard Reports",
-      "event": "Generate new report",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Management",
+      "event": "Delete",
+      "user_name": "accounts@neev.in",
+      "user_id": "3906"
     },
     {
       "event_id": 44,
-      "ts": "2026-04-17 18:51:26",
+      "ts": "March 31, 2026, 16:09",
       "status": "SUCCESS",
-      "service": "Master Dashboard Reports",
-      "event": "Generate new report",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
     },
     {
       "event_id": 45,
-      "ts": "2026-04-17 18:12:48",
+      "ts": "March 31, 2026, 16:09",
       "status": "SUCCESS",
-      "service": "Master Dashboard Reports",
-      "event": "Generate new report",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Master Dashboard",
+      "event": "Redirect to GILE Dashboard",
+      "user_name": "rajiv.bansal@indiraedu.com",
+      "user_id": "6743"
     },
     {
       "event_id": 46,
-      "ts": "2026-04-17 18:12:24",
+      "ts": "March 31, 2026, 16:09",
       "status": "SUCCESS",
-      "service": "Master Dashboard Reports",
-      "event": "Generate new report",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
     },
     {
       "event_id": 47,
-      "ts": "2026-04-17 18:10:51",
+      "ts": "March 31, 2026, 16:09",
       "status": "SUCCESS",
-      "service": "Master Dashboard Reports",
-      "event": "Generate new report",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "accounts@neev.in",
+      "user_id": "3906"
     },
     {
       "event_id": 48,
-      "ts": "2026-04-17 18:10:02",
+      "ts": "March 31, 2026, 16:09",
       "status": "SUCCESS",
-      "service": "Master Dashboard Reports",
-      "event": "Generate new report",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "accounts@neev.in",
+      "user_id": "3906"
     },
     {
       "event_id": 49,
-      "ts": "2026-04-17 17:58:35",
+      "ts": "March 31, 2026, 16:10",
       "status": "SUCCESS",
-      "service": "Master Dashboard Reports",
-      "event": "Generate new report",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
     },
     {
       "event_id": 50,
-      "ts": "2026-04-17 17:31:59",
+      "ts": "March 31, 2026, 16:10",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 51,
+      "ts": "March 31, 2026, 16:10",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 52,
+      "ts": "March 31, 2026, 16:10",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 53,
+      "ts": "March 31, 2026, 16:11",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 54,
+      "ts": "March 31, 2026, 16:11",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 55,
+      "ts": "March 31, 2026, 16:11",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "vib47@grayquest.com",
+      "user_id": "3608"
+    },
+    {
+      "event_id": 56,
+      "ts": "March 31, 2026, 16:12",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 57,
+      "ts": "March 31, 2026, 16:12",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib47@grayquest.com",
+      "user_id": "3608"
+    },
+    {
+      "event_id": 58,
+      "ts": "March 31, 2026, 16:12",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 59,
+      "ts": "March 31, 2026, 16:13",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 60,
+      "ts": "March 31, 2026, 16:13",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 61,
+      "ts": "March 31, 2026, 16:14",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 62,
+      "ts": "March 31, 2026, 16:14",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Create a Payment link",
+      "user_name": "vib47@grayquest.com",
+      "user_id": "3608"
+    },
+    {
+      "event_id": 63,
+      "ts": "March 31, 2026, 16:14",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Share",
+      "user_name": "vib47@grayquest.com",
+      "user_id": "3608"
+    },
+    {
+      "event_id": 64,
+      "ts": "March 31, 2026, 16:14",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 65,
+      "ts": "March 31, 2026, 16:15",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 66,
+      "ts": "March 31, 2026, 16:15",
       "status": "SUCCESS",
       "service": "Student Management",
-      "event": "Student Bulk upload",
-      "user_name": "rajeshwari.pillai@grayquest.com",
-      "user_id": "1325",
-      "session_id": ""
+      "event": "Add Student",
+      "user_name": "vib15139@grayquest.com",
+      "user_id": "3594"
+    },
+    {
+      "event_id": 67,
+      "ts": "March 31, 2026, 16:15",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "vib15139@grayquest.com",
+      "user_id": "3594"
+    },
+    {
+      "event_id": 68,
+      "ts": "March 31, 2026, 16:15",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 69,
+      "ts": "March 31, 2026, 16:16",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "vib15139@grayquest.com",
+      "user_id": "3594"
+    },
+    {
+      "event_id": 70,
+      "ts": "March 31, 2026, 16:16",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib15139@grayquest.com",
+      "user_id": "3594"
+    },
+    {
+      "event_id": 71,
+      "ts": "March 31, 2026, 16:16",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 72,
+      "ts": "March 31, 2026, 16:16",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib47@grayquest.com",
+      "user_id": "3608"
+    },
+    {
+      "event_id": 73,
+      "ts": "March 31, 2026, 16:16",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Create a Payment link",
+      "user_name": "vib47@grayquest.com",
+      "user_id": "3608"
+    },
+    {
+      "event_id": 74,
+      "ts": "March 31, 2026, 16:16",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Share",
+      "user_name": "vib47@grayquest.com",
+      "user_id": "3608"
+    },
+    {
+      "event_id": 75,
+      "ts": "March 31, 2026, 16:17",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Summary - Add offline collection",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 76,
+      "ts": "March 31, 2026, 16:18",
+      "status": "SUCCESS",
+      "service": "Master Dashboard",
+      "event": "Redirect to GILE Dashboard",
+      "user_name": "prashant.mishra@oberoi-is.org",
+      "user_id": "7339"
+    },
+    {
+      "event_id": 77,
+      "ts": "March 31, 2026, 16:18",
+      "status": "SUCCESS",
+      "service": "My Reports",
+      "event": "Generate Ariflow Report",
+      "user_name": "prashant.mishra@oberoi-is.org",
+      "user_id": "7339"
+    },
+    {
+      "event_id": 78,
+      "ts": "March 31, 2026, 16:18",
+      "status": "SUCCESS",
+      "service": "Report Templates",
+      "event": "Generate new report",
+      "user_name": "prashant.mishra@oberoi-is.org",
+      "user_id": "7339"
+    },
+    {
+      "event_id": 79,
+      "ts": "March 31, 2026, 16:19",
+      "status": "SUCCESS",
+      "service": "My Reports",
+      "event": "Generate Ariflow Report",
+      "user_name": "prashant.mishra@oberoi-is.org",
+      "user_id": "7339"
+    },
+    {
+      "event_id": 80,
+      "ts": "March 31, 2026, 16:19",
+      "status": "SUCCESS",
+      "service": "Report Templates",
+      "event": "Generate new report",
+      "user_name": "prashant.mishra@oberoi-is.org",
+      "user_id": "7339"
+    },
+    {
+      "event_id": 81,
+      "ts": "March 31, 2026, 16:19",
+      "status": "SUCCESS",
+      "service": "My Reports",
+      "event": "Generate Ariflow Report",
+      "user_name": "prashant.mishra@oberoi-is.org",
+      "user_id": "7339"
+    },
+    {
+      "event_id": 82,
+      "ts": "March 31, 2026, 16:19",
+      "status": "SUCCESS",
+      "service": "Report Templates",
+      "event": "Generate new report",
+      "user_name": "prashant.mishra@oberoi-is.org",
+      "user_id": "7339"
+    },
+    {
+      "event_id": 83,
+      "ts": "March 31, 2026, 16:19",
+      "status": "SUCCESS",
+      "service": "My Reports",
+      "event": "Summary -  Download report",
+      "user_name": "prashant.mishra@oberoi-is.org",
+      "user_id": "7339"
+    },
+    {
+      "event_id": 84,
+      "ts": "March 31, 2026, 16:20",
+      "status": "SUCCESS",
+      "service": "My Reports",
+      "event": "Delete",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 85,
+      "ts": "March 31, 2026, 16:20",
+      "status": "SUCCESS",
+      "service": "My Reports",
+      "event": "Generate Ariflow Report",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 86,
+      "ts": "March 31, 2026, 16:20",
+      "status": "SUCCESS",
+      "service": "Report Templates",
+      "event": "Generate new report",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 87,
+      "ts": "March 31, 2026, 16:20",
+      "status": "SUCCESS",
+      "service": "My Reports",
+      "event": "Summary -  Download report",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 88,
+      "ts": "March 31, 2026, 16:21",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "vib15139@grayquest.com",
+      "user_id": "3594"
+    },
+    {
+      "event_id": 89,
+      "ts": "March 31, 2026, 16:21",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "vib15139@grayquest.com",
+      "user_id": "3594"
+    },
+    {
+      "event_id": 90,
+      "ts": "March 31, 2026, 16:21",
+      "status": "SUCCESS",
+      "service": "PG Transactions",
+      "event": "Refresh",
+      "user_name": "oxfordschool.bam@gmail.com",
+      "user_id": "7209"
+    },
+    {
+      "event_id": 91,
+      "ts": "March 31, 2026, 16:21",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "vib15139@grayquest.com",
+      "user_id": "3594"
+    },
+    {
+      "event_id": 92,
+      "ts": "March 31, 2026, 16:21",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib15139@grayquest.com",
+      "user_id": "3594"
+    },
+    {
+      "event_id": 93,
+      "ts": "March 31, 2026, 16:22",
+      "status": "SUCCESS",
+      "service": "My Reports",
+      "event": "Delete",
+      "user_name": "prashant.mishra@oberoi-is.org",
+      "user_id": "7339"
+    },
+    {
+      "event_id": 94,
+      "ts": "March 31, 2026, 16:22",
+      "status": "SUCCESS",
+      "service": "My Reports",
+      "event": "Summary -  Download report",
+      "user_name": "prashant.mishra@oberoi-is.org",
+      "user_id": "7339"
+    },
+    {
+      "event_id": 95,
+      "ts": "March 31, 2026, 16:25",
+      "status": "SUCCESS",
+      "service": "My Reports",
+      "event": "Delete",
+      "user_name": "prashant.mishra@oberoi-is.org",
+      "user_id": "7339"
+    },
+    {
+      "event_id": 96,
+      "ts": "March 31, 2026, 16:25",
+      "status": "SUCCESS",
+      "service": "My Reports",
+      "event": "Summary -  Download report",
+      "user_name": "prashant.mishra@oberoi-is.org",
+      "user_id": "7339"
+    },
+    {
+      "event_id": 97,
+      "ts": "March 31, 2026, 16:31",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Delete",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 98,
+      "ts": "March 31, 2026, 16:31",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Delete",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 99,
+      "ts": "March 31, 2026, 16:31",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Delete",
+      "user_name": "fees.veeraytan@gmail.com",
+      "user_id": "7586"
+    },
+    {
+      "event_id": 100,
+      "ts": "March 31, 2026, 16:33",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Add Student",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 101,
+      "ts": "March 31, 2026, 16:33",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 102,
+      "ts": "March 31, 2026, 16:34",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 103,
+      "ts": "March 31, 2026, 16:34",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 104,
+      "ts": "March 31, 2026, 16:34",
+      "status": "SUCCESS",
+      "service": "My Reports",
+      "event": "Delete",
+      "user_name": "prashant.mishra@oberoi-is.org",
+      "user_id": "7339"
+    },
+    {
+      "event_id": 105,
+      "ts": "March 31, 2026, 16:34",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 106,
+      "ts": "March 31, 2026, 16:34",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Create a Payment link",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 107,
+      "ts": "March 31, 2026, 16:34",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Share",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 108,
+      "ts": "March 31, 2026, 16:38",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Add Student",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 109,
+      "ts": "March 31, 2026, 16:38",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 110,
+      "ts": "March 31, 2026, 16:38",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 111,
+      "ts": "March 31, 2026, 16:38",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Create a Payment link",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 112,
+      "ts": "March 31, 2026, 16:38",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Share",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 113,
+      "ts": "March 31, 2026, 16:46",
+      "status": "FAILURE",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "vib21@grayquest.com",
+      "user_id": "3611"
+    },
+    {
+      "event_id": 114,
+      "ts": "March 31, 2026, 16:48",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "vib21@grayquest.com",
+      "user_id": "3611"
+    },
+    {
+      "event_id": 115,
+      "ts": "March 31, 2026, 16:48",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "vib21@grayquest.com",
+      "user_id": "3611"
+    },
+    {
+      "event_id": 116,
+      "ts": "March 31, 2026, 16:50",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "vib21@grayquest.com",
+      "user_id": "3611"
+    },
+    {
+      "event_id": 117,
+      "ts": "March 31, 2026, 16:50",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib21@grayquest.com",
+      "user_id": "3611"
+    },
+    {
+      "event_id": 118,
+      "ts": "March 31, 2026, 17:00",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 119,
+      "ts": "March 31, 2026, 17:24",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Add Student",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 120,
+      "ts": "March 31, 2026, 17:24",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 121,
+      "ts": "March 31, 2026, 17:24",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 122,
+      "ts": "March 31, 2026, 17:25",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 123,
+      "ts": "March 31, 2026, 17:25",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Create a Payment link",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 124,
+      "ts": "March 31, 2026, 17:25",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Share",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 125,
+      "ts": "March 31, 2026, 17:42",
+      "status": "SUCCESS",
+      "service": "PG Transactions",
+      "event": "Refresh",
+      "user_name": "oxfordschool.bam@gmail.com",
+      "user_id": "7209"
+    },
+    {
+      "event_id": 126,
+      "ts": "March 31, 2026, 17:44",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 127,
+      "ts": "March 31, 2026, 17:44",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 128,
+      "ts": "March 31, 2026, 17:44",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 129,
+      "ts": "March 31, 2026, 17:45",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 130,
+      "ts": "March 31, 2026, 17:45",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 131,
+      "ts": "March 31, 2026, 17:46",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 132,
+      "ts": "March 31, 2026, 17:58",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 133,
+      "ts": "March 31, 2026, 17:58",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 134,
+      "ts": "March 31, 2026, 17:59",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 135,
+      "ts": "March 31, 2026, 18:00",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 136,
+      "ts": "March 31, 2026, 18:02",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 137,
+      "ts": "March 31, 2026, 18:11",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Add Student",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 138,
+      "ts": "March 31, 2026, 18:11",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 139,
+      "ts": "March 31, 2026, 18:11",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 140,
+      "ts": "March 31, 2026, 18:11",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 141,
+      "ts": "March 31, 2026, 18:11",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Create a Payment link",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 142,
+      "ts": "March 31, 2026, 18:11",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Share",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 143,
+      "ts": "March 31, 2026, 18:12",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Add Student",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 144,
+      "ts": "March 31, 2026, 18:12",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 145,
+      "ts": "March 31, 2026, 18:13",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 146,
+      "ts": "March 31, 2026, 18:13",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 147,
+      "ts": "March 31, 2026, 18:13",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Create a Payment link",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 148,
+      "ts": "March 31, 2026, 18:13",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Share",
+      "user_name": "vib40@grayquest.com",
+      "user_id": "3612"
+    },
+    {
+      "event_id": 149,
+      "ts": "March 31, 2026, 18:28",
+      "status": "SUCCESS",
+      "service": "EMI Applications",
+      "event": "Summary -  Download report",
+      "user_name": "accounts@cwsdahanu.com",
+      "user_id": "3808"
+    },
+    {
+      "event_id": 150,
+      "ts": "March 31, 2026, 18:33",
+      "status": "SUCCESS",
+      "service": "Master Dashboard",
+      "event": "Redirect to GILE Dashboard",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 151,
+      "ts": "March 31, 2026, 18:35",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Edit",
+      "user_name": "Priya.gurukrupa1@gmail.com",
+      "user_id": "5820"
+    },
+    {
+      "event_id": 152,
+      "ts": "March 31, 2026, 18:36",
+      "status": "SUCCESS",
+      "service": "PG Transactions",
+      "event": "Summary -  Download report",
+      "user_name": "vib20@grayquest.com",
+      "user_id": "3609"
+    },
+    {
+      "event_id": 153,
+      "ts": "March 31, 2026, 19:31",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 154,
+      "ts": "March 31, 2026, 19:31",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 155,
+      "ts": "March 31, 2026, 19:31",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 156,
+      "ts": "March 31, 2026, 19:31",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Edit",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 157,
+      "ts": "March 31, 2026, 19:32",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Edit",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 158,
+      "ts": "March 31, 2026, 19:33",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Delete",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 159,
+      "ts": "March 31, 2026, 19:34",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 160,
+      "ts": "March 31, 2026, 19:34",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 161,
+      "ts": "March 31, 2026, 19:34",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Edit",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 162,
+      "ts": "March 31, 2026, 19:35",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 163,
+      "ts": "March 31, 2026, 19:36",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 164,
+      "ts": "March 31, 2026, 19:37",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Create Payment Page",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 165,
+      "ts": "March 31, 2026, 19:39",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 166,
+      "ts": "March 31, 2026, 19:39",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 167,
+      "ts": "March 31, 2026, 19:39",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 168,
+      "ts": "March 31, 2026, 19:40",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Inactive scheduled payment link",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 169,
+      "ts": "March 31, 2026, 19:40",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 170,
+      "ts": "March 31, 2026, 19:41",
+      "status": "SUCCESS",
+      "service": "Payment link communication",
+      "event": "Copy",
+      "user_name": "sushil.w@educoninternationalschool.com",
+      "user_id": "7044"
+    },
+    {
+      "event_id": 171,
+      "ts": "March 31, 2026, 20:01",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Edit",
+      "user_name": "pawanbhatter24@gmail.com",
+      "user_id": "8683"
+    },
+    {
+      "event_id": 172,
+      "ts": "March 31, 2026, 20:02",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Edit",
+      "user_name": "pawanbhatter24@gmail.com",
+      "user_id": "8683"
+    },
+    {
+      "event_id": 173,
+      "ts": "March 31, 2026, 23:43",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 174,
+      "ts": "March 31, 2026, 23:43",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 175,
+      "ts": "March 31, 2026, 23:45",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 176,
+      "ts": "March 31, 2026, 23:45",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 177,
+      "ts": "March 31, 2026, 23:46",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 178,
+      "ts": "March 31, 2026, 23:46",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 179,
+      "ts": "March 31, 2026, 23:48",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 180,
+      "ts": "March 31, 2026, 23:48",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 181,
+      "ts": "March 31, 2026, 23:49",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 182,
+      "ts": "March 31, 2026, 23:49",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 183,
+      "ts": "March 31, 2026, 23:50",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 184,
+      "ts": "March 31, 2026, 23:50",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 185,
+      "ts": "March 31, 2026, 23:51",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 186,
+      "ts": "March 31, 2026, 23:51",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 187,
+      "ts": "March 31, 2026, 23:52",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 188,
+      "ts": "March 31, 2026, 23:52",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 189,
+      "ts": "March 31, 2026, 23:53",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 190,
+      "ts": "March 31, 2026, 23:53",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 191,
+      "ts": "March 31, 2026, 23:54",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 192,
+      "ts": "March 31, 2026, 23:54",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 193,
+      "ts": "March 31, 2026, 23:55",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 194,
+      "ts": "March 31, 2026, 23:55",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 195,
+      "ts": "March 31, 2026, 23:57",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 196,
+      "ts": "March 31, 2026, 23:57",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 197,
+      "ts": "March 31, 2026, 23:57",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 198,
+      "ts": "March 31, 2026, 23:57",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 199,
+      "ts": "March 31, 2026, 23:59",
+      "status": "SUCCESS",
+      "service": "Student Management",
+      "event": "Add Student",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
+    },
+    {
+      "event_id": 200,
+      "ts": "March 31, 2026, 23:59",
+      "status": "SUCCESS",
+      "service": "Student Fee Headers",
+      "event": "Assigned",
+      "user_name": "cardinalwarriorsdigitaljunior@gmail.com",
+      "user_id": "6821"
     }
   ]
 }

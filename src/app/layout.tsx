@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
+import Script from 'next/script'
+
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
@@ -9,21 +11,13 @@ export const metadata: Metadata = {
   description: 'Identity & Access Management Analytics',
 }
 
-// Injected before hydration to avoid flash of wrong theme
-const themeScript = `
-  try {
-    var s = localStorage.getItem('gq-theme');
-    if (s === 'dark') document.documentElement.classList.add('dark');
-  } catch(e) {}
-`
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
+      <head />
       <body className="min-h-full bg-bg-primary text-txt-primary antialiased">
+        {/* Load theme blocking script from public folder to avoid React hydration errors */}
+        <Script src="/theme.js" strategy="afterInteractive" />
         {children}
       </body>
     </html>

@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getPeopleData, getServicesData, getHealthData, getSessionStats } from '@/lib/data'
 import { AI, COMPANY_NAME, PLATFORM_ID, HEALTH, geminiUrl } from '@/lib/config'
+import { ROLE_OPTIONS, SERVICE_NAMES } from '@/lib/constants'
+import { requireApiAuth } from '@/lib/apiAuth'
 
 // ── Types ────────────────────────────────────────────────────────
 interface ServiceRow {
@@ -11,6 +13,7 @@ interface ServiceRow {
   has_reports: boolean
   report_count_30d: number
   report_export_rate: number
+  trend: number
 }
 
 interface UserRow {
@@ -41,10 +44,88 @@ async function loadData() {
   return { overview, healthK, sessionK, services, users }
 }
 
+// ── Role / service name extractors ───────────────────────────────
+function extractRole(f: string): string | null {
+  for (const role of ROLE_OPTIONS) {
+    if (f.includes(role.toLowerCase())) return role
+  }
+  return null
+}
+
+function extractService(f: string): string | null {
+  // Sort longest first so "Student Fee Headers" matches before "Student"
+  const sorted = [...SERVICE_NAMES].sort((a, b) => b.length - a.length)
+  for (const svc of sorted) {
+    if (f.includes(svc.toLowerCase())) return svc
+  }
+  return null
+}
+
 // ── Builtin evaluator — SPECIFIC patterns first, generic last ───
 async function evaluateBuiltin(formula: string): Promise<string | null> {
   const f = formula.toLowerCase().trim()
   const { overview, healthK, sessionK, services, users } = await loadData()
+
+  // ── ROLE-BASED QUERIES ───────────────────────────────────────────
+  const role = extractRole(f)
+  if (role) {
+    const roleUsers = users.filter(u => u.role === role)
+
+    // Role + health score
+    if (f.includes('health') || f.includes('score')) {
+      if (!roleUsers.length) return `No ${role} users found in last 30 days`
+      const avg = roleUsers.reduce((a, u) => a + u.health_score, 0) / roleUsers.length
+      return `${avg.toFixed(1)} avg health score for ${roleUsers.length} ${role} user${roleUsers.length !== 1 ? 's' : ''}`
+    }
+
+    // Role + sessions
+    if (f.includes('session')) {
+      if (!roleUsers.length) return `No ${role} users found`
+      const total = roleUsers.reduce((a, u) => a + u.sessions_30d, 0)
+      const avg   = total / roleUsers.length
+      return `${avg.toFixed(1)} avg sessions for ${roleUsers.length} ${role} users (${total} total sessions, 30d)`
+    }
+
+    // Role + top users
+    if (f.includes('top') || f.includes('most active') || f.includes('highest')) {
+      const n   = f.match(/\d+/)?.[0] ? parseInt(f.match(/\d+/)![0]) : 3
+      const top = [...roleUsers].sort((a, b) => b.sessions_30d - a.sessions_30d).slice(0, Math.min(n, 10))
+      if (!top.length) return `No ${role} users found`
+      return top.map((u, i) => `${i + 1}. ${u.name} (${u.sessions_30d} sessions)`).join(', ')
+    }
+
+    // Role + count (default for role queries)
+    return `${roleUsers.length} ${role} user${roleUsers.length !== 1 ? 's' : ''} active in last 30 days`
+  }
+
+  // ── SERVICE-BASED QUERIES ────────────────────────────────────────
+  const svc = extractService(f)
+  if (svc) {
+    const svcData = services.find(s => s.service_name.toLowerCase() === svc.toLowerCase())
+    if (!svcData) return `Service "${svc}" not found in data`
+
+    // Service + success / failure rate
+    if (f.includes('fail') || f.includes('error')) {
+      const failRate = (100 - svcData.success_rate).toFixed(1)
+      return `${failRate}% failure rate for ${svcData.service_name} (${svcData.success_rate}% success, ${svcData.events_30d} events in 30d)`
+    }
+    if (f.includes('success') || f.includes('rate')) {
+      return `${svcData.success_rate}% success rate for ${svcData.service_name} (${svcData.events_30d} events, ${svcData.active_users_30d} users in 30d)`
+    }
+
+    // Service + events / volume
+    if (f.includes('event') || f.includes('volume') || f.includes('usage')) {
+      return `${svcData.events_30d} events from ${svcData.active_users_30d} users on ${svcData.service_name} in last 30d (trend: ${svcData.trend > 0 ? '+' : ''}${svcData.trend}%)`
+    }
+
+    // Service + users
+    if (f.includes('user') || f.includes('active')) {
+      return `${svcData.active_users_30d} active users on ${svcData.service_name} in last 30d`
+    }
+
+    // Default service summary
+    return `${svcData.service_name}: ${svcData.events_30d} events, ${svcData.success_rate}% success, ${svcData.active_users_30d} users (30d)`
+  }
 
   // ── 1. DAU / MAU Ratio ──────────────────────────────────────────
   if ((f.includes('dau') && f.includes('mau')) ||
@@ -210,32 +291,17 @@ SERVICES: ${svcList}.
 USERS (${users.length} active): ${userList}.`
 }
 
-// ── AI callers ───────────────────────────────────────────────────
-async function callOllama(prompt: string): Promise<string | null> {
-  try {
-    const res = await fetch(AI.OLLAMA_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: AI.OLLAMA_MODEL, prompt, stream: false }),
-      signal: AbortSignal.timeout(AI.OLLAMA_TIMEOUT_MS),
-    })
-    if (!res.ok) return null
-    const data = await res.json() as { response?: string }
-    return data.response?.trim() ?? null
-  } catch {
-    return null
-  }
-}
-
+// ── AI callers ────────────────────────────────────────────────────
+// Gemini is primary (smarter for formula computation + knows industry formulas)
 async function callGemini(prompt: string): Promise<string | null> {
   const key = process.env.GEMINI_API_KEY
   if (!key) return null
   try {
     const res = await fetch(geminiUrl(key), {
-      method: 'POST',
+      method:  'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
-      signal: AbortSignal.timeout(AI.COMPUTE_TIMEOUT_MS),
+      body:    JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
+      signal:  AbortSignal.timeout(AI.COMPUTE_TIMEOUT_MS),
     })
     if (!res.ok) return null
     const data = await res.json() as { candidates?: { content?: { parts?: { text?: string }[] } }[] }
@@ -245,8 +311,29 @@ async function callGemini(prompt: string): Promise<string | null> {
   }
 }
 
+// Ollama is fallback — always uses /api/generate (not /api/chat)
+async function callOllama(prompt: string): Promise<string | null> {
+  const model = process.env.OLLAMA_MODEL || 'qwen2.5:0.5b'
+  try {
+    const res = await fetch('http://localhost:11434/api/generate', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ model, prompt, stream: false }),
+      signal:  AbortSignal.timeout(AI.COMPUTE_TIMEOUT_MS),
+    })
+    if (!res.ok) return null
+    const data = await res.json()
+    return data.response?.trim() ?? null
+  } catch {
+    return null
+  }
+}
+
 // ── Route handler ────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
+  const authError = await requireApiAuth(req)
+  if (authError) return authError
+
   const body = await req.json() as { name: string; description: string; formula: string }
   const { name, description, formula } = body
 
@@ -260,32 +347,33 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ result: builtin, source: 'builtin' })
   }
 
-  // AI fallback with full data context
+  // AI fallback — Gemini primary (smarter for formula + industry knowledge), Ollama fallback
   const dataSummary = await buildDataSummary()
-  const prompt = `You are a data analyst for GrayQuest, an Indian fee-collection platform for educational institutions. Compute the requested metric using ONLY the data provided. Do not hallucinate field values.
+  const prompt = `You are a data analyst for GrayQuest, an Indian educational fee-collection platform. Compute the requested metric using ONLY the data provided.
 
-DATA (authoritative — use only these numbers):
+DATA (use only these numbers — do not hallucinate):
 ${dataSummary}
 
 METRIC REQUEST:
 Name: ${name}
-Description: ${description}
-Formula/Query: ${formula}
+Description: ${description || 'N/A'}
+Formula/Query: "${formula}"
 
-Rules:
-- Respond with ONLY the computed result: a single number, percentage, or short phrase (max ${AI.MAX_RESULT_WORDS} words)
-- Show the calculation briefly if helpful (e.g. "40% (6/15 users)")
-- If the data is insufficient, say "Insufficient data: [reason]"
-- No markdown, no explanations beyond the result`
+RULES:
+- If this is a known formula (DAU/MAU, retention, etc.), explain the formula briefly then compute it
+- Respond with the computed result in max ${AI.MAX_RESULT_WORDS} words
+- Show calculation: e.g. "40% (6 of 15 users)" or "57 users (28.1% of 203 active)"
+- If data is insufficient, say "Insufficient data: [specific reason]"
+- No markdown headers, no long explanations`
 
-  const result = (await callOllama(prompt)) ?? (await callGemini(prompt))
+  const result = (await callGemini(prompt)) ?? (await callOllama(prompt))
 
   if (!result) {
     return NextResponse.json({
-      result: 'AI service unavailable — start Ollama or add GEMINI_API_KEY to .env.local',
-      source: 'fallback',
+      result: 'AI service unavailable — start Ollama (`OLLAMA_NEW_ENGINE=false ollama serve`) or add GEMINI_API_KEY to .env.local.',
+      source: 'error',
     })
   }
 
-  return NextResponse.json({ result, source: result ? 'ai' : 'fallback' })
+  return NextResponse.json({ result, source: process.env.GEMINI_API_KEY ? 'gemini' : 'ollama' })
 }

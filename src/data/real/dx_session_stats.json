@@ -1,120 +1,120 @@
 {
   "kpis": {
-    "total_sessions_30d": 229,
-    "avg_duration_min": 6.1,
-    "median_duration_min": 0.0,
-    "avg_events_per_session": 4.3,
-    "bounce_rate": 46.88,
-    "cross_module_rate": 11.26,
-    "peak_hour": 12,
+    "total_sessions_30d": 2317,
+    "avg_duration_min": 1.6,
+    "median_duration_min": 13.0,
+    "avg_events_per_session": 5.5,
+    "bounce_rate": 38.2,
+    "cross_module_rate": 26.4,
+    "peak_hour": 10,
     "peak_day_of_week": "Tue",
-    "sessions_per_user_avg": 48.07,
-    "completion_rate": 44.5
+    "sessions_per_user_avg": 23.95,
+    "completion_rate": 58.0
   },
   "duration_buckets": [
     {
       "label": "< 5 min",
-      "count": 536
+      "count": 6202
     },
     {
       "label": "5\u201315 min",
-      "count": 76
+      "count": 217
     },
     {
       "label": "15\u201330 min",
-      "count": 71
+      "count": 233
     },
     {
       "label": "30\u201360 min",
-      "count": 28
+      "count": 72
     },
     {
       "label": "> 60 min",
-      "count": 10
+      "count": 6
     }
   ],
   "events_per_session_buckets": [
     {
       "label": "1\u20133",
-      "count": 244
+      "count": 2145
     },
     {
       "label": "4\u20138",
-      "count": 92
+      "count": 1361
     },
     {
       "label": "9\u201315",
-      "count": 32
+      "count": 426
     },
     {
       "label": "16\u201325",
-      "count": 10
+      "count": 139
     },
     {
       "label": "> 25",
-      "count": 5
+      "count": 91
     }
   ],
   "by_role": [
     {
-      "role": "Institute Dashboard main replacement",
-      "avg_duration_min": 9.2,
-      "avg_events": 0,
-      "sessions": 228
+      "role": "Unassigned",
+      "avg_duration_min": 25.0,
+      "avg_events": 8.2,
+      "sessions": 2
     },
     {
-      "role": "Saloni-Admin",
-      "avg_duration_min": 8.7,
-      "avg_events": 0,
-      "sessions": 245
+      "role": "BD - Inside Sales - Executives",
+      "avg_duration_min": 11.0,
+      "avg_events": 9.6,
+      "sessions": 5
     },
     {
-      "role": "Admin",
-      "avg_duration_min": 7.2,
-      "avg_events": 0,
-      "sessions": 355
+      "role": "BD - Inside Sales - Admin",
+      "avg_duration_min": 2.8,
+      "avg_events": 7.4,
+      "sessions": 54
+    },
+    {
+      "role": "Product",
+      "avg_duration_min": 2.6,
+      "avg_events": 6.8,
+      "sessions": 88
+    },
+    {
+      "role": "Admissions config",
+      "avg_duration_min": 2.6,
+      "avg_events": 6.1,
+      "sessions": 116
     },
     {
       "role": "Group Admissions Manager",
-      "avg_duration_min": 6.5,
-      "avg_events": 0,
-      "sessions": 571
+      "avg_duration_min": 2.5,
+      "avg_events": 5.8,
+      "sessions": 130
     },
     {
-      "role": "Admission Institute Finance",
-      "avg_duration_min": 6.3,
-      "avg_events": 0,
-      "sessions": 34
+      "role": "Backend Engineer",
+      "avg_duration_min": 2.4,
+      "avg_events": 7.9,
+      "sessions": 28
     },
     {
-      "role": "Institute Admin",
-      "avg_duration_min": 6.1,
-      "avg_events": 0,
-      "sessions": 95
+      "role": "Group manager",
+      "avg_duration_min": 2.2,
+      "avg_events": 5.3,
+      "sessions": 1757
     },
     {
-      "role": "Institute manager",
-      "avg_duration_min": 6.1,
-      "avg_events": 0,
-      "sessions": 95
+      "role": "Block Master Dashboard",
+      "avg_duration_min": 1.5,
+      "avg_events": 4.1,
+      "sessions": 4663
     },
     {
-      "role": "Institute Finance",
-      "avg_duration_min": 5.4,
-      "avg_events": 0,
-      "sessions": 223
-    },
-    {
-      "role": "FMS Access",
-      "avg_duration_min": 5.2,
-      "avg_events": 0,
-      "sessions": 240
-    },
-    {
-      "role": "Institute Dashboard master",
-      "avg_duration_min": 4.9,
-      "avg_events": 0,
-      "sessions": 379
+      "role": "FMS Dashboard Limited",
+      "avg_duration_min": 0.5,
+      "avg_events": 2.7,
+      "sessions": 139
     }
   ]
 }

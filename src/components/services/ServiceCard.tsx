@@ -7,62 +7,66 @@ interface Props {
   onClick: (s: Service) => void
 }
 
-function MiniBar({ value, max, color }: { value: number; max: number; color: string }) {
-  return (
-    <div className="w-full h-1 rounded-full bg-bg-border overflow-hidden">
-      <div className="h-full rounded-full" style={{ width: `${(value / max) * 100}%`, backgroundColor: color }} />
-    </div>
-  )
-}
-
 export default function ServiceCard({ service, onClick }: Props) {
-  const rateColor = service.success_rate >= 90 ? 'var(--color-status-success)' : service.success_rate >= 80 ? 'var(--color-status-pending)' : 'var(--color-status-failure)'
-  const trendPos = service.trend >= 0
+  const isHealthy = service.success_rate >= 95
+  const isWarning = service.success_rate >= 85 && service.success_rate < 95
+  
+  const statusColor = isHealthy ? '#10B981' : isWarning ? '#F59E0B' : '#EF4444'
+  const statusBg = isHealthy ? 'bg-[#ECFDF5]' : isWarning ? 'bg-[#FFFBEB]' : 'bg-[#FEF2F2]'
+  const statusText = isHealthy ? 'text-[#059669]' : isWarning ? 'text-[#D97706]' : 'text-[#DC2626]'
 
   return (
     <div
       onClick={() => onClick(service)}
-      className="card p-4 cursor-pointer hover:border-accent/40 transition-all hover:-translate-y-0.5 group"
+      className="card p-5 cursor-pointer hover:shadow-xl transition-all hover:-translate-y-1 group bg-white/80 backdrop-blur-xl border border-white/60"
     >
-      <div className="flex items-start justify-between mb-3">
-        <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold text-txt-primary group-hover:text-accent transition-colors truncate">
+      {/* Header Row */}
+      <div className="flex justify-between items-start mb-4">
+        <div className="min-w-0">
+          <h3 className="text-[15px] font-black text-[#111827] group-hover:text-[#6366F1] transition-colors truncate">
             {service.service_name}
+          </h3>
+          <p className="text-[11px] text-[#9CA3AF] font-bold mt-0.5">
+            {service.active_users_30d.toLocaleString()} active users
           </p>
-          <div className="flex items-center gap-2 mt-1">
-            <span className="text-xs text-txt-muted">{service.active_users_30d} users</span>
-            {service.has_reports && (
-              <span className="badge badge-neutral text-[10px]">Reports</span>
-            )}
-          </div>
         </div>
-        <span className={`text-xs font-medium flex items-center gap-0.5 ${trendPos ? 'text-status-success' : 'text-status-failure'}`}>
-          {trendPos ? '↑' : '↓'}{Math.abs(service.trend)}%
-        </span>
+        <div className={`px-2 py-0.5 rounded-md ${statusBg} ${statusText} text-[11px] font-extrabold border border-current/10`}>
+          {service.success_rate}%
+        </div>
       </div>
 
-      <div className="space-y-2.5">
-        <div>
-          <div className="flex justify-between text-xs mb-1">
-            <span className="text-txt-muted">Success Rate</span>
-            <span className="font-medium" style={{ color: rateColor }}>{service.success_rate}%</span>
-          </div>
-          <MiniBar value={service.success_rate} max={100} color={rateColor} />
+      {/* Progress Bar (Matching Image) */}
+      <div className="mb-5">
+        <div className="w-full h-[6px] rounded-full bg-[#F1F5F9] overflow-hidden">
+          <div 
+            className="h-full rounded-full transition-all duration-700 ease-out" 
+            style={{ width: `${service.success_rate}%`, backgroundColor: statusColor }}
+          />
         </div>
+      </div>
 
-        <div className="flex justify-between text-xs text-txt-secondary">
-          <span>{service.events_30d.toLocaleString()} events</span>
-          <span>Peak {service.peak_hour}:00</span>
+      {/* Volume Section */}
+      <div className="grid grid-cols-2 gap-4 mb-4">
+        <div className="flex flex-col">
+          <span className="text-[12px] font-black text-[#111827]">{service.events_30d.toLocaleString()}</span>
+          <span className="text-[9px] text-[#9CA3AF] uppercase font-black tracking-wider">Events</span>
         </div>
+        <div className="flex flex-col text-right">
+          <span className="text-[12px] font-black text-[#111827]">Peak {service.peak_hour}:00</span>
+          <span className="text-[9px] text-[#9CA3AF] uppercase font-black tracking-wider">Daily High</span>
+        </div>
+      </div>
 
-        <div className="flex flex-wrap gap-1 pt-1">
-          {service.top_events.slice(0, 2).map(e => (
-            <span key={e} className="text-[10px] font-mono bg-bg-elevated text-txt-muted px-1.5 py-0.5 rounded">{e}</span>
-          ))}
-          {service.top_events.length > 2 && (
-            <span className="text-[10px] text-txt-muted">+{service.top_events.length - 2}</span>
-          )}
-        </div>
+      {/* Tags / Actions (Matching Image) */}
+      <div className="flex flex-wrap gap-1.5 pt-1 border-t border-slate-50 mt-1">
+        {service.top_events.slice(0, 2).map(e => (
+          <button 
+            key={e} 
+            className="text-[10px] font-bold text-[#6366F1] bg-[#F5F3FF] px-2.5 py-1 rounded-lg hover:bg-[#6366F1] hover:text-white transition-all border border-[#6366F1]/10"
+          >
+            {e.replace('_', ' ')}
+          </button>
+        ))}
       </div>
     </div>
   )

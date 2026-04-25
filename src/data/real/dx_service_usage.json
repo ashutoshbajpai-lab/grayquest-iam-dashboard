@@ -1,278 +1,220 @@
 {
   "services": [
     {
-      "service_id": "377",
-      "service_name": "Master Dashboard Reports",
-      "events_30d": 234,
-      "active_users_30d": 6,
-      "success_rate": 95.73,
-      "avg_events_per_session": 3.6,
-      "top_events": [
-        "Generate new report",
-        "Summary -  Download report",
-        "Generate Ariflow Report",
-        "delete"
-      ],
-      "has_reports": true,
-      "report_count_30d": 7,
-      "report_export_rate": 0,
-      "trend": 74.6,
-      "peak_hour": 15
-    },
-    {
-      "service_id": "292",
-      "service_name": "Student Management",
-      "events_30d": 128,
-      "active_users_30d": 4,
-      "success_rate": 85.16,
-      "avg_events_per_session": 7.6,
-      "top_events": [
-        "Sheet uploaded",
-        "Sample file download",
-        "Student Response file",
-        "Student Bulk upload",
-        "Student FT file creation"
-      ],
-      "has_reports": true,
-      "report_count_30d": 43,
-      "report_export_rate": 0,
-      "trend": -11.7,
-      "peak_hour": 12
-    },
-    {
-      "service_id": "288",
-      "service_name": "Master Dashboard",
-      "events_30d": 75,
-      "active_users_30d": 4,
-      "success_rate": 100.0,
-      "avg_events_per_session": 1.4,
-      "top_events": [
-        "Redirect to GILE Dashboard"
-      ],
-      "has_reports": false,
-      "report_count_30d": 0,
-      "report_export_rate": 0,
-      "trend": -49.7,
-      "peak_hour": 12
-    },
-    {
-      "service_id": "293",
-      "service_name": "Student Fee Headers",
-      "events_30d": 18,
-      "active_users_30d": 2,
-      "success_rate": 83.33,
-      "avg_events_per_session": 1.3,
-      "top_events": [
-        "Summary - Add offline collection",
-        "Assigned",
-        "Unassigned",
-        "Edit"
-      ],
-      "has_reports": false,
-      "report_count_30d": 0,
-      "report_export_rate": 0,
-      "trend": 500.0,
-      "peak_hour": 13
-    },
-    {
-      "service_id": "301",
+      "service_id": "45",
       "service_name": "Payment link communication",
-      "events_30d": 16,
-      "active_users_30d": 2,
-      "success_rate": 100.0,
-      "avg_events_per_session": 2.0,
-      "top_events": [
-        "Copy",
-        "Create a Payment link",
-        "Share",
-        "Active scheduled payment link",
-        "Create Payment Page"
-      ],
-      "has_reports": false,
-      "report_count_30d": 0,
-      "report_export_rate": 0,
-      "trend": -30.4,
-      "peak_hour": 16
+      "events_30d": 2619,
+      "active_users_30d": 39,
+      "success_rate": 99.9,
+      "trend": 0
     },
     {
-      "service_id": "513",
+      "service_id": "37",
+      "service_name": "Student Fee Headers",
+      "events_30d": 2497,
+      "active_users_30d": 58,
+      "success_rate": 98.1,
+      "trend": 0
+    },
+    {
+      "service_id": "36",
+      "service_name": "Student Management",
+      "events_30d": 1206,
+      "active_users_30d": 47,
+      "success_rate": 99,
+      "trend": 0
+    },
+    {
+      "service_id": "32",
+      "service_name": "Master Dashboard",
+      "events_30d": 622,
+      "active_users_30d": 49,
+      "success_rate": 100,
+      "trend": 0
+    },
+    {
+      "service_id": "38",
+      "service_name": "Student Transactions",
+      "events_30d": 616,
+      "active_users_30d": 36,
+      "success_rate": 99.5,
+      "trend": 0
+    },
+    {
+      "service_id": "79",
+      "service_name": "Master Dashboard Reports",
+      "events_30d": 571,
+      "active_users_30d": 21,
+      "success_rate": 98.2,
+      "trend": 0
+    },
+    {
+      "service_id": "41",
+      "service_name": "PG Transactions",
+      "events_30d": 547,
+      "active_users_30d": 57,
+      "success_rate": 99.5,
+      "trend": 0
+    },
+    {
+      "service_id": "56",
+      "service_name": "My Reports",
+      "events_30d": 480,
+      "active_users_30d": 44,
+      "success_rate": 97.5,
+      "trend": 0
+    },
+    {
+      "service_id": "35",
+      "service_name": "Fee Headers",
+      "events_30d": 466,
+      "active_users_30d": 14,
+      "success_rate": 99.6,
+      "trend": 0
+    },
+    {
+      "service_id": "57",
+      "service_name": "Report Templates",
+      "events_30d": 224,
+      "active_users_30d": 41,
+      "success_rate": 99.6,
+      "trend": 0
+    },
+    {
+      "service_id": "39",
+      "service_name": "EMI Applications",
+      "events_30d": 138,
+      "active_users_30d": 25,
+      "success_rate": 100,
+      "trend": 0
+    },
+    {
+      "service_id": "78",
+      "service_name": "Student Fine",
+      "events_30d": 92,
+      "active_users_30d": 3,
+      "success_rate": 100,
+      "trend": 0
+    },
+    {
+      "service_id": "44",
+      "service_name": "Offline Transactions",
+      "events_30d": 58,
+      "active_users_30d": 8,
+      "success_rate": 100,
+      "trend": 0
+    },
+    {
+      "service_id": "112",
+      "service_name": "Application Profile",
+      "events_30d": 55,
+      "active_users_30d": 2,
+      "success_rate": 100,
+      "trend": 0
+    },
+    {
+      "service_id": "34",
+      "service_name": "Classes",
+      "events_30d": 47,
+      "active_users_30d": 7,
+      "success_rate": 95.7,
+      "trend": 0
+    },
+    {
+      "service_id": "92",
+      "service_name": "Fine",
+      "events_30d": 46,
+      "active_users_30d": 5,
+      "success_rate": 100,
+      "trend": 0
+    },
+    {
+      "service_id": "89",
+      "service_name": "Forms",
+      "events_30d": 41,
+      "active_users_30d": 7,
+      "success_rate": 100,
+      "trend": 0
+    },
+    {
+      "service_id": "116",
       "service_name": "Applicant Fee Headers",
+      "events_30d": 26,
+      "active_users_30d": 2,
+      "success_rate": 100,
+      "trend": 0
+    },
+    {
+      "service_id": "83",
+      "service_name": "Institute Discount",
+      "events_30d": 25,
+      "active_users_30d": 6,
+      "success_rate": 100,
+      "trend": 0
+    },
+    {
+      "service_id": "117",
+      "service_name": "Admission Leads",
+      "events_30d": 14,
+      "active_users_30d": 2,
+      "success_rate": 85.7,
+      "trend": 0
+    },
+    {
+      "service_id": "111",
+      "service_name": "Ongoing Admissions",
       "events_30d": 12,
       "active_users_30d": 2,
-      "success_rate": 100.0,
-      "avg_events_per_session": 2.3,
-      "top_events": [
-        "Summary - Add offline collection"
-      ],
-      "has_reports": false,
-      "report_count_30d": 0,
-      "report_export_rate": 0,
-      "trend": -73.3,
-      "peak_hour": 10
+      "success_rate": 100,
+      "trend": 0
     },
     {
-      "service_id": "512",
-      "service_name": "Application Profile",
+      "service_id": "42",
+      "service_name": "AD Registrations",
       "events_30d": 10,
       "active_users_30d": 2,
-      "success_rate": 100.0,
-      "avg_events_per_session": 1.8,
-      "top_events": [
-        "Review Approved",
-        "Edit"
-      ],
-      "has_reports": false,
-      "report_count_30d": 0,
-      "report_export_rate": 0,
-      "trend": -77.3,
-      "peak_hour": 10
+      "success_rate": 100,
+      "trend": 0
     },
     {
-      "service_id": "511",
-      "service_name": "Ongoing Admissions",
-      "events_30d": 9,
-      "active_users_30d": 1,
-      "success_rate": 100.0,
-      "avg_events_per_session": 2.2,
-      "top_events": [
-        "Create Application"
-      ],
-      "has_reports": false,
-      "report_count_30d": 0,
-      "report_export_rate": 0,
-      "trend": -85.2,
-      "peak_hour": 10
-    },
-    {
-      "service_id": "541",
-      "service_name": "Master Dashboard Fee Details",
+      "service_id": "33",
+      "service_name": "Dashboard",
       "events_30d": 7,
-      "active_users_30d": 2,
-      "success_rate": 100.0,
-      "avg_events_per_session": 2.2,
-      "top_events": [
-        "View QR",
-        "create-fee-details",
-        "bulk-create-fee-details"
-      ],
-      "has_reports": false,
-      "report_count_30d": 0,
-      "report_export_rate": 0,
-      "trend": 250.0,
-      "peak_hour": 14
+      "active_users_30d": 6,
+      "success_rate": 100,
+      "trend": 0
     },
     {
-      "service_id": "542",
-      "service_name": "Master Dashboard Support",
-      "events_30d": 6,
-      "active_users_30d": 2,
-      "success_rate": 33.33,
-      "avg_events_per_session": 2.3,
-      "top_events": [
-        "Raise request"
-      ],
-      "has_reports": false,
-      "report_count_30d": 0,
-      "report_export_rate": 0,
-      "trend": 500.0,
-      "peak_hour": 17
-    },
-    {
-      "service_id": "540",
-      "service_name": "Master Dashboard Banks",
-      "events_30d": 5,
-      "active_users_30d": 2,
-      "success_rate": 40.0,
-      "avg_events_per_session": 3.2,
-      "top_events": [
-        "Add Bank"
-      ],
-      "has_reports": false,
-      "report_count_30d": 0,
-      "report_export_rate": 0,
-      "trend": -96.4,
-      "peak_hour": 14
-    },
-    {
-      "service_id": "297",
-      "service_name": "PG Transactions",
+      "service_id": "43",
+      "service_name": "AD Transactions",
       "events_30d": 4,
-      "active_users_30d": 4,
-      "success_rate": 100.0,
-      "avg_events_per_session": 1.0,
-      "top_events": [
-        "Refresh"
-      ],
-      "has_reports": false,
-      "report_count_30d": 0,
-      "report_export_rate": 0,
-      "trend": -42.9,
-      "peak_hour": 12
+      "active_users_30d": 1,
+      "success_rate": 100,
+      "trend": 0
     },
     {
-      "service_id": "549",
-      "service_name": "Master Dashboard Fee Headers",
-      "events_30d": 4,
+      "service_id": "87",
+      "service_name": "Payment link history",
+      "events_30d": 2,
+      "active_users_30d": 1,
+      "success_rate": 100,
+      "trend": 0
+    },
+    {
+      "service_id": "110",
+      "service_name": "Lead Profile",
+      "events_30d": 2,
       "active_users_30d": 2,
-      "success_rate": 25.0,
-      "avg_events_per_session": 2.0,
-      "top_events": [
-        "delete",
-        "Create"
-      ],
-      "has_reports": false,
-      "report_count_30d": 0,
-      "report_export_rate": 0,
-      "trend": -33.3,
-      "peak_hour": 18
+      "success_rate": 100,
+      "trend": 0
     },
     {
-      "service_id": "295",
-      "service_name": "EMI Applications",
+      "service_id": "77",
+      "service_name": "Student Discount",
       "events_30d": 1,
       "active_users_30d": 1,
-      "success_rate": 100.0,
-      "avg_events_per_session": 1.0,
-      "top_events": [
-        "Summary -  Download report"
-      ],
-      "has_reports": false,
-      "report_count_30d": 0,
-      "report_export_rate": 0,
-      "trend": 0.0,
-      "peak_hour": 12
-    },
-    {
-      "service_id": "308",
-      "service_name": "My Reports",
-      "events_30d": 1,
-      "active_users_30d": 1,
-      "success_rate": 0.0,
-      "avg_events_per_session": 1.8,
-      "top_events": [
-        "Generate Ariflow Report"
-      ],
-      "has_reports": true,
-      "report_count_30d": 1,
-      "report_export_rate": 0,
-      "trend": -88.9,
-      "peak_hour": 14
-    },
-    {
-      "service_id": "484",
-      "service_name": "Fine",
-      "events_30d": 1,
-      "active_users_30d": 1,
-      "success_rate": 100.0,
-      "avg_events_per_session": 2.1,
-      "top_events": [
-        "Create"
-      ],
-      "has_reports": false,
-      "report_count_30d": 0,
-      "report_export_rate": 0,
-      "trend": -95.7,
-      "peak_hour": 12
+      "success_rate": 100,
+      "trend": 0
     }
   ]
 }

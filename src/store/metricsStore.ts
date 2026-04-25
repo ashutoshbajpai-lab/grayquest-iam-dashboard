@@ -9,7 +9,7 @@ interface MetricsStore {
   removeMetric: (id: string) => void
   pinMetric:    (id: string, section: Section) => void
   unpinMetric:  (id: string, section: Section) => void
-  updateResult: (id: string, result: string | number) => void
+  updateResult: (id: string, result: string) => void
 }
 
 function sanitizeResult(r: unknown): string {
@@ -51,7 +51,7 @@ export const useMetricsStore = create<MetricsStore>()(
       })),
 
       updateResult: (id, result) => set((s) => ({
-        metrics: s.metrics.map(m => m.id === id ? { ...m, result } : m),
+        metrics: s.metrics.map(m => m.id === id ? { ...m, result: sanitizeResult(result) } : m),
       })),
     }),
     {

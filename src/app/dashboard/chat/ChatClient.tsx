@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, FormEvent } from 'react'
+import { useRouter } from 'next/navigation'
 import { useMetricsStore } from '@/store/metricsStore'
 import type { MetricSuggestion } from '@/app/api/chat/route'
 
@@ -10,17 +11,21 @@ interface Message {
   content: string
   ts: string
   metricSuggestion?: MetricSuggestion
+  source?: string
 }
 
 const SUGGESTED = [
-  'Who are the top 3 users by session count?',
+  'Who are the top 5 users by session count?',
   'Which service has the highest failure rate?',
-  'What is the overall success rate this month?',
   'Show me users with health score below 50',
-  'Which hour of day sees the most activity?',
-  'How many users have not logged in for 7 days?',
+  'What is the login success rate?',
+  'How many Institute Admin users are active?',
+  'Which service has the most events this month?',
   'What percentage of sessions span 3 or more services?',
-  'Which service generates the most reports?',
+  'Show me all Backend Engineer users and their health scores',
+  'Is our 99% success rate considered good in industry?',
+  'What is a healthy DAU/MAU ratio benchmark for edtech platforms?',
+  'Are our session completion rates acceptable by industry standards?',
 ]
 
 function getTime() {
@@ -119,9 +124,18 @@ function MessageBubble({ msg }: { msg: Message }) {
           </div>
         )}
 
-        {msg.ts && (
-          <span className="text-[10px] text-txt-muted px-1">{msg.ts}</span>
-        )}
+        <div className="flex items-center gap-2 px-1">
+          {!isUser && msg.source && msg.source !== 'navigation' && msg.source !== 'scope_guard' && msg.source !== 'error' && (
+            <span className={`text-[9px] font-medium px-1.5 py-0.5 rounded-full ${
+              msg.source === 'gemini'
+                ? 'bg-purple-100 text-purple-600'
+                : 'bg-green-100 text-green-700'
+            }`}>
+              {msg.source === 'gemini' ? '✦ Gemini' : '⚡ qwen2.5'}
+            </span>
+          )}
+          {msg.ts && <span className="text-[10px] text-txt-muted">{msg.ts}</span>}
+        </div>
       </div>
     </div>
   )
@@ -147,11 +161,12 @@ function TypingIndicator() {
 }
 
 export default function ChatClient() {
+  const router = useRouter()
   const [messages, setMessages] = useState<Message[]>([
     {
       id:      'welcome',
       role:    'assistant',
-      content: 'Hello! I\'m your GrayQuest IAM analyst. I have full context of your dashboard data — users, services, and 30 days of activity on platform_id=6.\n\nAsk me anything about users, services, failures, or sessions. When I find a metric, you can save it directly to your Metrics Builder.',
+      content: 'Hello! I\'m your GrayQuest IAM analyst. I search your actual data tables to answer questions — users, services, roles, health scores.\n\nData questions (⚡) are answered by qwen2.5 locally. Benchmark questions like "is our success rate good?" are answered by ✦ Gemini with industry comparisons.\n\nYou can also say "take me to Health" to navigate, or save any metric result to the Metrics Builder.',
       ts:      '',
     },
   ])
@@ -184,19 +199,36 @@ export default function ChatClient() {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({
-          messages: next.map(m => ({ role: m.role, content: m.content })),
+          messages:       next.map(m => ({ role: m.role, content: m.content })),
+          currentSection: 'chat',
         }),
       })
       const data = await res.json() as {
         content?: string
         metricSuggestion?: MetricSuggestion
+        navigationTarget?: string
+        source?: string
       }
+
+      // Handle navigation responses
+      if (data.navigationTarget) {
+        setMessages(prev => [...prev, {
+          id:      crypto.randomUUID(),
+          role:    'assistant',
+          content: data.content ?? `Navigating to ${data.navigationTarget}…`,
+          ts:      getTime(),
+        }])
+        setTimeout(() => router.push(data.navigationTarget!), 700)
+        return
+      }
+
       setMessages(prev => [...prev, {
         id:               crypto.randomUUID(),
         role:             'assistant',
         content:          data.content ?? 'No response.',
         ts:               getTime(),
         metricSuggestion: data.metricSuggestion,
+        source:           data.source,
       }])
     } catch {
       setMessages(prev => [...prev, {
@@ -230,9 +262,12 @@ export default function ChatClient() {
             <p className="text-xs font-medium text-txt-secondary">AI Status</p>
           </div>
           <p className="text-xs text-txt-muted">
-            Tries <span className="text-txt-primary">Ollama phi3:mini</span> → falls back to <span className="text-txt-primary">Gemini 1.5 Flash</span>.
+            <span className="text-green-600 font-medium">⚡ qwen2.5</span> for data lookups
           </p>
-          <p className="text-xs text-txt-muted mt-2">Context: platform_id=6 · 30d data</p>
+          <p className="text-xs text-txt-muted mt-1">
+            <span className="text-purple-600 font-medium">✦ Gemini</span> for benchmarks &amp; formulas
+          </p>
+          <p className="text-xs text-txt-muted mt-2">Searches actual user/service tables · last 12 exchanges retained</p>
           <div className="mt-3 pt-3 border-t border-bg-border">
             <p className="text-xs text-txt-muted">
               💡 Metric answers show a <span className="text-accent">Save to Metrics Builder</span> button
@@ -265,7 +300,7 @@ export default function ChatClient() {
             <BotAvatar />
             <div>
               <p className="text-sm font-semibold text-txt-primary">GrayQuest IAM Analyst</p>
-              <p className="text-xs text-txt-muted">Ollama phi3:mini · Gemini fallback · Metric save enabled</p>
+              <p className="text-xs text-txt-muted">qwen2.5 (local) · Gemini (benchmarks) · Metric save</p>
             </div>
           </div>
           <button onClick={clearChat} className="btn-ghost text-xs text-txt-muted">
@@ -319,7 +354,7 @@ export default function ChatClient() {
             </button>
           </form>
           <p className="text-[10px] text-txt-muted mt-2 text-center">
-            Responses based on mock data · Metric answers can be saved directly to Metrics Builder
+            ⚡ qwen2.5 for data · ✦ Gemini for benchmarks · Grounded in your real dashboard data
           </p>
         </div>
       </div>

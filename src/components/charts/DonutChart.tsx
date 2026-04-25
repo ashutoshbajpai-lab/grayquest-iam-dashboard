@@ -1,7 +1,6 @@
 'use client'
 
-import { ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts'
-import { useChartColors } from '@/hooks/useChartColors'
+import { PieChart, Pie, Cell, Tooltip } from 'recharts'
 
 interface Slice { name: string; value: number; color: string }
 
@@ -20,66 +19,53 @@ export default function DonutChart({
   centerLabel, centerSub,
 }: Props) {
   const total = data.reduce((s, d) => s + d.value, 0)
-  const c = useChartColors()
 
   return (
     <div>
       {/* Chart */}
-      <div className="relative" style={{ height }}>
-        <ResponsiveContainer width="100%" height={height}>
-          <PieChart>
-            <Pie
-              data={data}
-              cx="50%"
-              cy="50%"
-              innerRadius={innerRadius}
-              outerRadius={outerRadius}
-              paddingAngle={2}
-              dataKey="value"
-              strokeWidth={0}
-            >
-              {data.map((entry, i) => (
-                <Cell key={i} fill={entry.color} />
-              ))}
-            </Pie>
-            <Tooltip
-              formatter={(value) => [`${value} (${(((value as number)/total)*100).toFixed(1)}%)`]}
-              contentStyle={{
-                backgroundColor: c.tooltipBg,
-                border: `1px solid ${c.tooltipBorder}`,
-                borderRadius: '8px',
-                fontSize: '12px',
-                color: c.tooltipText,
-              }}
-            />
-          </PieChart>
-        </ResponsiveContainer>
+      <div className="relative flex justify-center" style={{ height }}>
+        <PieChart width={220} height={height}>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            innerRadius={innerRadius}
+            outerRadius={outerRadius}
+            paddingAngle={2}
+            dataKey="value"
+            strokeWidth={1.5}
+            stroke="#fff"
+          >
+            {data.map((entry, i) => (
+              <Cell key={i} fill={entry.color} />
+            ))}
+          </Pie>
+          <Tooltip
+            formatter={(value) => [`${value} (${(((value as number)/total)*100).toFixed(1)}%)`]}
+            contentStyle={{
+              backgroundColor: '#ffffff',
+              border: 'none',
+              borderRadius: '14px',
+              boxShadow: '0 8px 32px rgba(148, 163, 184, 0.18)',
+              fontSize: '12px',
+              color: '#0F172A',
+              fontWeight: 500,
+              padding: '10px 14px',
+            }}
+          />
+        </PieChart>
 
         {/* Center text */}
         {centerLabel && (
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-            <span className="text-lg font-semibold text-txt-primary">{centerLabel}</span>
-            {centerSub && <span className="text-xs text-txt-muted">{centerSub}</span>}
+            <span className="text-3xl font-black text-[#111827] tracking-tight leading-none">{centerLabel}</span>
+            {centerSub && (
+              <span className="text-[10px] font-bold text-[#64748B] uppercase tracking-widest mt-2 text-center">
+                {centerSub}
+              </span>
+            )}
           </div>
         )}
-      </div>
-
-      {/* Custom legend */}
-      <div className="mt-3 flex flex-col gap-1.5">
-        {data.map((slice) => (
-          <div key={slice.name} className="flex items-center justify-between">
-            <div className="flex items-center gap-2 min-w-0">
-              <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: slice.color }} />
-              <span className="text-xs text-txt-secondary truncate">{slice.name}</span>
-            </div>
-            <div className="flex items-center gap-2 ml-3 flex-shrink-0">
-              <span className="text-xs font-medium text-txt-primary">{slice.value}</span>
-              <span className="text-xs text-txt-muted w-9 text-right">
-                {((slice.value / total) * 100).toFixed(1)}%
-              </span>
-            </div>
-          </div>
-        ))}
       </div>
     </div>
   )

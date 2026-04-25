@@ -11,14 +11,19 @@ const SECTION_OPTIONS: { id: Section; label: string }[] = [
 ]
 
 const FORMULA_TEMPLATES = [
-  { label: 'DAU / MAU Ratio',            formula: 'daily_active_users / monthly_active_users * 100' },
-  { label: 'Failure Rate',               formula: 'failed_events / total_events * 100' },
-  { label: '% High-Health Users',        formula: 'users with health_score >= 75 / total_active_users * 100' },
-  { label: 'Avg Events per Active User', formula: 'total_events_30d / active_users_30d' },
-  { label: 'Report Export Efficiency',   formula: 'total_reports_exported / total_reports_generated * 100' },
-  { label: 'Session Engagement Score',   formula: 'avg_events_per_session * completion_rate / 100' },
-  { label: 'Cross-Module Rate',          formula: 'sessions spanning 3 or more services / total sessions' },
-  { label: 'Top Service by Success',     formula: 'service with highest success rate' },
+  { label: 'DAU / MAU Ratio',              formula: 'daily_active_users / monthly_active_users * 100' },
+  { label: 'Failure Rate',                 formula: 'failed_events / total_events * 100' },
+  { label: '% High-Health Users',          formula: 'users with health_score >= 75 / total_active_users * 100' },
+  { label: 'Avg Events per User',          formula: 'total_events_30d / active_users_30d' },
+  { label: 'Report Efficiency',            formula: 'total_reports_exported / total_reports_generated * 100' },
+  { label: 'Institute Admin users',        formula: 'how many Institute Admin users are active' },
+  { label: 'Backend Engineer health',      formula: 'average health score of Backend Engineer users' },
+  { label: 'Super Admin sessions',         formula: 'average sessions for Super Admin users' },
+  { label: 'Top 5 users by sessions',      formula: 'top 5 users by session count' },
+  { label: 'Student Fee Headers rate',     formula: 'success rate of Student Fee Headers' },
+  { label: 'Cross-module rate',            formula: 'cross module rate' },
+  { label: 'Dormant users',                formula: 'dormant users count' },
+  { label: 'Top service by success',       formula: 'top service by success rate' },
 ]
 
 function MetricResultBadge({ result }: { result: unknown }) {
@@ -28,130 +33,93 @@ function MetricResultBadge({ result }: { result: unknown }) {
       ? JSON.stringify(result)
       : String(result)
   return (
-    <span className="inline-block bg-accent/15 text-accent font-mono text-sm px-3 py-1 rounded-lg">
+    <span className="inline-block bg-[#F0FDF4] text-[#16A34A] font-black text-sm px-4 py-1.5 rounded-xl border border-emerald-100 shadow-sm">
       {display}
     </span>
   )
 }
 
-function PinToggle({ metric }: { metric: CustomMetric }) {
-  const { pinMetric, unpinMetric } = useMetricsStore()
-
-  return (
-    <div className="flex flex-wrap gap-1.5 mt-2">
-      {SECTION_OPTIONS.map(s => {
-        const pinned = metric.pinnedTo.includes(s.id)
-        return (
-          <button
-            key={s.id}
-            onClick={() => pinned ? unpinMetric(metric.id, s.id) : pinMetric(metric.id, s.id)}
-            className={`text-xs px-2 py-0.5 rounded-full border transition-colors ${
-              pinned
-                ? 'border-accent bg-accent/15 text-accent'
-                : 'border-bg-border text-txt-muted hover:border-accent/50 hover:text-txt-secondary'
-            }`}
-          >
-            {pinned ? '📌' : '+'} {s.label}
-          </button>
-        )
-      })}
-    </div>
-  )
-}
-
 export default function MetricsClient() {
-  const { metrics, addMetric, removeMetric } = useMetricsStore()
+  const { metrics, addMetric, removeMetric, pinMetric, unpinMetric } = useMetricsStore()
 
-  const [name,        setName]        = useState('')
+  const [name, setName] = useState('')
   const [description, setDescription] = useState('')
-  const [formula,     setFormula]     = useState('')
-  const [computing,   setComputing]   = useState(false)
-  const [preview,     setPreview]     = useState<string | null>(null)
-  const [error,       setError]       = useState('')
-  const [aiSource,    setAiSource]    = useState<string>('')
+  const [formula, setFormula] = useState('')
+  const [computing, setComputing] = useState(false)
+  const [preview,   setPreview]   = useState<string | null>(null)
+  const [source,    setSource]    = useState<'builtin' | 'ai' | 'gemini' | 'ollama' | 'error' | null>(null)
+  const [error,     setError]     = useState('')
 
   async function compute(save = false) {
-    if (!formula.trim()) { setError('Enter a formula or description'); return }
-    setError(''); setComputing(true); setPreview(null)
+    if (!formula.trim()) { setError('Enter a formula or query'); return }
+    setError(''); setComputing(true); setPreview(null); setSource(null)
 
     try {
-      const res = await fetch('/api/metrics/compute', {
-        method: 'POST',
+      const res  = await fetch('/api/metrics/compute', {
+        method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name || 'Custom Metric', description, formula }),
+        body:    JSON.stringify({ name: name || 'Custom Metric', description, formula }),
       })
-      const data = await res.json() as { result?: string; error?: string; source?: string }
+      const data = await res.json() as { result?: string; source?: string; error?: string }
       if (!res.ok || data.error) { setError(data.error ?? 'Compute failed'); return }
 
       const result = data.result ?? ''
       setPreview(result)
-      setAiSource(data.source ?? '')
+      setSource((data.source as 'builtin' | 'ai' | 'error') ?? null)
 
       if (save) {
         if (!name.trim()) { setError('Name is required to save'); return }
         addMetric({ name: name.trim(), description, formula, result, pinnedTo: [] })
-        setName(''); setDescription(''); setFormula(''); setPreview(null)
+        setName(''); setDescription(''); setFormula(''); setPreview(null); setSource(null)
       }
     } catch {
-      setError('Network error')
+      setError('Network error — check that the dev server is running')
     } finally {
       setComputing(false)
     }
   }
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-5 gap-6">
-      {/* Builder panel */}
+    <div className="grid grid-cols-1 xl:grid-cols-5 gap-4">
+      {/* Builder Panel */}
       <div className="xl:col-span-2 space-y-4">
-        <div>
-          <h2 className="text-base font-semibold text-txt-primary">Metrics Builder</h2>
-          <p className="text-xs text-txt-muted mt-0.5">Define metrics in plain English or formula syntax — AI computes the result from your dashboard data.</p>
+        <div className="mb-2">
+          <h1 className="text-2xl font-black text-[#111827] tracking-tight">Metrics Builder</h1>
+          <p className="text-xs text-[#6B7280] mt-0.5">AI-powered custom data engine.</p>
         </div>
 
-        <div className="card p-5 space-y-4">
-          {/* Name */}
-          <div className="space-y-1.5">
-            <label className="text-xs font-medium text-txt-secondary">Metric Name</label>
+        <div className="card p-5 space-y-5">
+          <div className="space-y-1">
+            <label className="text-[10px] font-black text-[#64748B] uppercase tracking-widest ml-1">Metric Name</label>
             <input
               value={name}
               onChange={e => setName(e.target.value)}
-              placeholder="e.g. Power User Rate"
-              className="input-base w-full"
+              placeholder="e.g. Core Engagement"
+              className="w-full px-4 py-2.5 rounded-2xl bg-white/50 border border-white/60 focus:outline-none focus:border-[#6366F1] transition-all text-sm font-medium"
             />
           </div>
 
-          {/* Description */}
-          <div className="space-y-1.5">
-            <label className="text-xs font-medium text-txt-secondary">Description <span className="text-txt-muted">(optional)</span></label>
-            <input
-              value={description}
-              onChange={e => setDescription(e.target.value)}
-              placeholder="What does this metric measure?"
-              className="input-base w-full"
-            />
-          </div>
-
-          {/* Formula */}
-          <div className="space-y-1.5">
-            <label className="text-xs font-medium text-txt-secondary">Formula / Query</label>
+          <div className="space-y-1">
+            <div className="flex items-center justify-between ml-1">
+              <label className="text-[10px] font-black text-[#64748B] uppercase tracking-widest">Formula / Query</label>
+              <span className="text-[9px] text-[#9CA3AF]">plain English or math expression</span>
+            </div>
             <textarea
               value={formula}
               onChange={e => setFormula(e.target.value)}
-              placeholder={'Plain English or formula:\n"users with health_score >= 75 / total_active_users * 100"\nor\n"average session duration for Institute Admins"'}
-              className="input-base w-full resize-none text-xs font-mono"
-              rows={4}
+              placeholder='e.g. "how many Institute Admin users are active" or "failed_events / total_events * 100"'
+              className="w-full px-4 py-3 rounded-2xl bg-white/50 border border-white/60 focus:outline-none focus:border-[#6366F1] transition-all text-sm font-medium min-h-[100px] resize-none"
             />
           </div>
 
-          {/* Templates */}
-          <div className="space-y-1.5">
-            <p className="text-xs text-txt-muted">Quick templates</p>
-            <div className="flex flex-wrap gap-1.5">
+          <div className="space-y-2">
+            <p className="text-[10px] font-black text-[#64748B] uppercase tracking-widest ml-1">Templates</p>
+            <div className="flex flex-wrap gap-2">
               {FORMULA_TEMPLATES.map(t => (
                 <button
                   key={t.label}
-                  onClick={() => { setFormula(t.formula); setName(prev => prev || t.label) }}
-                  className="text-xs px-2 py-1 rounded bg-bg-elevated text-txt-secondary hover:text-txt-primary hover:bg-bg-border transition-colors"
+                  onClick={() => { setFormula(t.formula); setName(t.label) }}
+                  className="text-[10px] font-bold px-3 py-1.5 rounded-xl bg-white border border-slate-100 text-[#475569] hover:bg-slate-50 transition-colors"
                 >
                   {t.label}
                 </button>
@@ -159,97 +127,104 @@ export default function MetricsClient() {
             </div>
           </div>
 
-          {/* Preview result */}
           {preview && (
-            <div className="rounded-lg border border-accent/30 bg-accent/5 p-3 space-y-1">
-              <p className="text-xs text-txt-muted">Result {aiSource && <span className="text-accent">· {aiSource}</span>}</p>
+            <div className="p-4 rounded-2xl bg-[#F0F9FF] border border-blue-100 animate-in fade-in slide-in-from-bottom-1">
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest">Result</p>
+                {source && (
+                  <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${
+                    source === 'builtin'
+                      ? 'bg-green-100 text-green-700'
+                      : source === 'gemini'
+                        ? 'bg-purple-100 text-purple-700'
+                        : source === 'ollama'
+                          ? 'bg-green-100 text-green-700'
+                          : 'bg-red-100 text-red-600'
+                  }`}>
+                    {source === 'builtin' ? '⚡ instant' : source === 'gemini' ? '✦ Gemini' : source === 'ollama' ? '⚡ qwen2.5' : 'error'}
+                  </span>
+                )}
+              </div>
               <MetricResultBadge result={preview} />
             </div>
           )}
 
-          {error && (
-            <p className="text-xs text-status-failure bg-status-failure/10 border border-status-failure/20 rounded-lg px-3 py-2">{error}</p>
-          )}
+          {error && <p className="text-[10px] font-bold text-red-500 bg-red-50 p-2 rounded-lg">{error}</p>}
 
-          <div className="flex gap-2 pt-1">
+          <div className="flex gap-2">
             <button
               onClick={() => compute(false)}
-              disabled={computing || !formula.trim()}
-              className="btn-ghost flex-1 disabled:opacity-40 disabled:cursor-not-allowed"
+              disabled={computing}
+              className="flex-1 py-3 rounded-2xl bg-white border border-slate-100 text-[#111827] text-sm font-bold shadow-sm hover:bg-slate-50 transition-all disabled:opacity-50"
             >
-              {computing ? 'Computing…' : 'Preview'}
+              {computing ? (
+                <span className="flex items-center justify-center gap-2">
+                  <span className="w-3.5 h-3.5 rounded-full border-2 border-slate-300 border-t-slate-600 animate-spin block" />
+                  Computing…
+                </span>
+              ) : 'Preview'}
             </button>
             <button
               onClick={() => compute(true)}
-              disabled={computing || !formula.trim() || !name.trim()}
-              className="btn-primary flex-1 disabled:opacity-40 disabled:cursor-not-allowed"
+              disabled={computing}
+              className="flex-1 py-3 rounded-2xl bg-gradient-to-r from-[#6366F1] to-[#4F46E5] text-white text-sm font-bold shadow-md hover:shadow-lg transition-all disabled:opacity-50"
             >
               Save Metric
             </button>
           </div>
         </div>
-
-        {/* AI info */}
-        <div className="card p-4 space-y-1">
-          <p className="text-xs font-medium text-txt-secondary">AI Engine</p>
-          <p className="text-xs text-txt-muted">
-            Tries <span className="text-txt-primary">Ollama phi3:mini</span> locally first.
-            Falls back to <span className="text-txt-primary">Gemini 1.5 Flash</span> (free tier, 1500 req/day) if Ollama is unavailable.
-            Common formulas are resolved instantly without AI.
-          </p>
-          <p className="text-xs text-txt-muted mt-1">
-            To enable Gemini: add <code className="text-accent text-[11px]">GEMINI_API_KEY</code> to <code className="text-accent text-[11px]">.env.local</code>
-          </p>
-        </div>
       </div>
 
-      {/* Saved metrics list */}
+      {/* Saved Metrics */}
       <div className="xl:col-span-3 space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="mb-2 flex items-center justify-between">
           <div>
-            <h2 className="text-base font-semibold text-txt-primary">Saved Metrics</h2>
-            <p className="text-xs text-txt-muted mt-0.5">Pin metrics to dashboard sections to surface them contextually</p>
+            <h2 className="text-xl font-black text-[#111827] tracking-tight">Saved Insights</h2>
+            <p className="text-xs text-[#6B7280] mt-0.5">Custom metrics pinned to your dashboard.</p>
           </div>
-          <span className="text-xs text-txt-muted">{metrics.length} metric{metrics.length !== 1 ? 's' : ''}</span>
         </div>
 
         {metrics.length === 0 ? (
           <div className="card p-12 flex flex-col items-center justify-center text-center">
-            <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-3">
-              <span className="text-accent text-xl">📐</span>
+            <div className="w-16 h-16 rounded-3xl bg-[#EEF2FF] flex items-center justify-center mb-4">
+              <span className="text-3xl">📐</span>
             </div>
-            <p className="text-sm text-txt-secondary font-medium">No custom metrics yet</p>
-            <p className="text-xs text-txt-muted mt-1 max-w-xs">Build your first metric using the panel on the left. Try a template to get started quickly.</p>
+            <p className="text-base font-black text-[#111827]">No Custom Metrics</p>
+            <p className="text-xs text-[#9CA3AF] mt-1">Start building unique business insights on the left.</p>
           </div>
         ) : (
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {metrics.map(metric => (
-              <div key={metric.id} className="card p-4 hover:border-accent/30 transition-colors">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-txt-primary">{metric.name}</p>
-                    {metric.description && (
-                      <p className="text-xs text-txt-muted mt-0.5">{metric.description}</p>
-                    )}
-                    <p className="text-xs font-mono text-txt-secondary bg-bg-elevated rounded px-2 py-1 mt-2 line-clamp-2">
-                      {metric.formula}
-                    </p>
+              <div key={metric.id} className="card p-5 group hover:border-[#6366F1]/30 transition-all">
+                <div className="flex justify-between items-start mb-3">
+                  <div className="min-w-0">
+                    <h3 className="text-sm font-bold text-[#111827] truncate">{metric.name}</h3>
+                    <p className="text-[10px] text-[#9CA3AF] line-clamp-1">{metric.formula}</p>
                   </div>
-                  <button
-                    onClick={() => removeMetric(metric.id)}
-                    className="text-txt-muted hover:text-status-failure transition-colors text-lg leading-none flex-shrink-0"
-                    title="Delete"
-                  >
-                    ×
-                  </button>
+                  <button onClick={() => removeMetric(metric.id)} className="text-slate-300 hover:text-red-500 transition-colors text-lg">×</button>
                 </div>
+                
+                <MetricResultBadge result={metric.result} />
 
-                <div className="flex items-center gap-3 mt-3">
-                  <MetricResultBadge result={metric.result} />
-                  <span className="text-xs text-txt-muted">{new Date(metric.createdAt).toLocaleDateString()}</span>
+                <div className="mt-4 pt-3 border-t border-white/40">
+                  <p className="text-[9px] font-black text-[#64748B] uppercase tracking-widest mb-2">Pin to View</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {SECTION_OPTIONS.map(s => {
+                      const pinned = metric.pinnedTo.includes(s.id)
+                      return (
+                        <button
+                          key={s.id}
+                          onClick={() => pinned ? unpinMetric(metric.id, s.id) : pinMetric(metric.id, s.id)}
+                          className={`text-[9px] font-black px-2 py-1 rounded-full border transition-all ${
+                            pinned ? 'bg-[#EEF2FF] border-blue-200 text-blue-600' : 'bg-white border-slate-100 text-slate-400'
+                          }`}
+                        >
+                          {s.label}
+                        </button>
+                      )
+                    })}
+                  </div>
                 </div>
-
-                <PinToggle metric={metric} />
               </div>
             ))}
           </div>

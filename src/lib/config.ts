@@ -6,7 +6,7 @@
 // ── Dataset / Date ────────────────────────────────────────────────
 // The most recent date present in the source CSVs.
 // Update this when the data pipeline is refreshed.
-export const DATASET_END_DATE = process.env.NEXT_PUBLIC_DATASET_END_DATE ?? new Date().toISOString().split('T')[0]
+export const DATASET_END_DATE = process.env.NEXT_PUBLIC_DATASET_END_DATE ?? '2026-03-31'
 
 // ── Platform ──────────────────────────────────────────────────────
 // Use PLATFORM_ID env var (falls back to '6' if unset or empty)
@@ -34,14 +34,13 @@ export const THEME_STORAGE_KEY = 'gq-theme'
 export const THEME_TRANSITION_MS = 300
 
 // ── Health score thresholds ───────────────────────────────────────
-// Used in: PeopleClient, UserTable, UserDrawer, alerts/route, compute_metrics.py
+// Scale: 0–100 (compute.ts normalises min-max to 0–1, then ×100)
+// Used in: PeopleClient, UserTable, UserDrawer, alerts/route, compute.ts
 export const HEALTH = {
-  ACTIVE:   75,   // score >= ACTIVE  → "Active"  (green)
-  AT_RISK:  50,   // score >= AT_RISK → "At Risk" (amber)
-  // score < AT_RISK → "Inactive" (red)
-  // Alert threshold — separate from display thresholds
-  ALERT_LOW: 40,
-  AVG_ALERT: 65,
+  ACTIVE:    60,  // score >= ACTIVE → "Active"  (green)
+  AT_RISK:   40,  // score >= AT_RISK → "At Risk" (amber); below → "Inactive" (red)
+  ALERT_LOW: 40,  // individual user alert threshold
+  AVG_ALERT: 60,  // platform-average health alert threshold
 } as const
 
 // ── Success rate thresholds ───────────────────────────────────────
@@ -106,9 +105,6 @@ export const CHART_ROW_HEIGHT = {
 
 // ── AI provider configuration ─────────────────────────────────────
 export const AI = {
-  OLLAMA_URL:         process.env.OLLAMA_URL          ?? 'http://127.0.0.1:11434/api/generate',
-  OLLAMA_MODEL:       process.env.OLLAMA_MODEL        ?? 'phi3:mini',
-  OLLAMA_TIMEOUT_MS:  Number(process.env.OLLAMA_TIMEOUT_MS ?? 3_000),
   GEMINI_MODEL:       process.env.GEMINI_MODEL        ?? 'gemini-2.0-flash',
   GEMINI_TIMEOUT_MS:  Number(process.env.GEMINI_TIMEOUT_MS ?? 8_000),
   COMPUTE_TIMEOUT_MS: Number(process.env.GEMINI_COMPUTE_TIMEOUT_MS ?? 20_000),

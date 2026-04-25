@@ -9,6 +9,6 @@ export interface Service {
   has_reports: boolean
   report_count_30d: number
   report_export_rate: number
-  trend: number
+  trend: number | null
   peak_hour: number
 }

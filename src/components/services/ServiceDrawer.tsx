@@ -5,7 +5,6 @@ import DrillDownDrawer from '@/components/layout/DrillDownDrawer'
 import LineChart from '@/components/charts/LineChart'
 import BarChart from '@/components/charts/BarChart'
 import type { Service } from '@/types/services'
-import { SUCCESS_RATE, COLORS, CHART_LIMITS, CHART_ROW_HEIGHT } from '@/lib/config'
 
 interface DrillData {
   success_series: { date: string; rate: number }[]
@@ -24,13 +23,20 @@ interface Props {
   onClose: () => void
 }
 
+function ServiceKPICard({ label, value, color }: { label: string; value: string | number; color?: string }) {
+  return (
+    <div className="bg-white/90 rounded-2xl p-4 border border-white/60 shadow-sm flex flex-col justify-center min-h-[90px]">
+      <p className="text-[11px] font-black text-[#94A3B8] uppercase tracking-wider mb-1">{label}</p>
+      <p className="text-[20px] font-black text-[#111827]" style={{ color: color ?? '#111827' }}>{value}</p>
+    </div>
+  )
+}
+
 export default function ServiceDrawer({ service, drill, onClose }: Props) {
   const [tab, setTab] = useState<'overview' | 'events' | 'users' | 'reports'>('overview')
 
   if (!service) return null
-
-  const emptyDrill: DrillData = { success_series: [], events_breakdown: [], top_users: [] }
-  const d = drill ?? emptyDrill
+  const d = drill || { success_series: [], events_breakdown: [], top_users: [] }
 
   const tabs = [
     { id: 'overview', label: 'Overview' },
@@ -39,191 +45,135 @@ export default function ServiceDrawer({ service, drill, onClose }: Props) {
     ...(service.has_reports ? [{ id: 'reports', label: 'Reports' }] : []),
   ] as { id: typeof tab; label: string }[]
 
-  const rateColor = service.success_rate >= SUCCESS_RATE.GOOD ? COLORS.TREND_UP : service.success_rate >= SUCCESS_RATE.WARNING ? COLORS.TREND_NEUTRAL : COLORS.TREND_DOWN
-
   return (
-    <DrillDownDrawer
-      open={!!service}
-      onClose={onClose}
-      title={service.service_name}
-      breadcrumbs={[{ label: 'Services', onClick: onClose }]}
-    >
-      <div className="space-y-5">
-        {/* KPI strip */}
-        <div className="grid grid-cols-3 gap-3">
-          {[
-            { label: 'Events (30d)',    value: service.events_30d.toLocaleString() },
-            { label: 'Success Rate',    value: `${service.success_rate}%`, color: rateColor },
-            { label: 'Active Users',    value: service.active_users_30d },
-            { label: 'Avg Events/Session', value: service.avg_events_per_session },
-            { label: 'Peak Hour',       value: `${service.peak_hour}:00` },
-            { label: 'Trend (30d)',     value: `${service.trend > 0 ? '+' : ''}${service.trend}%`,
-              color: service.trend >= 0 ? COLORS.TREND_UP : COLORS.TREND_DOWN },
-          ].map(k => (
-            <div key={k.label} className="card-elevated p-3">
-              <p className="text-xs text-txt-muted">{k.label}</p>
-              <p className="text-sm font-semibold mt-0.5" style={{ color: k.color ?? 'var(--color-txt-primary)' }}>{k.value}</p>
-            </div>
-          ))}
+    <DrillDownDrawer open={!!service} onClose={onClose} title={service.service_name} breadcrumbs={[{ label: 'Services', onClick: onClose }]}>
+      <div className="space-y-8">
+        {/* Header */}
+        <div>
+          <h3 className="text-[20px] font-black text-[#111827] leading-tight">{service.service_name}</h3>
         </div>
 
-        {/* Tab nav */}
-        <div className="flex gap-0 border-b border-bg-border -mx-6 px-6">
+        {/* KPI Grid */}
+        <div className="grid grid-cols-3 gap-3">
+          <ServiceKPICard label="Total Events" value={service.events_30d.toLocaleString()} />
+          <ServiceKPICard label="Success Rate" value={`${service.success_rate}%`} color="#10B981" />
+          <ServiceKPICard label="Active Users" value={service.active_users_30d} />
+        </div>
+
+        {/* Tab Nav */}
+        <div className="flex gap-6 border-b border-white/40 pb-2">
           {tabs.map(t => (
-            <button
-              key={t.id}
+            <button 
+              key={t.id} 
               onClick={() => setTab(t.id)}
-              className={`nav-tab ${tab === t.id ? 'nav-tab-active' : ''}`}
+              className={`text-[12px] font-black uppercase tracking-widest transition-all ${tab === t.id ? 'text-[#6366F1] border-b-2 border-[#6366F1] pb-2 -mb-[10px]' : 'text-[#94A3B8] hover:text-[#64748B]'}`}
             >
               {t.label}
             </button>
           ))}
         </div>
 
-        {/* Overview tab */}
-        {tab === 'overview' && (
-          <div className="space-y-5">
-            <div>
-              <p className="text-xs font-medium text-txt-secondary mb-3">Success Rate — Last {CHART_LIMITS.SUCCESS_SERIES_DAYS} Days</p>
-              <LineChart
-                data={d.success_series}
-                xKey="date"
-                lines={[{ key: 'rate', color: rateColor, label: 'Success %' }]}
-                height={160}
-                formatY={v => `${v}%`}
-              />
+        {/* Tab Content */}
+        <div className="animate-in fade-in duration-300">
+          {tab === 'overview' && (
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-[13px] font-black text-[#475569] mb-4">Reliability Trend (Last 7 Days)</h4>
+                <div className="h-[180px] -ml-4">
+                  <LineChart
+                    data={d.success_series}
+                    xKey="date"
+                    lines={[{ key: 'rate', color: '#10B981', label: 'Success %' }]}
+                    height={180}
+                    formatY={v => `${v}%`}
+                  />
+                </div>
+              </div>
+              <div>
+                <h4 className="text-[13px] font-black text-[#475569] mb-4">Top Events by Volume</h4>
+                <BarChart
+                  data={d.events_breakdown?.slice(0, 5) ?? []}
+                  xKey="event"
+                  bars={[{ key: 'count', color: '#6366F1', label: 'Events' }]}
+                  horizontal
+                  height={200}
+                  showLabels
+                />
+              </div>
             </div>
-            <div>
-              <p className="text-xs font-medium text-txt-secondary mb-2">Top Events (by volume)</p>
+          )}
+
+          {tab === 'events' && (
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-[13px] font-black text-[#475569] mb-4">Event Performance Breakdown</h4>
+                <BarChart
+                  data={d.events_breakdown ?? []}
+                  xKey="event"
+                  bars={[{ key: 'success', color: '#10B981', label: 'Success %' }]}
+                  horizontal
+                  height={Math.max(200, (d.events_breakdown?.length ?? 0) * 40)}
+                  showLabels
+                  formatY={v => `${v}%`}
+                  yAxisWidth={160}
+                />
+              </div>
+            </div>
+          )}
+
+          {tab === 'users' && (
+            <div className="space-y-6">
+              <h4 className="text-[13px] font-black text-[#475569]">Top Service Users</h4>
               <div className="space-y-2">
-                {d.events_breakdown.map(e => (
-                  <div key={e.event} className="flex items-center gap-3">
-                    <span className="font-mono text-xs text-txt-primary w-40 flex-shrink-0">{e.event}</span>
-                    <div className="flex-1 h-1.5 rounded-full bg-bg-border overflow-hidden">
-                      <div
-                        className="h-full rounded-full bg-accent"
-                        style={{ width: `${(e.count / d.events_breakdown[0].count) * 100}%` }}
-                      />
+                {d.top_users?.map((u, i) => (
+                  <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-white/50 border border-white/60">
+                    <div className="min-w-0">
+                      <p className="text-[12px] font-black text-[#111827] truncate">{u.name}</p>
+                      <p className="text-[10px] font-bold text-[#94A3B8]">{u.role}</p>
                     </div>
-                    <span className="text-xs text-txt-muted w-10 text-right">{e.count}</span>
-                    <span className={`text-xs font-medium w-14 text-right ${e.success >= SUCCESS_RATE.GOOD ? 'text-status-success' : e.success >= SUCCESS_RATE.WARNING ? 'text-status-pending' : 'text-status-failure'}`}>
-                      {e.success}%
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Events tab */}
-        {tab === 'events' && (
-          <div className="space-y-5">
-            <div>
-              <p className="text-xs font-medium text-txt-secondary mb-3">Event Breakdown</p>
-              <BarChart
-                data={d.events_breakdown}
-                xKey="event"
-                bars={[{ key: 'count', color: COLORS.EVENTS_BAR, label: 'Volume' }]}
-                horizontal
-                height={Math.max(160, d.events_breakdown.length * CHART_ROW_HEIGHT.STANDARD)}
-                showLabels
-              />
-            </div>
-            <div>
-              <p className="text-xs font-medium text-txt-secondary mb-3">Success Rate by Event</p>
-              <BarChart
-                data={d.events_breakdown}
-                xKey="event"
-                bars={[{ key: 'success', color: COLORS.REPORT_BAR, label: 'Success %' }]}
-                horizontal
-                height={Math.max(160, d.events_breakdown.length * CHART_ROW_HEIGHT.STANDARD)}
-                showLabels
-                formatY={v => `${v}%`}
-              />
-            </div>
-          </div>
-        )}
-
-        {/* Users tab */}
-        {tab === 'users' && (
-          <div>
-            <p className="text-xs font-medium text-txt-secondary mb-3">Top Users in this Service</p>
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-bg-border">
-                  <th className="pb-2 text-left text-xs text-txt-muted font-medium">User</th>
-                  <th className="pb-2 text-left text-xs text-txt-muted font-medium">Role</th>
-                  <th className="pb-2 text-right text-xs text-txt-muted font-medium">Events</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-bg-border">
-                {d.top_users.map((u, i) => (
-                  <tr key={i} className="hover:bg-bg-elevated transition-colors">
-                    <td className="py-2.5 text-xs text-txt-primary">{u.name}</td>
-                    <td className="py-2.5">
-                      <span className="badge badge-neutral text-[10px]">{u.role}</span>
-                    </td>
-                    <td className="py-2.5 text-xs text-txt-secondary text-right font-medium">{u.events}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-
-        {/* Reports tab — only for services with has_reports=true */}
-        {tab === 'reports' && d.report_metrics && (
-          <div className="space-y-5">
-            {/* Report KPIs */}
-            <div className="grid grid-cols-3 gap-3">
-              <div className="card-elevated p-3">
-                <p className="text-xs text-txt-muted">Total Reports</p>
-                <p className="text-base font-semibold text-txt-primary mt-0.5">{d.report_metrics.total_reports}</p>
-              </div>
-              <div className="card-elevated p-3">
-                <p className="text-xs text-txt-muted">Exported</p>
-                <p className="text-base font-semibold text-txt-primary mt-0.5">{d.report_metrics.exported}</p>
-              </div>
-              <div className="card-elevated p-3">
-                <p className="text-xs text-txt-muted">Export Rate</p>
-                <p className="text-base font-semibold text-status-success mt-0.5">{d.report_metrics.export_rate}%</p>
-              </div>
-            </div>
-
-            {/* Report types */}
-            <div>
-              <p className="text-xs font-medium text-txt-secondary mb-3">By Report Type</p>
-              <div className="space-y-2.5">
-                {d.report_metrics.report_types.map(r => (
-                  <div key={r.type} className="flex items-center gap-3">
-                    <span className="text-xs text-txt-primary flex-1 truncate">{r.type}</span>
-                    <div className="flex gap-2 items-center">
-                      <span className="text-xs text-txt-muted">{r.count} viewed</span>
-                      <span className="text-xs font-medium text-status-success">{r.exported} exported</span>
+                    <div className="text-right">
+                      <p className="text-[12px] font-black text-[#6366F1]">{u.events}</p>
+                      <p className="text-[9px] font-bold text-[#94A3B8]">EVENTS</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+          )}
 
-            {/* By user */}
-            <div>
-              <p className="text-xs font-medium text-txt-secondary mb-3">Report Usage by User</p>
-              <BarChart
-                data={d.report_metrics.by_user.map(u => ({ name: u.name, viewed: u.reports, exported: u.exports }))}
-                xKey="name"
-                bars={[
-                  { key: 'viewed',   color: COLORS.EVENTS_BAR, label: 'Viewed'   },
-                  { key: 'exported', color: COLORS.REPORT_BAR, label: 'Exported' },
-                ]}
-                horizontal
-                height={Math.max(160, d.report_metrics.by_user.length * CHART_ROW_HEIGHT.REPORT)}
-                showLabels
-              />
+          {tab === 'reports' && d.report_metrics && (
+            <div className="space-y-8">
+              <div className="grid grid-cols-3 gap-3">
+                <div className="bg-white/90 p-4 rounded-2xl border border-white/60">
+                  <p className="text-[10px] font-black text-[#94A3B8] uppercase tracking-widest mb-1">Total Reports</p>
+                  <p className="text-[18px] font-black text-[#111827]">{d.report_metrics.total_reports}</p>
+                </div>
+                <div className="bg-white/90 p-4 rounded-2xl border border-white/60">
+                  <p className="text-[10px] font-black text-[#94A3B8] uppercase tracking-widest mb-1">Exported</p>
+                  <p className="text-[18px] font-black text-[#111827]">{d.report_metrics.exported}</p>
+                </div>
+                <div className="bg-white/90 p-4 rounded-2xl border border-white/60">
+                  <p className="text-[10px] font-black text-[#94A3B8] uppercase tracking-widest mb-1">Rate</p>
+                  <p className="text-[18px] font-black text-emerald-600">{d.report_metrics.export_rate}%</p>
+                </div>
+              </div>
+              <div>
+                <h4 className="text-[13px] font-black text-[#475569] mb-4">Usage by Report Type</h4>
+                <div className="space-y-2">
+                  {d.report_metrics.report_types.map(r => (
+                    <div key={r.type} className="flex items-center justify-between p-3 rounded-xl bg-white/50 border border-white/60">
+                      <p className="text-[12px] font-black text-[#111827]">{r.type}</p>
+                      <div className="flex gap-4">
+                        <span className="text-[11px] font-bold text-[#94A3B8]">{r.count} VIEWS</span>
+                        <span className="text-[11px] font-black text-emerald-600">{r.exported} EXPORTS</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </DrillDownDrawer>
   )

@@ -13,4 +13,14 @@ export interface IamUser {
   status: string
   avg_session_min: number
   first_seen: string
+  created_at?: string
+  recent_events: {
+    ts: string
+    service: string
+    event: string
+    status: string
+  }[]
+  activity_series?: { date: string; count: number }[]
+  service_breakdown?: { service: string; count: number; rate: number }[]
+  auth_success_rate?: number
 }

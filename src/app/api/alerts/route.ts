@@ -1,5 +1,6 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { getPeopleData, getHealthData, getServicesData } from '@/lib/data'
+import { requireApiAuth } from '@/lib/apiAuth'
 import type { Alert, Section } from '@/types'
 import { HEALTH, SUCCESS_RATE, LOGIN_RATE, SESSION, PEOPLE_ALERTS, SERVICE_ALERTS, SERVICE_FAILURE_RATE } from '@/lib/config'
 
@@ -7,7 +8,10 @@ function makeAlert(id: string, message: string, metric: string, section: Section
   return { id, message, metric, section, timestamp: new Date().toISOString(), dismissed: false }
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const authError = await requireApiAuth(req)
+  if (authError) return authError
+
   const p  = await getPeopleData()  as Record<string, unknown>
   const h  = await getHealthData()  as Record<string, unknown>
   const sv = await getServicesData() as Record<string, unknown>

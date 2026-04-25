@@ -24,15 +24,40 @@ interface Props {
   onCountChange?: (n: number) => void
 }
 
+const DISMISSED_KEY = 'gq-dismissed-alerts'
+
+function readDismissed(): Set<string> {
+  try {
+    const raw = localStorage.getItem(DISMISSED_KEY)
+    return raw ? new Set(JSON.parse(raw) as string[]) : new Set()
+  } catch { return new Set() }
+}
+
+function writeDismissed(s: Set<string>) {
+  try { localStorage.setItem(DISMISSED_KEY, JSON.stringify([...s])) } catch {}
+}
+
 export default function AlertsPanel({ onClose, onCountChange }: Props) {
   const [alerts,    setAlerts]    = useState<Alert[]>([])
   const [dismissed, setDismissed] = useState<Set<string>>(new Set())
   const [loading,   setLoading]   = useState(true)
 
+  // Load persisted dismissals and fetch alerts together
   useEffect(() => {
+    setDismissed(readDismissed())
     fetch('/api/alerts')
       .then(r => r.json())
-      .then((d: { alerts: Alert[] }) => setAlerts(d.alerts ?? []))
+      .then((d: { alerts: Alert[] }) => {
+        const incoming = d.alerts ?? []
+        setAlerts(incoming)
+        // Prune stale dismissed IDs that no longer exist in the current alert list
+        const validIds = new Set(incoming.map(a => a.id))
+        setDismissed(prev => {
+          const pruned = new Set([...prev].filter(id => validIds.has(id)))
+          writeDismissed(pruned)
+          return pruned
+        })
+      })
       .catch(() => setAlerts([]))
       .finally(() => setLoading(false))
   }, [])
@@ -41,8 +66,18 @@ export default function AlertsPanel({ onClose, onCountChange }: Props) {
 
   useEffect(() => { onCountChange?.(active.length) }, [active.length, onCountChange])
 
-  function dismiss(id: string) { setDismissed(prev => new Set([...prev, id])) }
-  function dismissAll()        { setDismissed(new Set(alerts.map(a => a.id))) }
+  function dismiss(id: string) {
+    setDismissed(prev => {
+      const next = new Set([...prev, id])
+      writeDismissed(next)
+      return next
+    })
+  }
+  function dismissAll() {
+    const next = new Set(alerts.map(a => a.id))
+    writeDismissed(next)
+    setDismissed(next)
+  }
 
   return (
     <div className="absolute right-0 top-full mt-2 w-88 card-elevated shadow-2xl z-50 overflow-hidden animate-fade-in" style={{ width: 340 }}>

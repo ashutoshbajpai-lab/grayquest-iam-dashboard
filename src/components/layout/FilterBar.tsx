@@ -1,51 +1,67 @@
 'use client'
 
+import { useState } from 'react'
 import { useFilterStore } from '@/store/filterStore'
 import { DATE_PRESETS, FILTER_BAR_SECTIONS, ROLE_OPTIONS, SERVICE_NAMES } from '@/lib/constants'
 import { usePathname } from 'next/navigation'
-import { Section } from '@/types'
+import MultiSelectDropdown from '@/components/ui/MultiSelectDropdown'
+import type { Section } from '@/types'
 
-export default function FilterBar() {
-  const pathname = usePathname()
+const ROLE_OPTS = ROLE_OPTIONS.map(r => ({ value: r, label: r }))
+const SERVICE_OPTS = SERVICE_NAMES.map(s => ({ value: s, label: s }))
+
+// Inner component — all hooks here, no early returns
+function FilterBarInner({ currentSection }: { currentSection: Section }) {
   const {
     dateRange, setDateRange,
-    search, setSearch,
     clearAll,
     roles, setRoles,
     services, setServices,
-    hourRange, setHourRange,
   } = useFilterStore()
 
-  const currentSection = pathname.split('/')[2] as Section
-  if (!FILTER_BAR_SECTIONS.includes(currentSection)) return null
-
-  function toggleRole(r: string) {
-    setRoles(roles.includes(r) ? roles.filter(x => x !== r) : [...roles, r])
-  }
-
-  function toggleService(s: string) {
-    setServices(services.includes(s) ? services.filter(x => x !== s) : [...services, s])
-  }
+  const [customFrom, setCustomFrom] = useState(dateRange.preset === 'custom' ? dateRange.from : '')
+  const [customTo,   setCustomTo]   = useState(dateRange.preset === 'custom' ? dateRange.to   : '')
+  const [dateError,  setDateError]  = useState('')
 
   const isCustom = dateRange.preset === 'custom'
 
-  return (
-    <div className="bg-bg-surface/80 backdrop-blur-sm border-b border-bg-border px-6 py-2.5 flex flex-wrap items-center gap-x-3 gap-y-2">
-      {/* Search */}
-      <input
-        type="text"
-        placeholder="Search users, events, services…"
-        value={search}
-        onChange={e => setSearch(e.target.value)}
-        className="input-base w-52 h-8 py-1.5 text-xs"
-      />
+  function applyCustomRange(from: string, to: string) {
+    setDateError('')
+    if (!from || !to) return
+    if (from > to) {
+      setDateError('Start date must be on or before end date')
+      return
+    }
+    setDateRange({ preset: 'custom', from, to })
+  }
 
+  function handleCustomFrom(v: string) {
+    setCustomFrom(v)
+    applyCustomRange(v, customTo)
+  }
+
+  function handleCustomTo(v: string) {
+    setCustomTo(v)
+    applyCustomRange(customFrom, v)
+  }
+
+  function handlePreset(preset: string, from: string, to: string) {
+    setDateError('')
+    if (preset === 'custom') {
+      setCustomFrom('')
+      setCustomTo('')
+    }
+    setDateRange({ preset: preset as never, from, to })
+  }
+
+  return (
+    <div className="sticky top-0 z-[60] bg-bg-surface/80 backdrop-blur-sm border-b border-bg-border px-6 py-2.5 flex flex-wrap items-center gap-x-3 gap-y-2">
       {/* Date presets */}
       <div className="flex items-center gap-1">
         {DATE_PRESETS.map(p => (
           <button
             key={p.value}
-            onClick={() => setDateRange({ preset: p.value as never, from: p.from, to: p.to })}
+            onClick={() => handlePreset(p.value, p.from, p.to)}
             className={`px-2.5 py-1 rounded text-xs font-medium transition-colors duration-150 ${
               dateRange.preset === p.value
                 ? 'text-white'
@@ -58,102 +74,76 @@ export default function FilterBar() {
         ))}
       </div>
 
-      {/* Custom date range inputs — BUG-010 fix */}
+      {/* Custom date range inputs */}
       {isCustom && (
-        <div className="flex items-center gap-2">
-          <input
-            type="date"
-            value={dateRange.from}
-            max={dateRange.to || undefined}
-            onChange={e => setDateRange({ preset: 'custom', from: e.target.value, to: dateRange.to })}
-            className="input-base h-8 py-1 text-xs"
-          />
-          <span className="text-xs text-txt-muted">→</span>
-          <input
-            type="date"
-            value={dateRange.to}
-            min={dateRange.from || undefined}
-            onChange={e => setDateRange({ preset: 'custom', from: dateRange.from, to: e.target.value })}
-            className="input-base h-8 py-1 text-xs"
-          />
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-2">
+            <input
+              type="date"
+              value={customFrom}
+              onChange={e => handleCustomFrom(e.target.value)}
+              className="input-base h-8 py-1 text-xs"
+            />
+            <span className="text-xs text-txt-muted">→</span>
+            <input
+              type="date"
+              value={customTo}
+              onChange={e => handleCustomTo(e.target.value)}
+              className="input-base h-8 py-1 text-xs"
+            />
+          </div>
+          {dateError && (
+            <span className="text-[11px] text-status-failure">{dateError}</span>
+          )}
         </div>
       )}
 
-      {/* Role chips — People page only — BUG-011 fix */}
+      {/* Role dropdown — People page only */}
       {currentSection === 'people' && (
-        <div className="flex items-center gap-1 border-l border-bg-border pl-3">
-          <span className="text-[10px] text-txt-muted font-semibold uppercase tracking-wide mr-1">Role</span>
-          {ROLE_OPTIONS.map(r => (
-            <button
-              key={r}
-              onClick={() => toggleRole(r)}
-              title={r}
-              className={`px-2 py-0.5 rounded-full text-[10px] font-medium transition-colors ${
-                roles.includes(r)
-                  ? 'text-white'
-                  : 'bg-bg-elevated text-txt-muted hover:text-txt-primary border border-bg-border'
-              }`}
-              style={roles.includes(r) ? { backgroundColor: '#1C1C1E' } : {}}
-            >
-              {r.split(' ')[0]}
-            </button>
-          ))}
+        <div className="flex items-center gap-2 border-l border-bg-border pl-3">
+          <span className="text-[10px] text-txt-muted font-semibold uppercase tracking-wide">Role</span>
+          <MultiSelectDropdown
+            options={ROLE_OPTS}
+            selected={roles}
+            onChange={setRoles}
+            label="Role"
+          />
         </div>
       )}
 
-      {/* Service chips + Hour range — Services page only — BUG-011 fix */}
+      {/* Service dropdown — Services page only */}
       {currentSection === 'services' && (
-        <>
-          <div className="flex items-center gap-1 border-l border-bg-border pl-3 flex-wrap">
-            <span className="text-[10px] text-txt-muted font-semibold uppercase tracking-wide mr-1">Service</span>
-            {SERVICE_NAMES.map(s => (
-              <button
-                key={s}
-                onClick={() => toggleService(s)}
-                title={s}
-                className={`px-2 py-0.5 rounded-full text-[10px] font-medium transition-colors ${
-                  services.includes(s)
-                    ? 'text-white'
-                    : 'bg-bg-elevated text-txt-muted hover:text-txt-primary border border-bg-border'
-                }`}
-                style={services.includes(s) ? { backgroundColor: '#1C1C1E' } : {}}
-              >
-                {s.split(' ')[0]}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-2 border-l border-bg-border pl-3">
-            <span className="text-[10px] text-txt-muted font-semibold uppercase tracking-wide">Hours</span>
-            <input
-              type="number"
-              min={0} max={23}
-              value={hourRange[0]}
-              onChange={e => {
-                const v = Math.max(0, Math.min(23, Number(e.target.value)))
-                setHourRange([Math.min(v, hourRange[1]), hourRange[1]])
-              }}
-              className="input-base w-12 h-7 py-0.5 text-xs text-center"
-            />
-            <span className="text-xs text-txt-muted">–</span>
-            <input
-              type="number"
-              min={0} max={23}
-              value={hourRange[1]}
-              onChange={e => {
-                const v = Math.max(0, Math.min(23, Number(e.target.value)))
-                setHourRange([hourRange[0], Math.max(v, hourRange[0])])
-              }}
-              className="input-base w-12 h-7 py-0.5 text-xs text-center"
-            />
-          </div>
-        </>
+        <div className="flex items-center gap-2 border-l border-bg-border pl-3">
+          <span className="text-[10px] text-txt-muted font-semibold uppercase tracking-wide">Service</span>
+          <MultiSelectDropdown
+            options={SERVICE_OPTS}
+            selected={services}
+            onChange={setServices}
+            label="Service"
+          />
+        </div>
       )}
 
       {/* Clear */}
-      <button onClick={clearAll} className="ml-auto text-xs text-txt-muted hover:text-txt-primary transition-colors">
+      <button
+        onClick={() => {
+          setCustomFrom('')
+          setCustomTo('')
+          setDateError('')
+          clearAll()
+        }}
+        className="ml-auto text-xs text-txt-muted hover:text-txt-primary transition-colors"
+      >
         Clear filters
       </button>
     </div>
   )
+}
+
+// Outer component — only usePathname here, safe to return null before hooks
+export default function FilterBar() {
+  const pathname = usePathname()
+  const currentSection = pathname.split('/')[2] as Section
+  if (!FILTER_BAR_SECTIONS.includes(currentSection)) return null
+  return <FilterBarInner currentSection={currentSection} />
 }

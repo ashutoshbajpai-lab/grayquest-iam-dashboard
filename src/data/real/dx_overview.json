@@ -1,25 +1,58 @@
 {
   "kpis": {
-    "active_users_30d": 8,
-    "active_users_7d": 6,
-    "active_users_today": 1,
-    "dormant_users": 1305,
-    "total_users": 1337,
-    "new_activations_30d": 1,
-    "avg_health_score": 19.9,
-    "overall_success_rate": 70.44,
-    "active_services": 16,
-    "cross_module_rate": 11.26,
-    "avg_session_duration_min": 7.5,
-    "completion_rate": 44.5,
-    "shallow_session_pct": 55.5,
-    "total_events_30d": 1326,
-    "total_sessions_30d": 229
+    "active_users_today": 57,
+    "active_users_7d": 138,
+    "active_users_30d": 203,
+    "total_users": 281,
+    "dormant_users": 78,
+    "new_activations_30d": 18,
+    "total_events_30d": 10488,
+    "overall_success_rate": 99.1,
+    "active_services": 11,
+    "total_sessions_30d": 2196
   },
   "trends": {
-    "active_users_7d_vs_prev": -25.0,
-    "active_users_30d_vs_prev": 0.0,
-    "success_rate_vs_prev": -9.1,
-    "health_score_vs_prev": 0.0
+    "active_users_7d_vs_prev": 13.1,
+    "active_users_30d_vs_prev": 1,
+    "success_rate_vs_prev": 0.1
+  },
+  "sessions": {
+    "by_role": [
+      {
+        "role": "Super Admin",
+        "avg_events": 20,
+        "sessions": 0
+      },
+      {
+        "role": "Report-block ",
+        "avg_events": 6.5,
+        "sessions": 186
+      },
+      {
+        "role": "Group manager",
+        "avg_events": 4.9,
+        "sessions": 2201
+      },
+      {
+        "role": "Block Master Dashboard",
+        "avg_events": 3.6,
+        "sessions": 6146
+      },
+      {
+        "role": "Institute Admin",
+        "avg_events": 3.1,
+        "sessions": 91
+      },
+      {
+        "role": "Product",
+        "avg_events": 1.4,
+        "sessions": 56
+      },
+      {
+        "role": "Group Admissions Manager",
+        "avg_events": 1.2,
+        "sessions": 110
+      }
+    ]
   }
 }

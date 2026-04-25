@@ -4,14 +4,15 @@ import { computeAllMetrics } from '@/lib/compute'
 export const maxDuration = 60
 
 export async function POST(req: NextRequest) {
-  // Verify webhook secret
+  // RECOMPUTE_SECRET must be set — never allow unauthenticated recompute
   const secret = process.env.RECOMPUTE_SECRET
-  if (secret) {
-    const auth = req.headers.get('authorization') ?? req.headers.get('x-webhook-secret') ?? ''
-    const token = auth.replace(/^Bearer\s+/i, '')
-    if (token !== secret) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+  if (!secret) {
+    return NextResponse.json({ error: 'RECOMPUTE_SECRET is not configured on this server' }, { status: 401 })
+  }
+  const auth = req.headers.get('authorization') ?? req.headers.get('x-webhook-secret') ?? ''
+  const token = auth.replace(/^Bearer\s+/i, '')
+  if (token !== secret) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
   try {

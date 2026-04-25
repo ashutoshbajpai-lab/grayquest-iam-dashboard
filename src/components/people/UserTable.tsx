@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import type { IamUser as User } from '@/types/people'
-import { AVATAR_PALETTE, HEALTH } from '@/lib/config'
+import { AVATAR_PALETTE } from '@/lib/config'
 
 function Avatar({ name }: { name: string }) {
   const { bg, fg } = AVATAR_PALETTE[name.charCodeAt(0) % AVATAR_PALETTE.length]
@@ -17,13 +17,14 @@ function Avatar({ name }: { name: string }) {
   )
 }
 
-// ── Status badge ──────────────────────────────────────────────────
-function StatusBadge({ score }: { score: number }) {
+function StatusBadge({ status }: { status: string }) {
   const cfg =
-    score >= HEALTH.ACTIVE
+    status === 'active'
       ? { label: 'Active',   bgColor: 'rgba(16,185,129,0.10)', textColor: '#059669',  dot: '#10B981' }
-      : score >= HEALTH.AT_RISK
+      : status === 'at_risk'
       ? { label: 'At Risk',  bgColor: 'rgba(217,119,6,0.10)',  textColor: '#D97706',  dot: '#F59E0B' }
+      : status === 'system'
+      ? { label: 'System / API', bgColor: 'var(--color-bg-elevated)', textColor: 'var(--color-txt-secondary)', dot: 'var(--color-bg-border)' }
       : { label: 'Inactive', bgColor: 'rgba(239,68,68,0.10)',  textColor: '#DC2626',  dot: '#EF4444' }
 
   return (
@@ -37,20 +38,22 @@ function StatusBadge({ score }: { score: number }) {
   )
 }
 
-// ── Role badge ────────────────────────────────────────────────────
 const ROLE_STYLE: Record<string, { bg: string; color: string }> = {
-  'Institute Admin': { bg: 'rgba(124,111,247,0.10)', color: '#7C6FF7' },
-  'IAM Admin':       { bg: 'rgba(16,185,129,0.10)',  color: '#059669' },
-  'Service Manager': { bg: 'rgba(14,165,233,0.10)',  color: '#0284C7' },
-  'Finance Officer': { bg: 'rgba(217,119,6,0.10)',   color: '#D97706' },
-  'Audit Officer':   { bg: 'rgba(239,68,68,0.10)',   color: '#DC2626' },
+  'Institute Admin':            { bg: 'rgba(124,111,247,0.12)', color: '#7C6FF7' },
+  'IAM Admin':                  { bg: 'rgba(16,185,129,0.12)',  color: '#059669' },
+  'Service Manager':            { bg: 'rgba(14,165,233,0.12)',  color: '#0284C7' },
+  'Finance Officer':            { bg: 'rgba(217,119,6,0.12)',   color: '#D97706' },
+  'Audit Officer':              { bg: 'rgba(239,68,68,0.12)',   color: '#DC2626' },
+  'Group manager':              { bg: 'rgba(79,110,247,0.10)',  color: '#4F6EF7' },
+  'Block Master Dashboard':     { bg: 'rgba(14,165,233,0.10)', color: '#0284C7' },
+  'Group Admissions Manager':   { bg: 'rgba(16,185,129,0.10)', color: '#059669' },
+  'FMS Dashboard Limited':      { bg: 'rgba(245,158,11,0.10)', color: '#D97706' },
+  'Backend Engineer':           { bg: 'rgba(124,111,247,0.10)',color: '#7C6FF7' },
+  'Institute Dashboard Manager':{ bg: 'rgba(239,68,68,0.10)',  color: '#DC2626' },
 }
 
 function RoleBadge({ role }: { role: string }) {
-  const s = ROLE_STYLE[role] ?? {
-    bg: 'var(--color-bg-elevated)',
-    color: 'var(--color-txt-secondary)',
-  }
+  const s = ROLE_STYLE[role] ?? { bg: 'rgba(107,114,128,0.10)', color: '#6B7280' }
   return (
     <span
       className="inline-flex px-2.5 py-1 rounded-full text-[11px] font-semibold whitespace-nowrap"
@@ -61,39 +64,30 @@ function RoleBadge({ role }: { role: string }) {
   )
 }
 
-// ── Sort types ────────────────────────────────────────────────────
-type SortKey = 'name' | 'health_score' | 'sessions_30d' | 'last_active' | 'login_success_rate'
+type SortKey = 'name' | 'health_score' | 'sessions_30d' | 'last_active' | 'auth_success_rate'
 
 interface Props {
   users: User[]
   onSelect: (user: User) => void
-  search?: string
+  totalCount: number
+  onShowMore?: () => void
+  onCollapse?: () => void
+  pageSize: number
 }
 
-export default function UserTable({ users, onSelect, search = '' }: Props) {
+export default function UserTable({ users, onSelect, totalCount, onShowMore, onCollapse, pageSize }: Props) {
   const [sort, setSort] = useState<{ key: SortKey; dir: 'asc' | 'desc' }>({
     key: 'health_score', dir: 'desc',
   })
 
-  const filtered = users
-    .filter(u => {
-      const q = search.toLowerCase()
-      return (
-        !q ||
-        u.name.toLowerCase().includes(q) ||
-        u.email.toLowerCase().includes(q) ||
-        u.role.toLowerCase().includes(q) ||
-        u.group.toLowerCase().includes(q)
-      )
-    })
-    .sort((a, b) => {
-      const av = a[sort.key], bv = b[sort.key]
-      const cmp =
-        typeof av === 'string'
-          ? av.localeCompare(String(bv))
-          : (av as number) - (bv as number)
-      return sort.dir === 'asc' ? cmp : -cmp
-    })
+  const sortedUsers = [...users].sort((a, b) => {
+    const av = a[sort.key], bv = b[sort.key]
+    const cmp =
+      typeof av === 'string'
+        ? av.localeCompare(String(bv))
+        : (av as number) - (bv as number)
+    return sort.dir === 'asc' ? cmp : -cmp
+  })
 
   function toggle(key: SortKey) {
     setSort(s =>
@@ -123,139 +117,115 @@ export default function UserTable({ users, onSelect, search = '' }: Props) {
   }
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full border-collapse">
-        {/* Header */}
-        <thead>
-          <tr className="border-b border-bg-border bg-bg-elevated/50">
-            <Th k="name" label="User" />
-            <th className="px-5 py-3.5 text-left text-[11px] font-semibold text-txt-muted uppercase tracking-wider whitespace-nowrap">
-              Department
-            </th>
-            <th className="px-5 py-3.5 text-left text-[11px] font-semibold text-txt-muted uppercase tracking-wider whitespace-nowrap">
-              Role
-            </th>
-            <Th k="health_score"       label="Status"     />
-            <Th k="sessions_30d"       label="Sessions"   />
-            <Th k="login_success_rate" label="Login Rate" />
-            <Th k="last_active"        label="Last Active" />
-            <th className="px-5 py-3.5 w-12" />
-          </tr>
-        </thead>
-
-        {/* Body */}
-        <tbody>
-          {filtered.map((user, i) => (
-            <tr
-              key={user.user_id}
-              onClick={() => onSelect(user)}
-              className={`group cursor-pointer transition-colors hover:bg-accent/[0.04] ${
-                i % 2 !== 0 ? 'bg-bg-elevated/20' : ''
-              }`}
-            >
-              {/* User — avatar + name + email */}
-              <td className="px-5 py-3.5">
-                <div className="flex items-center gap-3">
-                  <Avatar name={user.name} />
-                  <div className="min-w-0">
-                    <p className="text-sm font-semibold text-txt-primary group-hover:text-accent transition-colors truncate leading-snug">
-                      {user.name}
-                    </p>
-                    <p className="text-xs text-txt-muted truncate mt-0.5">{user.email}</p>
-                  </div>
-                </div>
-              </td>
-
-              {/* Department */}
-              <td className="px-5 py-3.5">
-                <span className="text-sm text-txt-secondary">{user.group}</span>
-              </td>
-
-              {/* Role */}
-              <td className="px-5 py-3.5">
-                <RoleBadge role={user.role} />
-              </td>
-
-              {/* Status */}
-              <td className="px-5 py-3.5">
-                <StatusBadge score={user.health_score} />
-              </td>
-
-              {/* Sessions */}
-              <td className="px-5 py-3.5">
-                <span className="text-sm font-semibold text-txt-primary">{user.sessions_30d}</span>
-                <p className="text-[10px] text-txt-muted mt-0.5">30 days</p>
-              </td>
-
-              {/* Login rate — mini bar + % */}
-              <td className="px-5 py-3.5">
-                <div className="flex items-center gap-2">
-                  <div className="w-14 h-1.5 rounded-full bg-bg-border overflow-hidden flex-shrink-0">
-                    <div
-                      className="h-full rounded-full transition-all"
-                      style={{
-                        width: `${user.login_success_rate}%`,
-                        backgroundColor:
-                          user.login_success_rate >= 90
-                            ? 'var(--color-status-success)'
-                            : user.login_success_rate >= 75
-                            ? 'var(--color-status-pending)'
-                            : 'var(--color-status-failure)',
-                      }}
-                    />
-                  </div>
-                  <span
-                    className={`text-xs font-semibold ${
-                      user.login_success_rate >= 90
-                        ? 'text-status-success'
-                        : user.login_success_rate >= 75
-                        ? 'text-status-pending'
-                        : 'text-status-failure'
-                    }`}
-                  >
-                    {user.login_success_rate}%
-                  </span>
-                </div>
-              </td>
-
-              {/* Last active */}
-              <td className="px-5 py-3.5">
-                <span className="text-sm text-txt-muted">{user.last_active}</span>
-              </td>
-
-              {/* View action */}
-              <td className="px-5 py-3.5">
-                <button
-                  onClick={e => { e.stopPropagation(); onSelect(user) }}
-                  title="View details"
-                  className="opacity-0 group-hover:opacity-100 transition-opacity w-7 h-7 rounded-lg flex items-center justify-center text-txt-muted hover:text-accent hover:bg-accent/10"
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                    <circle cx="12" cy="12" r="3"/>
-                  </svg>
-                </button>
-              </td>
+    <div className="flex flex-col">
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse">
+          <thead>
+            <tr className="border-b border-white/40" style={{ background: 'rgba(240,243,255,0.6)' }}>
+              <Th k="name" label="User" />
+              <th className="px-5 py-3.5 text-left text-[10px] font-bold text-[#6B7280] uppercase tracking-[0.08em] whitespace-nowrap">Department</th>
+              <th className="px-5 py-3.5 text-left text-[10px] font-bold text-[#6B7280] uppercase tracking-[0.08em] whitespace-nowrap">Role</th>
+              <Th k="health_score"       label="Status"     />
+              <Th k="sessions_30d"       label="Sessions"   />
+              <Th k="auth_success_rate"  label="Login Rate" />
+              <Th k="last_active"        label="Last Active" />
             </tr>
-          ))}
+          </thead>
 
-          {filtered.length === 0 && (
-            <tr>
-              <td colSpan={8} className="px-5 py-14 text-center">
-                <div className="flex flex-col items-center gap-3 text-txt-muted">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-9 h-9 opacity-35">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                  </svg>
-                  <p className="text-sm font-medium">No users match the current filters</p>
-                </div>
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+          <tbody>
+            {sortedUsers.map((user) => (
+              <tr
+                key={user.user_id}
+                onClick={() => onSelect(user)}
+                className="group cursor-pointer transition-colors border-b border-white/30 last:border-0"
+                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(79,110,247,0.04)')}
+                onMouseLeave={e => (e.currentTarget.style.background = '')}
+              >
+                <td className="px-5 py-3.5">
+                  <div className="flex items-center gap-3">
+                    <Avatar name={user.name} />
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-[#111827] group-hover:text-[#4F6EF7] transition-colors truncate leading-snug">
+                        {user.name}
+                      </p>
+                      <p className="text-xs text-[#9CA3AF] truncate mt-0.5">{user.email}</p>
+                    </div>
+                  </div>
+                </td>
+
+                <td className="px-5 py-3.5">
+                  <span className="text-sm text-txt-secondary">{user.group}</span>
+                </td>
+
+                <td className="px-5 py-3.5">
+                  <RoleBadge role={user.role} />
+                </td>
+
+                <td className="px-5 py-3.5">
+                  <StatusBadge status={user.status} />
+                </td>
+
+                <td className="px-5 py-3.5">
+                  <span className="text-sm font-semibold text-txt-primary">{user.sessions_30d}</span>
+                  <p className="text-[10px] text-txt-muted mt-0.5">30 days</p>
+                </td>
+
+                <td className="px-5 py-3.5">
+                  <div className="flex items-center gap-2">
+                    <div className="w-16 h-1.5 rounded-full overflow-hidden flex-shrink-0" style={{ background: 'rgba(79,110,247,0.12)' }}>
+                      <div
+                        className="h-full rounded-full"
+                        style={{
+                          width: `${user.auth_success_rate ?? 0}%`,
+                          background: 'linear-gradient(90deg, #4F6EF7, #7C3AED)',
+                        }}
+                      />
+                    </div>
+                    <span className="text-xs font-semibold text-[#374151]">
+                      {user.auth_success_rate ?? 0}%
+                    </span>
+                  </div>
+                </td>
+
+                <td className="px-5 py-3.5">
+                  <span className="text-sm text-txt-muted">{user.last_active}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {(pageSize < totalCount || pageSize > 10) && (
+        <div className="p-6 text-center border-t border-white/40 bg-slate-50/30 flex flex-col items-center gap-3">
+          <div className="flex gap-4">
+            {pageSize < totalCount && onShowMore && (
+              <button
+                onClick={onShowMore}
+                className="inline-flex items-center gap-2 px-8 py-3 rounded-2xl bg-[#6366F1] text-white text-[13px] font-black shadow-xl shadow-indigo-200/50 hover:bg-[#4F46E5] hover:-translate-y-0.5 active:translate-y-0 transition-all"
+              >
+                Show More Users
+                <span className="bg-white/20 px-2 py-0.5 rounded-md text-[10px] ml-1">
+                  {totalCount - pageSize} remaining
+                </span>
+              </button>
+            )}
+            
+            {pageSize > 10 && onCollapse && (
+              <button
+                onClick={onCollapse}
+                className="px-8 py-3 rounded-2xl bg-white border border-slate-200 text-[#6B7280] text-[13px] font-black hover:bg-slate-50 hover:-translate-y-0.5 active:translate-y-0 transition-all shadow-sm"
+              >
+                Collapse List
+              </button>
+            )}
+          </div>
+          
+          <p className="text-[10px] text-[#94A3B8] font-bold uppercase tracking-widest">
+            Showing {pageSize} of {totalCount} verified users
+          </p>
+        </div>
+      )}
     </div>
   )
 }

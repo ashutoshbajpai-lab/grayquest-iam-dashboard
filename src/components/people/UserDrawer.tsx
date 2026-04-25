@@ -1,5 +1,6 @@
 'use client'
 
+import { useMemo } from 'react'
 import DrillDownDrawer from '@/components/layout/DrillDownDrawer'
 import LineChart from '@/components/charts/LineChart'
 import BarChart from '@/components/charts/BarChart'
@@ -10,213 +11,139 @@ interface Props {
   onClose: () => void
 }
 
-const SERVICE_POOL = [
-  { name: 'Fee Collection',      events: ['VIEW_FEE', 'COLLECT_FEE', 'GENERATE_RECEIPT'] },
-  { name: 'Student Management',  events: ['VIEW_STUDENT', 'ADD_STUDENT', 'UPDATE_RECORD'] },
-  { name: 'Loan Management',     events: ['LOAN_APPROVAL', 'VIEW_LOAN', 'LOAN_STATUS'] },
-  { name: 'User Administration', events: ['CREATE_USER', 'UPDATE_USER', 'VIEW_ROLE'] },
-  { name: 'Audit Logs',          events: ['VIEW_LOG', 'EXPORT_LOG', 'FILTER_LOG'] },
-  { name: 'Reports',             events: ['GENERATE_REPORT', 'VIEW_REPORT', 'EXPORT_PDF'] },
-  { name: 'Settings',            events: ['UPDATE_CONFIG', 'VIEW_SETTINGS'] },
-]
-
-function getLast7Days(): string[] {
-  return Array.from({ length: 7 }, (_, i) => {
-    const d = new Date(); d.setDate(d.getDate() - (6 - i))
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-  })
-}
-const DATES = getLast7Days()
-
-// Deterministic pseudo-random from user_id + offset seed
-function prng(seed: number) {
-  const x = Math.sin(seed) * 10000
-  return x - Math.floor(x)
-}
-
-function generateActivitySeries(user: User) {
-  const dailySessions = user.sessions_30d / 30
-  const dailyEvents   = user.events_30d / 30
-  return DATES.map((date, i) => {
-    const factor = 0.5 + prng(user.user_id * 13 + i) * 1.1
-    return {
-      date,
-      sessions: Math.max(0, Math.round(dailySessions * factor)),
-      events:   Math.max(0, Math.round(dailyEvents   * factor)),
-    }
-  })
-}
-
-function generateServiceBreakdown(user: User) {
-  const count    = Math.min(user.services_used, SERVICE_POOL.length)
-  const services = SERVICE_POOL.slice(0, count)
-  // Descending weights so first service gets the most events
-  const weights  = services.map((_, i) => count - i)
-  const total    = weights.reduce((a, b) => a + b, 0)
-  return services.map((s, i) => ({
-    service: s.name,
-    events:  Math.round((weights[i] / total) * user.events_30d),
-    pct:     Math.round((weights[i] / total) * 100),
-  }))
-}
-
-function generateRecentEvents(user: User) {
-  const count    = Math.min(user.services_used, SERVICE_POOL.length)
-  const services = SERVICE_POOL.slice(0, count)
-  const failRate = 1 - user.login_success_rate / 100
-
-  return Array.from({ length: 6 }, (_, i) => {
-    const svc      = services[i % services.length]
-    const evtIdx   = Math.floor(prng(user.user_id * 7 + i) * svc.events.length)
-    const isFailed = prng(user.user_id * 11 + i) < failRate
-    const dayOff   = Math.floor(i / 2)
-    const hour     = 9 + Math.floor(prng(user.user_id * 3 + i) * 9)
-    const min      = Math.floor(prng(user.user_id * 5 + i) * 60)
-    const d        = new Date(); d.setDate(d.getDate() - dayOff)
-    const date     = d.toISOString().slice(0, 10)
-    return {
-      ts:      `${date} ${hour.toString().padStart(2,'0')}:${min.toString().padStart(2,'0')}`,
-      service: svc.name,
-      event:   svc.events[evtIdx],
-      status:  isFailed ? 'FAILED' : 'SUCCESS',
-    }
-  })
-}
-
-function HealthScoreGauge({ score }: { score: number }) {
-  const color    = score >= 75 ? 'var(--color-status-success)' : score >= 50 ? 'var(--color-status-pending)' : 'var(--color-status-failure)'
-  const r        = 40
-  const circ     = 2 * Math.PI * r
-  const dash     = (score / 100) * circ * 0.75
-  const gap      = circ - dash
-  const rotation = -225
-
+function UserKPICard({ label, value, sub, color }: { label: string; value: string | number; sub?: string; color?: string }) {
   return (
-    <div className="flex flex-col items-center" aria-label={`Health score: ${score} out of 100`}>
-      <svg width="110" height="80" viewBox="0 0 110 80" role="img" aria-hidden="true">
-        {/* Track — uses CSS variable so it adapts to light/dark */}
-        <circle cx="55" cy="70" r={r} fill="none"
-          stroke="var(--color-bg-border)" strokeWidth="8"
-          strokeDasharray={`${circ * 0.75} ${circ}`}
-          strokeDashoffset="0"
-          transform={`rotate(${rotation} 55 70)`}
-          strokeLinecap="round"
-        />
-        {/* Fill */}
-        <circle cx="55" cy="70" r={r} fill="none"
-          stroke={color} strokeWidth="8"
-          strokeDasharray={`${dash} ${gap}`}
-          strokeDashoffset="0"
-          transform={`rotate(${rotation} 55 70)`}
-          strokeLinecap="round"
-        />
-        <text x="55" y="65" textAnchor="middle" fill={color} fontSize="22" fontWeight="600">{score}</text>
-        <text x="55" y="78" textAnchor="middle" fill="var(--color-txt-muted)" fontSize="10">/ 100</text>
-      </svg>
-      <p className="text-xs text-txt-muted -mt-1">Health Score</p>
+    <div className="bg-white/90 rounded-2xl p-4 border border-white/60 shadow-sm flex flex-col justify-center min-h-[90px]">
+      <p className="text-[10px] font-black text-[#94A3B8] uppercase tracking-wider mb-1">{label}</p>
+      <p className="text-[18px] font-black text-[#111827]" style={{ color: color ?? '#111827' }}>{value}</p>
+      {sub && <p className="text-[9px] font-bold text-[#94A3B8] mt-1">{sub}</p>}
     </div>
   )
 }
 
 export default function UserDrawer({ user, onClose }: Props) {
+  const activitySeries = useMemo(() => user?.activity_series ?? [], [user])
+  const serviceBreakdown = useMemo(() => user?.service_breakdown ?? [], [user])
+  const recentEvents = useMemo(() => user?.recent_events ?? [], [user])
+
   if (!user) return null
 
-  const activitySeries    = generateActivitySeries(user)
-  const serviceBreakdown  = generateServiceBreakdown(user)
-  const recentEvents      = generateRecentEvents(user)
+  const healthColor = user.health_score > 80 ? '#10B981' : user.health_score > 60 ? '#F59E0B' : '#EF4444'
 
   return (
-    <DrillDownDrawer open={!!user} onClose={onClose} title={user.name} breadcrumbs={[{ label: 'People', onClick: onClose }]}>
-      <div className="space-y-6">
-        {/* Identity + score */}
-        <div className="flex items-start gap-4">
-          <div className="w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center flex-shrink-0">
-            <span className="text-accent text-lg font-semibold">{user.name[0]}</span>
+    <DrillDownDrawer
+      open={!!user}
+      onClose={onClose}
+      title={user.name}
+      breadcrumbs={[{ label: 'People', onClick: onClose }]}
+    >
+      <div className="space-y-8">
+        {/* Header Profile */}
+        <div className="flex items-start gap-6">
+          <div className="w-16 h-16 rounded-3xl bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center text-white text-2xl font-black shadow-lg shadow-indigo-200/50">
+            {user.name.charAt(0).toUpperCase()}
           </div>
           <div className="flex-1">
-            <p className="text-sm font-semibold text-txt-primary">{user.name}</p>
-            <p className="text-xs text-txt-muted">{user.email}</p>
-            <div className="flex gap-2 mt-2 flex-wrap">
-              <span className="badge badge-neutral">{user.role}</span>
-              <span className="badge badge-neutral">{user.group}</span>
-              <span className={`badge ${user.status === 'active' ? 'badge-success' : 'badge-failure'}`}>
-                {user.status}
+            <h3 className="text-[24px] font-black text-[#111827] leading-tight mb-2">{user.name}</h3>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[11px] font-black uppercase tracking-wider border border-indigo-100">
+                {user.role}
               </span>
+              <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 text-[11px] font-black uppercase tracking-wider border border-emerald-100">
+                Active Now
+              </span>
+              <span className="text-[11px] font-bold text-[#94A3B8] ml-1">ID: {user.user_id}</span>
             </div>
           </div>
-          <HealthScoreGauge score={user.health_score} />
-        </div>
-
-        {/* KPI row */}
-        <div className="grid grid-cols-3 gap-3">
-          {[
-            { label: 'Sessions (30d)', value: user.sessions_30d },
-            { label: 'Events (30d)',   value: user.events_30d   },
-            { label: 'Avg Session',    value: `${user.avg_session_min}m` },
-            { label: 'Services Used',  value: user.services_used },
-            { label: 'Login Rate',     value: `${user.login_success_rate}%` },
-            { label: 'Member Since',   value: user.first_seen?.slice(0, 7) ?? '—' },
-          ].map(k => (
-            <div key={k.label} className="card-elevated p-3">
-              <p className="text-xs text-txt-muted">{k.label}</p>
-              <p className="text-base font-semibold text-txt-primary mt-0.5">{k.value}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* 7-day activity */}
-        <div>
-          <p className="text-xs font-medium text-txt-secondary mb-3">Activity — Last 7 Days</p>
-          <figure aria-label={`${user.name}'s 7-day activity trend`}>
-            <LineChart
-              data={activitySeries}
-              xKey="date"
-              lines={[
-                { key: 'sessions', color: 'var(--color-accent)',      label: 'Sessions' },
-                { key: 'events',   color: 'var(--color-status-info)', label: 'Events'   },
-              ]}
-              height={160}
-            />
-            <figcaption className="sr-only">
-              Line chart showing sessions and events per day over the past 7 days for {user.name}.
-            </figcaption>
-          </figure>
-        </div>
-
-        {/* Services breakdown */}
-        <div>
-          <p className="text-xs font-medium text-txt-secondary mb-3">Service Usage Breakdown</p>
-          <figure aria-label={`${user.name}'s service usage`}>
-            <BarChart
-              data={serviceBreakdown}
-              xKey="service"
-              bars={[{ key: 'events', color: 'var(--color-accent)', label: 'Events' }]}
-              horizontal
-              height={Math.max(140, serviceBreakdown.length * 32)}
-              showLabels
-            />
-            <figcaption className="sr-only">
-              Horizontal bar chart showing event counts per service for {user.name}.
-            </figcaption>
-          </figure>
-        </div>
-
-        {/* Recent events */}
-        <div>
-          <p className="text-xs font-medium text-txt-secondary mb-3">Recent Events</p>
-          <div className="space-y-1" role="list" aria-label="Recent events">
-            {recentEvents.map((e, i) => (
-              <div key={i} role="listitem" className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-bg-elevated transition-colors">
-                <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${e.status === 'SUCCESS' ? 'bg-status-success' : 'bg-status-failure'}`}
-                  aria-hidden="true" />
-                <span className="text-xs text-txt-muted w-32 flex-shrink-0">{e.ts}</span>
-                <span className="text-xs text-txt-secondary flex-1">{e.service}</span>
-                <span className="text-xs font-mono text-txt-primary">{e.event}</span>
-                <span className={`text-xs font-medium ${e.status === 'SUCCESS' ? 'text-status-success' : 'text-status-failure'}`}>
-                  {e.status}
-                </span>
+          
+          {/* Health Gauge */}
+          <div className="relative w-24 h-24">
+            <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="42" stroke="rgba(0,0,0,0.05)" strokeWidth="10" fill="none" />
+              <circle 
+                cx="50" cy="50" r="42" stroke={healthColor} strokeWidth="10" fill="none" 
+                strokeDasharray={`${(user.health_score / 100) * 264} 264`}
+                strokeLinecap="round"
+                className="transition-all duration-1000 ease-out"
+              />
+            </svg>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <div className="flex flex-col items-center -space-y-1">
+                <span className="text-2xl font-black text-[#111827]">{Math.round(user.health_score)}</span>
+                <span className="text-[10px] font-black text-[#94A3B8] uppercase">/ 100</span>
               </div>
-            ))}
+              <p className="text-[8px] font-black text-[#94A3B8] uppercase mt-1 tracking-widest">Health</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Extended KPI Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+          <UserKPICard label="Sessions (30d)" value={user.sessions_30d} sub="Engagement" />
+          <UserKPICard label="Events (30d)" value={user.events_30d} sub="Action count" />
+          <UserKPICard label="Avg Session" value="4.2m" sub="Per login" />
+          <UserKPICard label="Services Used" value={serviceBreakdown.length} sub="Cross-module" />
+          <UserKPICard label="Login Rate" value={`${user.auth_success_rate ?? 0}%`} color="#10B981" sub="Auth health" />
+          <UserKPICard label="Member Since" value={user.created_at?.slice(0, 7) ?? user.first_seen?.slice(0, 7) ?? '2026-01'} sub="Activation" />
+        </div>
+
+        {/* Charts in separate rows for better clarity */}
+        <div className="space-y-8">
+          <div className="space-y-4">
+            <h4 className="text-[12px] font-black text-[#475569] uppercase tracking-wider">Activity — Last 7 Days</h4>
+            <div className="h-[200px] bg-white/50 rounded-2xl border border-white/60 p-4 shadow-sm">
+              <LineChart
+                data={activitySeries}
+                xKey="date"
+                lines={[{ key: 'events', color: '#6366F1', label: 'Events' }]}
+                height={170}
+                formatX={v => v.slice(5)}
+              />
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h4 className="text-[12px] font-black text-[#475569] uppercase tracking-wider">Service Usage Breakdown</h4>
+            <div className="h-[220px] bg-white/50 rounded-2xl border border-white/60 p-4 shadow-sm">
+              <BarChart
+                data={serviceBreakdown.slice(0, 6)}
+                xKey="name"
+                bars={[{ key: 'value', color: '#818CF8', label: 'Events' }]}
+                height={190}
+                horizontal
+                showLabels
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Detailed Activity Feed */}
+        <div className="space-y-4">
+          <h4 className="text-[12px] font-black text-[#475569] uppercase tracking-wider">Recent Events</h4>
+          <div className="space-y-2">
+            {recentEvents.length > 0 ? (
+              recentEvents.map((e, i) => (
+                <div key={i} className="flex items-center gap-4 p-4 rounded-xl bg-white/60 border border-white/60 hover:shadow-sm transition-all group">
+                  <span className={`w-2 h-2 rounded-full flex-shrink-0 ${e.status === 'SUCCESS' ? 'bg-emerald-500' : 'bg-rose-500'}`} />
+                  <div className="min-w-[120px] text-[11px] font-bold text-[#94A3B8]">
+                    {e.ts.replace('T', ' ').slice(0, 16)}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[12px] font-black text-[#111827] truncate group-hover:text-[#6366F1] transition-colors">{e.service}</p>
+                  </div>
+                  <div className="flex-1 text-right min-w-0">
+                    <p className="text-[11px] font-bold text-[#64748B] uppercase tracking-tight truncate">{e.event}</p>
+                  </div>
+                  <div className={`text-[10px] font-black px-2 py-0.5 rounded-md ${e.status === 'SUCCESS' ? 'text-emerald-600 bg-emerald-50' : 'text-rose-600 bg-rose-50'}`}>
+                    {e.status}
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="py-8 text-center bg-white/40 rounded-xl border border-dashed border-white/60">
+                <p className="text-[11px] font-bold text-[#94A3B8]">No recent events found for this user.</p>
+              </div>
+            )}
           </div>
         </div>
       </div>

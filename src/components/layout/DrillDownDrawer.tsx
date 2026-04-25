@@ -19,9 +19,7 @@ export default function DrillDownDrawer({ open, onClose, title, breadcrumbs = []
   const drawerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    function handleKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') onClose()
-    }
+    function handleKey(e: KeyboardEvent) { if (e.key === 'Escape') onClose() }
     if (open) document.addEventListener('keydown', handleKey)
     return () => document.removeEventListener('keydown', handleKey)
   }, [open, onClose])
@@ -29,55 +27,51 @@ export default function DrillDownDrawer({ open, onClose, title, breadcrumbs = []
   if (!open) return null
 
   return (
-    <>
+    <div className="fixed inset-0 z-[100] flex justify-end">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/40 z-40 backdrop-blur-sm animate-fade-in"
+        className="absolute inset-0 bg-slate-900/10 backdrop-blur-[2px] animate-in fade-in duration-300"
         onClick={onClose}
       />
 
-      {/* Drawer */}
+      {/* Drawer Panel (Glassmorphic) */}
       <div
         ref={drawerRef}
-        className="fixed top-0 right-0 h-full w-[45%] min-w-[400px] max-w-[760px] bg-bg-surface border-l border-bg-border z-50 flex flex-col animate-slide-in shadow-2xl"
+        className="relative h-[calc(100vh-24px)] w-[50%] min-w-[480px] max-w-[720px] my-3 mr-3 bg-white/75 backdrop-blur-3xl rounded-[32px] border border-white/60 shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.1)] flex flex-col overflow-hidden animate-in slide-in-from-right duration-500 ease-out"
       >
-        {/* Header */}
-        <div className="flex items-start justify-between px-6 py-4 border-b border-bg-border flex-shrink-0">
-          <div className="flex flex-col gap-1 min-w-0">
-            {/* Breadcrumbs */}
-            {breadcrumbs.length > 0 && (
-              <div className="flex items-center gap-1 text-xs text-txt-muted flex-wrap">
+        {/* Header Section */}
+        <div className="px-8 pt-8 pb-4 flex-shrink-0">
+          <div className="flex justify-between items-start">
+            <div className="space-y-1">
+              {/* Breadcrumbs */}
+              <div className="flex items-center gap-1.5 text-[11px] font-black text-[#94A3B8] uppercase tracking-widest">
                 {breadcrumbs.map((crumb, i) => (
-                  <span key={i} className="flex items-center gap-1">
-                    {i > 0 && <span>/</span>}
-                    <button
-                      onClick={crumb.onClick}
-                      className="hover:text-txt-primary transition-colors"
-                    >
-                      {crumb.label}
-                    </button>
+                  <span key={i} className="flex items-center gap-1.5">
+                    <button onClick={crumb.onClick} className="hover:text-[#6366F1] transition-colors">{crumb.label}</button>
+                    <span>/</span>
                   </span>
                 ))}
-                <span>/</span>
-                <span className="text-txt-secondary">{title}</span>
+                <span className="text-[#64748B]">{title}</span>
               </div>
-            )}
-            <h2 className="text-base font-semibold text-txt-primary truncate">{title}</h2>
+            </div>
+            
+            {/* Close Button (Circle X) */}
+            <button
+              onClick={onClose}
+              className="w-10 h-10 rounded-full bg-white/50 border border-white/80 shadow-sm flex items-center justify-center text-[#64748B] hover:text-[#111827] hover:bg-white transition-all group"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="w-4 h-4 group-hover:scale-110 transition-transform">
+                <path d="M18 6L6 18M6 6l12 12" />
+              </svg>
+            </button>
           </div>
-          <button
-            onClick={onClose}
-            aria-label="Close panel"
-            className="text-txt-muted hover:text-txt-primary text-xl leading-none ml-4 flex-shrink-0"
-          >
-            ×
-          </button>
         </div>
 
-        {/* Scrollable content */}
-        <div className="flex-1 overflow-y-auto px-6 py-4">
+        {/* Scrollable Content Area */}
+        <div className="flex-1 overflow-y-auto px-8 pb-8 custom-scrollbar">
           {children}
         </div>
       </div>
-    </>
+    </div>
   )
 }

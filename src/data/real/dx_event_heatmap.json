@@ -2,48 +2,113 @@
   "matrix": [
     {
       "service": "AD Registrations",
+      "hour": 10,
+      "count": 2
+    },
+    {
+      "service": "AD Registrations",
       "hour": 11,
-      "count": 1
+      "count": 13
     },
     {
-      "service": "Admission Leads",
+      "service": "AD Registrations",
       "hour": 12,
-      "count": 3
+      "count": 8
     },
     {
-      "service": "Admission Leads",
+      "service": "AD Registrations",
       "hour": 13,
       "count": 4
     },
     {
-      "service": "Admission Leads",
+      "service": "AD Registrations",
       "hour": 14,
+      "count": 13
+    },
+    {
+      "service": "AD Registrations",
+      "hour": 15,
+      "count": 8
+    },
+    {
+      "service": "AD Registrations",
+      "hour": 16,
+      "count": 15
+    },
+    {
+      "service": "AD Registrations",
+      "hour": 17,
+      "count": 5
+    },
+    {
+      "service": "AD Registrations",
+      "hour": 18,
+      "count": 6
+    },
+    {
+      "service": "AD Registrations",
+      "hour": 19,
+      "count": 1
+    },
+    {
+      "service": "AD Transactions",
+      "hour": 11,
+      "count": 2
+    },
+    {
+      "service": "AD Transactions",
+      "hour": 12,
+      "count": 1
+    },
+    {
+      "service": "AD Transactions",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "service": "Admission Leads",
+      "hour": 0,
+      "count": 3
+    },
+    {
+      "service": "Admission Leads",
+      "hour": 12,
       "count": 2
     },
     {
       "service": "Admission Leads",
       "hour": 16,
-      "count": 9
+      "count": 3
     },
     {
       "service": "Admission Leads",
-      "hour": 18,
+      "hour": 17,
+      "count": 1
+    },
+    {
+      "service": "Admission Leads",
+      "hour": 22,
+      "count": 6
+    },
+    {
+      "service": "Admission Leads",
+      "hour": 23,
+      "count": 5
+    },
+    {
+      "service": "Applicant Fee Headers",
+      "hour": 9,
+      "count": 1
+    },
+    {
+      "service": "Applicant Fee Headers",
+      "hour": 10,
       "count": 2
     },
     {
       "service": "Applicant Fee Headers",
-      "hour": 9,
-      "count": 3
-    },
-    {
-      "service": "Applicant Fee Headers",
-      "hour": 10,
-      "count": 10
-    },
-    {
-      "service": "Applicant Fee Headers",
       "hour": 11,
-      "count": 5
+      "count": 3
     },
     {
       "service": "Applicant Fee Headers",
@@ -53,81 +118,176 @@
     {
       "service": "Applicant Fee Headers",
       "hour": 13,
-      "count": 1
+      "count": 4
     },
     {
       "service": "Applicant Fee Headers",
       "hour": 14,
-      "count": 13
+      "count": 1
     },
     {
       "service": "Applicant Fee Headers",
       "hour": 15,
-      "count": 13
+      "count": 5
     },
     {
       "service": "Applicant Fee Headers",
       "hour": 16,
-      "count": 12
+      "count": 4
     },
     {
       "service": "Applicant Fee Headers",
-      "hour": 17,
-      "count": 8
+      "hour": 22,
+      "count": 1
     },
     {
       "service": "Applicant Fee Headers",
-      "hour": 18,
+      "hour": 23,
+      "count": 2
+    },
+    {
+      "service": "Application Profile",
+      "hour": 10,
       "count": 1
     },
     {
       "service": "Application Profile",
-      "hour": 9,
+      "hour": 11,
+      "count": 3
+    },
+    {
+      "service": "Application Profile",
+      "hour": 12,
+      "count": 5
+    },
+    {
+      "service": "Application Profile",
+      "hour": 13,
       "count": 4
     },
     {
       "service": "Application Profile",
-      "hour": 10,
-      "count": 8
-    },
-    {
-      "service": "Application Profile",
-      "hour": 11,
-      "count": 8
-    },
-    {
-      "service": "Application Profile",
-      "hour": 12,
-      "count": 10
-    },
-    {
-      "service": "Application Profile",
-      "hour": 13,
-      "count": 3
-    },
-    {
-      "service": "Application Profile",
       "hour": 14,
-      "count": 10
+      "count": 6
     },
     {
       "service": "Application Profile",
       "hour": 15,
-      "count": 5
+      "count": 17
     },
     {
       "service": "Application Profile",
       "hour": 16,
-      "count": 13
+      "count": 11
     },
     {
       "service": "Application Profile",
-      "hour": 17,
-      "count": 9
+      "hour": 18,
+      "count": 4
+    },
+    {
+      "service": "Application Profile",
+      "hour": 22,
+      "count": 1
+    },
+    {
+      "service": "Application Profile",
+      "hour": 23,
+      "count": 11
+    },
+    {
+      "service": "Classes",
+      "hour": 10,
+      "count": 33
+    },
+    {
+      "service": "Classes",
+      "hour": 11,
+      "count": 14
+    },
+    {
+      "service": "Classes",
+      "hour": 12,
+      "count": 7
+    },
+    {
+      "service": "Classes",
+      "hour": 13,
+      "count": 19
     },
     {
       "service": "Classes",
       "hour": 14,
+      "count": 8
+    },
+    {
+      "service": "Classes",
+      "hour": 15,
+      "count": 4
+    },
+    {
+      "service": "Classes",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "service": "Classes",
+      "hour": 17,
+      "count": 1
+    },
+    {
+      "service": "Classes",
+      "hour": 18,
+      "count": 13
+    },
+    {
+      "service": "Classes",
+      "hour": 21,
+      "count": 2
+    },
+    {
+      "service": "Dashboard",
+      "hour": 9,
+      "count": 3
+    },
+    {
+      "service": "Dashboard",
+      "hour": 10,
+      "count": 4
+    },
+    {
+      "service": "Dashboard",
+      "hour": 11,
+      "count": 6
+    },
+    {
+      "service": "Dashboard",
+      "hour": 12,
+      "count": 6
+    },
+    {
+      "service": "Dashboard",
+      "hour": 13,
+      "count": 3
+    },
+    {
+      "service": "Dashboard",
+      "hour": 14,
+      "count": 1
+    },
+    {
+      "service": "Dashboard",
+      "hour": 15,
+      "count": 3
+    },
+    {
+      "service": "Dashboard",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "service": "Dashboard",
+      "hour": 17,
       "count": 1
     },
     {
@@ -136,719 +296,1379 @@
       "count": 1
     },
     {
-      "service": "EMI Applications",
-      "hour": 12,
+      "service": "Dashboard",
+      "hour": 21,
       "count": 1
     },
     {
       "service": "EMI Applications",
-      "hour": 17,
-      "count": 1
+      "hour": 8,
+      "count": 12
     },
     {
       "service": "EMI Applications",
-      "hour": 19,
-      "count": 1
-    },
-    {
-      "service": "EMI Products",
-      "hour": 15,
-      "count": 6
-    },
-    {
-      "service": "EMI Products",
-      "hour": 16,
-      "count": 1
-    },
-    {
-      "service": "Fee Headers",
-      "hour": 10,
-      "count": 5
-    },
-    {
-      "service": "Fee Headers",
-      "hour": 11,
-      "count": 1
-    },
-    {
-      "service": "Fee Headers",
-      "hour": 12,
-      "count": 2
-    },
-    {
-      "service": "Fee Headers",
-      "hour": 14,
-      "count": 2
-    },
-    {
-      "service": "Fee Headers",
-      "hour": 16,
-      "count": 1
-    },
-    {
-      "service": "Fee Headers",
-      "hour": 17,
-      "count": 1
-    },
-    {
-      "service": "Fee Headers",
-      "hour": 18,
-      "count": 15
-    },
-    {
-      "service": "Fine",
-      "hour": 11,
-      "count": 1
-    },
-    {
-      "service": "Fine",
-      "hour": 12,
-      "count": 8
-    },
-    {
-      "service": "Fine",
-      "hour": 13,
-      "count": 2
-    },
-    {
-      "service": "Fine",
-      "hour": 14,
-      "count": 2
-    },
-    {
-      "service": "Fine",
-      "hour": 15,
-      "count": 8
-    },
-    {
-      "service": "Fine",
-      "hour": 16,
-      "count": 6
-    },
-    {
-      "service": "Forms",
-      "hour": 7,
-      "count": 5
-    },
-    {
-      "service": "Forms",
-      "hour": 10,
-      "count": 2
-    },
-    {
-      "service": "Forms",
-      "hour": 11,
-      "count": 1
-    },
-    {
-      "service": "Forms",
-      "hour": 12,
-      "count": 1
-    },
-    {
-      "service": "Forms",
-      "hour": 15,
-      "count": 5
-    },
-    {
-      "service": "Lead Profile",
-      "hour": 12,
-      "count": 5
-    },
-    {
-      "service": "Lead Profile",
-      "hour": 13,
-      "count": 4
-    },
-    {
-      "service": "Lead Profile",
-      "hour": 16,
-      "count": 1
-    },
-    {
-      "service": "Master Dashboard",
-      "hour": 7,
-      "count": 1
-    },
-    {
-      "service": "Master Dashboard",
       "hour": 9,
-      "count": 4
-    },
-    {
-      "service": "Master Dashboard",
-      "hour": 10,
-      "count": 22
-    },
-    {
-      "service": "Master Dashboard",
-      "hour": 11,
-      "count": 29
-    },
-    {
-      "service": "Master Dashboard",
-      "hour": 12,
-      "count": 54
-    },
-    {
-      "service": "Master Dashboard",
-      "hour": 13,
-      "count": 31
-    },
-    {
-      "service": "Master Dashboard",
-      "hour": 14,
-      "count": 24
-    },
-    {
-      "service": "Master Dashboard",
-      "hour": 15,
-      "count": 59
-    },
-    {
-      "service": "Master Dashboard",
-      "hour": 16,
-      "count": 52
-    },
-    {
-      "service": "Master Dashboard",
-      "hour": 17,
-      "count": 27
-    },
-    {
-      "service": "Master Dashboard",
-      "hour": 18,
-      "count": 20
-    },
-    {
-      "service": "Master Dashboard",
-      "hour": 19,
-      "count": 14
-    },
-    {
-      "service": "Master Dashboard Banks",
-      "hour": 10,
-      "count": 10
-    },
-    {
-      "service": "Master Dashboard Banks",
-      "hour": 11,
-      "count": 25
-    },
-    {
-      "service": "Master Dashboard Banks",
-      "hour": 12,
-      "count": 35
-    },
-    {
-      "service": "Master Dashboard Banks",
-      "hour": 13,
-      "count": 14
-    },
-    {
-      "service": "Master Dashboard Banks",
-      "hour": 14,
-      "count": 28
-    },
-    {
-      "service": "Master Dashboard Banks",
-      "hour": 15,
-      "count": 18
-    },
-    {
-      "service": "Master Dashboard Banks",
-      "hour": 16,
-      "count": 19
-    },
-    {
-      "service": "Master Dashboard Banks",
-      "hour": 17,
-      "count": 24
-    },
-    {
-      "service": "Master Dashboard Banks",
-      "hour": 18,
-      "count": 29
-    },
-    {
-      "service": "Master Dashboard Banks",
-      "hour": 19,
-      "count": 2
-    },
-    {
-      "service": "Master Dashboard EMI ",
-      "hour": 15,
-      "count": 3
-    },
-    {
-      "service": "Master Dashboard EMI ",
-      "hour": 16,
-      "count": 1
-    },
-    {
-      "service": "Master Dashboard EMI ",
-      "hour": 17,
-      "count": 4
-    },
-    {
-      "service": "Master Dashboard Fee Details",
-      "hour": 11,
-      "count": 9
-    },
-    {
-      "service": "Master Dashboard Fee Details",
-      "hour": 12,
-      "count": 5
-    },
-    {
-      "service": "Master Dashboard Fee Details",
-      "hour": 13,
-      "count": 1
-    },
-    {
-      "service": "Master Dashboard Fee Details",
-      "hour": 14,
-      "count": 8
-    },
-    {
-      "service": "Master Dashboard Fee Details",
-      "hour": 15,
-      "count": 4
-    },
-    {
-      "service": "Master Dashboard Fee Details",
-      "hour": 16,
-      "count": 3
-    },
-    {
-      "service": "Master Dashboard Fee Details",
-      "hour": 17,
-      "count": 6
-    },
-    {
-      "service": "Master Dashboard Fee Details",
-      "hour": 18,
-      "count": 3
-    },
-    {
-      "service": "Master Dashboard Fee Headers",
-      "hour": 11,
-      "count": 3
-    },
-    {
-      "service": "Master Dashboard Fee Headers",
-      "hour": 12,
-      "count": 5
-    },
-    {
-      "service": "Master Dashboard Fee Headers",
-      "hour": 15,
-      "count": 1
-    },
-    {
-      "service": "Master Dashboard Fee Headers",
-      "hour": 16,
-      "count": 1
-    },
-    {
-      "service": "Master Dashboard Fee Headers",
-      "hour": 18,
-      "count": 4
-    },
-    {
-      "service": "Master Dashboard Reports",
-      "hour": 9,
-      "count": 16
-    },
-    {
-      "service": "Master Dashboard Reports",
-      "hour": 10,
-      "count": 31
-    },
-    {
-      "service": "Master Dashboard Reports",
-      "hour": 11,
-      "count": 61
-    },
-    {
-      "service": "Master Dashboard Reports",
-      "hour": 12,
-      "count": 97
-    },
-    {
-      "service": "Master Dashboard Reports",
-      "hour": 13,
       "count": 40
     },
     {
-      "service": "Master Dashboard Reports",
-      "hour": 14,
-      "count": 23
-    },
-    {
-      "service": "Master Dashboard Reports",
-      "hour": 15,
-      "count": 88
-    },
-    {
-      "service": "Master Dashboard Reports",
-      "hour": 16,
-      "count": 75
-    },
-    {
-      "service": "Master Dashboard Reports",
-      "hour": 17,
-      "count": 46
-    },
-    {
-      "service": "Master Dashboard Reports",
-      "hour": 18,
+      "service": "EMI Applications",
+      "hour": 10,
       "count": 45
     },
     {
-      "service": "Master Dashboard Reports",
-      "hour": 19,
-      "count": 19
+      "service": "EMI Applications",
+      "hour": 11,
+      "count": 41
     },
     {
-      "service": "Master Dashboard Reports",
+      "service": "EMI Applications",
+      "hour": 12,
+      "count": 20
+    },
+    {
+      "service": "EMI Applications",
+      "hour": 13,
+      "count": 11
+    },
+    {
+      "service": "EMI Applications",
+      "hour": 14,
+      "count": 46
+    },
+    {
+      "service": "EMI Applications",
+      "hour": 15,
+      "count": 17
+    },
+    {
+      "service": "EMI Applications",
+      "hour": 16,
+      "count": 17
+    },
+    {
+      "service": "EMI Applications",
+      "hour": 17,
+      "count": 11
+    },
+    {
+      "service": "EMI Applications",
+      "hour": 18,
+      "count": 8
+    },
+    {
+      "service": "EMI Applications",
+      "hour": 19,
+      "count": 1
+    },
+    {
+      "service": "EMI Applications",
       "hour": 20,
       "count": 3
     },
     {
-      "service": "Master Dashboard Support",
-      "hour": 10,
-      "count": 1
-    },
-    {
-      "service": "Master Dashboard Support",
-      "hour": 16,
-      "count": 2
-    },
-    {
-      "service": "Master Dashboard Support",
-      "hour": 17,
-      "count": 4
-    },
-    {
-      "service": "Master Dashboard Webhooks",
-      "hour": 12,
-      "count": 5
-    },
-    {
-      "service": "Master Dashboard Webhooks",
-      "hour": 15,
-      "count": 4
-    },
-    {
-      "service": "Master Dashboard Webhooks",
-      "hour": 17,
-      "count": 1
-    },
-    {
-      "service": "Master Dashboard Webhooks",
-      "hour": 18,
-      "count": 1
-    },
-    {
-      "service": "My Reports",
-      "hour": 10,
-      "count": 5
-    },
-    {
-      "service": "My Reports",
-      "hour": 11,
+      "service": "EMI Applications",
+      "hour": 21,
       "count": 3
     },
     {
-      "service": "My Reports",
-      "hour": 12,
+      "service": "EMI Products",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "service": "Fee Headers",
+      "hour": 0,
+      "count": 5
+    },
+    {
+      "service": "Fee Headers",
+      "hour": 8,
       "count": 4
     },
     {
-      "service": "My Reports",
-      "hour": 13,
-      "count": 1
-    },
-    {
-      "service": "My Reports",
-      "hour": 14,
-      "count": 1
-    },
-    {
-      "service": "My Reports",
-      "hour": 16,
-      "count": 3
-    },
-    {
-      "service": "My Reports",
-      "hour": 17,
-      "count": 1
-    },
-    {
-      "service": "Offline Transactions",
-      "hour": 11,
-      "count": 2
-    },
-    {
-      "service": "Offline Transactions",
-      "hour": 14,
-      "count": 1
-    },
-    {
-      "service": "Ongoing Admissions",
+      "service": "Fee Headers",
       "hour": 9,
-      "count": 3
+      "count": 143
     },
     {
-      "service": "Ongoing Admissions",
+      "service": "Fee Headers",
       "hour": 10,
-      "count": 12
+      "count": 148
     },
     {
-      "service": "Ongoing Admissions",
+      "service": "Fee Headers",
       "hour": 11,
-      "count": 6
+      "count": 150
     },
     {
-      "service": "Ongoing Admissions",
+      "service": "Fee Headers",
       "hour": 12,
-      "count": 12
+      "count": 114
     },
     {
-      "service": "Ongoing Admissions",
+      "service": "Fee Headers",
       "hour": 13,
-      "count": 6
+      "count": 38
     },
     {
-      "service": "Ongoing Admissions",
+      "service": "Fee Headers",
       "hour": 14,
+      "count": 91
+    },
+    {
+      "service": "Fee Headers",
+      "hour": 15,
+      "count": 148
+    },
+    {
+      "service": "Fee Headers",
+      "hour": 16,
+      "count": 30
+    },
+    {
+      "service": "Fee Headers",
+      "hour": 17,
       "count": 15
     },
     {
-      "service": "Ongoing Admissions",
-      "hour": 15,
-      "count": 21
-    },
-    {
-      "service": "Ongoing Admissions",
-      "hour": 16,
-      "count": 19
-    },
-    {
-      "service": "Ongoing Admissions",
-      "hour": 17,
-      "count": 12
-    },
-    {
-      "service": "PG Transactions",
-      "hour": 10,
-      "count": 2
-    },
-    {
-      "service": "PG Transactions",
-      "hour": 11,
-      "count": 2
-    },
-    {
-      "service": "PG Transactions",
-      "hour": 12,
-      "count": 3
-    },
-    {
-      "service": "PG Transactions",
-      "hour": 13,
-      "count": 1
-    },
-    {
-      "service": "PG Transactions",
-      "hour": 14,
-      "count": 1
-    },
-    {
-      "service": "PG Transactions",
-      "hour": 15,
-      "count": 1
-    },
-    {
-      "service": "PG Transactions",
-      "hour": 16,
-      "count": 1
-    },
-    {
-      "service": "PG Transactions",
-      "hour": 17,
-      "count": 2
-    },
-    {
-      "service": "PG Transactions",
-      "hour": 19,
-      "count": 1
-    },
-    {
-      "service": "Payment link communication",
-      "hour": 10,
-      "count": 1
-    },
-    {
-      "service": "Payment link communication",
-      "hour": 11,
-      "count": 5
-    },
-    {
-      "service": "Payment link communication",
-      "hour": 12,
-      "count": 14
-    },
-    {
-      "service": "Payment link communication",
-      "hour": 13,
-      "count": 1
-    },
-    {
-      "service": "Payment link communication",
-      "hour": 14,
-      "count": 5
-    },
-    {
-      "service": "Payment link communication",
-      "hour": 15,
-      "count": 7
-    },
-    {
-      "service": "Payment link communication",
-      "hour": 16,
-      "count": 7
-    },
-    {
-      "service": "Payment link communication",
-      "hour": 17,
-      "count": 2
-    },
-    {
-      "service": "Payment link communication",
+      "service": "Fee Headers",
       "hour": 18,
-      "count": 2
-    },
-    {
-      "service": "Payment link history",
-      "hour": 14,
-      "count": 1
-    },
-    {
-      "service": "Payment link history",
-      "hour": 18,
-      "count": 1
-    },
-    {
-      "service": "Report Templates",
-      "hour": 17,
-      "count": 1
-    },
-    {
-      "service": "Scheduled Payment link",
-      "hour": 11,
-      "count": 2
-    },
-    {
-      "service": "Scheduled Payment link",
-      "hour": 13,
-      "count": 1
-    },
-    {
-      "service": "Student Fee Headers",
-      "hour": 9,
       "count": 3
     },
     {
-      "service": "Student Fee Headers",
-      "hour": 11,
+      "service": "Fee Headers",
+      "hour": 21,
       "count": 1
     },
     {
-      "service": "Student Fee Headers",
-      "hour": 12,
-      "count": 3
-    },
-    {
-      "service": "Student Fee Headers",
-      "hour": 13,
+      "service": "Fine",
+      "hour": 8,
       "count": 10
     },
     {
-      "service": "Student Fee Headers",
-      "hour": 14,
-      "count": 1
-    },
-    {
-      "service": "Student Fee Headers",
-      "hour": 15,
-      "count": 4
-    },
-    {
-      "service": "Student Fee Headers",
-      "hour": 17,
-      "count": 1
-    },
-    {
-      "service": "Student Fee Headers",
-      "hour": 18,
-      "count": 2
-    },
-    {
-      "service": "Student Management",
+      "service": "Fine",
       "hour": 9,
       "count": 8
     },
     {
+      "service": "Fine",
+      "hour": 10,
+      "count": 1
+    },
+    {
+      "service": "Fine",
+      "hour": 11,
+      "count": 20
+    },
+    {
+      "service": "Fine",
+      "hour": 12,
+      "count": 22
+    },
+    {
+      "service": "Fine",
+      "hour": 13,
+      "count": 2
+    },
+    {
+      "service": "Fine",
+      "hour": 14,
+      "count": 2
+    },
+    {
+      "service": "Fine",
+      "hour": 15,
+      "count": 3
+    },
+    {
+      "service": "Fine",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "service": "Fine",
+      "hour": 17,
+      "count": 5
+    },
+    {
+      "service": "Fine",
+      "hour": 18,
+      "count": 1
+    },
+    {
+      "service": "Forms",
+      "hour": 8,
+      "count": 3
+    },
+    {
+      "service": "Forms",
+      "hour": 9,
+      "count": 6
+    },
+    {
+      "service": "Forms",
+      "hour": 10,
+      "count": 7
+    },
+    {
+      "service": "Forms",
+      "hour": 11,
+      "count": 8
+    },
+    {
+      "service": "Forms",
+      "hour": 12,
+      "count": 15
+    },
+    {
+      "service": "Forms",
+      "hour": 13,
+      "count": 3
+    },
+    {
+      "service": "Forms",
+      "hour": 14,
+      "count": 9
+    },
+    {
+      "service": "Forms",
+      "hour": 15,
+      "count": 10
+    },
+    {
+      "service": "Forms",
+      "hour": 16,
+      "count": 5
+    },
+    {
+      "service": "Forms",
+      "hour": 17,
+      "count": 1
+    },
+    {
+      "service": "Forms",
+      "hour": 18,
+      "count": 16
+    },
+    {
+      "service": "Forms",
+      "hour": 19,
+      "count": 4
+    },
+    {
+      "service": "Institute Discount",
+      "hour": 8,
+      "count": 2
+    },
+    {
+      "service": "Institute Discount",
+      "hour": 9,
+      "count": 4
+    },
+    {
+      "service": "Institute Discount",
+      "hour": 10,
+      "count": 9
+    },
+    {
+      "service": "Institute Discount",
+      "hour": 11,
+      "count": 15
+    },
+    {
+      "service": "Institute Discount",
+      "hour": 12,
+      "count": 8
+    },
+    {
+      "service": "Institute Discount",
+      "hour": 13,
+      "count": 2
+    },
+    {
+      "service": "Institute Discount",
+      "hour": 14,
+      "count": 7
+    },
+    {
+      "service": "Institute Discount",
+      "hour": 15,
+      "count": 2
+    },
+    {
+      "service": "Institute Discount",
+      "hour": 17,
+      "count": 1
+    },
+    {
+      "service": "Institute Discount",
+      "hour": 22,
+      "count": 1
+    },
+    {
+      "service": "Institute Discount",
+      "hour": 23,
+      "count": 4
+    },
+    {
+      "service": "Lead Profile",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "service": "Lead Profile",
+      "hour": 23,
+      "count": 1
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 0,
+      "count": 9
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 1,
+      "count": 1
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 4,
+      "count": 1
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 5,
+      "count": 1
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 6,
+      "count": 1
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 7,
+      "count": 10
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 8,
+      "count": 132
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 9,
+      "count": 188
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 10,
+      "count": 238
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 11,
+      "count": 357
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 12,
+      "count": 288
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 13,
+      "count": 176
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 14,
+      "count": 229
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 15,
+      "count": 311
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 16,
+      "count": 278
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 17,
+      "count": 69
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 18,
+      "count": 59
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 19,
+      "count": 28
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 20,
+      "count": 14
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 21,
+      "count": 9
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 22,
+      "count": 13
+    },
+    {
+      "service": "Master Dashboard",
+      "hour": 23,
+      "count": 10
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 0,
+      "count": 1
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 8,
+      "count": 91
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 9,
+      "count": 320
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 10,
+      "count": 216
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 11,
+      "count": 215
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 12,
+      "count": 223
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 13,
+      "count": 44
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 14,
+      "count": 111
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 15,
+      "count": 162
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 16,
+      "count": 131
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 17,
+      "count": 38
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 18,
+      "count": 40
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 19,
+      "count": 15
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 20,
+      "count": 4
+    },
+    {
+      "service": "Master Dashboard Reports",
+      "hour": 21,
+      "count": 3
+    },
+    {
+      "service": "My Reports",
+      "hour": 5,
+      "count": 3
+    },
+    {
+      "service": "My Reports",
+      "hour": 6,
+      "count": 1
+    },
+    {
+      "service": "My Reports",
+      "hour": 7,
+      "count": 13
+    },
+    {
+      "service": "My Reports",
+      "hour": 8,
+      "count": 124
+    },
+    {
+      "service": "My Reports",
+      "hour": 9,
+      "count": 152
+    },
+    {
+      "service": "My Reports",
+      "hour": 10,
+      "count": 163
+    },
+    {
+      "service": "My Reports",
+      "hour": 11,
+      "count": 205
+    },
+    {
+      "service": "My Reports",
+      "hour": 12,
+      "count": 166
+    },
+    {
+      "service": "My Reports",
+      "hour": 13,
+      "count": 128
+    },
+    {
+      "service": "My Reports",
+      "hour": 14,
+      "count": 111
+    },
+    {
+      "service": "My Reports",
+      "hour": 15,
+      "count": 84
+    },
+    {
+      "service": "My Reports",
+      "hour": 16,
+      "count": 88
+    },
+    {
+      "service": "My Reports",
+      "hour": 17,
+      "count": 43
+    },
+    {
+      "service": "My Reports",
+      "hour": 18,
+      "count": 25
+    },
+    {
+      "service": "My Reports",
+      "hour": 19,
+      "count": 16
+    },
+    {
+      "service": "My Reports",
+      "hour": 20,
+      "count": 6
+    },
+    {
+      "service": "My Reports",
+      "hour": 21,
+      "count": 9
+    },
+    {
+      "service": "My Reports",
+      "hour": 22,
+      "count": 15
+    },
+    {
+      "service": "My Reports",
+      "hour": 23,
+      "count": 6
+    },
+    {
+      "service": "Offline Transactions",
+      "hour": 7,
+      "count": 1
+    },
+    {
+      "service": "Offline Transactions",
+      "hour": 8,
+      "count": 14
+    },
+    {
+      "service": "Offline Transactions",
+      "hour": 9,
+      "count": 31
+    },
+    {
+      "service": "Offline Transactions",
+      "hour": 10,
+      "count": 75
+    },
+    {
+      "service": "Offline Transactions",
+      "hour": 11,
+      "count": 47
+    },
+    {
+      "service": "Offline Transactions",
+      "hour": 12,
+      "count": 94
+    },
+    {
+      "service": "Offline Transactions",
+      "hour": 13,
+      "count": 61
+    },
+    {
+      "service": "Offline Transactions",
+      "hour": 14,
+      "count": 58
+    },
+    {
+      "service": "Offline Transactions",
+      "hour": 15,
+      "count": 5
+    },
+    {
+      "service": "Offline Transactions",
+      "hour": 16,
+      "count": 3
+    },
+    {
+      "service": "Offline Transactions",
+      "hour": 17,
+      "count": 9
+    },
+    {
+      "service": "Offline Transactions",
+      "hour": 20,
+      "count": 1
+    },
+    {
+      "service": "Offline Transactions",
+      "hour": 22,
+      "count": 1
+    },
+    {
+      "service": "Ongoing Admissions",
+      "hour": 0,
+      "count": 1
+    },
+    {
+      "service": "Ongoing Admissions",
+      "hour": 13,
+      "count": 4
+    },
+    {
+      "service": "Ongoing Admissions",
+      "hour": 14,
+      "count": 5
+    },
+    {
+      "service": "Ongoing Admissions",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "service": "Ongoing Admissions",
+      "hour": 22,
+      "count": 2
+    },
+    {
+      "service": "Ongoing Admissions",
+      "hour": 23,
+      "count": 3
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 0,
+      "count": 3
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 2,
+      "count": 1
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 7,
+      "count": 18
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 8,
+      "count": 78
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 9,
+      "count": 149
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 10,
+      "count": 290
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 11,
+      "count": 220
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 12,
+      "count": 201
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 13,
+      "count": 126
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 14,
+      "count": 106
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 15,
+      "count": 85
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 16,
+      "count": 83
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 17,
+      "count": 85
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 18,
+      "count": 64
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 19,
+      "count": 53
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 20,
+      "count": 8
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 21,
+      "count": 6
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 22,
+      "count": 14
+    },
+    {
+      "service": "PG Transactions",
+      "hour": 23,
+      "count": 6
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 0,
+      "count": 22
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 1,
+      "count": 4
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 2,
+      "count": 6
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 3,
+      "count": 2
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 5,
+      "count": 6
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 7,
+      "count": 17
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 8,
+      "count": 122
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 9,
+      "count": 577
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 10,
+      "count": 907
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 11,
+      "count": 1105
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 12,
+      "count": 1093
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 13,
+      "count": 1220
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 14,
+      "count": 1153
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 15,
+      "count": 1585
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 16,
+      "count": 1108
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 17,
+      "count": 432
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 18,
+      "count": 134
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 19,
+      "count": 123
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 20,
+      "count": 21
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 21,
+      "count": 24
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 22,
+      "count": 9
+    },
+    {
+      "service": "Payment link communication",
+      "hour": 23,
+      "count": 8
+    },
+    {
+      "service": "Payment link history",
+      "hour": 12,
+      "count": 2
+    },
+    {
+      "service": "Payment link history",
+      "hour": 14,
+      "count": 1
+    },
+    {
+      "service": "Report Templates",
+      "hour": 5,
+      "count": 1
+    },
+    {
+      "service": "Report Templates",
+      "hour": 7,
+      "count": 7
+    },
+    {
+      "service": "Report Templates",
+      "hour": 8,
+      "count": 62
+    },
+    {
+      "service": "Report Templates",
+      "hour": 9,
+      "count": 71
+    },
+    {
+      "service": "Report Templates",
+      "hour": 10,
+      "count": 73
+    },
+    {
+      "service": "Report Templates",
+      "hour": 11,
+      "count": 100
+    },
+    {
+      "service": "Report Templates",
+      "hour": 12,
+      "count": 75
+    },
+    {
+      "service": "Report Templates",
+      "hour": 13,
+      "count": 65
+    },
+    {
+      "service": "Report Templates",
+      "hour": 14,
+      "count": 53
+    },
+    {
+      "service": "Report Templates",
+      "hour": 15,
+      "count": 36
+    },
+    {
+      "service": "Report Templates",
+      "hour": 16,
+      "count": 42
+    },
+    {
+      "service": "Report Templates",
+      "hour": 17,
+      "count": 22
+    },
+    {
+      "service": "Report Templates",
+      "hour": 18,
+      "count": 8
+    },
+    {
+      "service": "Report Templates",
+      "hour": 19,
+      "count": 7
+    },
+    {
+      "service": "Report Templates",
+      "hour": 20,
+      "count": 3
+    },
+    {
+      "service": "Report Templates",
+      "hour": 21,
+      "count": 2
+    },
+    {
+      "service": "Report Templates",
+      "hour": 22,
+      "count": 9
+    },
+    {
+      "service": "Report Templates",
+      "hour": 23,
+      "count": 3
+    },
+    {
+      "service": "Scheduled Payment link",
+      "hour": 11,
+      "count": 1
+    },
+    {
+      "service": "Scheduled Payment link",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "service": "Scheduled Payment link",
+      "hour": 21,
+      "count": 4
+    },
+    {
+      "service": "Student Discount",
+      "hour": 14,
+      "count": 1
+    },
+    {
+      "service": "Student Discount",
+      "hour": 16,
+      "count": 1
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 0,
+      "count": 11
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 5,
+      "count": 4
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 7,
+      "count": 13
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 8,
+      "count": 158
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 9,
+      "count": 561
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 10,
+      "count": 981
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 11,
+      "count": 1319
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 12,
+      "count": 1140
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 13,
+      "count": 984
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 14,
+      "count": 1034
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 15,
+      "count": 1349
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 16,
+      "count": 1328
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 17,
+      "count": 422
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 18,
+      "count": 98
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 19,
+      "count": 50
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 20,
+      "count": 58
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 21,
+      "count": 49
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 22,
+      "count": 40
+    },
+    {
+      "service": "Student Fee Headers",
+      "hour": 23,
+      "count": 48
+    },
+    {
+      "service": "Student Fine",
+      "hour": 0,
+      "count": 3
+    },
+    {
+      "service": "Student Fine",
+      "hour": 9,
+      "count": 1
+    },
+    {
+      "service": "Student Fine",
+      "hour": 10,
+      "count": 11
+    },
+    {
+      "service": "Student Fine",
+      "hour": 11,
+      "count": 21
+    },
+    {
+      "service": "Student Fine",
+      "hour": 12,
+      "count": 25
+    },
+    {
+      "service": "Student Fine",
+      "hour": 13,
+      "count": 36
+    },
+    {
+      "service": "Student Fine",
+      "hour": 14,
+      "count": 26
+    },
+    {
+      "service": "Student Fine",
+      "hour": 15,
+      "count": 20
+    },
+    {
+      "service": "Student Fine",
+      "hour": 16,
+      "count": 2
+    },
+    {
+      "service": "Student Fine",
+      "hour": 17,
+      "count": 2
+    },
+    {
+      "service": "Student Fine",
+      "hour": 18,
+      "count": 10
+    },
+    {
+      "service": "Student Fine",
+      "hour": 21,
+      "count": 1
+    },
+    {
+      "service": "Student Fine",
+      "hour": 22,
+      "count": 1
+    },
+    {
+      "service": "Student Fine",
+      "hour": 23,
+      "count": 1
+    },
+    {
+      "service": "Student Management",
+      "hour": 1,
+      "count": 12
+    },
+    {
+      "service": "Student Management",
+      "hour": 2,
+      "count": 19
+    },
+    {
+      "service": "Student Management",
+      "hour": 3,
+      "count": 25
+    },
+    {
+      "service": "Student Management",
+      "hour": 4,
+      "count": 1
+    },
+    {
+      "service": "Student Management",
+      "hour": 5,
+      "count": 2
+    },
+    {
+      "service": "Student Management",
+      "hour": 7,
+      "count": 5
+    },
+    {
+      "service": "Student Management",
+      "hour": 8,
+      "count": 46
+    },
+    {
+      "service": "Student Management",
+      "hour": 9,
+      "count": 251
+    },
+    {
       "service": "Student Management",
       "hour": 10,
-      "count": 4
+      "count": 218
     },
     {
       "service": "Student Management",
       "hour": 11,
-      "count": 43
+      "count": 510
     },
     {
       "service": "Student Management",
       "hour": 12,
-      "count": 55
+      "count": 445
     },
     {
       "service": "Student Management",
       "hour": 13,
-      "count": 35
+      "count": 310
     },
     {
       "service": "Student Management",
       "hour": 14,
-      "count": 29
+      "count": 299
     },
     {
       "service": "Student Management",
       "hour": 15,
-      "count": 42
+      "count": 387
     },
     {
       "service": "Student Management",
       "hour": 16,
-      "count": 33
+      "count": 419
     },
     {
       "service": "Student Management",
       "hour": 17,
-      "count": 60
+      "count": 147
     },
     {
       "service": "Student Management",
+      "hour": 18,
+      "count": 21
+    },
+    {
+      "service": "Student Management",
+      "hour": 19,
+      "count": 20
+    },
+    {
+      "service": "Student Management",
+      "hour": 20,
+      "count": 75
+    },
+    {
+      "service": "Student Management",
+      "hour": 21,
+      "count": 12
+    },
+    {
+      "service": "Student Management",
+      "hour": 22,
+      "count": 4
+    },
+    {
+      "service": "Student Management",
+      "hour": 23,
+      "count": 21
+    },
+    {
+      "service": "Student Transactions",
+      "hour": 7,
+      "count": 4
+    },
+    {
+      "service": "Student Transactions",
+      "hour": 8,
+      "count": 56
+    },
+    {
+      "service": "Student Transactions",
+      "hour": 9,
+      "count": 128
+    },
+    {
+      "service": "Student Transactions",
+      "hour": 10,
+      "count": 294
+    },
+    {
+      "service": "Student Transactions",
+      "hour": 11,
+      "count": 344
+    },
+    {
+      "service": "Student Transactions",
+      "hour": 12,
+      "count": 300
+    },
+    {
+      "service": "Student Transactions",
+      "hour": 13,
+      "count": 308
+    },
+    {
+      "service": "Student Transactions",
+      "hour": 14,
+      "count": 256
+    },
+    {
+      "service": "Student Transactions",
+      "hour": 15,
+      "count": 183
+    },
+    {
+      "service": "Student Transactions",
+      "hour": 16,
+      "count": 65
+    },
+    {
+      "service": "Student Transactions",
+      "hour": 17,
+      "count": 25
+    },
+    {
+      "service": "Student Transactions",
       "hour": 18,
       "count": 5
     },
     {
       "service": "Student Transactions",
-      "hour": 9,
-      "count": 3
+      "hour": 20,
+      "count": 2
+    },
+    {
+      "service": "Student Transactions",
+      "hour": 22,
+      "count": 2
     }
   ]
 }

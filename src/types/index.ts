@@ -31,7 +31,7 @@ export interface CustomMetric {
   name: string
   description: string
   formula: string
-  result: string | number
+  result: string
   pinnedTo: Section[]
   createdAt: string
 }
@@ -52,4 +52,5 @@ export interface KPICardProps {
   status?: 'success' | 'warning' | 'danger' | 'neutral'
   icon?: React.ReactNode
   iconBg?: string
+  description?: string
 }

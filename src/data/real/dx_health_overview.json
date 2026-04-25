@@ -1,215 +1,2137 @@
 {
   "kpis": {
-    "overall_success_rate": 70.44,
-    "success_rate": 70.44,
-    "login_success_rate": 99.67,
-    "failed_events_30d": 41,
-    "unique_error_types": 25,
+    "overall_success_rate": 99.3,
+    "success_rate": 99.3,
+    "failure_concentration": "Distributed",
+    "top_failing_modules": [
+      {
+        "service": "Student Fee Headers",
+        "failed": 48,
+        "total": 2516,
+        "rate": 1.9
+      },
+      {
+        "service": "Student Management",
+        "failed": 12,
+        "total": 1208,
+        "rate": 1.0
+      },
+      {
+        "service": "PG Transactions",
+        "failed": 3,
+        "total": 547,
+        "rate": 0.5
+      }
+    ],
+    "login_success_rate": 99.1,
+    "failed_events_30d": 75,
+    "unique_error_types": 17,
     "api_error_rate": 0,
     "p95_latency_ms": 0,
     "consecutive_fail_streaks": 0
   },
   "trends": {
-    "success_rate_vs_prev": -9.1
+    "success_rate_vs_prev": 0.6
   },
   "success_rate_series": [
     {
-      "date": "2026-04-01",
-      "rate": 78.38
-    },
-    {
-      "date": "2026-04-02",
-      "rate": 91.87
-    },
-    {
-      "date": "2026-04-03",
-      "rate": 75.0
-    },
-    {
-      "date": "2026-04-06",
-      "rate": 89.66
-    },
-    {
-      "date": "2026-04-07",
-      "rate": 95.83
-    },
-    {
-      "date": "2026-04-08",
-      "rate": 92.31
-    },
-    {
-      "date": "2026-04-09",
-      "rate": 81.25
-    },
-    {
-      "date": "2026-04-10",
-      "rate": 85.19
-    },
-    {
-      "date": "2026-04-13",
+      "date": "2026-03-01",
       "rate": 100.0
     },
     {
-      "date": "2026-04-14",
-      "rate": 85.71
+      "date": "2026-03-02",
+      "rate": 99.1
     },
     {
-      "date": "2026-04-15",
+      "date": "2026-03-03",
       "rate": 100.0
     },
     {
-      "date": "2026-04-16",
-      "rate": 58.62
+      "date": "2026-03-04",
+      "rate": 98.7
     },
     {
-      "date": "2026-04-17",
-      "rate": 54.31
+      "date": "2026-03-05",
+      "rate": 98.8
     },
     {
-      "date": "2026-04-18",
-      "rate": 90.99
+      "date": "2026-03-06",
+      "rate": 100.0
+    },
+    {
+      "date": "2026-03-07",
+      "rate": 100.0
+    },
+    {
+      "date": "2026-03-08",
+      "rate": 100.0
+    },
+    {
+      "date": "2026-03-09",
+      "rate": 99.6
+    },
+    {
+      "date": "2026-03-10",
+      "rate": 99.0
+    },
+    {
+      "date": "2026-03-11",
+      "rate": 99.8
+    },
+    {
+      "date": "2026-03-12",
+      "rate": 99.7
+    },
+    {
+      "date": "2026-03-13",
+      "rate": 99.3
+    },
+    {
+      "date": "2026-03-14",
+      "rate": 98.8
+    },
+    {
+      "date": "2026-03-15",
+      "rate": 100.0
+    },
+    {
+      "date": "2026-03-16",
+      "rate": 99.4
+    },
+    {
+      "date": "2026-03-17",
+      "rate": 99.2
+    },
+    {
+      "date": "2026-03-18",
+      "rate": 100.0
+    },
+    {
+      "date": "2026-03-19",
+      "rate": 100.0
+    },
+    {
+      "date": "2026-03-20",
+      "rate": 99.6
+    },
+    {
+      "date": "2026-03-21",
+      "rate": 100.0
+    },
+    {
+      "date": "2026-03-22",
+      "rate": 100.0
+    },
+    {
+      "date": "2026-03-23",
+      "rate": 99.4
+    },
+    {
+      "date": "2026-03-24",
+      "rate": 99.5
+    },
+    {
+      "date": "2026-03-25",
+      "rate": 99.2
+    },
+    {
+      "date": "2026-03-26",
+      "rate": 99.0
+    },
+    {
+      "date": "2026-03-27",
+      "rate": 98.3
+    },
+    {
+      "date": "2026-03-28",
+      "rate": 99.2
+    },
+    {
+      "date": "2026-03-29",
+      "rate": 100.0
+    },
+    {
+      "date": "2026-03-30",
+      "rate": 98.8
     }
   ],
   "login_funnel": [
     {
       "step": "Attempt",
-      "count": 1206
+      "count": 2642
     },
     {
       "step": "Auth Pass",
-      "count": 1202
+      "count": 2617
     },
     {
       "step": "Session",
-      "count": 229
+      "count": 2317
     },
     {
       "step": "Action",
-      "count": 102
+      "count": 1343
     }
   ],
   "failure_by_service": [
     {
-      "service": "My Reports",
-      "failed": 1,
-      "total": 1,
-      "rate": 100.0
+      "service": "Admission Leads",
+      "failed": 2,
+      "total": 14,
+      "rate": 14.3
     },
     {
-      "service": "Master Dashboard Fee Headers",
-      "failed": 3,
-      "total": 4,
-      "rate": 75.0
-    },
-    {
-      "service": "Master Dashboard Support",
-      "failed": 4,
-      "total": 6,
-      "rate": 66.67
-    },
-    {
-      "service": "Master Dashboard Banks",
-      "failed": 3,
-      "total": 5,
-      "rate": 60.0
+      "service": "Classes",
+      "failed": 2,
+      "total": 47,
+      "rate": 4.3
     },
     {
       "service": "Student Fee Headers",
-      "failed": 3,
-      "total": 18,
-      "rate": 16.67
+      "failed": 48,
+      "total": 2516,
+      "rate": 1.9
     },
     {
       "service": "Student Management",
-      "failed": 19,
-      "total": 128,
-      "rate": 14.84
+      "failed": 12,
+      "total": 1208,
+      "rate": 1.0
     },
     {
-      "service": "Master Dashboard Reports",
-      "failed": 5,
-      "total": 234,
-      "rate": 2.14
+      "service": "PG Transactions",
+      "failed": 3,
+      "total": 547,
+      "rate": 0.5
+    },
+    {
+      "service": "Student Transactions",
+      "failed": 3,
+      "total": 616,
+      "rate": 0.5
+    },
+    {
+      "service": "Report Templates",
+      "failed": 1,
+      "total": 226,
+      "rate": 0.4
+    },
+    {
+      "service": "Fee Headers",
+      "failed": 2,
+      "total": 466,
+      "rate": 0.4
+    },
+    {
+      "service": "Payment link communication",
+      "failed": 2,
+      "total": 2638,
+      "rate": 0.1
+    },
+    {
+      "service": "My Reports",
+      "failed": 0,
+      "total": 484,
+      "rate": 0.0
     },
     {
       "service": "Master Dashboard",
       "failed": 0,
-      "total": 75,
+      "total": 624,
       "rate": 0.0
     },
     {
-      "service": "Payment link communication",
+      "service": "Master Dashboard Reports",
       "failed": 0,
-      "total": 16,
+      "total": 573,
       "rate": 0.0
     },
     {
-      "service": "PG Transactions",
+      "service": "Student Fine",
+      "failed": 0,
+      "total": 101,
+      "rate": 0.0
+    },
+    {
+      "service": "Institute Discount",
+      "failed": 0,
+      "total": 26,
+      "rate": 0.0
+    },
+    {
+      "service": "EMI Applications",
+      "failed": 0,
+      "total": 138,
+      "rate": 0.0
+    },
+    {
+      "service": "Dashboard",
+      "failed": 0,
+      "total": 7,
+      "rate": 0.0
+    },
+    {
+      "service": "Offline Transactions",
+      "failed": 0,
+      "total": 58,
+      "rate": 0.0
+    },
+    {
+      "service": "Forms",
+      "failed": 0,
+      "total": 41,
+      "rate": 0.0
+    },
+    {
+      "service": "Fine",
+      "failed": 0,
+      "total": 46,
+      "rate": 0.0
+    },
+    {
+      "service": "AD Transactions",
       "failed": 0,
       "total": 4,
+      "rate": 0.0
+    },
+    {
+      "service": "AD Registrations",
+      "failed": 0,
+      "total": 10,
+      "rate": 0.0
+    },
+    {
+      "service": "Ongoing Admissions",
+      "failed": 0,
+      "total": 12,
+      "rate": 0.0
+    },
+    {
+      "service": "Application Profile",
+      "failed": 0,
+      "total": 55,
+      "rate": 0.0
+    },
+    {
+      "service": "Applicant Fee Headers",
+      "failed": 0,
+      "total": 26,
+      "rate": 0.0
+    },
+    {
+      "service": "Payment link history",
+      "failed": 0,
+      "total": 2,
+      "rate": 0.0
+    },
+    {
+      "service": "Lead Profile",
+      "failed": 0,
+      "total": 2,
+      "rate": 0.0
+    },
+    {
+      "service": "Student Discount",
+      "failed": 0,
+      "total": 1,
       "rate": 0.0
     }
   ],
   "failure_by_event": [
     {
-      "event": "Unassigned",
+      "event": "Create Lead",
       "failed": 2,
-      "total": 2,
-      "failure_rate": 100.0
-    },
-    {
-      "event": "delete",
-      "failed": 4,
-      "total": 4,
-      "failure_rate": 100.0
-    },
-    {
-      "event": "Raise request",
-      "failed": 4,
       "total": 6,
-      "failure_rate": 66.67
+      "rate": 33.3
     },
     {
-      "event": "Add Bank",
-      "failed": 3,
-      "total": 5,
-      "failure_rate": 60.0
+      "event": "Sheet verified",
+      "failed": 1,
+      "total": 15,
+      "rate": 6.7
     },
     {
-      "event": "Sample file download",
+      "event": "Unassigned",
       "failed": 11,
-      "total": 26,
-      "failure_rate": 42.31
-    },
-    {
-      "event": "Sheet uploaded",
-      "failed": 8,
-      "total": 29,
-      "failure_rate": 27.59
+      "total": 237,
+      "rate": 4.6
     },
     {
       "event": "Assigned",
-      "failed": 1,
-      "total": 6,
-      "failure_rate": 16.67
+      "failed": 36,
+      "total": 898,
+      "rate": 4.0
     },
     {
-      "event": "Generate Ariflow Report",
-      "failed": 1,
-      "total": 8,
-      "failure_rate": 12.5
+      "event": "Edit",
+      "failed": 12,
+      "total": 1211,
+      "rate": 1.0
+    },
+    {
+      "event": "Bulk Assign",
+      "failed": 2,
+      "total": 196,
+      "rate": 1.0
+    },
+    {
+      "event": "Delete",
+      "failed": 2,
+      "total": 424,
+      "rate": 0.5
+    },
+    {
+      "event": "Summary -  Download report",
+      "failed": 6,
+      "total": 1410,
+      "rate": 0.4
     },
     {
       "event": "Generate new report",
-      "failed": 4,
-      "total": 149,
-      "failure_rate": 2.68
+      "failed": 1,
+      "total": 409,
+      "rate": 0.2
+    },
+    {
+      "event": "Share",
+      "failed": 1,
+      "total": 580,
+      "rate": 0.2
+    },
+    {
+      "event": "Add Student",
+      "failed": 1,
+      "total": 822,
+      "rate": 0.1
+    },
+    {
+      "event": "Generate Ariflow Report",
+      "failed": 0,
+      "total": 424,
+      "rate": 0.0
+    },
+    {
+      "event": "Copy",
+      "failed": 0,
+      "total": 945,
+      "rate": 0.0
+    },
+    {
+      "event": "Create a Payment link",
+      "failed": 0,
+      "total": 580,
+      "rate": 0.0
     },
     {
       "event": "Redirect to GILE Dashboard",
       "failed": 0,
-      "total": 75,
-      "failure_rate": 0.0
+      "total": 624,
+      "rate": 0.0
+    },
+    {
+      "event": "Summary - Add offline collection",
+      "failed": 0,
+      "total": 690,
+      "rate": 0.0
+    },
+    {
+      "event": "Create",
+      "failed": 0,
+      "total": 29,
+      "rate": 0.0
+    },
+    {
+      "event": "Refresh",
+      "failed": 0,
+      "total": 312,
+      "rate": 0.0
+    },
+    {
+      "event": "Student Deactivated",
+      "failed": 0,
+      "total": 110,
+      "rate": 0.0
+    },
+    {
+      "event": "Download Response file",
+      "failed": 0,
+      "total": 34,
+      "rate": 0.0
+    },
+    {
+      "event": "View",
+      "failed": 0,
+      "total": 9,
+      "rate": 0.0
+    },
+    {
+      "event": "Student Activated",
+      "failed": 0,
+      "total": 34,
+      "rate": 0.0
+    },
+    {
+      "event": "Fetch Students",
+      "failed": 0,
+      "total": 13,
+      "rate": 0.0
+    },
+    {
+      "event": "Sample sheet Generation",
+      "failed": 0,
+      "total": 12,
+      "rate": 0.0
+    },
+    {
+      "event": "Sample file download",
+      "failed": 0,
+      "total": 26,
+      "rate": 0.0
+    },
+    {
+      "event": "Create bulk payment links",
+      "failed": 0,
+      "total": 6,
+      "rate": 0.0
+    },
+    {
+      "event": "Create Fee header",
+      "failed": 0,
+      "total": 22,
+      "rate": 0.0
+    },
+    {
+      "event": "Create Payment Page",
+      "failed": 0,
+      "total": 46,
+      "rate": 0.0
+    },
+    {
+      "event": "Review Approved",
+      "failed": 0,
+      "total": 19,
+      "rate": 0.0
+    },
+    {
+      "event": "Lead Status Update",
+      "failed": 0,
+      "total": 6,
+      "rate": 0.0
+    },
+    {
+      "event": "Reject",
+      "failed": 0,
+      "total": 5,
+      "rate": 0.0
+    },
+    {
+      "event": "Student FT file creation",
+      "failed": 0,
+      "total": 79,
+      "rate": 0.0
+    },
+    {
+      "event": "Create class",
+      "failed": 0,
+      "total": 37,
+      "rate": 0.0
+    },
+    {
+      "event": "Student Response file",
+      "failed": 0,
+      "total": 18,
+      "rate": 0.0
+    },
+    {
+      "event": "Sheet uploaded",
+      "failed": 0,
+      "total": 18,
+      "rate": 0.0
+    },
+    {
+      "event": "Student FT file downloaded",
+      "failed": 0,
+      "total": 13,
+      "rate": 0.0
+    },
+    {
+      "event": "Student FT file verified",
+      "failed": 0,
+      "total": 71,
+      "rate": 0.0
+    },
+    {
+      "event": "Sheet Deleted",
+      "failed": 0,
+      "total": 1,
+      "rate": 0.0
+    },
+    {
+      "event": "Student FT file uploaded",
+      "failed": 0,
+      "total": 9,
+      "rate": 0.0
+    },
+    {
+      "event": "Student Bulk upload",
+      "failed": 0,
+      "total": 11,
+      "rate": 0.0
+    },
+    {
+      "event": "Student FT Response file",
+      "failed": 0,
+      "total": 11,
+      "rate": 0.0
+    },
+    {
+      "event": "Inactive scheduled payment link",
+      "failed": 0,
+      "total": 20,
+      "rate": 0.0
+    },
+    {
+      "event": "Create QR code",
+      "failed": 0,
+      "total": 6,
+      "rate": 0.0
+    },
+    {
+      "event": "Create scheduled payment link",
+      "failed": 0,
+      "total": 3,
+      "rate": 0.0
+    },
+    {
+      "event": "Add Comment",
+      "failed": 0,
+      "total": 3,
+      "rate": 0.0
+    },
+    {
+      "event": "Schedule Visit",
+      "failed": 0,
+      "total": 7,
+      "rate": 0.0
+    },
+    {
+      "event": "Mark Visit Complete",
+      "failed": 0,
+      "total": 7,
+      "rate": 0.0
+    },
+    {
+      "event": "Approve",
+      "failed": 0,
+      "total": 5,
+      "rate": 0.0
+    },
+    {
+      "event": "In-Progress",
+      "failed": 0,
+      "total": 3,
+      "rate": 0.0
+    },
+    {
+      "event": "Leads Sheet Upload",
+      "failed": 0,
+      "total": 1,
+      "rate": 0.0
+    },
+    {
+      "event": "Leads Response File Generation",
+      "failed": 0,
+      "total": 1,
+      "rate": 0.0
+    },
+    {
+      "event": "View Auto-debit Schedule",
+      "failed": 0,
+      "total": 5,
+      "rate": 0.0
+    },
+    {
+      "event": "View Bank details",
+      "failed": 0,
+      "total": 1,
+      "rate": 0.0
+    },
+    {
+      "event": "Upload Document",
+      "failed": 0,
+      "total": 2,
+      "rate": 0.0
+    },
+    {
+      "event": "Share Report",
+      "failed": 0,
+      "total": 1,
+      "rate": 0.0
+    },
+    {
+      "event": "Active scheduled payment link",
+      "failed": 0,
+      "total": 1,
+      "rate": 0.0
     }
-  ]
+  ],
+  "recently_failed_by_service": {
+    "Student Fee Headers": [
+      {
+        "user_email": "vib21@grayquest.com",
+        "user_id": "3611",
+        "event": "Assigned",
+        "failed_at": "March 30, 2026, 17:26",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib40@grayquest.com",
+        "user_id": "3612",
+        "event": "Assigned",
+        "failed_at": "March 30, 2026, 15:57",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib10207@grayquest.com",
+        "user_id": "3596",
+        "event": "Assigned",
+        "failed_at": "March 30, 2026, 13:21",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib40@grayquest.com",
+        "user_id": "3612",
+        "event": "Assigned",
+        "failed_at": "March 30, 2026, 12:57",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib40@grayquest.com",
+        "user_id": "3612",
+        "event": "Assigned",
+        "failed_at": "March 30, 2026, 12:39",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib44@grayquest.com",
+        "user_id": "3593",
+        "event": "Assigned",
+        "failed_at": "March 30, 2026, 12:31",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib40@grayquest.com",
+        "user_id": "3612",
+        "event": "Assigned",
+        "failed_at": "March 28, 2026, 11:46",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib15139@grayquest.com",
+        "user_id": "3594",
+        "event": "Assigned",
+        "failed_at": "March 28, 2026, 11:41",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib3@grayquest.com",
+        "user_id": "3613",
+        "event": "Assigned",
+        "failed_at": "March 28, 2026, 10:34",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Unassigned",
+        "failed_at": "March 27, 2026, 16:32",
+        "comment": "Student Fee Headers unassigning failed"
+      },
+      {
+        "user_email": "prashant.mishra@oberoi-is.org",
+        "user_id": "7339",
+        "event": "Unassigned",
+        "failed_at": "March 27, 2026, 16:29",
+        "comment": "Student Fee Headers unassigning failed"
+      },
+      {
+        "user_email": "prashant.mishra@oberoi-is.org",
+        "user_id": "7339",
+        "event": "Unassigned",
+        "failed_at": "March 27, 2026, 16:29",
+        "comment": "Student Fee Headers unassigning failed"
+      },
+      {
+        "user_email": "prashant.mishra@oberoi-is.org",
+        "user_id": "7339",
+        "event": "Unassigned",
+        "failed_at": "March 27, 2026, 16:29",
+        "comment": "Student Fee Headers unassigning failed"
+      },
+      {
+        "user_email": "prashant.mishra@oberoi-is.org",
+        "user_id": "7339",
+        "event": "Unassigned",
+        "failed_at": "March 27, 2026, 16:29",
+        "comment": "Student Fee Headers unassigning failed"
+      },
+      {
+        "user_email": "prashant.mishra@oberoi-is.org",
+        "user_id": "7339",
+        "event": "Unassigned",
+        "failed_at": "March 27, 2026, 16:29",
+        "comment": "Student Fee Headers unassigning failed"
+      },
+      {
+        "user_email": "prashant.mishra@oberoi-is.org",
+        "user_id": "7339",
+        "event": "Unassigned",
+        "failed_at": "March 27, 2026, 16:29",
+        "comment": "Student Fee Headers unassigning failed"
+      },
+      {
+        "user_email": "prashant.mishra@oberoi-is.org",
+        "user_id": "7339",
+        "event": "Unassigned",
+        "failed_at": "March 27, 2026, 16:29",
+        "comment": "Student Fee Headers unassigning failed"
+      },
+      {
+        "user_email": "prashant.mishra@oberoi-is.org",
+        "user_id": "7339",
+        "event": "Unassigned",
+        "failed_at": "March 27, 2026, 16:29",
+        "comment": "Student Fee Headers unassigning failed"
+      },
+      {
+        "user_email": "prashant.mishra@oberoi-is.org",
+        "user_id": "7339",
+        "event": "Unassigned",
+        "failed_at": "March 27, 2026, 16:29",
+        "comment": "Student Fee Headers unassigning failed"
+      },
+      {
+        "user_email": "prashant.mishra@oberoi-is.org",
+        "user_id": "7339",
+        "event": "Unassigned",
+        "failed_at": "March 27, 2026, 16:29",
+        "comment": "Student Fee Headers unassigning failed"
+      },
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Assigned",
+        "failed_at": "March 27, 2026, 12:04",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib15139@grayquest.com",
+        "user_id": "3594",
+        "event": "Assigned",
+        "failed_at": "March 26, 2026, 17:45",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib15139@grayquest.com",
+        "user_id": "3594",
+        "event": "Assigned",
+        "failed_at": "March 26, 2026, 17:44",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib40@grayquest.com",
+        "user_id": "3612",
+        "event": "Assigned",
+        "failed_at": "March 26, 2026, 14:03",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib15139@grayquest.com",
+        "user_id": "3594",
+        "event": "Assigned",
+        "failed_at": "March 26, 2026, 13:11",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib15139@grayquest.com",
+        "user_id": "3594",
+        "event": "Assigned",
+        "failed_at": "March 26, 2026, 13:09",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib40@grayquest.com",
+        "user_id": "3612",
+        "event": "Assigned",
+        "failed_at": "March 26, 2026, 11:58",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib10116@grayquest.com",
+        "user_id": "3604",
+        "event": "Assigned",
+        "failed_at": "March 25, 2026, 14:07",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib21@grayquest.com",
+        "user_id": "3611",
+        "event": "Assigned",
+        "failed_at": "March 24, 2026, 11:34",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "oxfordschool.bam@gmail.com",
+        "user_id": "7209",
+        "event": "Assigned",
+        "failed_at": "March 24, 2026, 10:49",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "b.suresh@discoveroaks.org",
+        "user_id": "1954",
+        "event": "Assigned",
+        "failed_at": "March 23, 2026, 13:43",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib10207@grayquest.com",
+        "user_id": "3596",
+        "event": "Assigned",
+        "failed_at": "March 23, 2026, 11:50",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "secretarymandovimess@gmail.com",
+        "user_id": "7776",
+        "event": "Edit",
+        "failed_at": "March 20, 2026, 15:40",
+        "comment": "Student Fee Headers Edit Unsuccessful"
+      },
+      {
+        "user_email": "vib21@grayquest.com",
+        "user_id": "3611",
+        "event": "Assigned",
+        "failed_at": "March 16, 2026, 10:43",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "oxfordschool.bam@gmail.com",
+        "user_id": "7209",
+        "event": "Assigned",
+        "failed_at": "March 14, 2026, 15:26",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "oxfordschool.bam@gmail.com",
+        "user_id": "7209",
+        "event": "Assigned",
+        "failed_at": "March 14, 2026, 15:09",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "oxfordschool.bam@gmail.com",
+        "user_id": "7209",
+        "event": "Assigned",
+        "failed_at": "March 14, 2026, 14:56",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "oxfordschool.bam@gmail.com",
+        "user_id": "7209",
+        "event": "Assigned",
+        "failed_at": "March 14, 2026, 14:34",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "oxfordschool.bam@gmail.com",
+        "user_id": "7209",
+        "event": "Assigned",
+        "failed_at": "March 14, 2026, 14:00",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "oxfordschool.bam@gmail.com",
+        "user_id": "7209",
+        "event": "Assigned",
+        "failed_at": "March 14, 2026, 12:13",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib10116@grayquest.com",
+        "user_id": "3604",
+        "event": "Assigned",
+        "failed_at": "March 13, 2026, 15:37",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "soumendranath.de@oberoi-is.org",
+        "user_id": "5227",
+        "event": "Assigned",
+        "failed_at": "March 13, 2026, 11:56",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib20@grayquest.com",
+        "user_id": "3609",
+        "event": "Assigned",
+        "failed_at": "March 12, 2026, 16:55",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Assigned",
+        "failed_at": "March 10, 2026, 16:06",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Assigned",
+        "failed_at": "March 10, 2026, 16:03",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib10207@grayquest.com",
+        "user_id": "3596",
+        "event": "Assigned",
+        "failed_at": "March 9, 2026, 14:58",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "lokeshparakh@gmail.com",
+        "user_id": "5318",
+        "event": "Assigned",
+        "failed_at": "March 4, 2026, 13:15",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Assigned",
+        "failed_at": "March 4, 2026, 13:08",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib40@grayquest.com",
+        "user_id": "3612",
+        "event": "Assigned",
+        "failed_at": "February 28, 2026, 13:18",
+        "comment": "Student Fee Headers assignment failed"
+      },
+      {
+        "user_email": "vib10116@grayquest.com",
+        "user_id": "3604",
+        "event": "Assigned",
+        "failed_at": "February 28, 2026, 12:59",
+        "comment": "Student Fee Headers assignment failed"
+      }
+    ],
+    "Student Transactions": [
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Summary -  Download report",
+        "failed_at": "March 5, 2026, 15:50",
+        "comment": "Student Transactions report download failed"
+      },
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Summary -  Download report",
+        "failed_at": "March 5, 2026, 15:43",
+        "comment": "Student Transactions report download failed"
+      },
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Summary -  Download report",
+        "failed_at": "March 5, 2026, 15:43",
+        "comment": "Student Transactions report download failed"
+      },
+      {
+        "user_email": "vib21@grayquest.com",
+        "user_id": "3611",
+        "event": "Summary -  Download report",
+        "failed_at": "February 6, 2026, 13:57",
+        "comment": "Student Transactions report download failed"
+      },
+      {
+        "user_email": "vib21@grayquest.com",
+        "user_id": "3611",
+        "event": "Summary -  Download report",
+        "failed_at": "February 6, 2026, 13:56",
+        "comment": "Student Transactions report download failed"
+      },
+      {
+        "user_email": "dbnengmed@gmail.com",
+        "user_id": "8307",
+        "event": "Summary -  Download report",
+        "failed_at": "February 3, 2026, 10:11",
+        "comment": "Student Transactions report download failed"
+      },
+      {
+        "user_email": "ankush.naralkar@oberoi-is.org",
+        "user_id": "5225",
+        "event": "Summary -  Download report",
+        "failed_at": "January 30, 2026, 15:30",
+        "comment": "Student Transactions report download failed"
+      },
+      {
+        "user_email": "ankush.naralkar@oberoi-is.org",
+        "user_id": "5225",
+        "event": "Summary -  Download report",
+        "failed_at": "January 30, 2026, 15:29",
+        "comment": "Student Transactions report download failed"
+      },
+      {
+        "user_email": "ggcbemetara@gmail.com",
+        "user_id": "5297",
+        "event": "Summary -  Download report",
+        "failed_at": "January 28, 2026, 13:53",
+        "comment": "Student Transactions report download failed"
+      },
+      {
+        "user_email": "ggcbemetara@gmail.com",
+        "user_id": "5297",
+        "event": "Summary -  Download report",
+        "failed_at": "January 28, 2026, 13:53",
+        "comment": "Student Transactions report download failed"
+      },
+      {
+        "user_email": "rajiv.bansal@indiraedu.com",
+        "user_id": "6743",
+        "event": "Summary -  Download report",
+        "failed_at": "January 10, 2026, 15:45",
+        "comment": "Student Transactions report download failed"
+      },
+      {
+        "user_email": "rajiv.bansal@indiraedu.com",
+        "user_id": "6743",
+        "event": "Summary -  Download report",
+        "failed_at": "January 10, 2026, 15:45",
+        "comment": "Student Transactions report download failed"
+      },
+      {
+        "user_email": "rohit.turani@gmail.com",
+        "user_id": "7965",
+        "event": "Summary -  Download report",
+        "failed_at": "January 2, 2026, 14:13",
+        "comment": "Student Transactions report download failed"
+      }
+    ],
+    "Payment link communication": [
+      {
+        "user_email": "vib21@grayquest.com",
+        "user_id": "3611",
+        "event": "Share",
+        "failed_at": "March 31, 2026, 10:51",
+        "comment": "Payment link communication  share failed"
+      },
+      {
+        "user_email": "soumendranath.de@oberoi-is.org",
+        "user_id": "5227",
+        "event": "Sheet verified",
+        "failed_at": "March 20, 2026, 12:46",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "b.suresh@discoveroaks.org",
+        "user_id": "1954",
+        "event": "Add Student",
+        "failed_at": "February 28, 2026, 14:45",
+        "comment": "Student creation failed"
+      },
+      {
+        "user_email": "b.suresh@discoveroaks.org",
+        "user_id": "1954",
+        "event": "Add Student",
+        "failed_at": "February 28, 2026, 14:45",
+        "comment": "Student creation failed"
+      },
+      {
+        "user_email": "b.suresh@discoveroaks.org",
+        "user_id": "1954",
+        "event": "Add Student",
+        "failed_at": "February 28, 2026, 14:02",
+        "comment": "Student creation failed"
+      },
+      {
+        "user_email": "b.suresh@discoveroaks.org",
+        "user_id": "1954",
+        "event": "Add Student",
+        "failed_at": "February 28, 2026, 14:01",
+        "comment": "Student creation failed"
+      },
+      {
+        "user_email": "b.suresh@discoveroaks.org",
+        "user_id": "1954",
+        "event": "Add Student",
+        "failed_at": "February 28, 2026, 14:01",
+        "comment": "Student creation failed"
+      },
+      {
+        "user_email": "b.suresh@discoveroaks.org",
+        "user_id": "1954",
+        "event": "Add Student",
+        "failed_at": "February 28, 2026, 14:01",
+        "comment": "Student creation failed"
+      },
+      {
+        "user_email": "b.suresh@discoveroaks.org",
+        "user_id": "1954",
+        "event": "Add Student",
+        "failed_at": "February 28, 2026, 14:01",
+        "comment": "Student creation failed"
+      },
+      {
+        "user_email": "b.suresh@discoveroaks.org",
+        "user_id": "1954",
+        "event": "Add Student",
+        "failed_at": "February 28, 2026, 14:01",
+        "comment": "Student creation failed"
+      },
+      {
+        "user_email": "b.suresh@discoveroaks.org",
+        "user_id": "1954",
+        "event": "Add Student",
+        "failed_at": "February 28, 2026, 14:01",
+        "comment": "Student creation failed"
+      },
+      {
+        "user_email": "vib10112@grayquest.com",
+        "user_id": "3591",
+        "event": "Fetch Students",
+        "failed_at": "February 9, 2026, 10:34",
+        "comment": "Unpaid students fetch was unsuccessful"
+      },
+      {
+        "user_email": "ankush.naralkar@oberoi-is.org",
+        "user_id": "5225",
+        "event": "Create Payment Page",
+        "failed_at": "February 6, 2026, 13:05",
+        "comment": "Payment Page creation failed"
+      },
+      {
+        "user_email": "ankush.naralkar@oberoi-is.org",
+        "user_id": "5225",
+        "event": "Create Payment Page",
+        "failed_at": "February 6, 2026, 13:03",
+        "comment": "Payment Page creation failed"
+      },
+      {
+        "user_email": "ankush.naralkar@oberoi-is.org",
+        "user_id": "5225",
+        "event": "Create Payment Page",
+        "failed_at": "February 6, 2026, 13:03",
+        "comment": "Payment Page creation failed"
+      },
+      {
+        "user_email": "ankush.naralkar@oberoi-is.org",
+        "user_id": "5225",
+        "event": "Create Payment Page",
+        "failed_at": "February 6, 2026, 10:56",
+        "comment": "Payment Page creation failed"
+      },
+      {
+        "user_email": "ankush.naralkar@oberoi-is.org",
+        "user_id": "5225",
+        "event": "Create Payment Page",
+        "failed_at": "February 6, 2026, 10:39",
+        "comment": "Payment Page creation failed"
+      },
+      {
+        "user_email": "ankush.naralkar@oberoi-is.org",
+        "user_id": "5225",
+        "event": "Create Payment Page",
+        "failed_at": "February 6, 2026, 10:08",
+        "comment": "Payment Page creation failed"
+      },
+      {
+        "user_email": "ankush.naralkar@oberoi-is.org",
+        "user_id": "5225",
+        "event": "Create Payment Page",
+        "failed_at": "February 6, 2026, 08:59",
+        "comment": "Payment Page creation failed"
+      },
+      {
+        "user_email": "soumendranath.de@oberoi-is.org",
+        "user_id": "5227",
+        "event": "Create Payment Page",
+        "failed_at": "February 5, 2026, 13:34",
+        "comment": "Payment Page creation failed"
+      },
+      {
+        "user_email": "soumendranath.de@oberoi-is.org",
+        "user_id": "5227",
+        "event": "Create Payment Page",
+        "failed_at": "February 5, 2026, 13:32",
+        "comment": "Payment Page creation failed"
+      },
+      {
+        "user_email": "vib10112@grayquest.com",
+        "user_id": "3591",
+        "event": "Fetch Students",
+        "failed_at": "February 2, 2026, 14:54",
+        "comment": "Unpaid students fetch was unsuccessful"
+      },
+      {
+        "user_email": "vib10112@grayquest.com",
+        "user_id": "3591",
+        "event": "Fetch Students",
+        "failed_at": "January 20, 2026, 17:00",
+        "comment": "Unpaid students fetch was unsuccessful"
+      },
+      {
+        "user_email": "vib10112@grayquest.com",
+        "user_id": "3591",
+        "event": "Fetch Students",
+        "failed_at": "January 20, 2026, 17:00",
+        "comment": "Unpaid students fetch was unsuccessful"
+      },
+      {
+        "user_email": "vib10112@grayquest.com",
+        "user_id": "3591",
+        "event": "Fetch Students",
+        "failed_at": "January 20, 2026, 17:00",
+        "comment": "Unpaid students fetch was unsuccessful"
+      },
+      {
+        "user_email": "soumendranath.de@oberoi-is.org",
+        "user_id": "5227",
+        "event": "Add Student",
+        "failed_at": "January 19, 2026, 15:00",
+        "comment": "Student creation failed"
+      },
+      {
+        "user_email": "soumendranath.de@oberoi-is.org",
+        "user_id": "5227",
+        "event": "Add Student",
+        "failed_at": "January 19, 2026, 15:00",
+        "comment": "Student creation failed"
+      },
+      {
+        "user_email": "vib10116@grayquest.com",
+        "user_id": "3604",
+        "event": "Share",
+        "failed_at": "January 19, 2026, 12:27",
+        "comment": "Payment link communication  share failed"
+      },
+      {
+        "user_email": "vib15138@grayquest.com",
+        "user_id": "3605",
+        "event": "Add Student",
+        "failed_at": "January 17, 2026, 15:30",
+        "comment": "Student creation failed"
+      },
+      {
+        "user_email": "vib10112@grayquest.com",
+        "user_id": "3591",
+        "event": "Fetch Students",
+        "failed_at": "January 9, 2026, 13:38",
+        "comment": "Unpaid students fetch was unsuccessful"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 16:01",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 15:57",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 15:53",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 15:43",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 15:40",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 14:39",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 14:37",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 14:36",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 13:08",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 13:04",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 13:03",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 12:56",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 12:56",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 12:54",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 12:53",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 12:52",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 12:50",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 12:50",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 12:50",
+        "comment": "Uploaded File verification failed"
+      },
+      {
+        "user_email": "accounts@grd.edu.in",
+        "user_id": "7986",
+        "event": "Sheet verified",
+        "failed_at": "January 8, 2026, 10:31",
+        "comment": "Uploaded File verification failed"
+      }
+    ],
+    "Student Management": [
+      {
+        "user_email": "vib21@grayquest.com",
+        "user_id": "3611",
+        "event": "Add Student",
+        "failed_at": "March 31, 2026, 16:46",
+        "comment": "Student creation failed"
+      },
+      {
+        "user_email": "fees.veeraytan@gmail.com",
+        "user_id": "7586",
+        "event": "Edit",
+        "failed_at": "March 31, 2026, 14:31",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "fees.veeraytan@gmail.com",
+        "user_id": "7586",
+        "event": "Edit",
+        "failed_at": "March 31, 2026, 14:30",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "saloni.shinde@grayquest.com",
+        "user_id": "5316",
+        "event": "Edit",
+        "failed_at": "March 28, 2026, 13:43",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "vib10207@grayquest.com",
+        "user_id": "3596",
+        "event": "Edit",
+        "failed_at": "March 26, 2026, 12:17",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "finance@psbbacademy.org",
+        "user_id": "4930",
+        "event": "Delete",
+        "failed_at": "March 25, 2026, 09:47",
+        "comment": "Student Management deletion Unsucessful"
+      },
+      {
+        "user_email": "finance@psbbacademy.org",
+        "user_id": "4930",
+        "event": "Delete",
+        "failed_at": "March 25, 2026, 09:46",
+        "comment": "Student Management deletion Unsucessful"
+      },
+      {
+        "user_email": "bharatiysan.niketan@gmail.com",
+        "user_id": "7593",
+        "event": "Edit",
+        "failed_at": "March 16, 2026, 10:12",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "oxfordschool.bam@gmail.com",
+        "user_id": "7209",
+        "event": "Edit",
+        "failed_at": "March 14, 2026, 15:32",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "oxfordschool.bam@gmail.com",
+        "user_id": "7209",
+        "event": "Edit",
+        "failed_at": "March 13, 2026, 20:01",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "ankush.naralkar@oberoi-is.org",
+        "user_id": "5225",
+        "event": "Edit",
+        "failed_at": "March 10, 2026, 16:36",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Edit",
+        "failed_at": "March 4, 2026, 16:39",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "bharatiysan.niketan@gmail.com",
+        "user_id": "7593",
+        "event": "Edit",
+        "failed_at": "February 26, 2026, 14:04",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "cardinalwarriorsdigitaljunior@gmail.com",
+        "user_id": "6821",
+        "event": "Edit",
+        "failed_at": "February 26, 2026, 12:59",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "cardinalwarriorsdigitaljunior@gmail.com",
+        "user_id": "6821",
+        "event": "Edit",
+        "failed_at": "February 26, 2026, 12:59",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "cardinalwarriorsdigitaljunior@gmail.com",
+        "user_id": "6821",
+        "event": "Edit",
+        "failed_at": "February 26, 2026, 12:59",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "pankaj@elproschools.edu.in",
+        "user_id": "7787",
+        "event": "Edit",
+        "failed_at": "February 25, 2026, 13:29",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "pankaj@elproschools.edu.in",
+        "user_id": "7787",
+        "event": "Edit",
+        "failed_at": "February 25, 2026, 13:25",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "pankaj@elproschools.edu.in",
+        "user_id": "7787",
+        "event": "Edit",
+        "failed_at": "February 25, 2026, 11:46",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "pankaj@elproschools.edu.in",
+        "user_id": "7787",
+        "event": "Edit",
+        "failed_at": "February 25, 2026, 11:31",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "pankaj@elproschools.edu.in",
+        "user_id": "7787",
+        "event": "Edit",
+        "failed_at": "February 25, 2026, 11:31",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "cardinalwarriorsdigitaljunior@gmail.com",
+        "user_id": "6821",
+        "event": "Edit",
+        "failed_at": "February 23, 2026, 12:05",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "cardinalwarriorsdigitaljunior@gmail.com",
+        "user_id": "6821",
+        "event": "Edit",
+        "failed_at": "February 23, 2026, 11:41",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "cardinalwarriorsdigitaljunior@gmail.com",
+        "user_id": "6821",
+        "event": "Edit",
+        "failed_at": "February 23, 2026, 11:41",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Sheet uploaded",
+        "failed_at": "February 21, 2026, 11:09",
+        "comment": "Sample File upload failed"
+      },
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Sheet uploaded",
+        "failed_at": "February 21, 2026, 11:09",
+        "comment": "Sample File upload failed"
+      },
+      {
+        "user_email": "bharatiysan.niketan@gmail.com",
+        "user_id": "7593",
+        "event": "Edit",
+        "failed_at": "February 21, 2026, 09:40",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "pankaj@elproschools.edu.in",
+        "user_id": "7787",
+        "event": "Edit",
+        "failed_at": "February 16, 2026, 12:09",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "pankaj@elproschools.edu.in",
+        "user_id": "7787",
+        "event": "Edit",
+        "failed_at": "February 16, 2026, 12:09",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "accounts@oberoi.com",
+        "user_id": "5214",
+        "event": "Sheet uploaded",
+        "failed_at": "February 13, 2026, 12:31",
+        "comment": "Sample File upload failed"
+      },
+      {
+        "user_email": "bharatiysan.niketan@gmail.com",
+        "user_id": "7593",
+        "event": "Edit",
+        "failed_at": "February 12, 2026, 11:34",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "bharatiysan.niketan@gmail.com",
+        "user_id": "7593",
+        "event": "Edit",
+        "failed_at": "February 12, 2026, 11:34",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "bharatiysan.niketan@gmail.com",
+        "user_id": "7593",
+        "event": "Edit",
+        "failed_at": "February 12, 2026, 11:34",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "bharatiysan.niketan@gmail.com",
+        "user_id": "7593",
+        "event": "Edit",
+        "failed_at": "February 12, 2026, 11:34",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "bharatiysan.niketan@gmail.com",
+        "user_id": "7593",
+        "event": "Edit",
+        "failed_at": "February 12, 2026, 11:34",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "bharatiysan.niketan@gmail.com",
+        "user_id": "7593",
+        "event": "Edit",
+        "failed_at": "February 12, 2026, 11:34",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "bharatiysan.niketan@gmail.com",
+        "user_id": "7593",
+        "event": "Edit",
+        "failed_at": "February 12, 2026, 11:34",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "bharatiysan.niketan@gmail.com",
+        "user_id": "7593",
+        "event": "Edit",
+        "failed_at": "February 12, 2026, 11:34",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "bharatiysan.niketan@gmail.com",
+        "user_id": "7593",
+        "event": "Edit",
+        "failed_at": "February 12, 2026, 11:34",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "bharatiysan.niketan@gmail.com",
+        "user_id": "7593",
+        "event": "Edit",
+        "failed_at": "February 12, 2026, 11:34",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "gaurav.gala@abet.co.in",
+        "user_id": "7319",
+        "event": "Edit",
+        "failed_at": "February 11, 2026, 12:34",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "gaurav.gala@abet.co.in",
+        "user_id": "7319",
+        "event": "Edit",
+        "failed_at": "February 11, 2026, 12:17",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "gaurav.gala@abet.co.in",
+        "user_id": "7319",
+        "event": "Edit",
+        "failed_at": "February 11, 2026, 12:17",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "gaurav.gala@abet.co.in",
+        "user_id": "7319",
+        "event": "Edit",
+        "failed_at": "February 11, 2026, 12:17",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "accounts@oberoi.com",
+        "user_id": "5214",
+        "event": "Edit",
+        "failed_at": "February 11, 2026, 11:26",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "accounts@oberoi.com",
+        "user_id": "5214",
+        "event": "Edit",
+        "failed_at": "February 11, 2026, 11:26",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "mewsengmediumschool@gmail.com",
+        "user_id": "7887",
+        "event": "Edit",
+        "failed_at": "February 10, 2026, 07:40",
+        "comment": "Student Management Edit Unsuccessful"
+      },
+      {
+        "user_email": "secretarymandovimess@gmail.com",
+        "user_id": "7776",
+        "event": "Sheet uploaded",
+        "failed_at": "February 9, 2026, 16:24",
+        "comment": "Sample File upload failed"
+      },
+      {
+        "user_email": "secretarymandovimess@gmail.com",
+        "user_id": "7776",
+        "event": "Sheet uploaded",
+        "failed_at": "February 9, 2026, 14:21",
+        "comment": "Sample File upload failed"
+      },
+      {
+        "user_email": "secretarymandovimess@gmail.com",
+        "user_id": "7776",
+        "event": "Sheet uploaded",
+        "failed_at": "February 9, 2026, 14:16",
+        "comment": "Sample File upload failed"
+      }
+    ],
+    "Fee Headers": [
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Bulk Assign",
+        "failed_at": "March 11, 2026, 10:26",
+        "comment": "Bulk Assign"
+      },
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Bulk Assign",
+        "failed_at": "March 10, 2026, 15:30",
+        "comment": "Bulk Assign"
+      },
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Delete",
+        "failed_at": "January 19, 2026, 10:26",
+        "comment": "Fee Headers deletion Unsucessful"
+      },
+      {
+        "user_email": "accounts@neev.in",
+        "user_id": "3906",
+        "event": "Delete",
+        "failed_at": "January 19, 2026, 10:26",
+        "comment": "Fee Headers deletion Unsucessful"
+      },
+      {
+        "user_email": "PGNCG2008@GMAIL.COM",
+        "user_id": "7296",
+        "event": "Edit",
+        "failed_at": "January 12, 2026, 16:39",
+        "comment": "Fee Headers Edit Unsuccessful"
+      }
+    ],
+    "Offline Transactions": [
+      {
+        "user_email": "accounts@oberoi.com",
+        "user_id": "5214",
+        "event": "Delete",
+        "failed_at": "February 13, 2026, 17:13",
+        "comment": "Offline Transactions deletion Unsucessful"
+      },
+      {
+        "user_email": "accountabhinav@yahoo.com",
+        "user_id": "4237",
+        "event": "Delete",
+        "failed_at": "January 29, 2026, 14:25",
+        "comment": "Offline Transactions deletion Unsucessful"
+      },
+      {
+        "user_email": "accountabhinav@yahoo.com",
+        "user_id": "4237",
+        "event": "Delete",
+        "failed_at": "January 29, 2026, 14:25",
+        "comment": "Offline Transactions deletion Unsucessful"
+      },
+      {
+        "user_email": "accountabhinav@yahoo.com",
+        "user_id": "4237",
+        "event": "Edit",
+        "failed_at": "January 29, 2026, 12:23",
+        "comment": "Offline Transactions Edit Unsuccessful"
+      },
+      {
+        "user_email": "accountabhinav@yahoo.com",
+        "user_id": "4237",
+        "event": "Edit",
+        "failed_at": "January 29, 2026, 12:23",
+        "comment": "Offline Transactions Edit Unsuccessful"
+      },
+      {
+        "user_email": "accountabhinav@yahoo.com",
+        "user_id": "4237",
+        "event": "Edit",
+        "failed_at": "January 29, 2026, 12:23",
+        "comment": "Offline Transactions Edit Unsuccessful"
+      },
+      {
+        "user_email": "accountabhinav@yahoo.com",
+        "user_id": "4237",
+        "event": "Delete",
+        "failed_at": "January 29, 2026, 12:23",
+        "comment": "Offline Transactions deletion Unsucessful"
+      },
+      {
+        "user_email": "accountabhinav@yahoo.com",
+        "user_id": "4237",
+        "event": "Delete",
+        "failed_at": "January 29, 2026, 12:23",
+        "comment": "Offline Transactions deletion Unsucessful"
+      },
+      {
+        "user_email": "accountabhinav@yahoo.com",
+        "user_id": "4237",
+        "event": "Delete",
+        "failed_at": "January 24, 2026, 14:54",
+        "comment": "Offline Transactions deletion Unsucessful"
+      },
+      {
+        "user_email": "accountabhinav@yahoo.com",
+        "user_id": "4237",
+        "event": "Delete",
+        "failed_at": "January 24, 2026, 14:53",
+        "comment": "Offline Transactions deletion Unsucessful"
+      },
+      {
+        "user_email": "accountabhinav@yahoo.com",
+        "user_id": "4237",
+        "event": "Delete",
+        "failed_at": "January 24, 2026, 14:53",
+        "comment": "Offline Transactions deletion Unsucessful"
+      },
+      {
+        "user_email": "accountabhinav@yahoo.com",
+        "user_id": "4237",
+        "event": "Delete",
+        "failed_at": "January 24, 2026, 14:51",
+        "comment": "Offline Transactions deletion Unsucessful"
+      },
+      {
+        "user_email": "accountabhinav@yahoo.com",
+        "user_id": "4237",
+        "event": "Delete",
+        "failed_at": "January 14, 2026, 12:31",
+        "comment": "Offline Transactions deletion Unsucessful"
+      }
+    ],
+    "Report Templates": [
+      {
+        "user_email": "gopalpurdpsg@gmail.com",
+        "user_id": "7510",
+        "event": "Generate new report",
+        "failed_at": "March 2, 2026, 09:52",
+        "comment": "Report generation failed"
+      },
+      {
+        "user_email": "gopalpurdpsg@gmail.com",
+        "user_id": "7510",
+        "event": "Generate new report",
+        "failed_at": "January 16, 2026, 10:02",
+        "comment": "Report generation failed"
+      }
+    ],
+    "PG Transactions": [
+      {
+        "user_email": "fees.veeraytan@gmail.com",
+        "user_id": "7586",
+        "event": "Summary -  Download report",
+        "failed_at": "March 23, 2026, 17:09",
+        "comment": "PG Transactions report download failed"
+      },
+      {
+        "user_email": "saraswatividyala2002@yahoo.co.in",
+        "user_id": "4126",
+        "event": "Summary -  Download report",
+        "failed_at": "March 17, 2026, 11:44",
+        "comment": "PG Transactions report download failed"
+      },
+      {
+        "user_email": "finance@psbbacademy.org",
+        "user_id": "4930",
+        "event": "Summary -  Download report",
+        "failed_at": "March 17, 2026, 11:44",
+        "comment": "PG Transactions report download failed"
+      },
+      {
+        "user_email": "finance@psbbacademy.org",
+        "user_id": "4930",
+        "event": "Summary -  Download report",
+        "failed_at": "February 11, 2026, 09:35",
+        "comment": "PG Transactions report download failed"
+      },
+      {
+        "user_email": "finance@psbbacademy.org",
+        "user_id": "4930",
+        "event": "Summary -  Download report",
+        "failed_at": "February 11, 2026, 09:29",
+        "comment": "PG Transactions report download failed"
+      },
+      {
+        "user_email": "admission@harrowbengaluru.com",
+        "user_id": "6226",
+        "event": "Refresh",
+        "failed_at": "February 2, 2026, 12:59",
+        "comment": "PG Transactions Refreshed failed"
+      },
+      {
+        "user_email": "accounts.ombr@cmr.edu.in",
+        "user_id": "6773",
+        "event": "Summary -  Download report",
+        "failed_at": "February 2, 2026, 10:00",
+        "comment": "PG Transactions report download failed"
+      },
+      {
+        "user_email": "finance@psbbacademy.org",
+        "user_id": "4930",
+        "event": "Summary -  Download report",
+        "failed_at": "January 21, 2026, 09:19",
+        "comment": "PG Transactions report download failed"
+      },
+      {
+        "user_email": "finance@psbbacademy.org",
+        "user_id": "4930",
+        "event": "Summary -  Download report",
+        "failed_at": "January 20, 2026, 08:46",
+        "comment": "PG Transactions report download failed"
+      }
+    ],
+    "Admission Leads": [
+      {
+        "user_email": "saloni.shinde@grayquest.com",
+        "user_id": "5316",
+        "event": "Create Lead",
+        "failed_at": "March 2, 2026, 12:21",
+        "comment": "Lead creation failed"
+      },
+      {
+        "user_email": "saloni.shinde@grayquest.com",
+        "user_id": "5316",
+        "event": "Create Lead",
+        "failed_at": "March 2, 2026, 12:21",
+        "comment": "Lead creation failed"
+      },
+      {
+        "user_email": "saloni.shinde@grayquest.com",
+        "user_id": "5316",
+        "event": "Create Lead",
+        "failed_at": "January 30, 2026, 17:59",
+        "comment": "Lead creation failed"
+      }
+    ],
+    "Master Dashboard Reports": [
+      {
+        "user_email": "accounts@oberoi.com",
+        "user_id": "5214",
+        "event": "Generate new report",
+        "failed_at": "February 19, 2026, 12:44",
+        "comment": "Report generation failed"
+      },
+      {
+        "user_email": "accounts@oberoi.com",
+        "user_id": "5214",
+        "event": "Generate new report",
+        "failed_at": "February 19, 2026, 12:43",
+        "comment": "Report generation failed"
+      },
+      {
+        "user_email": "accounts@oberoi.com",
+        "user_id": "5214",
+        "event": "Generate new report",
+        "failed_at": "February 19, 2026, 12:43",
+        "comment": "Report generation failed"
+      },
+      {
+        "user_email": "achopra@amity.edu",
+        "user_id": "8433",
+        "event": "Generate new report",
+        "failed_at": "February 12, 2026, 12:36",
+        "comment": "Report generation failed"
+      },
+      {
+        "user_email": "rajeshwari.pillai@grayquest.com",
+        "user_id": "8174",
+        "event": "Generate new report",
+        "failed_at": "February 12, 2026, 12:16",
+        "comment": "Report generation failed"
+      },
+      {
+        "user_email": "rajeshwari.pillai@grayquest.com",
+        "user_id": "8174",
+        "event": "Generate new report",
+        "failed_at": "February 12, 2026, 12:16",
+        "comment": "Report generation failed"
+      },
+      {
+        "user_email": "achopra@amity.edu",
+        "user_id": "8433",
+        "event": "Generate new report",
+        "failed_at": "February 12, 2026, 12:00",
+        "comment": "Report generation failed"
+      },
+      {
+        "user_email": "achopra@amity.edu",
+        "user_id": "8433",
+        "event": "Generate new report",
+        "failed_at": "February 12, 2026, 12:00",
+        "comment": "Report generation failed"
+      }
+    ],
+    "Classes": [
+      {
+        "user_email": "sushil.w@educoninternationalschool.com",
+        "user_id": "7044",
+        "event": "Edit",
+        "failed_at": "March 27, 2026, 21:22",
+        "comment": "Classes Edit Unsuccessful"
+      },
+      {
+        "user_email": "ithead@jivemeducation.com",
+        "user_id": "7844",
+        "event": "Edit",
+        "failed_at": "March 13, 2026, 10:28",
+        "comment": "Classes Edit Unsuccessful"
+      }
+    ]
+  }
 }

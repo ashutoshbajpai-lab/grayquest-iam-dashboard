@@ -3,6 +3,7 @@
 import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import { ROUTES } from '@/lib/constants'
+import { PLATFORM_ID } from '@/lib/config'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -110,7 +111,7 @@ export default function LoginPage() {
         </div>
 
         <p className="text-center text-xs text-txt-muted mt-6">
-          Internal use only · GrayQuest platform_id=7
+          Internal use only · GrayQuest platform_id={PLATFORM_ID}
         </p>
       </div>
     </div>

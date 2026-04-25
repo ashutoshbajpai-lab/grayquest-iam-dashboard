@@ -4,11 +4,11 @@ import type { FilterState, DateRange } from '@/types'
 import { THEME_STORAGE_KEY, THEME_TRANSITION_MS } from '@/lib/config'
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000
-const TODAY_STR = new Date().toISOString().split('T')[0]
+const TODAY_STR = "2026-03-31"
 const defaultDateRange: DateRange = {
   preset: '30d',
-  from: new Date(new Date(TODAY_STR).getTime() - 30 * MS_PER_DAY).toISOString().split('T')[0],
-  to: TODAY_STR,
+  from: "2026-03-01",
+  to: "2026-03-31",
 }
 
 interface FilterStore extends FilterState {
