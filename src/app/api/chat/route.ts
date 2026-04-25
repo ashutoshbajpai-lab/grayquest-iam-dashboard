@@ -313,10 +313,15 @@ async function callGemini(prompt: string): Promise<string | null> {
       body:    JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
       signal:  AbortSignal.timeout(AI.GEMINI_TIMEOUT_MS),
     })
-    if (!res.ok) return null
+    if (!res.ok) {
+      // Log non-OK for debugging but don't expose to client
+      console.error('[Gemini] non-OK response:', res.status, await res.text().catch(() => ''))
+      return null
+    }
     const data = await res.json() as { candidates?: { content?: { parts?: { text?: string }[] } }[] }
     return data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? null
-  } catch {
+  } catch (err) {
+    console.error('[Gemini] fetch error:', err)
     return null
   }
 }
@@ -417,20 +422,11 @@ Format with bullet points. Bold key numbers. Be concise (under 150 words).`
         metricSuggestion: extractMetricSuggestion(lastUserMsg, geminiAnswer),
       })
     }
-    // Gemini unavailable — answer with available data context only
-    const ollamaBenchmarkSystem = `You are the ${COMPANY_NAME} IAM analyst. The user asked an industry benchmark question.
-You do NOT have internet access. Answer using only the GrayQuest data below.
-State the actual GrayQuest values clearly. For the industry comparison part, note that you cannot provide real-time benchmarks but give general guidance.
-
-${context}
-
-FORMAT: bullet points, bold key numbers, max 5 bullets.`
-    const ollamaBenchmarkAnswer = await callOllama(recent, ollamaBenchmarkSystem)
+    // Gemini unavailable — return GrayQuest actual values directly
     return NextResponse.json({
-      content: ollamaBenchmarkAnswer
-        ?? `Here are GrayQuest's actual values:\n\n${context.split('\n').slice(0,6).join('\n')}\n\n_Note: Live industry benchmarks require Gemini API (quota exceeded — resets daily)._`,
-      source: ollamaBenchmarkAnswer ? 'ollama' : 'error',
-      metricSuggestion: ollamaBenchmarkAnswer ? extractMetricSuggestion(lastUserMsg, ollamaBenchmarkAnswer) : null,
+      content: `Here are GrayQuest's actual values:\n\n${context.split('\n').slice(0,8).join('\n')}\n\n_Note: Live industry benchmarks require the Gemini API (quota may be exhausted — resets daily)._`,
+      source: 'fallback',
+      metricSuggestion: null,
     })
   }
 
@@ -475,8 +471,21 @@ Respond with bullet points and exact numbers from the data. Bold key values.`
     })
   }
 
+  // Both AI services unavailable — return a data-only answer from context
+  const { overview } = await getRawData()
+  const quickAnswer = `I'm having trouble reaching the AI service right now. Here's what the data shows directly:
+
+**Platform Overview**
+• Total users: ${overview.total_users ?? 'N/A'}
+• Active users (30 d): ${overview.active_users_30d ?? 'N/A'}
+• Avg health score: ${overview.avg_health_score ?? 'N/A'}
+• Login success rate: ${overview.login_success_rate ?? overview.auth_success_rate ?? 'N/A'}%
+• Dormant users: ${overview.dormant_users ?? 'N/A'}
+
+Try rephrasing your question or ask about a specific metric.`
+
   return NextResponse.json({
-    content: 'AI service unavailable. Start Ollama with `OLLAMA_NEW_ENGINE=false ollama serve`, or add GEMINI_API_KEY to .env.local.',
-    source:  'error',
+    content: quickAnswer,
+    source:  'fallback',
   })
 }
