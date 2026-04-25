@@ -51,6 +51,12 @@ export default function FloatingChatBar() {
           currentSection,
         }),
       })
+      if (res.status === 401) {
+        setMessages(prev => [...prev, { role: 'assistant', content: 'Session expired — please log in again.' }])
+        setTimeout(() => router.push(ROUTES.LOGIN), 1500)
+        return
+      }
+
       const data = await res.json() as {
         content?: string
         metricSuggestion?: MetricSuggestion

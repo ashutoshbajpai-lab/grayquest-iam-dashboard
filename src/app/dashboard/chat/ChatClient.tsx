@@ -203,6 +203,15 @@ export default function ChatClient() {
           currentSection: 'chat',
         }),
       })
+      if (res.status === 401) {
+        setMessages(prev => [...prev, {
+          id: crypto.randomUUID(), role: 'assistant',
+          content: 'Session expired — redirecting to login…', ts: getTime(),
+        }])
+        setTimeout(() => router.push('/login'), 1500)
+        return
+      }
+
       const data = await res.json() as {
         content?: string
         metricSuggestion?: MetricSuggestion
