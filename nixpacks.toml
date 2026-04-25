@@ -2,12 +2,13 @@
 nixPkgs = ["nodejs_22"]
 
 [phases.install]
-cmds = ["npm install --prefer-offline"]
+cmds = ["npm install"]
 cacheDirectories = ["/root/.npm"]
 
 [phases.build]
 cmds = ["npm run build"]
 cacheDirectories = [".next/cache"]
+dependsOn = ["install"]
 
 [start]
 cmd = "npm run start"
