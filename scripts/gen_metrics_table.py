@@ -1,505 +1,446 @@
 """
-Generate a comprehensive high-resolution metrics reference table image.
-Covers ALL metrics across People, Health, Services, Sessions, and Cohort sections.
+Complete metrics reference table — every KPI card and chart across all dashboard pages.
 Output: metrics_reference_table.png
 """
-
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch
 
-# ─── COLOUR PALETTE ──────────────────────────────────────────────────────────
-BG          = '#0D1117'
-HEADER_BG   = '#161B22'
-SECTION_BG  = '#1C2333'
-ROW_EVEN    = '#0D1117'
-ROW_ODD     = '#111827'
-BORDER      = '#30363D'
-WHITE       = '#E6EDF3'
-MUTED       = '#8B949E'
-BLUE        = '#58A6FF'
-GREEN       = '#3FB950'
-AMBER       = '#D29922'
-RED         = '#F85149'
-PURPLE      = '#BC8CFF'
-CYAN        = '#39D0D8'
-ORANGE      = '#FFA657'
+BG         = '#0D1117'
+HEADER_BG  = '#161B22'
+SECTION_BG = '#1C2333'
+ROW_EVEN   = '#0D1117'
+ROW_ODD    = '#111827'
+BORDER     = '#30363D'
+WHITE      = '#E6EDF3'
+MUTED      = '#8B949E'
+BLUE       = '#58A6FF'
+GREEN      = '#3FB950'
+AMBER      = '#D29922'
+RED        = '#F85149'
+PURPLE     = '#BC8CFF'
+CYAN       = '#39D0D8'
+ORANGE     = '#FFA657'
+PINK       = '#FF7EB6'
 
-# ─── SECTIONS AND METRICS ────────────────────────────────────────────────────
-# Each metric: (Name, Threshold/Target, Formula, Description, Source Table(s), Key Columns)
-
+# ── Each row: (Name, Threshold/Target, Formula/Source, Description, Data Source, Key Fields) ──
 SECTIONS = [
-    {
-        'title': 'PEOPLE  /  USER HEALTH',
-        'color': BLUE,
-        'rows': [
-            ('Health Score',
-             '≥60 Active\n40–59 At-Risk\n<40 Alert',
-             '(login_norm + action_norm\n+ module_norm + report_norm)\n÷ 4 × 100  [min-max]',
-             'Composite 0–100 score per user\nacross login frequency, action\nvolume, module breadth, reports',
-             'raw_iam_activities\nraw_audit_logs',
-             'user_id, type(LOGIN)\nservice_id, type(REPORT)'),
-
-            ('Login Success Rate',
-             '≥90% target\n<70% alert',
-             'LOGIN_count /\n(LOGIN + INVALID_LOGIN)\n× 100',
-             '% of login attempts that\nsucceeded in rolling 30-day\nwindow per user',
-             'raw_iam_activities',
-             'user_id, type\n(LOGIN / INVALID LOGIN)'),
-
-            ('Active Users — Today',
-             'Trend ↑ healthy\nDrop >20% alert',
-             'COUNT DISTINCT user_id\nwhere type=LOGIN\nAND date = today',
-             'Unique users who logged in\non the current calendar day\n(platform_id=6 filtered)',
-             'raw_iam_activities',
-             'user_id, type, created_on\nplatform_id'),
-
-            ('Active Users — 7 d',
-             'vs prev-7d ±15%\nnormal band',
-             'COUNT DISTINCT user_id\nwhere type=LOGIN\nAND ts ≥ today−7d',
-             'Unique users active in the\nlast 7 days; compared to\nprevious 7-day period for trend',
-             'raw_iam_activities',
-             'user_id, type, created_on'),
-
-            ('Active Users — 30 d',
-             'vs prev-30d ±20%\nnormal band',
-             'COUNT DISTINCT user_id\nwhere type=LOGIN\nAND ts ≥ today−30d',
-             'Unique users active in the\nlast 30 days; primary KPI\nfor monthly engagement',
-             'raw_iam_activities',
-             'user_id, type, created_on'),
-
-            ('Dormant Users',
-             '<10% target\n>25% alert',
-             'total_users −\nactive_users_30d',
-             'Accounts with zero recorded\nLOGIN activity in the rolling\n30-day window',
-             'raw_iam_activities\nraw_iam_users',
-             'user_id, type, created_on\nplatform_id'),
-
-            ('New Activations — 30 d',
-             'Growth ↑ positive\ndrop flags churn',
-             'COUNT users whose first\nLOGIN ts ≥ today−30d',
-             'Users logging in for the\nfirst time within the last\n30 days (first_seen date)',
-             'raw_iam_activities',
-             'user_id, type\ncreated_on (MIN per user)'),
-
-            ('User Status',
-             'Active / At-Risk\n/ Inactive tiers',
-             'health ≥60 → Active\n40≤h<60 → At-Risk\nh<40 → Inactive',
-             'Categorical tier derived\ndirectly from Health Score;\nused for colour-coding in UI',
-             'derived from\nHealth Score',
-             'health_score threshold\nfrom config.ts'),
-        ],
-    },
-    {
-        'title': 'PLATFORM HEALTH  /  SUCCESS & FAILURES',
-        'color': RED,
-        'rows': [
-            ('Overall Success Rate',
-             '≥95% target\n<90% alert',
-             'SUCCESS_events /\ntotal_audit_events\n× 100  (30d)',
-             '% of all audit-log events\nthat carried status=SUCCESS\nin the last 30 days',
-             'raw_audit_logs',
-             'status(SUCCESS/FAIL)\ncreated_on, platform_id'),
-
-            ('Login Success Rate\n(Platform)',
-             '≥95% target\n<90% alert',
-             'LOGIN / (LOGIN +\nINVALID_LOGIN) × 100\nacross all users',
-             'Platform-wide login success\nrate (aggregate of all users)\nover rolling 30 days',
-             'raw_iam_activities',
-             'type, created_on\nplatform_id'),
-
-            ('Failed Events — 30 d',
-             '0 ideal\n>50 alert',
-             'COUNT audit_logs\nwhere status IN\n(FAILED, FAILURE)',
-             'Total number of non-SUCCESS\naudit events in last 30 days;\nbreakdown by service available',
-             'raw_audit_logs',
-             'status, service_id\ncreated_on'),
-
-            ('Unique Error Types',
-             '<5 healthy\n>15 investigate',
-             'COUNT DISTINCT\nevent_id where\nstatus ≠ SUCCESS',
-             'How many distinct failure\npatterns (event types) produced\nerrors in the last 30 days',
-             'raw_audit_logs\nraw_iam_events',
-             'event_id, status\nlabel'),
-
-            ('Failure Concentration',
-             'Distributed OK\nSingle svc → risk',
-             'IF top_svc_failures /\ntotal_failures > 0.6\n→ "Concentrated"',
-             'Whether failures cluster in\none service or spread across\nmany; surfaces single-point risk',
-             'raw_audit_logs',
-             'service_id, status\ncreated_on'),
-
-            ('Consecutive Fail\nStreaks',
-             '0 target\n>3 in a row alert',
-             'MAX consecutive\nfailed events per\nservice (ordered by ts)',
-             'Longest run of back-to-back\nfailures for any service;\nindicates sustained outage',
-             'raw_audit_logs',
-             'service_id, status\ncreated_on (ordered)'),
-
-            ('Success Rate Trend\n(vs prev 30 d)',
-             'Δ ≥ 0 healthy\nΔ < −2% alert',
-             '(sr_current_30d −\nsr_prev_30d)',
-             'Point-difference in success\nrate compared to the prior\n30-day period',
-             'raw_audit_logs',
-             'status, created_on\n(two 30d windows)'),
-        ],
-    },
-    {
-        'title': 'SERVICES  /  MODULE USAGE & RELIABILITY',
-        'color': GREEN,
-        'rows': [
-            ('Service Success Rate',
-             '≥95% per service\n<90% alert banner',
-             'SUCCESS / total_events\n× 100 per service_id\n(30d window)',
-             '% of audit events that\nsucceeded for each IAM\nmodule/service individually',
-             'raw_audit_logs\nraw_iam_services',
-             'service_id, status\ncreated_on'),
-
-            ('Service Events — 30 d',
-             'Baseline ±30%\nnormal variation',
-             'COUNT audit_logs\nwhere service_id=X\nAND ts ≥ today−30d',
-             'Total event volume for each\nservice in last 30 days;\nused to rank service activity',
-             'raw_audit_logs',
-             'service_id\ncreated_on'),
-
-            ('Active Users\nper Service',
-             'Display metric\nno hard threshold',
-             'COUNT DISTINCT user_id\nper service_id\n(30d window)',
-             'How many unique users\ninteracted with each service\nin the last 30 days',
-             'raw_audit_logs',
-             'service_id, user_id\ncreated_on'),
-
-            ('Service Trend\n(events vs prev)',
-             'Δ ≥ 0 growing\nΔ < −20% alert',
-             '(events_30d −\nevents_prev_30d) /\nevents_prev_30d × 100',
-             '% change in event volume\nfor each service compared\nto the previous 30-day period',
-             'raw_audit_logs',
-             'service_id, created_on\n(two 30d windows)'),
-
-            ('Report Count — 30 d',
-             'Trend tracked\nno fixed threshold',
-             'COUNT events where\ntype IN (REPORT,\nREPORT-ALL-GILE)',
-             'Total report-generation\nevents per service; indicates\ndata-export activity',
-             'raw_audit_logs',
-             'service_id, type\ncreated_on'),
-
-            ('Peak Hour\nper Service',
-             'Display / planning\nno threshold',
-             'MODE(HOUR(created_on))\nper service_id\nacross 30d events',
-             'Hour of day (0–23) with\nthe most activity for each\nservice; used for heatmap',
-             'raw_audit_logs',
-             'service_id\ncreated_on (HOUR extract)'),
-
-            ('Event Heatmap\nDensity',
-             'Spike >3σ flags\nabnormal activity',
-             'COUNT per\n(service, hour) bucket\nacross 30d window',
-             'Cross-matrix of service × hour\nshowing when each module\nis most heavily used',
-             'raw_audit_logs',
-             'service_id, created_on\n(hour bucketed)'),
-
-            ('Active Services\nCount',
-             'Stable count OK\ndrop >2 alert',
-             'COUNT DISTINCT\nservice_id with ≥1\nevent in last 30d',
-             'Number of distinct IAM\nservices that recorded at\nleast one event in 30 days',
-             'raw_audit_logs',
-             'service_id\ncreated_on'),
-        ],
-    },
-    {
-        'title': 'SESSIONS  /  ENGAGEMENT & BEHAVIOUR',
-        'color': PURPLE,
-        'rows': [
-            ('Total Sessions — 30 d',
-             'Trend ↑ healthy\nDrop >15% alert',
-             'COUNT sessions where\ngap >3600s between\nevents = new session',
-             'Total user sessions detected\nusing 1-hour inactivity gap\nalgorithm on iam_activities',
-             'raw_iam_activities',
-             'user_id, created_on\n(3600s gap algorithm)'),
-
-            ('Avg Session Duration',
-             '>5 min healthy\n<1 min suspicious',
-             'SUM(session_end −\nsession_start) /\nCOUNT(sessions)  ÷ 60',
-             'Mean time in minutes a user\nspends in a single session;\nvery short = bounce',
-             'raw_iam_activities',
-             'user_id, created_on\n(session boundaries)'),
-
-            ('Median Session\nDuration',
-             '>3 min healthy\ncompare to mean',
-             'PERCENTILE_50 of\n(session_end − start)\nacross all sessions ÷ 60',
-             'Median session length; less\nsensitive to outliers than mean;\nuse alongside avg for skew',
-             'raw_iam_activities',
-             'user_id, created_on\nsession duration array'),
-
-            ('Avg Events\nper Session',
-             '>3 healthy\n1 = bounce/login-only',
-             'COUNT audit_events\nlinked to session /\nCOUNT(sessions)',
-             'Mean number of audit-log\nactions within a single session;\nlow = shallow engagement',
-             'raw_audit_logs\nraw_iam_activities',
-             'session_id (synthetic)\nuser_id, created_on'),
-
-            ('Bounce Rate',
-             '<20% target\n>40% alert',
-             'sessions with 0\naudit actions /\ntotal_sessions × 100',
-             '% of sessions where user\nlogged in but performed no\naudit-tracked action',
-             'raw_iam_activities\nraw_audit_logs',
-             'session_id, user_id\naudit event linkage'),
-
-            ('Session Completion\nRate',
-             '>80% target\n<60% alert',
-             'sessions WITH ≥1\nlinked audit event /\ntotal_sessions × 100',
-             'Inverse of bounce rate;\n% of sessions where at least\none substantive action occurred',
-             'raw_iam_activities\nraw_audit_logs',
-             'session_id (±30-min\nlinkage window)'),
-
-            ('Cross-Module Rate',
-             '>30% healthy\n<15% alert',
-             'sessions using ≥3\ndistinct services /\ntotal_sessions × 100',
-             '% of sessions where user\ntouched 3+ different IAM\nmodules (breadth of use)',
-             'raw_audit_logs',
-             'session_id, service_id\n(≥3 distinct per session)'),
-
-            ('Sessions per User\n(Avg)',
-             '>2/month healthy\n1 = minimal use',
-             'total_sessions_30d /\nactive_users_30d',
-             'Average number of sessions\neach active user initiates\nper 30-day period',
-             'raw_iam_activities',
-             'user_id, session_id\n(30d window)'),
-
-            ('Peak Hour\n(Platform-wide)',
-             'Display / planning\nno fixed threshold',
-             'MODE(session.hour)\nacross all sessions\nin last 30d',
-             'Hour of day (0–23) when\nmost sessions are started;\nused for capacity planning',
-             'raw_iam_activities',
-             'created_on\n(HOUR extract)'),
-        ],
-    },
-    {
-        'title': 'COHORTS  /  RETENTION & LIFECYCLE',
-        'color': AMBER,
-        'rows': [
-            ('Cohort Retention\n— Week 1',
-             '>60% healthy\n<40% alert',
-             'users active in\nweek1 / cohort_size\n× 100',
-             '% of users in a monthly\ncohort who returned and\nwere active in week 1',
-             'raw_iam_activities',
-             'user_id, created_on\n(cohort = first-login month)'),
-
-            ('Cohort Retention\n— Week 2',
-             '>50% healthy\n<30% alert',
-             'users active in\nweek2 / cohort_size\n× 100',
-             '% of cohort still active\nin week 2; measures early\nretention curve shape',
-             'raw_iam_activities',
-             'user_id, created_on\ncohort month grouping'),
-
-            ('Cohort Retention\n— Week 4',
-             '>40% healthy\n<20% alert',
-             'users active in\nweek4 / cohort_size\n× 100',
-             '% of cohort active at\nfour weeks; end-of-month\nretention benchmark',
-             'raw_iam_activities',
-             'user_id, created_on\ncohort month grouping'),
-
-            ('Cohort Retention\n— Month 2',
-             '>30% healthy\n<15% alert',
-             'users active in\nmonth2 / cohort_size\n× 100',
-             '% of cohort returning\nin the second calendar\nmonth after first login',
-             'raw_iam_activities',
-             'user_id, created_on\ncohort month grouping'),
-
-            ('Cohort Retention\n— Month 3',
-             '>25% healthy\n<10% alert',
-             'users active in\nmonth3 / cohort_size\n× 100',
-             '% of cohort still active\nthree months in; long-term\nstickiness indicator',
-             'raw_iam_activities',
-             'user_id, created_on\ncohort month grouping'),
-
-            ('Cohort Size',
-             'Display only\n(volume metric)',
-             'COUNT users whose\nfirst_seen month\n= cohort_month',
-             'Number of users who had\ntheir first login in a given\ncalendar month',
-             'raw_iam_activities',
-             'user_id, created_on\n(MIN per user = first_seen)'),
-        ],
-    },
-    {
-        'title': 'CUSTOM METRICS  /  BUILDER & ALERTS',
-        'color': CYAN,
-        'rows': [
-            ('Alert Severity Score',
-             '0–3 Low\n4–6 Medium\n7–10 High',
-             'weighted_sum(\n  breach_flags ×\n  severity_weight\n) / max_possible × 10',
-             '0–10 composite score\ndriven by how many platform\nthresholds are breached',
-             'derived (all\nmetrics above)',
-             'threshold breach flags\nseverity_weight in config.ts'),
-
-            ('Top-N User\nActivity Rank',
-             'Display only\n(no threshold)',
-             'RANK() OVER\n(ORDER BY sessions_30d\n+ events_30d DESC)',
-             'Ordinal rank of users\nby combined session count\nand total audit action count',
-             'raw_iam_activities\nraw_audit_logs',
-             'user_id, sessions_30d\nevents_30d'),
-
-            ('Platform Activity\nIndex',
-             'Baseline ±15%\nspike → alert',
-             'total_events_today /\n30d_daily_avg',
-             'Ratio of today\'s event\nvolume vs trailing 30-day\ndaily average (1.0 = normal)',
-             'raw_iam_activities\nraw_audit_logs',
-             'created_on, platform_id\nDATE(created_on) grouping'),
-
-            ('Group Membership\nCoverage',
-             '100% target\n<90% alert',
-             'users_in_≥1_group /\ntotal_users × 100',
-             '% of users assigned to at\nleast one IAM access-control\ngroup (not orphaned)',
-             'raw_iam_user_groups\nraw_iam_users',
-             'user_id, group_id\ndeleted_on IS NULL'),
-
-            ('MFA Adoption Rate',
-             '≥80% target\n<50% alert',
-             'COUNT(mfa_enabled=1)\n/ total_users × 100',
-             '% of users with multi-factor\nauthentication enabled;\nderived from user profile flag',
-             'raw_iam_users',
-             'user_id, mfa_enabled\nplatform_id'),
-
-            ('Custom Metric\n(Formula Builder)',
-             'User-defined\nthreshold',
-             'User-supplied formula\nevaluated server-side\nvia /api/metrics/compute',
-             'Any metric the analyst\ndefines via the Metrics Builder\nUI; stored in Zustand + localStorage',
-             'any dx_* dataset\nor raw table',
-             'formula string\npinnedTo sections[]'),
-        ],
-    },
+  {
+    'title': 'PAGE: PEOPLE  —  KPI Cards',
+    'color': BLUE,
+    'rows': [
+      ('Active Users\n(period KPI)',
+       'Trend ↑ healthy\nDrop >20 % alert',
+       'COUNT DISTINCT users\nwith platform_id=6\nactivity in period',
+       'Users with any LOGIN\nin selected date range\n(Today / 7d / 30d / custom)',
+       'raw_iam_activities',
+       'user_id, type=LOGIN\ncreated_on, platform_id'),
+      ('Avg Health Score\n(KPI card)',
+       '≥60 Active\n40–59 At-Risk\n<40 Alert',
+       'AVG(health_score)\nacross filtered\nactive users',
+       'Mean composite health\nscore for all users\nvisible in current filter',
+       'derived: raw_iam_activities\nraw_audit_logs',
+       'user_id, health_score\n(min-max normalised)'),
+      ('New Activations\n(KPI card)',
+       'Growth ↑ positive',
+       'COUNT users where\nfirst_seen BETWEEN\nperiod_start AND end',
+       'Users whose very first\nLOGIN falls within the\nselected date range',
+       'raw_iam_activities',
+       'user_id, created_on\n(MIN per user = first_seen)'),
+      ('Session Rate\n(KPI card)',
+       '≥90 % target\n<70 % alert',
+       'successful_logins /\n(logins + invalid_logins)\n× 100',
+       'Auth success % for\nfiltered users — same as\nlogin success rate',
+       'raw_iam_activities',
+       'user_id, type\nLOGIN / INVALID LOGIN'),
+      ('Total Sessions\n(KPI card)',
+       'Trend ↑ healthy',
+       'SUM(sessions_30d)\nfor all filtered users\n(pre-computed per user)',
+       'Aggregate session count\nfor filtered user set;\nsubtitle shows total events',
+       'raw_iam_activities\n(session gap algorithm)',
+       'user_id, created_on\n3600s inactivity = new sess'),
+    ],
+  },
+  {
+    'title': 'PAGE: PEOPLE  —  Charts',
+    'color': BLUE,
+    'rows': [
+      ('Activity Trend\n(Line chart)',
+       'No hard threshold\nTrend shape matters',
+       'Daily COUNT of\nDAU / sessions / events\nover selected period',
+       'Toggle between Daily\nActive Users, sessions\nstarted, or events fired',
+       'raw_iam_activities\nraw_audit_logs',
+       'created_on (daily bucket)\nuser_id, session_id'),
+      ('Active Roles\n(Donut chart)',
+       'No threshold\n(distribution view)',
+       'COUNT DISTINCT user_id\nGROUP BY primary_role\n÷ total × 100',
+       'Breakdown of active users\nby their primary IAM role\n(first group assignment)',
+       'raw_iam_user_groups\nraw_iam_groups',
+       'user_id, group_id\ngroup.name (role label)'),
+      ('Cohort Retention\n(Heatmap chart)',
+       'W1 >60 %\nW2 >50 %\nW4 >40 %\nM2 >30 %  M3 >25 %',
+       'active_in_period /\ncohort_size × 100\nper (cohort_month × period)',
+       'Heatmap: rows = monthly\ncohorts, columns = W1/W2/\nW4/M2/M3 return periods',
+       'raw_iam_activities',
+       'user_id, created_on\nfirst_seen (cohort month)'),
+      ('Engagement Depth\nby Role (Line chart)',
+       '>3 events/sess healthy\n1 = login-only bounce',
+       'AVG(audit_events /\nsession) GROUP BY\nprimary_role',
+       'Average actions per\nsession for each role;\nhigher = deeper platform use',
+       'raw_audit_logs\nraw_iam_activities',
+       'session_id, user_id\nrole, event count'),
+    ],
+  },
+  {
+    'title': 'PAGE: PLATFORM HEALTH  —  KPI Cards',
+    'color': RED,
+    'rows': [
+      ('Overall Success\n(KPI card)',
+       '≥95 % target\n<90 % alert',
+       'SUCCESS_events /\ntotal_audit_events\n× 100 (window)',
+       'Platform-wide success rate\nacross all audit events in\nselected time window (1d/7d/30d)',
+       'raw_audit_logs',
+       'status (SUCCESS/FAIL)\ncreated_on, platform_id'),
+      ('Failed Events\n(KPI card)',
+       '0 ideal\n>50 / window alert',
+       'COUNT audit_logs\nwhere status IN\n(FAILED, FAILURE)',
+       'Total failed audit events\nin selected window; subtitle\nshows Today / 7d / 30d',
+       'raw_audit_logs',
+       'status, service_id\ncreated_on'),
+      ('Avg Session\n(KPI card)',
+       '>5 min healthy\n<1 min suspicious',
+       'AVG(session_end −\nsession_start) ÷ 60\nacross all sessions',
+       'Mean session duration\nin minutes for selected\ntime window',
+       'raw_iam_activities\n(session gap algorithm)',
+       'user_id, created_on\nsession start / end'),
+      ('Cross-Module Rate\n(KPI card)',
+       '>30 % healthy\n<15 % alert',
+       'sessions using ≥3\ndistinct service_ids /\ntotal_sessions × 100',
+       'Breadth of platform use —\n% of sessions where user\ntouched 3+ modules',
+       'raw_audit_logs',
+       'session_id, service_id\n(≥3 distinct per session)'),
+    ],
+  },
+  {
+    'title': 'PAGE: PLATFORM HEALTH  —  Charts  +  Inline Stats',
+    'color': RED,
+    'rows': [
+      ('Success Rate Trend\n(Line chart)',
+       'Δ ≥ 0 healthy\nΔ < −2 % alert',
+       'Daily overall_success_rate\nplotted over 30-day window\nor custom range',
+       'Time-series of platform\nsuccess rate; shows\npattern of degradation',
+       'raw_audit_logs',
+       'status, created_on\n(daily bucket)'),
+      ('Login Funnel\n(Funnel chart)',
+       'Each step ≥95 %\nof previous step',
+       'Attempt → Auth Pass\n→ Session → Action\n(4-step funnel counts)',
+       'Conversion funnel:\nhow many login attempts\nprogress to real actions',
+       'raw_iam_activities\nraw_audit_logs',
+       'type=LOGIN/INVALID\nsession_id, audit linkage'),
+      ('Auth Success %\n(inline stat)',
+       '≥95 % target\n<90 % alert',
+       'LOGIN / (LOGIN +\nINVALID_LOGIN) × 100\nfor window',
+       'Login success rate shown\nas inline stat beside\nthe funnel chart',
+       'raw_iam_activities',
+       'type, created_on\nwindow filter'),
+      ('Session Completion %\n(inline stat)',
+       '>80 % target\n<60 % alert',
+       'sessions WITH ≥1\naudit action / total\nsessions × 100',
+       'Shown beside funnel;\n% of sessions that\nincluded a real action',
+       'raw_iam_activities\nraw_audit_logs',
+       'session_id\naudit event linkage'),
+      ('Bounce Rate\n(inline stat)',
+       '<20 % target\n>40 % alert',
+       '(sessions − sessions\nwith actions) /\ntotal × 100',
+       'Shown in red beside\nfunnel; login-only\nsessions with no action',
+       'raw_iam_activities\nraw_audit_logs',
+       'session_id\naction count per session'),
+      ('Session Duration\nDistribution (Bar chart)',
+       '<1 min bucket\n<20 % healthy',
+       'COUNT sessions bucketed\ninto: <1m / 1–5m / 5–15m\n/ 15–30m / >30m',
+       'Histogram of session\nlengths; spike in <1 min\nbucket = bounce problem',
+       'raw_iam_activities\n(session gap algorithm)',
+       'session duration_sec\nbucket labels'),
+      ('Failure Rate by Event\n(Horizontal bar chart)',
+       '<5 % per event\n>10 % = investigate',
+       'failed_events /\ntotal_events × 100\nper event_type',
+       'Ranks event types by\nfailure %; identifies\nspecific broken actions',
+       'raw_audit_logs\nraw_iam_events',
+       'event_id, status\nevent.label'),
+    ],
+  },
+  {
+    'title': 'PAGE: SERVICES  —  KPI Cards',
+    'color': GREEN,
+    'rows': [
+      ('Active Services\n(KPI card)',
+       'Stable count healthy\ndrop >2 alert',
+       'COUNT DISTINCT\nservice_id with ≥1\naudit event in window',
+       'Number of distinct IAM\nmodules used in the\nselected time window',
+       'raw_audit_logs\nraw_iam_services',
+       'service_id\ncreated_on'),
+      ('Total Volume\n(KPI card)',
+       'Baseline ±30 %\nnormal variation',
+       'COUNT all audit_logs\nfor active services\nin window',
+       'Total events processed\nacross all services;\nshows platform load',
+       'raw_audit_logs',
+       'service_id\ncreated_on'),
+      ('Success Rate\nWeighted (KPI card)',
+       '≥95 % target\n<90 % alert',
+       'SUM(ok_events) /\nSUM(total_events)\n× 100  (weighted)',
+       'Volume-weighted success\nrate across all services;\nbig services count more',
+       'raw_audit_logs',
+       'service_id, status\ncreated_on'),
+      ('Top Service\n(KPI card)',
+       'Display only\n(no threshold)',
+       'service with MAX\nevents_30d in\ncurrent window',
+       'Name of highest-volume\nservice; subtitle shows\nits event count',
+       'raw_audit_logs\nraw_iam_services',
+       'service_id, service.name\nCOUNT events'),
+      ('Report Exports\n(KPI card)',
+       'Trend tracked\nno hard threshold',
+       'COUNT events where\ntype IN (REPORT,\nREPORT-ALL-GILE)',
+       'Total report-generation\nevents across all services\nin the selected window',
+       'raw_audit_logs',
+       'service_id, type\ncreated_on'),
+    ],
+  },
+  {
+    'title': 'PAGE: SERVICES  —  Charts  +  Drill-down',
+    'color': GREEN,
+    'rows': [
+      ('Traffic Heatmap\n(Heatmap chart)',
+       'Spike >3σ = alert',
+       'COUNT audit_logs\nper (service_id × hour)\nbucket, last 30d',
+       'Service × hour-of-day\nmatrix showing peak\nusage patterns',
+       'raw_audit_logs',
+       'service_id, created_on\nHOUR(created_on)'),
+      ('Top Events\n(Horizontal bar chart)',
+       'No hard threshold\n(volume ranking)',
+       'COUNT events\nGROUP BY event_label\nfor selected service',
+       'Most frequent event\ntypes within a service;\nshown in drill-down panel',
+       'raw_audit_logs\nraw_iam_events',
+       'service_id, event_id\nevent.label, COUNT'),
+      ('Service Success Rate\n(Horizontal bar chart)',
+       '≥95 % per service\n<90 % = banner',
+       'SUCCESS / total\n× 100 per service_id\nfor selected window',
+       'Per-service success\nrate ranked lowest\nfirst for triage',
+       'raw_audit_logs',
+       'service_id, status\nCOUNT grouped'),
+      ('Service Trend\n(drill-down)',
+       'Δ ≥ 0 growing\nΔ < −20 % alert',
+       '(events_cur − events_prev)\n/ events_prev × 100\nper service',
+       'MoM or period-over-period\nchange in event volume\nper service',
+       'raw_audit_logs',
+       'service_id, created_on\n(two period windows)'),
+      ('Report Export Rate\n(drill-down stat)',
+       'Trend tracked',
+       'report_events /\ntotal_events × 100\nper service',
+       'Share of a service\'s\nevents that are report\nexports vs regular actions',
+       'raw_audit_logs',
+       'service_id, type\nREPORT / total ratio'),
+    ],
+  },
+  {
+    'title': 'PAGE: METRICS BUILDER  —  Custom & Pinned',
+    'color': CYAN,
+    'rows': [
+      ('Custom Metric\nFormula Result',
+       'User-defined\nthreshold',
+       'User formula evaluated\nvia /api/metrics/compute\nwith Gemini AI assist',
+       'Any expression the analyst\nwrites in the builder; result\ncached per formula string',
+       'any dx_* snapshot\nor raw table API',
+       'formula (string)\nresult (string)'),
+      ('Pinned Metrics\n(per section)',
+       'Inherits threshold\nfrom formula',
+       'Same formula stored\nin metricsStore;\nre-evaluated on demand',
+       'Saved custom metrics\npinned to People / Services\n/ Health / Chat sections',
+       'Zustand metricsStore\n(localStorage persist)',
+       'id, name, formula\npinnedTo[] sections'),
+    ],
+  },
+  {
+    'title': 'CROSS-PAGE  —  User Drawer KPIs (per-user detail)',
+    'color': ORANGE,
+    'rows': [
+      ('User Health Score\n(drawer badge)',
+       '≥60 Active\n40–59 At-Risk\n<40 Alert',
+       '(login_norm + action_norm\n+ module_norm + report_norm)\n÷ 4 × 100',
+       'Individual user\'s composite\nhealth shown in drawer\nwhen row clicked',
+       'raw_iam_activities\nraw_audit_logs',
+       'user_id, all activity\nmin-max per platform'),
+      ('Auth Success Rate\n(drawer stat)',
+       '≥90 % healthy\n<70 % alert',
+       'LOGIN / (LOGIN +\nINVALID_LOGIN) × 100\nper user',
+       'Per-user login success\nrate shown in the\nuser detail drawer',
+       'raw_iam_activities',
+       'user_id, type\nLOGIN / INVALID LOGIN'),
+      ('Sessions — 30 d\n(drawer stat)',
+       '>2 /month healthy\n0 = dormant',
+       'COUNT sessions\nwhere user_id=X\nAND ts ≥ today−30d',
+       'Number of sessions\nthis user started in\nrolling 30-day window',
+       'raw_iam_activities\n(session gap algorithm)',
+       'user_id, created_on\n3600s gap boundary'),
+      ('Events — 30 d\n(drawer stat)',
+       '>5 healthy\n0 = inactive',
+       'COUNT audit_logs\nwhere user_id=X\nAND ts ≥ today−30d',
+       'Total audit actions\nthis user performed\nin rolling 30 days',
+       'raw_audit_logs',
+       'user_id, created_on'),
+      ('Services Used\n(drawer stat)',
+       '>2 services = active\n1 = narrow use',
+       'COUNT DISTINCT\nservice_id in audit_logs\nper user (30d)',
+       'Number of distinct\nIAM modules this user\naccessed in 30 days',
+       'raw_audit_logs',
+       'user_id, service_id\ncreated_on'),
+      ('Cross-Module Rate\n(drawer stat)',
+       '>30 % healthy\n<15 % alert',
+       'sessions with ≥3\nservices / total\nsessions × 100',
+       'Per-user breadth\nmetric shown in the\nuser detail drawer',
+       'raw_audit_logs',
+       'user_id, session_id\nservice_id (distinct)'),
+      ('Last Active Date\n(drawer stat)',
+       'Within 30d = active\n>30d = dormant',
+       'MAX(created_on)\nwhere type=LOGIN\nAND user_id=X',
+       'Most recent login\ndate for this user;\nused for dormancy flag',
+       'raw_iam_activities',
+       'user_id, type=LOGIN\ncreated_on (MAX)'),
+      ('User Status\n(drawer badge)',
+       'Active / At-Risk\n/ Inactive',
+       'health ≥60 → Active\n40≤h<60 → At-Risk\nh<40 → Inactive',
+       'Categorical tier derived\nfrom health score;\ncolour-coded in drawer header',
+       'derived from\nHealth Score',
+       'health_score vs\nconfig.ts HEALTH thresholds'),
+    ],
+  },
+  {
+    'title': 'CROSS-PAGE  —  Alerts Panel Thresholds',
+    'color': PINK,
+    'rows': [
+      ('Health Score Alert',
+       'avg_health < 60',
+       'AVG(health_score)\nall active users\n< HEALTH.AVG_ALERT',
+       'Fires when platform-wide\naverage health drops\nbelow 60 (configured threshold)',
+       'derived from\nHealth Score KPI',
+       'avg_health_score\nHEALTH.AVG_ALERT = 60'),
+      ('Dormant Users Alert',
+       'dormant_pct > 25 %',
+       'dormant_users /\ntotal_users × 100\n> 25',
+       'Fires when more than\n25 % of users have no\nactivity in 30 days',
+       'raw_iam_activities\nraw_iam_users',
+       'dormant_users\ntotal_users'),
+      ('Success Rate Alert',
+       'success_rate < 90 %',
+       'overall_success_rate\n< 90 from health\nKPI snapshot',
+       'Fires when platform\nsuccess rate drops\nbelow 90 %',
+       'raw_audit_logs',
+       'status, created_on\noverall_success_rate'),
+      ('New Activations Alert',
+       'new_activations\n= 0 (no growth)',
+       'new_activations_30d\n= 0',
+       'Fires when zero new\nuser activations in the\nlast 30-day window',
+       'raw_iam_activities',
+       'user_id, first_seen\ncreated_on (MIN per user)'),
+    ],
+  },
 ]
 
-# ─── LAYOUT CONSTANTS ────────────────────────────────────────────────────────
-COL_W    = [0.130, 0.110, 0.175, 0.180, 0.150, 0.175]   # fractions of usable width
-COLS     = ['Metric', 'Threshold / Target', 'Formula', 'Description', 'Source Tables', 'Key Columns']
-LEFT     = 0.018
-RIGHT    = 0.982
-USABLE_W = RIGHT - LEFT
+# ── Layout ────────────────────────────────────────────────────────────────────
+COLS    = ['Metric / KPI', 'Threshold / Target', 'Formula / Calculation', 'Description', 'Source Table(s)', 'Key Columns']
+COL_W   = [0.130, 0.108, 0.175, 0.195, 0.150, 0.172]   # must sum ≈ 0.93
+LEFT    = 0.018
+USABLE  = 0.964
+ROW_H   = 0.0188
+HDR_H   = 0.0120
+SEC_H   = 0.0115
 
-ROW_H    = 0.0195
-HDR_H    = 0.013
-SEC_H    = 0.012
-TOP_TITLE= 0.978
-
-total_rows = sum(len(s['rows']) for s in SECTIONS)
-total_h_needed = (
-    0.04                          # title block
-    + len(SECTIONS) * (SEC_H + HDR_H)   # section banners + col headers
-    + total_rows * ROW_H          # data rows
-    + 0.025                       # legend + footer
-)
-
-FIG_W  = 32
-FIG_H  = max(22, total_h_needed * 32 / 0.96)   # scale so content fills ~96% height
+total_rows    = sum(len(s['rows']) for s in SECTIONS)
+n_sections    = len(SECTIONS)
+content_frac  = n_sections * (SEC_H + HDR_H) + total_rows * ROW_H + 0.08
+FIG_W, FIG_H  = 34, max(24, content_frac * 34 / 0.94)
 
 fig = plt.figure(figsize=(FIG_W, FIG_H))
 fig.patch.set_facecolor(BG)
-ax = fig.add_axes([0, 0, 1, 1])
-ax.set_axis_off()
-ax.set_xlim(0, 1); ax.set_ylim(0, 1)
+ax  = fig.add_axes([0, 0, 1, 1])
+ax.set_axis_off(); ax.set_xlim(0, 1); ax.set_ylim(0, 1)
 
-# ─── TITLE ───────────────────────────────────────────────────────────────────
-fig.text(0.5, TOP_TITLE,
-         'GrayQuest IAM Analytics Dashboard — Complete Metrics Reference',
-         ha='center', va='top', fontsize=19, fontweight='bold',
-         color=WHITE, fontfamily='monospace')
-fig.text(0.5, TOP_TITLE - 0.018,
-         f'All {total_rows} Metrics  ·  Thresholds · Formulas · Source Tables · Key Columns  ·  platform_id=6  ·  Rolling 30-day window',
-         ha='center', va='top', fontsize=10.5, color=MUTED, fontfamily='monospace')
-fig.add_artist(plt.Line2D(
-    [LEFT, RIGHT], [TOP_TITLE - 0.03, TOP_TITLE - 0.03],
-    transform=fig.transFigure, color=BLUE, linewidth=1.2, alpha=0.6))
+def rect(x, y, w, h, bg, ec=BORDER, lw=0.4, z=2):
+    fig.add_artist(FancyBboxPatch((x,y), w, h, boxstyle='square,pad=0',
+        linewidth=lw, edgecolor=ec, facecolor=bg,
+        transform=fig.transFigure, zorder=z))
 
-# ─── HELPERS ─────────────────────────────────────────────────────────────────
-def draw_rect(x, y, w, h, bg, border=BORDER, lw=0.4, zorder=2):
-    rect = FancyBboxPatch((x, y), w, h,
-        boxstyle='square,pad=0', linewidth=lw,
-        edgecolor=border, facecolor=bg,
-        transform=fig.transFigure, zorder=zorder)
-    fig.add_artist(rect)
-
-def draw_text(x, y, text, color, fs, bold=False, mono=False, ha='left', va='center', zorder=3):
-    fw = 'bold' if bold else 'normal'
-    ff = 'monospace' if mono else 'DejaVu Sans'
-    fig.text(x, y, text, ha=ha, va=va, fontsize=fs, color=color,
-             fontweight=fw, fontfamily=ff, multialignment='left',
-             transform=fig.transFigure, zorder=zorder)
+def txt(x, y, s, color, fs, bold=False, mono=False, ha='left', va='center'):
+    fig.text(x, y, s, ha=ha, va=va, fontsize=fs, color=color,
+             fontweight='bold' if bold else 'normal',
+             fontfamily='monospace' if mono else 'DejaVu Sans',
+             multialignment='left', transform=fig.transFigure, zorder=3)
 
 def col_xs():
     xs, x = [], LEFT
-    for frac in COL_W:
-        xs.append(x)
-        x += frac * USABLE_W
+    for f in COL_W:
+        xs.append(x); x += f * USABLE
     return xs
 
-# ─── DRAW SECTIONS ───────────────────────────────────────────────────────────
-cursor_y = TOP_TITLE - 0.038   # start just below title
+# Title
+TOP = 0.978
+fig.text(0.5, TOP, 'GrayQuest IAM Analytics  —  Complete Metrics & KPI Reference',
+         ha='center', va='top', fontsize=18, fontweight='bold', color=WHITE, fontfamily='monospace')
+fig.text(0.5, TOP-0.017,
+         f'All {total_rows} metrics · Every KPI card · Every chart · People / Health / Services / Metrics Builder  ·  platform_id=6',
+         ha='center', va='top', fontsize=10, color=MUTED, fontfamily='monospace')
+fig.add_artist(plt.Line2D([LEFT, LEFT+USABLE], [TOP-0.028, TOP-0.028],
+    transform=fig.transFigure, color=BLUE, linewidth=1.2, alpha=0.55))
+
+cy = TOP - 0.036
 
 for sec in SECTIONS:
-    sc = sec['color']
+    sc   = sec['color']
+    xs   = col_xs()
 
-    # ── Section banner ──
-    draw_rect(LEFT, cursor_y - SEC_H, USABLE_W, SEC_H, SECTION_BG, border=sc, lw=1.2, zorder=2)
-    # left accent bar
-    draw_rect(LEFT, cursor_y - SEC_H, 0.0045, SEC_H, sc, border=sc, lw=0, zorder=3)
-    draw_text(LEFT + 0.007, cursor_y - SEC_H * 0.5,
-              sec['title'], sc, fs=8.5, bold=True, mono=True, va='center')
-    cursor_y -= SEC_H
+    # Section banner
+    rect(LEFT, cy-SEC_H, USABLE, SEC_H, SECTION_BG, ec=sc, lw=1.1, z=2)
+    rect(LEFT, cy-SEC_H, 0.004, SEC_H, sc, ec=sc, lw=0, z=3)
+    txt(LEFT+0.006, cy-SEC_H*0.5, sec['title'], sc, 8.2, bold=True, mono=True)
+    cy -= SEC_H
 
-    # ── Column header ──
-    xs = col_xs()
+    # Column headers
     for ci, (label, x) in enumerate(zip(COLS, xs)):
-        w = COL_W[ci] * USABLE_W
-        draw_rect(x, cursor_y - HDR_H, w, HDR_H, HEADER_BG, border=BORDER)
-        draw_text(x + 0.005, cursor_y - HDR_H * 0.5, label,
-                  MUTED, fs=7.2, bold=True, mono=False, va='center')
-    cursor_y -= HDR_H
+        w = COL_W[ci] * USABLE
+        rect(x, cy-HDR_H, w, HDR_H, HEADER_BG)
+        txt(x+0.004, cy-HDR_H*0.5, label, MUTED, 7.0, bold=True)
+    cy -= HDR_H
 
-    # ── Data rows ──
+    # Rows
+    CCOLS  = [BLUE, AMBER, PURPLE, WHITE, GREEN, MUTED]
+    CMONO  = [False, True, True, False, True, True]
+    CFS    = [8.0, 7.4, 7.3, 7.6, 7.4, 7.3]
+    CBOLD  = [True, False, False, False, False, False]
+
     for ri, row in enumerate(sec['rows']):
         bg = ROW_EVEN if ri % 2 == 0 else ROW_ODD
+        for ci, (cell, x) in enumerate(zip(row, xs)):
+            w = COL_W[ci] * USABLE
+            rect(x, cy-ROW_H, w, ROW_H, bg)
+            txt(x+0.004, cy-ROW_H*0.5, cell, CCOLS[ci], CFS[ci],
+                bold=CBOLD[ci], mono=CMONO[ci])
+        cy -= ROW_H
 
-        # cell colours per column
-        cell_colors = [BLUE, AMBER, PURPLE, WHITE, GREEN, MUTED]
-        cell_mono   = [False, True, True, False, True, True]
-        cell_fs     = [8.2, 7.6, 7.5, 7.8, 7.6, 7.5]
-        cell_bold   = [True, False, False, False, False, False]
+    cy -= 0.004
 
-        for ci, (text, x) in enumerate(zip(row, xs)):
-            w = COL_W[ci] * USABLE_W
-            draw_rect(x, cursor_y - ROW_H, w, ROW_H, bg)
-            draw_text(x + 0.005, cursor_y - ROW_H * 0.5, text,
-                      cell_colors[ci], cell_fs[ci],
-                      bold=cell_bold[ci], mono=cell_mono[ci], va='center')
-        cursor_y -= ROW_H
-
-    cursor_y -= 0.004  # gap between sections
-
-# ─── LEGEND ──────────────────────────────────────────────────────────────────
-legend_items = [
-    (BLUE,   'Metric Name'),
-    (AMBER,  'Threshold / Target'),
-    (PURPLE, 'Formula'),
-    (WHITE,  'Description'),
-    (GREEN,  'Source Tables'),
-    (MUTED,  'Key Columns'),
-]
+# Legend
 lx = LEFT
-for color, label in legend_items:
-    draw_rect(lx, cursor_y - 0.010, 0.010, 0.007, color, border='none', lw=0)
-    draw_text(lx + 0.012, cursor_y - 0.007, label, MUTED, fs=7.5, va='center')
-    lx += 0.145
+for color, label in [(BLUE,'Metric/KPI'),(AMBER,'Threshold'),(PURPLE,'Formula'),
+                     (WHITE,'Description'),(GREEN,'Source Table'),(MUTED,'Key Columns')]:
+    rect(lx, cy-0.009, 0.009, 0.006, color, ec='none', lw=0)
+    txt(lx+0.011, cy-0.006, label, MUTED, 7.3)
+    lx += 0.155
 
-# Footer
-fig.text(0.5, 0.006,
-         'GrayQuest · platform_id=6 · IAM Analytics · 7 raw tables → 13 dx_* datasets · © 2026',
-         ha='center', va='bottom', fontsize=7, color='#484F58', fontfamily='monospace')
+fig.text(0.5, 0.005,
+    'GrayQuest · platform_id=6 · 7 raw tables → 13 dx_* datasets · All 4 dashboard pages covered · © 2026',
+    ha='center', va='bottom', fontsize=6.8, color='#484F58', fontfamily='monospace')
 
-# ─── SAVE ────────────────────────────────────────────────────────────────────
 OUT = '/Users/ashutosh_bajpai/Desktop/Dashboard-Project/dashboard/metrics_reference_table.png'
-plt.savefig(OUT, dpi=160, bbox_inches='tight',
-            facecolor=BG, edgecolor='none')
+plt.savefig(OUT, dpi=155, bbox_inches='tight', facecolor=BG, edgecolor='none')
 plt.close()
-print(f'Saved → {OUT}  ({total_rows} metrics across {len(SECTIONS)} sections)')
+print(f'Saved → {OUT}  ({total_rows} rows, {len(SECTIONS)} sections)')
